@@ -223,21 +223,6 @@
 			hint="REMARKS_PL"
 			type="textarea"/>
 
-	<field name="observation_state"
-			alias="observation_state"
-			class="form-control"
-			label="OBSERVATION_STATE"
-			description="OBSERVATION_STATE_DESC"
-			size="1"
-			type="list"
-			autocomplete="off"
-			nullLabel="OBSERVATION_LIST_NULL"
-			>
-		<option value="Low">OBSERVATION_STATE_A</option>
-		<option value="Medium">OBSERVATION_STATE_B</option>			
-		<option value="High">OBSERVATION_STATE_C</option>			
-	</field>
-
 	<field name="admin_validation"
 			alias="admin_validation"
 			class="form-control"
