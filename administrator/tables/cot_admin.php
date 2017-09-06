@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.5
+ * @version     2.0.6
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -222,7 +222,7 @@ class Cot_formsTablecot_Admin extends JTable {
      *
      * @param    mixed    primary key values to update.  
      * @return    boolean    True on success.
-     * @since    2.0.5
+     * @since    2.0.6
      */
     public function validate($pk = null) {
 

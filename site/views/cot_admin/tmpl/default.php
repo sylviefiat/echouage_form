@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.5
+ * @version     2.0.6
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -103,23 +103,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 						<tbody>
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_DATE'); ?>: </td>
-								<td><?php 
-									if($this->item->observation_day!==null){
-										echo $this->item->observation_day;
-										if($this->item->observation_month!==null){
-											echo '/';
-										} 
-									}									
-									if($this->item->observation_month!==null){
-										echo $this->item->observation_month;
-										if($this->item->observation_year!==null){
-											echo '/';
-										}
-									}
-									if($this->item->observation_year!==null){
-										echo $this->item->observation_year;
-									}
-								?></td>
+								<td><?php echo $this->item->observation_datetime; ?></td>
 							</tr>
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LOCATION'); ?>: </td>

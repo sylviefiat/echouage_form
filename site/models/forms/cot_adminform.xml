@@ -41,7 +41,15 @@
 			description="OBSERVER_EMAIL_DESC"
 			hint="OBSERVER_EMAIL"
 			type="email"/>
-	
+		
+	<field name="observation_datetime"
+			alias="observation_datetime"
+			class="form-control"
+			label="OBSERVATION_DATE"
+			description="OBSERVATION_DATE_DESC"
+			hint="OBSERVATION_DATE"
+			type="ckdatetimepicker"/>
+
 	<field name="observation_date"
 			alias="observation_date"
 			class="form-control"

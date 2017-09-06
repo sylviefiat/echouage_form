@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.5
+ * @version     2.0.6
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -30,9 +30,7 @@ class Cot_formsModelCot_admins extends JModelList {
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
-		        'observation_day', 'a.observation_day',
-                'observation_month', 'a.observation_month',
-                'observation_year', 'a.observation_year',
+		        'observation_datetime', 'a.observation_datetime',
 		        'observation_location', 'a.observation_location',
                 'observation_localisation', 'a.observation_localisation',
                 'observation_region', 'a.observation_region',

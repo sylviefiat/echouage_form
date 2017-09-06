@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.5
+ * @version     2.0.6
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -103,16 +103,8 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 				<div class="controls"><?php echo $this->form->getInput('observer_email'); ?></div>
 			</div>
 			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_day'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_day'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_month'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_month'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_year'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_year'); ?></div>
+				<div class="control-label"><?php echo $this->form->getLabel('observation_date'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('observation_datetime'); ?></div>
 			</div>			
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
