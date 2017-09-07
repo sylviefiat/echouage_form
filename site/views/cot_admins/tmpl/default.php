@@ -36,7 +36,7 @@ defined('_JEXEC') or die;
 		<?php $show = true; ?>
 		<li class="list-group-item">
 			<?php if(!$item->admin_validation){ ?><span class="fa fa-square-o"></span> <?php } else { ?> <span class="fa fa-check"></span><?php } ?>
-			ID<?php echo $item->id; ?> <?php echo $item->observation_date; ?> <?php echo JText::_('COM_COT_FORMS_OBSERVER_ITEM'); ?> <?php echo $item->observer_name; ?>
+			ID<?php echo $item->id; ?> <?php echo $item->observation_datetime; ?> <?php echo JText::_('COM_COT_FORMS_OBSERVER_ITEM'); ?> <?php echo $item->observer_name; ?>
 			<span class="badge"><?php echo $item->observation_number; ?> </span>
 			&nbsp;&nbsp;&nbsp;
 			<a href="<?php echo JRoute::_('index.php?option=com_cot_forms&view=cot_admin&id=' . (int)$item->id); ?>" >

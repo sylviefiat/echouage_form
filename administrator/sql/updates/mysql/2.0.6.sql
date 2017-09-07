@@ -9,8 +9,8 @@ update `#__cot_admin` set `observation_date`=STR_TO_DATE(CONCAT('01/01/2017'), '
 
 DROP TRIGGER `#__trig_cot_admin_insert`;
 CREATE TRIGGER `#__trig_cot_admin_insert` BEFORE INSERT ON `#__cot_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText(CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),NEW.observation_day = day(NEW.observation_date),NEW.observation_month=month(NEW.observation_date),NEW.observation_year=year(NEW.observation_date);
+FOR EACH ROW SET NEW.localisation = GeomFromText(CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),NEW.observation_day = day(NEW.observation_datetime),NEW.observation_month=month(NEW.observation_datetime),NEW.observation_year=year(NEW.observation_datetime);
 
 DROP TRIGGER `#__trig_cot_admin_update`;
 CREATE TRIGGER `#__trig_cot_admin_update` BEFORE UPDATE ON `#__cot_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText(CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),NEW.observation_day = day(NEW.observation_date),NEW.observation_month=month(NEW.observation_date),NEW.observation_year=year(NEW.observation_date);
+FOR EACH ROW SET NEW.localisation = GeomFromText(CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),NEW.observation_day = day(NEW.observation_datetime),NEW.observation_month=month(NEW.observation_datetime),NEW.observation_year=year(NEW.observation_datetime);
