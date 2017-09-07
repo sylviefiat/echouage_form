@@ -130,7 +130,7 @@ $user = JFactory::getUser();
 			    </div>
 			    <div class="col-lg-4 col-md-6 col-xs-12">
 				<div class="input-group">
-				    <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+				    <span class="input-group-addon exergue"><span class="fa fa-envelope"></span></span>
 				    <?php echo $this->form->getInput('observer_email'); ?>
 				</div>
 			    </div>

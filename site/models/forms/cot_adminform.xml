@@ -44,11 +44,13 @@
 		
 	<field name="observation_datetime"
 			alias="observation_datetime"
-			class="form-control"
+			class="form-control form-calendar"
 			label="OBSERVATION_DATE"
 			description="OBSERVATION_DATE_DESC"
 			hint="OBSERVATION_DATE"
-			type="ckdatetimepicker"/>
+			type="ckcalendar"
+            default="NOW"
+            format="Y-m-d"/>
 
 	<field name="observation_date"
 			alias="observation_date"
@@ -77,7 +79,6 @@
 	<field name="observation_year"
 			alias="observation_year"
 			class="form-control"
-			required="true"
 			label="OBSERVATION_YEAR"
 			description="OBSERVATION_CULLED_DESC"
 			hint="OBSERVATION_YEAR"
@@ -101,7 +102,6 @@
 				type="ckaddresspicker"/>		
 
 		<field name="observation_region"
-				readonly="true"
 				alias="region"
 				label="OBSERVATION_REGION"
 				description="OBSERVATION_REGION_DESC"
@@ -111,7 +111,6 @@
 				type="text"/>
 
 		<field name="observation_country"
-				readonly="true"
 				alias="country"
 				label="OBSERVATION_COUNTRY"
 				description="OBSERVATION_COUNTRY_DESC"
@@ -132,7 +131,6 @@
 				/>
 
 		<field name="observation_latitude"
-				readonly="true"
 				alias="latitude"
 				label="OBSERVATION_LATITUDE"
 				description="OBSERVATION_LATITUDE_DESC"
@@ -142,7 +140,6 @@
 				type="text"/>
 
 		<field name="observation_longitude"
-				readonly="true"
 				alias="longitude"
 				label="OBSERVATION_LONGITUDE"
 				description="OBSERVATION_LONGITUDE_DESC"
