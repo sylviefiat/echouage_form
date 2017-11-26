@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_cot_forms</name>
-    <creationDate>2014-11-18</creationDate>
+    <creationDate>2017-11-27</creationDate>
     <copyright>Copyright (C) 2014. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <author>Sylvie Fiat</author>
+    <author>Ezechiel Wahoulo, Sylvie Fiat</author>
     <authorEmail>sylvie.fiat@ird.fr</authorEmail>
     <authorUrl>http://umr-entropie.ird.nc</authorUrl>
-    <version>2.0.6</version>
+    <version>2.0.7</version>
     <description>OREANET forms</description>
     
     <install> <!-- Runs on install -->
