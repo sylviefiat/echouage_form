@@ -29,8 +29,9 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function export()
 	{
+		$nom_fichier = "oreanet-nc_" . date("d-m-Y");
 		header("Content-type: text/csv");
-		header("Content-Disposition: attachment; filename=VFD_COTs.csv");
+		header("Content-Disposition: attachment; filename=" . $nom_fichier . ".csv");
 		header("Pragma: no-cache");
 		header("Expires: 0");
 		$this->getModel()->getCsv();
