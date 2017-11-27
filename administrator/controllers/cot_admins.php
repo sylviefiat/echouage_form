@@ -21,7 +21,7 @@ class Cot_formsControllerCot_admins extends JControllerAdmin
 	 * Proxy for getModel.
 	 * @since	1.6
 	 */
-	public function getModel($name = 'cot_admin', $prefix = 'Cot_formsModel')
+	public function getModel($name = 'cot_admin', $prefix = 'Cot_formsModel', $config = [])
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;

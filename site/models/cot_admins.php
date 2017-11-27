@@ -123,17 +123,13 @@ class Cot_formsModelCot_admins extends JModelList {
 
     // Fonction de changement d'index
     public function change_key( $array, $old_key, $new_key ) {
-
-    if( ! array_key_exists( $old_key, $array ) )
-        return $array;
-    // Retourne les indexes du tableau
-    $keys = array_keys( $array );
-
-    // Recherche l'ancien index dans le tableau et la remplace para
-    // le nouveau index
-    $keys[ array_search( $old_key, $keys ) ] = $new_key;
-
-    return array_combine( $keys, $array );
+      if( ! array_key_exists( $old_key, $array ) )
+          return $array;
+      // Retourne les indexes du tableau
+      $keys = array_keys( $array );
+      // Recherche l'ancien index dans le tableau et la remplace par le nouvel index
+      $keys[ array_search( $old_key, $keys ) ] = $new_key;
+      return array_combine( $keys, $array );
     }
 
     public function getCsv()
@@ -145,7 +141,7 @@ class Cot_formsModelCot_admins extends JModelList {
 
       // Enlève les headers des 4 derniers champs de la BD : state, localisation, created_by
       // et admin_validation
-      for($cptr=1; $cptr<5; $cptr++){ array_pop($cols); }
+      for($cptr=1; $cptr<8; $cptr++){ array_pop($cols); }
 
       // Place les les deux champs lat_dmd et long_dmd à la fin
       array_push($cols, 'observation_latitude_dmd', 'observation_longitude_dmd');
@@ -172,10 +168,12 @@ class Cot_formsModelCot_admins extends JModelList {
 
       // Ouvre le fichier CSV
       $csv = fopen('php://output', 'w');
+
+      $delimiter = ';';
+      $enclosure = '"';
       // encodage pour excel windows
-      fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
-      fputcsv($csv, $cols);
-      
+      //fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
+      fputcsv($csv, $cols, $delimiter, $enclosure);
       // recupération des données dans la bdd
       $items = $db->setQuery($this->getListQuery())->loadObjectList();
 
@@ -186,7 +184,7 @@ class Cot_formsModelCot_admins extends JModelList {
 
         // Enlève les données des 4 derniers champs de la BD : state, localistaion, created_by
         // et admin_validation
-            for($cptr=1; $cptr<5; $cptr++){ array_pop($in); }
+            for($cptr=1; $cptr<8; $cptr++){ array_pop($in); }
 
         // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
         $keys_in = array_keys($in);
@@ -226,7 +224,7 @@ class Cot_formsModelCot_admins extends JModelList {
             $date = date_create($datetime);
             $in['observation_datetime'] =  date_format($date, "d/m/Y");
 
-        fputcsv($csv, (array) $in);
+        fputcsv($csv, (array) $in, $delimiter,$enclosure);
       }
       return fclose($csv);
     }
