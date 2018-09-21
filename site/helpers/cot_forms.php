@@ -14,27 +14,32 @@ abstract class Cot_formsHelper
 	public static function sendMail($data,$email_admin)
 	{
 		// Get JMail helper
-		$mailer =& JFactory::getMailer();		
+		$mailer =& JFactory::getMailer();
 
-		// Set the sender (from joomla configuration)	
+		// Set the sender (from joomla configuration)
 		$config = JFactory::getConfig();
 		$from =& $config->get( 'mailfrom' );
 		$fromname = $config->get( 'fromname' );
-		$sender = array( 
+		$sender = array(
 		$config->get( 'mailfrom' ),
 		$config->get( 'fromname' ) );
 		$mailer->setSender($sender);
 
 		// Set the recipient
 		$recipient = $email_admin;
-		$mailer->addRecipient($email_admin);				
+		$mailer->addRecipient($email_admin);
 
 		$valid = "<a href='".JURI::base()."index.php/administrer-les-observations/".$data['id']."?view=cot_admin'>Aller sur le site pour valider</a>";
 
-		$body   = "<h4>Un nouveau report d'acanthasters a été effectué:</h4>"
+		$body   = "<h4>Un nouveau report d'échouage a été effectué:</h4>"
 				."<div>Observateur: ".$data['observer_name']."</div>"
 				.($data['observer_tel']!== ''?"<div>Téléphone: ".$data['observer_tel']."</div>":"")
 				.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
+
+				."<div>Informateur: ".$data['informant_name']."</div>"
+				.($data['informant_tel']!== ''?"<div>Téléphone: ".$data['informant_tel']."</div>":"")
+				.($data['informant_email']!== ''?"<div>Mail: ".$data['informant_email']."</div>":"")
+
 				."<div>Date de l'observation: ".($data['observation_datetime'])."</div>"
 				."<div>Détails sur la position de l'observation: ".$data['observation_location']."</div>"
 				."<div>Position: ".$data['observation_localisation']."</div>"
@@ -51,9 +56,9 @@ abstract class Cot_formsHelper
 				.($data['remarks']!== ''?"<div>Remarques: ".$data['remarks']."</div>":"")
 				."<div>Observation validation: ".$valid." </div>";
 
-		
-		$subject = "Oreanet NC: nouveau report de présence d'acanthasters en Nouvelle-Calédonie";
-		$mailer->setSubject("Oreanet NC: nouveau report de présence d'acanthasters en Nouvelle-Calédonie");
+
+		$subject = "Operation_Cetaces NC: nouveau report d'échouage en Nouvelle-Calédonie";
+		$mailer->setSubject("Operation_Cetaces NC: nouveau report d'échouage en Nouvelle-Calédonie");
 		$mailer->setBody($body);
 		$mailer->AltBody =JMailHelper::cleanText( strip_tags( $body));
 
@@ -68,7 +73,6 @@ abstract class Cot_formsHelper
 		}
 	}
 
-	
+
 
 }
-

@@ -27,9 +27,20 @@ class Cot_formsModelCot_admins extends JModelList {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
+                
+                //ajout référence et id_location
+                'references','a.references',
+                'id_location','a.id_location',
+
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
+
+                // contacts de l'informateur
+                'informant_name', 'a.informant_name',
+                'informant_tel', 'a.informant_tel',
+                'informant_email', 'a.informant_email',
+
 		        'observation_datetime', 'a.observation_datetime',
 		        'observation_location', 'a.observation_location',
                 'observation_localisation', 'a.observation_localisation',
@@ -72,7 +83,7 @@ class Cot_formsModelCot_admins extends JModelList {
         $published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
         $this->setState('filter.state', $published);
 
-        
+
 
         // Load the parameters.
         $params = JComponentHelper::getParams('com_cot_forms');
@@ -120,12 +131,12 @@ class Cot_formsModelCot_admins extends JModelList {
         );
         $query->from('`#__cot_admin` AS a');
 
-        
+
 		// Join over the user field 'created_by'
 		$query->select('created_by.name AS created_by');
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
 
-        
+
 
         // Filter by search in title
         $search = $this->getState('filter.search');
@@ -138,7 +149,7 @@ class Cot_formsModelCot_admins extends JModelList {
             }
         }
 
-        
+
 
 
         // Add the list ordering clause.
@@ -153,7 +164,7 @@ class Cot_formsModelCot_admins extends JModelList {
 
     public function getItems() {
         $items = parent::getItems();
-        
+
         return $items;
     }
 

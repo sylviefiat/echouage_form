@@ -64,9 +64,9 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
             Joomla.submitform(task, document.getElementById('cot_admin-form'));
         }
         else {
-            
+
             if (task != 'cot_admin.cancel' && document.formvalidator.isValid(document.id('cot_admin-form'))) {
-                
+
                 Joomla.submitform(task, document.getElementById('cot_admin-form'));
             }
             else {
@@ -86,10 +86,22 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
             <div class="span10 form-horizontal">
                 <fieldset class="adminform">
 
-                    			<div class="control-group">
+        <div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
-			</div>
+      </div>
+
+        <!--References Id_location-->
+        <div class="control-group">
+        <div class="control-label"><?php echo $this->form->getLabel('references'); ?></div>
+        <div class="controls"><?php echo $this->form->getInput('references'); ?></div>
+      </div>
+        <div class="control-group">
+        <div class="control-label"><?php echo $this->form->getLabel('id_location'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('id_location'); ?></div>
+			</diV>
+
+      <!--Observer contacts-->
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observer_name'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observer_name'); ?></div>
@@ -102,10 +114,26 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 				<div class="control-label"><?php echo $this->form->getLabel('observer_email'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observer_email'); ?></div>
 			</div>
+
+      <!--Informant contacts-->
+      <div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('informant_name'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('informant_name'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('informant_tel'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('informant_tel'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('informant_email'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('informant_email'); ?></div>
+			</div>
+
+
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_date'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_datetime'); ?></div>
-			</div>			
+			</div>
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_localisation'); ?></div>
@@ -176,7 +204,7 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 				<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
 			</div>
-			
+
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_state'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_state'); ?></div>
@@ -191,8 +219,8 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
             </div>
         </div>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
-        
-        
+
+
 
         <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 

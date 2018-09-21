@@ -13,9 +13,27 @@
 			label="ID"
 			filter="INT"
 			description="ID_DESC"
-			readonly="true"			
+			readonly="true"
 			type="cktext"/>
+			<!--References-->
+			<field name="references"
+					alias="references"
+					class="form-control"
+					label="REFERENCES"
+					description="REFERENCES_DESC"
+					readonly="true"
+					type="cktext"/>
+			<!--Location_ID-->
+			<field name="id_location"
+					alias="id_location"
+					class="form-control"
+					label="ID_LOCATION"
+					filter="INT"
+					description="ID_LOCATION_DESC"
+					readonly="true"
+					type="cktext"/>
 
+<!--Observer contacts-->
 	<field name="observer_name"
 			alias="observer_name"
 			class="form-control"
@@ -33,7 +51,7 @@
 			description="OBSERVER_TEL_DESC"
 			hint="OBSERVER_TEL"
 			type="tel"/>
-				
+
 	<field name="observer_email"
 			alias="observer_email"
 			class="form-control"
@@ -41,7 +59,35 @@
 			description="OBSERVER_EMAIL_DESC"
 			hint="OBSERVER_EMAIL"
 			type="email"/>
-		
+
+	<!--Informant contacts-->
+	<field name="informant_name"
+			alias="informant_name"
+			class="form-control"
+			label="INFORMANT_NAME"
+			filter="STRING"
+			description="INFORMANT_NAME_DESC"
+			required="true"
+			hint="INFORMANT_NAME_PL"
+			type="text"/>
+
+	<field name="informant_tel"
+			alias="informant_tel"
+			class="form-control"
+			label="INFORMANT_TEL"
+			description="INFORMANT_TEL_DESC"
+			hint="INFORMANT_TEL"
+			type="tel"/>
+
+	<field name="informant_email"
+			alias="informant_email"
+			class="form-control"
+			label="INFORMANT_EMAIL"
+			description="INFORMANT_EMAIL_DESC"
+			hint="INFORMANT_EMAIL"
+			type="email"/>
+
+		<!--Date-->
 	<field name="observation_datetime"
 			alias="observation_datetime"
 			class="form-control form-calendar"
@@ -83,7 +129,7 @@
 			description="OBSERVATION_CULLED_DESC"
 			hint="OBSERVATION_YEAR"
 			type="text"/>
-			
+
 		<field name="observation_location"
 			alias="observation_location"
 			class="form-control"
@@ -99,7 +145,7 @@
 				description="OBSERVATION_PICK_DESC"
 				filter="STRING"
 				class="formatted_address form-control"
-				type="ckaddresspicker"/>		
+				type="ckaddresspicker"/>
 
 		<field name="observation_region"
 				alias="region"
@@ -147,8 +193,8 @@
 				filter="FLOAT"
 				class="longitude form-control"
 				type="text"/>
-			
-	
+
+<!--Number-->
 	<field name="observation_number"
 			alias="observation_number"
 			class="form-control"
@@ -156,8 +202,168 @@
 			description="OBSERVATION_NUMBER_DESC"
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
-			type="text"/>	
-	
+			type="text"/>
+
+			<!--Spaces-->
+				 <field name="observation_spaces"
+					 alias="observation_spaces"
+					 class="form-control"
+					 label="OBSERVATION_SPACES"
+					 description="OBSERVATION_SPACES_DESC"
+					 hint="OBSERVATION_SPACES"
+					 labelclass="control-label"
+					 type="text"/>
+			<!--Spaces identification-->
+			<field name="observation_spaces_identification"
+					alias="observation_spaces_identification"
+					class="form-control"
+					label="OBSERVATION_SPACES_IDENTIFICATION"
+					description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
+					type="checkboxes"
+					required="true"
+					multiple="false" >
+				<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
+				<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
+			</field>
+			<!--Sex-->
+			<field name="observation_sex"
+					alias="observation_sex"
+					class="form-control"
+					label="OBSERVATION_SEX"
+					description="OBSERVATION_SEX_DESC"
+					type="checkboxes"
+					required="true"
+					multiple="false" >
+				<option value="male">OBSERVATION_SEX_A</option>
+				<option value="female">OBSERVATION_SEX_B</option>
+				<option value="unknow">OBSERVATION_SEX_C</option>
+			</field>
+			<!--Color-->
+			<field name="observation_color"
+					alias="observation_color"
+					class="form-control"
+					label="OBSERVATION_COLOR"
+					labelclass="control-label"
+					description="OBSERVATION_COLOR_DESC"
+					hint="OBSERVATION_COLOR"
+					type="text"/>
+<!--Size-->
+			<field name="observation_size"
+					alias="observation_size"
+					class="form-control"
+					label="OBSERVATION_SIZE"
+					labelclass="control-label"
+					description="OBSERVATION_SIZE_DESC"
+					hint="OBSERVATION_SIZE"
+					type="text"/>
+
+	<!--Abnormalities-->
+	<field name="observation_abnormalities"
+			alias="observation_abnormalities"
+			class="form-control"
+			label="OBSERVATION_ABNORMALITIES"
+			description="OBSERVATION_ABNORMALITIES_DESC"
+			type="checkboxes"
+			required="true"
+			multiple="false" >
+		<option value="yes">OBSERVATION_ABNORMALITIES_A</option>
+		<option value="no">OBSERVATION_ABNORMALITIES_B</option>
+	</field>
+	<!--Capture traces-->
+	<field name="observation_capture_traces"
+			alias="observation_capture_traces"
+			class="form-control"
+			label="OBSERVATION_CAPTURE_TRACES"
+			description="OBSERVATION_CAPTURE_TRACES_DESC"
+			type="checkboxes"
+			required="true"
+			multiple="false" >
+		<option value="ct probable">OBSERVATION_CAPTURE_TRACES_A</option>
+		<option value="ct certaine">OBSERVATION_CAPTURE_TRACES_B</option>
+	</field>
+	<!--Catch indices-->
+	<field name="catch_indices"
+			alias="catch_indices"
+			class="form-control"
+			label="CATCH_INDICES"
+			filter="STRING"
+			description="CATCH_INDICES_DESC"
+			hint="CATCH_INDICES"
+			type="textarea"/>
+	<!--State-->
+	<field name="observation_state"
+			alias="observation_state"
+			class="form-control"
+			label="OBSERVATION_STATE"
+			description="OBSERVATION_STATE_DESC"
+			type="checkboxes"
+			required="true"
+			multiple="false" >
+		<option value="death">OBSERVATION_STATE_A</option>
+		<option value="alive">OBSERVATION_STATE_B</option>
+	</field>
+	<!--Death-->
+	<field name="observation_death"
+			alias="observation_death"
+			class="form-control"
+			label="OBSERVATION_DEATH"
+			description="OBSERVATION_DEATH_DESC"
+			type="checkboxes"
+			required="true"
+			multiple="false" >
+		<option value="death_A">OBSERVATION_DEATH_A</option>
+		<option value="death_B">OBSERVATION_DEATH_B</option>
+		<option value="death_C">OBSERVATION_DEATH_C</option>
+	</field>
+	<!--Date death-->
+<field name="observation_datetime_death"
+		alias="observation_datetime_death"
+		class="form-control form-calendar"
+		label="OBSERVATION_DATE_DEATH"
+		description="OBSERVATION_DATE_DEATH_DESC"
+		hint="OBSERVATION_DATE_DEATH"
+		type="ckcalendar"
+					default="NOW"
+					format="Y-m-d"/>
+	<!--State decomposition-->
+	<field name="observation_state_decomposition"
+			alias="observation_state_decomposition"
+			class="form-control"
+			label="OBSERVATION_STATE_DECOMPOSITION"
+			description="OBSERVATION_STATE_DECOMPOSITION_DESC"
+			type="checkboxes"
+			required="true"
+			multiple="false" >
+		<option value="very fresh">OBSERVATION_STATE_DECOMPOSITION_A</option>
+		<option value="fresh">OBSERVATION_STATE_DECOMPOSITION_B</option>
+		<option value="putrefactive">OBSERVATION_STATE_DECOMPOSITION_D</option>
+		<option value="very putrefactive">OBSERVATION_STATE_DECOMPOSITION_D</option>
+		<option value="remains">OBSERVATION_STATE_DECOMPOSITION_E</option>
+	</field>
+	<!--Alive-->
+	<field name="observation_alive"
+			alias="observation_alive"
+			class="form-control"
+			label="OBSERVATION_ALIVE"
+			description="OBSERVATION_ALIVE_DESC"
+			type="checkboxes"
+			required="true"
+			multiple="false" >
+		<option value="alive">OBSERVATION_ALIVE_A</option>
+	</field>
+					<!--Date release-->
+				<field name="observation_datetime_release"
+						alias="observation_datetime_release"
+						class="form-control form-calendar"
+						label="OBSERVATION_DATE_RELEASE"
+						description="OBSERVATION_DATE_RELEASE_DESC"
+						hint="OBSERVATION_DATE_RELEASE"
+						type="ckcalendar"
+									default="NOW"
+									format="Y-m-d"/>
+
+
+<!--
 	<field name="observation_culled"
 			alias="observation_culled"
 			class="form-control"
@@ -184,7 +390,7 @@
 			class="form-control"
 			type="text"
 			labelclass="control-label"
-			label="COUNTING_METHOD_TIMED_SWIM" 
+			label="COUNTING_METHOD_TIMED_SWIM"
 			description="COUNTING_METHOD_TIMED_SWIM_DESC"
 			hint="COUNTING_METHOD_TIMED_SWIM"/>
 
@@ -193,7 +399,7 @@
 			class="form-control"
 			type="text"
 			labelclass="control-label"
-			label="COUNTING_METHOD_DISTANCE_SWIM" 
+			label="COUNTING_METHOD_DISTANCE_SWIM"
 			description="COUNTING_METHOD_DISTANCE_SWIM_DESC"
 			hint="COUNTING_METHOD_DISTANCE_SWIM"/>
 
@@ -202,7 +408,7 @@
 			class="form-control"
 			type="text"
 			labelclass="control-label"
-			label="COUNTING_METHOD_OTHER" 
+			label="COUNTING_METHOD_OTHER"
 			description="COUNTING_METHOD_OTHER_DESC"
 			hint="COUNTING_METHOD_OTHER"/>
 
@@ -218,6 +424,7 @@
 		<option value="medium">DEPTH_RANGE_B</option>
 		<option value="deep">DEPTH_RANGE_C</option>
 	</field>
+-->
 
 	<field name="remarks"
 			alias="remarks"
@@ -241,6 +448,6 @@
                 description="CAPTCHA_DESC"
                 validate="captcha"
                 namespace="event"
-        />	
+        />
 </fieldset>
 </form>

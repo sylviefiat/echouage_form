@@ -46,7 +46,7 @@ class Cot_formsModelCot_admins extends JModelList {
         $limitstart = JFactory::getApplication()->input->getInt('limitstart', 0);
         $this->setState('list.start', $limitstart);
 
-        
+
 
         // List state information.
         parent::populateState($ordering, $direction);
@@ -72,11 +72,11 @@ class Cot_formsModelCot_admins extends JModelList {
 
         $query->from('`#__cot_admin` AS a');
 
-        
+
 		// Join over the created by field 'created_by'
 		$query->select('created_by.name AS created_by');
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
-        
+
 
         // Filter by search in title
         $search = $this->getState('filter.search');
@@ -89,7 +89,7 @@ class Cot_formsModelCot_admins extends JModelList {
             }
         }
 
-        
+
 
         return $query;
     }
@@ -98,7 +98,27 @@ class Cot_formsModelCot_admins extends JModelList {
         return parent::getItems();
     }
 
+    public function getCsv()
+    {
+      $this->populateState();
+      $db = $this->getDbo();
 
+      $cols = array_keys($db->getTableColumns('#__cot_admin'));
+      $items = $db->setQuery($this->getListQuery())->loadObjectList();
+      $csv=fopen('php://ouput', 'w');
+      fprintf($csv, chr(0xEF).ch(0xBB).chr(0xBF));
+      fputcsv($csv, $cols);
+
+      foreach($items, as $line)
+      {
+        $in = (array) $line;
+        fputcsv($csv, (array) $in)
+      }
+
+      return fclose($csv);
+    }
+
+/*
     // Fonction de conversion latitude_dmd
     public function convert_Lat_DMD($lat) {
       if($lat >= 0) $lat_dir = 'N';
@@ -228,5 +248,6 @@ class Cot_formsModelCot_admins extends JModelList {
       }
       return fclose($csv);
     }
+    */
 
 }

@@ -29,12 +29,14 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function export()
 	{
-		$nom_fichier = "oreanet-nc_" . date("d-m-Y");
-		header("Content-type: application/octet-stream");
-		header("Content-Disposition: attachment; filename=" . $nom_fichier . ".xls");
+		$nom_fichier = "operation_cetace-nc_" . date("d-m-Y");
+		header("Content-type: text/csv");
+		header("Content-Disposition: attachment; filename=" . $nom_fichier . ".csv");
+		//header("Content-type: application/octet-stream");
+		//header("Content-Disposition: attachment; filename=" . $nom_fichier . ".xls");
 		header("Pragma: no-cache");
 		header("Expires: 0");
-		header("Lacation: excel.htm?id=yes");
+		//header("Lacation: excel.htm?id=yes");
 		$this->getModel()->getCsv();
 		jexit();
 	}
