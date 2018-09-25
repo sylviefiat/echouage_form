@@ -81,7 +81,7 @@
 			type="ckcalendar"
             default="NOW"
             format="Y-m-d"/>
-
+<!--
 	<field name="observation_date"
 			alias="observation_date"
 			label="OBSERVATION_DATE"
@@ -105,7 +105,7 @@
 			label="OBSERVATION_YEAR"
 			description="OBSERVATION_CULLED_DESC"
 			type="cktext"/>
-
+-->
 		<field name="observation_location"
 			alias="observation_location"
 			label="OBSERVATION_LOCATION"
@@ -182,9 +182,8 @@
 	 						alias="observation_spaces_identification"
 	 						label="OBSERVATION_SPACES_IDENTIFICATION"
 	 						description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
-	 						type="checkboxes"
-	 						required="true"
-	 						multiple="false" >
+	 						type="radio"
+	 						required="true" >
 	 					<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
 	 					<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
 	 				</field>
@@ -193,12 +192,12 @@
 								 alias="observation_sex"
 								 label="OBSERVATION_SEX"
 									description="OBSERVATION_SEX_DESC"
-									type="checkboxes"
+									type="radio"
 									required="true"
 									multiple="false" >
-								<option value="male">OBSERVATION_SEX_A</option>
-								<option value="female">OBSERVATION_SEX_B</option>
-								<option value="unknow">OBSERVATION_SEX_C</option>
+								<option value="mâle">OBSERVATION_SEX_A</option>
+								<option value="femelle">OBSERVATION_SEX_B</option>
+								<option value="inconnu">OBSERVATION_SEX_C</option>
 							</field>
 							<!--Color-->
 							<field name="observation_color"
@@ -220,22 +219,21 @@
 									alias="observation_abnormalities"
 									label="OBSERVATION_ABNORMALITIES"
 									description="OBSERVATION_ABNORMALITIES_DESC"
-									type="checkboxes"
+									type="radio"
 									required="true"
 									multiple="false" >
-								<option value="yes">OBSERVATION_ABNORMALITIES_A</option>
-								<option value="no">OBSERVATION_ABNORMALITIES_B</option>
+								<option value="oui">JYES</option>
+								<option value="non">JNO</option>
 							</field>
 							<!--Capture traces-->
 							<field name="observation_capture_traces"
 									alias="observation_capture_traces"
 									label="OBSERVATION_CAPTURE_TRACES"
 									description="OBSERVATION_CAPTURE_TRACES_DESC"
-									type="checkboxes"
-									required="true"
-									multiple="false" >
-								<option value="ct probable">OBSERVATION_CAPTURE_TRACES_A</option>
-								<option value="ct certaine">OBSERVATION_CAPTURE_TRACES_B</option>
+									type="radio"
+									required="true" >
+								<option value="probable">OBSERVATION_CAPTURE_TRACES_A</option>
+								<option value="certaine">OBSERVATION_CAPTURE_TRACES_B</option>
 							</field>
 							<!--Catch indices-->
 							<field name="catch_indices"
@@ -249,23 +247,20 @@
 									alias="observation_state"
 									label="OBSERVATION_STATE"
 									description="OBSERVATION_STATE_DESC"
-									type="checkboxes"
-									required="true"
-									multiple="false" >
-								<option value="death">OBSERVATION_STATE_A</option>
-								<option value="alive">OBSERVATION_STATE_B</option>
+									type="radio"
+									required="true" >
+								<option value="mort">OBSERVATION_STATE_A</option>
+								<option value="vivant">OBSERVATION_STATE_B</option>
 							</field>
 							<!--Death-->
 							<field name="observation_death"
 									alias="observation_death"
 									label="OBSERVATION_DEATH"
 									description="OBSERVATION_DEATH_DESC"
-									type="checkboxes"
-									required="true"
-									multiple="false" >
-								<option value="death_A">OBSERVATION_DEATH_A</option>
-								<option value="death_B">OBSERVATION_DEATH_B</option>
-								<option value="death_C">OBSERVATION_DEATH_C</option>
+									type="radio" >
+								<option value="animal mort avant mon arrivée">OBSERVATION_DEATH_A</option>
+								<option value="animal mort pendant mon intervention">OBSERVATION_DEATH_B</option>
+								<option value="animal euthanasié">OBSERVATION_DEATH_C</option>
 							</field>
 							<!--Date death-->
 						<field name="observation_datetime_death"
@@ -280,24 +275,30 @@
 									alias="observation_state_decomposition"
 									label="OBSERVATION_STATE_DECOMPOSITION"
 									description="OBSERVATION_STATE_DECOMPOSITION_DESC"
-									type="checkboxes"
-									required="true"
-									multiple="false" >
-								<option value="death">OBSERVATION_STATE_DECOMPOSITION_A</option>
-								<option value="alive">OBSERVATION_STATE_DECOMPOSITION_B</option>
-								<option value="death">OBSERVATION_STATE_DECOMPOSITION_D</option>
-								<option value="alive">OBSERVATION_STATE_DECOMPOSITION_D</option>
-								<option value="death">OBSERVATION_STATE_DECOMPOSITION_E</option>
+									type="radio">
+								<option value="très frais">OBSERVATION_STATE_DECOMPOSITION_A</option>
+								<option value="frais">OBSERVATION_STATE_DECOMPOSITION_B</option>
+								<option value="putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
+								<option value="très putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
+								<option value="restes">OBSERVATION_STATE_DECOMPOSITION_E</option>
 							</field>
+							<!--Levies protocole-->
+						<field name="levies_protocole"
+								alias="levies_protocole"
+								label="LEVIES_PROTOCOL"
+								description="LEVIES_PROTOCOL"
+								type="radio">
+							<option value="standard">LEVIES_PROTOCOL_A</option>
+							<option value="intermédiaire">LEVIES_PROTOCOL_B</option>
+							<option value="complet">LEVIES_PROTOCOL_C</option>
+						</field>
 							<!--Alive-->
 							<field name="observation_alive"
 									alias="observation_alive"
 									label="OBSERVATION_ALIVE"
 									description="OBSERVATION_ALIVE_DESC"
-									type="checkboxes"
-									required="true"
-									multiple="false" >
-								<option value="alive">OBSERVATION_ALIVE_A</option>
+									type="checkboxes" >
+								<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
 							</field>
 											<!--Date release-->
 										<field name="observation_datetime_release"
@@ -358,15 +359,7 @@
 		<option value="shallow">Shallow (less than 2m)</option>
 		<option value="medium">Medium (2-10m)</option>
 		<option value="deep">Deep (more than 10m)</option>
-	</field>-->
-
-	<field name="remarks"
-			alias="remarks"
-			label="REMARKS"
-			filter="STRING"
-			description="REMARKS_DESC"
-			type="cktextarea"/>
-
+	</field>
 	<field name="observation_state"
 			alias="observation_state"
 			label="OBSERVATION_STATE"
@@ -376,10 +369,18 @@
 			autocomplete="off"
 			nullLabel="OBSERVATION_LIST_NULL"
 			>
-		<option value="Low">OBSERVATION_STATE_A</option>
-		<option value="Medium">OBSERVATION_STATE_B</option>
-		<option value="High">OBSERVATION_STATE_C</option>
+		<option value="death">OBSERVATION_STATE_A</option>
+		<option value="alive">OBSERVATION_STATE_B</option>
 	</field>
+-->
+
+	<field name="remarks"
+			alias="remarks"
+			label="REMARKS"
+			filter="STRING"
+			description="REMARKS_DESC"
+			type="cktextarea"/>
+
 
 	<field name="admin_validation"
 			alias="admin_validation"

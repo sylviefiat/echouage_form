@@ -180,6 +180,23 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
                       <td><?php echo $this->item->observation_size; ?></td>
                     </tr>
                     <tr>
+                      <!--Abnormalities-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_ABNORMALITIES'); ?>: </td>
+                        <td><?php echo $this->item->observation_abnormalities; ?></td>
+                      </tr>
+                      <!--Capture traces-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_CAPTURE_TRACES'); ?>: </td>
+                        <td><?php echo $this->item->observation_capture_traces; ?></td>
+                      </tr>
+                      <tr>
+                        <!--Catch indicies-->
+                        <tr>
+                          <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_CATCH_INDICIES'); ?>: </td>
+                          <td><?php echo $this->item->catch_indices; ?></td>
+                        </tr>
+                        <tr>
                       <!--Sex-->
                       <tr>
                         <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_SEX'); ?>: </td>
@@ -190,6 +207,32 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
                         <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_STATE'); ?>: </td>
                         <td><?php echo $this->item->observation_state; ?></td>
                       </tr>
+                      <!--Death-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_DEATH'); ?>: </td>
+                        <td><?php echo $this->item->observation_death; ?></td>
+                      </tr>
+                      <!--Death date-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_DEATH_DATE'); ?>: </td>
+                        <td><?php echo $this->item->observation_datetime_death; ?></td>
+                      </tr>
+                      <!--State decomposition-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_STATE_DECOMPOSITION'); ?>: </td>
+                        <td><?php echo $this->item->observation_state_decomposition; ?></td>
+                      </tr>
+                      <!--Alive-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_RELEASE'); ?>: </td>
+                        <td><?php echo $this->item->observation_datetime_release; ?></td>
+                      </tr>
+                      <!--Release date-->
+                      <tr>
+                        <td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_RELEASE_DATE'); ?>: </td>
+                        <td><?php echo $this->item->observation_datetime_release; ?></td>
+                      </tr>
+
 
 <!--
                       <tr>

@@ -146,19 +146,62 @@ if (!empty($this->extra_sidebar)) {
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_SPACES', 'a.observation_spaces', $listDirn, $listOrder); ?>
 				</th>
-
+				<!--Spaces identification-->
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CULLED', 'a.observation_culled', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_SPACES_IDENTIFICATION', 'a.observation_spaces_identification', $listDirn, $listOrder); ?>
+				</th>
+				<!--Sex-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_SEX', 'a.observation_sex', $listDirn, $listOrder); ?>
+				</th>
+				<!--Size-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_SIZE', 'a.observation_size', $listDirn, $listOrder); ?>
+				</th>
+				<!--State-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE', 'a.observation_state', $listDirn, $listOrder); ?>
+				</th>
+				<!--Alive-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_ALIVE', 'a.observation_alive', $listDirn, $listOrder); ?>
+				</th>
+				<!--Release date-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_RELEASE_DATE', 'a.observation_datetime_release', $listDirn, $listOrder); ?>
+				</th>
+				<!--Death-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DEATH', 'a.observation_death', $listDirn, $listOrder); ?>
+				</th>
+				<!--Release date-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DEATH_DATE', 'a.observation_datetime_death', $listDirn, $listOrder); ?>
+				</th>
+				<!--Abnormalities-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_ABNORMALITIES', 'a.observation_abnormalities', $listDirn, $listOrder); ?>
+				</th>
+				<!--Capture traces-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CAPTURE_TRACES', 'a.observation_capture_traces', $listDirn, $listOrder); ?>
+				</th>
+				<!--Catch indices-->
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CATCH_INDICIES', 'a.catch_indices', $listDirn, $listOrder); ?>
+				</th>
+<!--
+				<th class='left'>
+				<?/*php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CULLED', 'a.observation_culled', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_LIST', 'a.observation_list', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_METHOD', 'a.observation_method', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_METHOD', 'a.observation_method', $listDirn, $listOrder);*/ ?>
 				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE', 'a.observation_state', $listDirn, $listOrder); ?>
-				</th>
+			-->
+
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION', 'a.admin_validation', $listDirn, $listOrder); ?>
 				</th>

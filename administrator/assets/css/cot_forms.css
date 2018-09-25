@@ -17,3 +17,7 @@
       padding-left:2px;
       float:left;
 }
+
+.radio .input-group {
+  display: block;
+}
