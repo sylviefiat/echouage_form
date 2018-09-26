@@ -40,8 +40,8 @@ class Cot_formsModelCot_admins extends JModelList {
                 'informant_name', 'a.informant_name',
                 'informant_tel', 'a.informant_tel',
                 'informant_email', 'a.informant_email',
-		            'observation_datetime', 'a.observation_datetime',
-		            'observation_location', 'a.observation_location',
+		        'observation_datetime', 'a.observation_datetime',
+		        'observation_location', 'a.observation_location',
                 'observation_localisation', 'a.observation_localisation',
                 'observation_region', 'a.observation_region',
                 'observation_country', 'a.observation_country',
@@ -59,10 +59,10 @@ class Cot_formsModelCot_admins extends JModelList {
                 'observation_state', 'a.observation_state',
                 'observation_state_decomposition', 'a.observation_state_decomposition',
                 'levies_protocole', 'a.levies_protocole',
-		            'remarks', 'a.remarks',
+		        'remarks', 'a.remarks',
                 'created_by', 'a.created_by',
                 'localisation', 'a.localisation',
-		            'admin_validation', 'a.admin_validation'
+		        'admin_validation', 'a.admin_validation'
             );
         }
 

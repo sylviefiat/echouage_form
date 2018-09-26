@@ -34,3 +34,21 @@ ALTER TABLE `#__cot_admin` CHANGE `observation_date` `observation_datetime` DATE
 
 ALTER TABLE `#__cot_admin` ADD `observation_datetime_death` DATE NOT NULL AFTER `observation_state` ;
 ALTER TABLE `#__cot_admin` ADD `observation_datetime_release` DATE NOT NULL AFTER `observation_datetime_death` ;
+
+ALTER TABLE `#__cot_admin` ADD `observer_address` VARCHAR(200) NOT NULL AFTER `observer_name`;
+ALTER TABLE `#__cot_admin` ADD `informant_address` VARCHAR(200) NOT NULL AFTER `informant_name`;
+ALTER TABLE `#__cot_admin` ADD `observation_stranding_type` VARCHAR(100) NOT NULL AFTER `observation_longitude`;
+ALTER TABLE `#__cot_admin` ADD `observation_caudal` VARCHAR(100) NOT NULL AFTER `observation_size`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_country_code` `observation_country_code` VARCHAR(100) NOT NULL AFTER `remark`;
+ALTER TABLE `#__cot_admin` ADD `observation_death` VARCHAR(100) NOT NULL AFTER `observation_state`;
+
+ALTER TABLE `#__cot_admin` CHANGE `observation_spaces` `observation_spaces` VARCHAR(100) NOT NULL AFTER `observation_number`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_spaces_identification` `observation_spaces_identification` VARCHAR(100) NOT NULL AFTER `observation_spaces`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_sex` `observation_sex` VARCHAR(100) NOT NULL AFTER `observation_spaces_identification`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_sex` `observation_sex` VARCHAR(100) NOT NULL AFTER `observation_spaces_identification`;
+ALTER TABLE `#__cot_admin` ADD `observation_color` VARCHAR(100) NOT NULL AFTER `observation_sex`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_caudal` `observation_caudal` VARCHAR(50) NOT NULL AFTER `observation_color`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_abnormalities` `observation_abnormalities` VARCHAR(50) NOT NULL AFTER `observation_caudal`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_size` `observation_size` VARCHAR(100) NOT NULL AFTER `observation_spaces_identification`;
+ALTER TABLE `#__cot_admin` ADD `observation_alive` VARCHAR(100) NOT NULL AFTER `observation_datetime_death`;
+ALTER TABLE `#__cot_admin` CHANGE `observation_state_decomposition` `observation_state_decomposition` VARCHAR(100) NOT NULL AFTER `observation_datetime_death`;

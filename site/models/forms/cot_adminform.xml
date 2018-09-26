@@ -5,8 +5,8 @@
 <fieldset name="cot_admin.details"
 		label="OBSERVATION_ADMIN_REPORT"
 		printable="true"
-		addfieldpath="/libraries/jdom/jform/fields"
-		>
+		addfieldpath="/libraries/jdom/jform/fields">
+
 	<field name="id"
 			alias="id"
 			class="form-control"
@@ -15,25 +15,25 @@
 			description="ID_DESC"
 			readonly="true"
 			type="cktext"/>
-			<!--References-->
-			<field name="references"
-					alias="references"
-					class="form-control"
-					label="REFERENCES"
-					description="REFERENCES_DESC"
-					readonly="true"
-					type="cktext"/>
-			<!--Location_ID-->
-			<field name="id_location"
-					alias="id_location"
-					class="form-control"
-					label="ID_LOCATION"
-					filter="INT"
-					description="ID_LOCATION_DESC"
-					readonly="true"
-					type="cktext"/>
+	<!--References-->
+	<field name="references"
+			alias="references"
+			class="form-control"
+			label="REFERENCES"
+			description="REFERENCES_DESC"
+			readonly="true"
+			type="cktext"/>
+	<!--Location_ID-->
+	<field name="id_location"
+			alias="id_location"
+			class="form-control"
+			label="ID_LOCATION"
+			filter="INT"
+			description="ID_LOCATION_DESC"
+			readonly="true"
+			type="cktext"/>
 
-<!--Observer contacts-->
+	<!--Observer contacts-->
 	<field name="observer_name"
 			alias="observer_name"
 			class="form-control"
@@ -42,6 +42,15 @@
 			description="OBSERVER_NAME_DESC"
 			required="true"
 			hint="OBSERVER_NAME_PL"
+			type="text"/>
+
+	<field name="observer_address"
+			alias="observer_address"
+			class="form-control"
+			label="OBSERVER_ADDRESS"
+			filter="STRING"
+			description="OBSERVER_ADDRESS_DESC"
+			hint="OBSERVER_ADDRESS_PL"
 			type="text"/>
 
 	<field name="observer_tel"
@@ -71,6 +80,15 @@
 			hint="INFORMANT_NAME_PL"
 			type="text"/>
 
+	<field name="informant_address"
+			alias="informant_address"
+			class="form-control"
+			label="INFORMANT_ADDRESS"
+			filter="STRING"
+			description="INFORMANT_ADDRESS_DESC"
+			hint="INFORMANT_ADDRESS_PL"
+			type="text"/>
+
 	<field name="informant_tel"
 			alias="informant_tel"
 			class="form-control"
@@ -87,7 +105,7 @@
 			hint="INFORMANT_EMAIL"
 			type="email"/>
 
-		<!--Date-->
+	<!--Date-->
 	<field name="observation_datetime"
 			alias="observation_datetime"
 			class="form-control form-calendar"
@@ -132,7 +150,7 @@
 			type="text"/>
 		-->
 
-		<field name="observation_location"
+	<field name="observation_location"
 			alias="observation_location"
 			class="form-control"
 			label="OBSERVATION_LOCATION"
@@ -141,62 +159,73 @@
 			hint="OBSERVATION_LOCATION"
 			type="textarea"/>
 
-		<field name="observation_localisation"
-				alias="observation_localisation"
-				label="OBSERVATION_PICK"
-				description="OBSERVATION_PICK_DESC"
-				filter="STRING"
-				class="formatted_address form-control"
-				type="ckaddresspicker"/>
+	<field name="observation_localisation"
+			alias="observation_localisation"
+			label="OBSERVATION_PICK"
+			description="OBSERVATION_PICK_DESC"
+			filter="STRING"
+			class="formatted_address form-control"
+			type="ckaddresspicker"/>
 
-		<field name="observation_region"
-				alias="region"
-				label="OBSERVATION_REGION"
-				description="OBSERVATION_REGION_DESC"
-				filter="STRING"
-				class="region form-control"
-				hint="OBSERVATION_REGION"
-				type="text"/>
+	<field name="observation_region"
+			alias="region"
+			label="OBSERVATION_REGION"
+			description="OBSERVATION_REGION_DESC"
+			filter="STRING"
+			class="region form-control"
+			hint="OBSERVATION_REGION"
+			type="text"/>
 
-		<field name="observation_country"
-				alias="country"
-				label="OBSERVATION_COUNTRY"
-				description="OBSERVATION_COUNTRY_DESC"
-				filter="STRING"
-				class="country form-control"
-				hint="OBSERVATION_COUNTRY"
-				type="text"/>
+	<field name="observation_country"
+			alias="country"
+			label="OBSERVATION_COUNTRY"
+			description="OBSERVATION_COUNTRY_DESC"
+			filter="STRING"
+			class="country form-control"
+			hint="OBSERVATION_COUNTRY"
+			type="text"/>
 
-		<field name="observation_country_code"
-				readonly="true"
-				alias="country_code"
-				label="OBSERVATION_COUNTRY_CODE"
-				description="OBSERVATION_COUNTRY_CODE_DESC"
-				filter="STRING"
-				class="country_code form-control"
-				hint="OBSERVATION_COUNTRY_CODE"
-				type="text"
-				/>
+	<field name="observation_country_code"
+			readonly="true"
+			alias="country_code"
+			label="OBSERVATION_COUNTRY_CODE"
+			description="OBSERVATION_COUNTRY_CODE_DESC"
+			filter="STRING"
+			class="country_code form-control"
+			hint="OBSERVATION_COUNTRY_CODE"
+			type="text"
+			/>
 
-		<field name="observation_latitude"
-				alias="latitude"
-				label="OBSERVATION_LATITUDE"
-				description="OBSERVATION_LATITUDE_DESC"
-				filter="FLOAT"
-				class="latitude form-control"
-				hint="OBSERVATION_LATITUDE"
-				type="text"/>
+	<field name="observation_latitude"
+			alias="latitude"
+			label="OBSERVATION_LATITUDE"
+			description="OBSERVATION_LATITUDE_DESC"
+			filter="FLOAT"
+			class="latitude form-control"
+			hint="OBSERVATION_LATITUDE"
+			type="text"/>
 
-		<field name="observation_longitude"
-				alias="longitude"
-				label="OBSERVATION_LONGITUDE"
-				description="OBSERVATION_LONGITUDE_DESC"
-				hint="OBSERVATION_LONGITUDE"
-				filter="FLOAT"
-				class="longitude form-control"
-				type="text"/>
+	<field name="observation_longitude"
+			alias="longitude"
+			label="OBSERVATION_LONGITUDE"
+			description="OBSERVATION_LONGITUDE_DESC"
+			hint="OBSERVATION_LONGITUDE"
+			filter="FLOAT"
+			class="longitude form-control"
+			type="text"/>
 
-<!--Number-->
+	<!--Stranding type-->
+	<field 	name="observation_stranding_type"
+			alias="observation_stranding_type"
+			class="btn-group"
+			label="OBSERVATION_STRANDING_TYPE"
+			description="OBSERVATION_STRANDING_TYPE_DESC"
+			type="radio"
+			required="true" >
+			<option value="isolé">OBSERVATION_STRANDING_TYPE_A</option>
+			<option value="en groupe">OBSERVATION_STRANDING_TYPE_B</option>
+	</field>
+	<!--Number-->
 	<field name="observation_number"
 			alias="observation_number"
 			class="form-control"
@@ -204,58 +233,84 @@
 			description="OBSERVATION_NUMBER_DESC"
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
-			type="text"/>
+			type="text"
+			required="true"/>
 
-			<!--Spaces-->
-				 <field name="observation_spaces"
-					 alias="observation_spaces"
-					 class="form-control"
-					 label="OBSERVATION_SPACES"
-					 description="OBSERVATION_SPACES_DESC"
-					 hint="OBSERVATION_SPACES"
-					 labelclass="control-label"
-					 type="text"/>
-			<!--Spaces identification-->
-			<field name="observation_spaces_identification"
-					alias="observation_spaces_identification"
-					class="btn-group"
-					label="OBSERVATION_SPACES_IDENTIFICATION"
-					description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
-					type="radio"
-					required="true" >
-				<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
-				<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
-			</field>
-			<!--Sex-->
-			<field name="observation_sex"
-					alias="observation_sex"
-					class="btn-group"
-					label="OBSERVATION_SEX"
-					description="OBSERVATION_SEX_DESC"
-					type="radio"
-					required="true" >
-				<option value="mâle">OBSERVATION_SEX_A</option>
-				<option value="femelle">OBSERVATION_SEX_B</option>
-				<option value="inconnu">OBSERVATION_SEX_C</option>
-			</field>
-			<!--Color-->
-			<field name="observation_color"
-					alias="observation_color"
-					class="form-control"
-					label="OBSERVATION_COLOR"
-					labelclass="control-label"
-					description="OBSERVATION_COLOR_DESC"
-					hint="OBSERVATION_COLOR"
-					type="text"/>
-<!--Size-->
-			<field name="observation_size"
-					alias="observation_size"
-					class="form-control"
-					label="OBSERVATION_SIZE"
-					labelclass="control-label"
-					description="OBSERVATION_SIZE_DESC"
-					hint="OBSERVATION_SIZE"
-					type="text"/>
+	<!--Spaces-->
+	 <field name="observation_spaces"
+			 alias="observation_spaces"
+			 class="form-control"
+			 label="OBSERVATION_SPACES_LABEL"
+			 description="OBSERVATION_SPACES_DESC"
+			 hint="OBSERVATION_SPACES"
+			 labelclass="control-label"
+			 type="text"
+			 required="true"/>
+	<!--Spaces identification-->
+	<field name="observation_spaces_identification"
+			alias="observation_spaces_identification"
+			class="btn-group"
+			label="OBSERVATION_SPACES_IDENTIFICATION"
+			description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
+			type="radio"
+			required="true" >
+			<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
+			<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
+	</field>
+	<!--Sex-->
+	<field name="observation_sex"
+			alias="observation_sex"
+			class="btn-group"
+			label="OBSERVATION_SEX"
+			description="OBSERVATION_SEX_DESC"
+			type="radio"
+			required="true" >
+			<option value="mâle">OBSERVATION_SEX_A</option>
+			<option value="femelle">OBSERVATION_SEX_B</option>
+			<option value="inconnu">OBSERVATION_SEX_C</option>
+	</field>
+	<!--Encoche médiane à la caudale-->
+	<field name="observation_caudal"
+			alias="observation_caudal"
+			class="btn-group"
+			label="OBSERVATION_CAUDAL"
+			description="OBSERVATION_CAUDAL_DESC"
+			type="radio"
+			required="true" >
+			<option value="présente">OBSERVATION_CAUDAL_A</option>
+			<option value="absente">OBSERVATION_CAUDAL_B</option>
+	</field>
+	<!--Color-->
+	<field name="observation_color"
+			alias="observation_color"
+			class="form-control"
+			label="OBSERVATION_COLOR"
+			labelclass="control-label"
+			description="OBSERVATION_COLOR_DESC"
+			hint="OBSERVATION_COLOR"
+			type="text"/>
+	<!--Encoche médiane à la caudale-->
+	<field name="observation_sex"
+			alias="observation_sex"
+			class="btn-group"
+			label="OBSERVATION_SEX"
+			description="OBSERVATION_SEX_DESC"
+			type="radio"
+			required="true" >
+			<option value="mâle">OBSERVATION_SEX_A</option>
+			<option value="femelle">OBSERVATION_SEX_B</option>
+			<option value="inconnu">OBSERVATION_SEX_C</option>
+	</field>
+	<!--Size-->
+	<field name="observation_size"
+			alias="observation_size"
+			class="form-control"
+			label="OBSERVATION_SIZE"
+			labelclass="control-label"
+			description="OBSERVATION_SIZE_DESC"
+			hint="OBSERVATION_SIZE"
+			type="text"
+			required="true"/>
 
 	<!--Abnormalities-->
 	<field name="observation_abnormalities"
@@ -265,8 +320,8 @@
 			description="OBSERVATION_ABNORMALITIES_DESC"
 			type="radio"
 			required="true">
-		<option value="oui">JYES</option>
-		<option value="non">JNO</option>
+			<option value="oui">JYES</option>
+			<option value="non">JNO</option>
 	</field>
 	<!--Capture traces-->
 	<field name="observation_capture_traces"
@@ -276,8 +331,8 @@
 			description="OBSERVATION_CAPTURE_TRACES_DESC"
 			type="radio"
 			required="true">
-		<option value="probable">OBSERVATION_CAPTURE_TRACES_A</option>
-		<option value="certaine">OBSERVATION_CAPTURE_TRACES_B</option>
+			<option value="probable">OBSERVATION_CAPTURE_TRACES_A</option>
+			<option value="certaine">OBSERVATION_CAPTURE_TRACES_B</option>
 	</field>
 	<!--Catch indices-->
 	<field name="catch_indices"
@@ -296,8 +351,8 @@
 			description="OBSERVATION_STATE_DESC"
 			type="radio"
 			required="true" >
-		<option value="mort">OBSERVATION_STATE_A</option>
-		<option value="vivant">OBSERVATION_STATE_B</option>
+			<option value="mort">OBSERVATION_STATE_A</option>
+			<option value="vivant">OBSERVATION_STATE_B</option>
 	</field>
 	<!--Death-->
 	<field name="observation_death"
@@ -307,20 +362,20 @@
 			description="OBSERVATION_DEATH_DESC"
 			type="radio"
 			multiple="false" >
-		<option value="animal mort avant mon arrivée">OBSERVATION_DEATH_A</option>
-		<option value="animal mort pendant mon intervention">OBSERVATION_DEATH_B</option>
-		<option value="animal euthanasié">OBSERVATION_DEATH_C</option>
+			<option value="animal mort avant mon arrivée">OBSERVATION_DEATH_A</option>
+			<option value="animal mort pendant mon intervention">OBSERVATION_DEATH_B</option>
+			<option value="animal euthanasié">OBSERVATION_DEATH_C</option>
 	</field>
 	<!--Date death-->
-<field name="observation_datetime_death"
-		alias="observation_datetime_death"
-		class="form-control form-calendar"
-		label="OBSERVATION_DATE_DEATH"
-		description="OBSERVATION_DATE_DEATH_DESC"
-		hint="OBSERVATION_DATE_DEATH"
-		type="ckcalendar"
-					default="NOW"
-					format="Y-m-d"/>
+	<field name="observation_datetime_death"
+			alias="observation_datetime_death"
+			class="form-control form-calendar"
+			label="OBSERVATION_DATE_DEATH"
+			description="OBSERVATION_DATE_DEATH_DESC"
+			hint="OBSERVATION_DATE_DEATH"
+			type="ckcalendar"
+			default="NOW"
+			format="Y-m-d"/>
 	<!--State decomposition-->
 	<field name="observation_state_decomposition"
 			alias="observation_state_decomposition"
@@ -328,22 +383,11 @@
 			label="OBSERVATION_STATE_DECOMPOSITION"
 			description="OBSERVATION_STATE_DECOMPOSITION_DESC"
 			type="radio">
-		<option value="très frais">OBSERVATION_STATE_DECOMPOSITION_A</option>
-		<option value="frais ">OBSERVATION_STATE_DECOMPOSITION_B</option>
-		<option value="putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
-		<option value="très putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
-		<option value="restes">OBSERVATION_STATE_DECOMPOSITION_E</option>
-	</field>
-		<!--Levies protocole-->
-	<field name="levies_protocole"
-			alias="levies_protocole"
-			class="btn-group"
-			label="LEVIES_PROTOCOL"
-			description="LEVIES_PROTOCOL_DESC"
-			type="radio">
-		<option value="standard">LEVIES_PROTOCOL_A</option>
-		<option value="intermédiaire">LEVIES_PROTOCOL_B</option>
-		<option value="complet">LEVIES_PROTOCOL_C</option>
+			<option value="très frais">OBSERVATION_STATE_DECOMPOSITION_A</option>
+			<option value="frais ">OBSERVATION_STATE_DECOMPOSITION_B</option>
+			<option value="putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
+			<option value="très putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
+			<option value="restes">OBSERVATION_STATE_DECOMPOSITION_E</option>
 	</field>
 	<!--Alive-->
 	<field name="observation_alive"
@@ -353,18 +397,47 @@
 			description="OBSERVATION_ALIVE_DESC"
 			type="checkboxes"
 			multiple="false" >
-		<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
+			<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
 	</field>
-					<!--Date release-->
-				<field name="observation_datetime_release"
-						alias="observation_datetime_release"
-						class="form-control form-calendar"
-						label="OBSERVATION_DATE_RELEASE"
-						description="OBSERVATION_DATE_RELEASE_DESC"
-						hint="OBSERVATION_DATE_RELEASE"
-						type="ckcalendar"
-									default="NOW"
-									format="Y-m-d"/>
+		<!--Date release-->
+	<field name="observation_datetime_release"
+			alias="observation_datetime_release"
+			class="form-control form-calendar"
+			label="OBSERVATION_DATE_RELEASE"
+			description="OBSERVATION_DATE_RELEASE_DESC"
+			hint="OBSERVATION_DATE_RELEASE"
+			type="ckcalendar"
+			default="NOW"
+			format="Y-m-d"/>
+	<!--Levies protocole-->
+	<field name="levies_protocole"
+			alias="levies_protocole"
+			class="btn-group"
+			label="LEVIES_PROTOCOL"
+			description="LEVIES_PROTOCOL_DESC"
+			type="radio">
+			<option value="standard">LEVIES_PROTOCOL_A</option>
+			<option value="intermédiaire">LEVIES_PROTOCOL_B</option>
+			<option value="complet">LEVIES_PROTOCOL_C</option>
+	</field>
+	<!--Tissue removal-->
+	<field name="observation_tissue_removal"
+			alias="observation_tissue_removal"
+			class="form-control"
+			label="OBSERVATION_TISSUE_REMOVAL"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC"
+			type="checkboxes"
+			multiple="true" 
+			required="true">
+			<option value="peau ">OBSERVATION_TISSUE_REMOVAL_A</option>
+			<option value="dents ">OBSERVATION_TISSUE_REMOVAL_B</option>
+			<option value="parasites ">OBSERVATION_TISSUE_REMOVAL_C</option>
+			<option value="muscle ">OBSERVATION_TISSUE_REMOVAL_D</option>
+			<option value="rein ">OBSERVATION_TISSUE_REMOVAL_E</option>
+			<option value="foi ">OBSERVATION_TISSUE_REMOVAL_F</option>
+			<option value="contenu stomacal ">OBSERVATION_TISSUE_REMOVAL_G</option>
+			<option value="autres prélèvements avancés ">OBSERVATION_TISSUE_REMOVAL_H</option>
+	</field>
 
 
 <!--
@@ -448,10 +521,9 @@
 			type="checkbox"/>
 
 	<field name="captcha" type="captcha"
-                label="CAPTCHA"
-                description="CAPTCHA_DESC"
-                validate="captcha"
-                namespace="event"
-        />
+            label="CAPTCHA"
+            description="CAPTCHA_DESC"
+            validate="captcha"
+            namespace="event"/>
 </fieldset>
 </form>
