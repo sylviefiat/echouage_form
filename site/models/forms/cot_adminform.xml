@@ -385,7 +385,7 @@
 			type="radio">
 			<option value="très frais">OBSERVATION_STATE_DECOMPOSITION_A</option>
 			<option value="frais ">OBSERVATION_STATE_DECOMPOSITION_B</option>
-			<option value="putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
+			<option value="putréfié">OBSERVATION_STATE_DECOMPOSITION_C</option>
 			<option value="très putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
 			<option value="restes">OBSERVATION_STATE_DECOMPOSITION_E</option>
 	</field>

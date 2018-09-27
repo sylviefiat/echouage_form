@@ -58,49 +58,17 @@ fieldset.radio label{
       };
       head.appendChild(script);
     }
+    
     getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function() {
+      console.log("loaded ok");
       js = jQuery.noConflict();
       js(document).ready(function(){
         js('#form-cot_admin').submit(function(event){
 
         });
-        document.getElementById("jform_counting_method_timed_swim_chbx").checked = document.getElementById("jform_counting_method_timed_swim").value.length>0?1:0;
-        document.getElementById("jform_counting_method_distance_swim_chbx").checked = document.getElementById("jform_counting_method_distance_swim").value.length>0?1:0;
-        document.getElementById("jform_counting_method_other_chbx").checked = document.getElementById("jform_counting_method_other").value.length>0?1:0;
-
-        enable_timed_swim(document.getElementById("jform_counting_method_timed_swim").value.length>0?true:false);
-        enable_distance_swim(document.getElementById("jform_counting_method_distance_swim").value.length>0?true:false);
-        enable_other(document.getElementById("jform_counting_method_other").value.length>0?true:false);
-
       });
     });
 
-    function enable_timed_swim(status) {
-      if(!status){
-        document.getElementById("jform_counting_method_timed_swim").value = "";
-        document.getElementById("jform_counting_method_timed_swim").setAttribute('readonly','readonly');
-      } else {
-        document.getElementById("jform_counting_method_timed_swim").removeAttribute('readonly');
-      }
-    }
-
-    function enable_distance_swim(status) {
-      if(!status){
-        document.getElementById("jform_counting_method_distance_swim").value = "";
-        document.getElementById("jform_counting_method_distance_swim").setAttribute('readonly','readonly');
-      } else {
-        document.getElementById("jform_counting_method_distance_swim").removeAttribute('readonly');
-      }
-    }
-
-    function enable_other(status) {
-      if(!status){
-        document.getElementById("jform_counting_method_other").value = "";
-        document.getElementById("jform_counting_method_other").setAttribute('readonly','readonly');
-      } else {
-        document.getElementById("jform_counting_method_other").removeAttribute('readonly');
-      }
-    }
 
   </script>
 
@@ -173,7 +141,9 @@ fieldset.radio label{
           </div>
         </div>
       </div>
+
       <!--Circonstance de l'échouage-->
+      <div class="col-xs-12"><?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_ROW2'); ?></div>
         <!--Date-->
         <div class="row">
          <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
@@ -250,9 +220,10 @@ fieldset.radio label{
 </div>
 
 <!--Indentification-->
+<div class="col-xs-12"><?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_ROW3'); ?></div>
 <div class="row">
-  <!--Spaces-->
-  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
+  <!--Spaces
+  <div class="col-xs-12"><?php //echo $this->form->getLabel('observation_spaces'); ?></div>-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-eye-open"></span></span>
@@ -316,6 +287,7 @@ fieldset.radio label{
 </div>
 
 <!--Animal-->
+<div class="col-xs-12"><?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_ROW4'); ?></div>
 <div class="row">
   <div class="row">
     <!--Abnormalities-->

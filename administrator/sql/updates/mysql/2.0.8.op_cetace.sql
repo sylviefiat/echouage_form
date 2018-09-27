@@ -52,3 +52,6 @@ ALTER TABLE `#__cot_admin` CHANGE `observation_abnormalities` `observation_abnor
 ALTER TABLE `#__cot_admin` CHANGE `observation_size` `observation_size` VARCHAR(100) NOT NULL AFTER `observation_spaces_identification`;
 ALTER TABLE `#__cot_admin` ADD `observation_alive` VARCHAR(100) NOT NULL AFTER `observation_datetime_death`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_state_decomposition` `observation_state_decomposition` VARCHAR(100) NOT NULL AFTER `observation_datetime_death`;
+
+ALTER TABLE cetace_cot_admin ADD observation_capture_traces VARCHAR(50) NOT NULL AFTER observation_abnormalities;
+ALTER TABLE cetace_cot_admin ADD catch_indices VARCHAR(100) NOT NULL AFTER observation_capture_traces;

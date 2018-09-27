@@ -115,6 +115,9 @@ if (!empty($this->extra_sidebar)) {
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVER_NAME', 'a.observer_name', $listDirn, $listOrder); ?>
 							</th>
 							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVER_ADDRESS', 'a.observer_address', $listDirn, $listOrder); ?>
+							</th>
+							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVER_TEL', 'a.observer_tel', $listDirn, $listOrder); ?>
 							</th>
 							<th class='left'>
@@ -126,6 +129,9 @@ if (!empty($this->extra_sidebar)) {
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_INFORMANT_NAME', 'a.informant_name', $listDirn, $listOrder); ?>
 							</th>
 							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_INFORMANT_ADDRESS', 'a.informant_address', $listDirn, $listOrder); ?>
+							</th>
+							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_INFORMANT_TEL', 'a.informant_tel', $listDirn, $listOrder); ?>
 							</th>
 							<th class='left'>
@@ -135,6 +141,11 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DATE', 'a.observation_datetime', $listDirn, $listOrder); ?>
 							</th>
+							<!--Location-->
+							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCALISATION', 'a.observation_localistaion', $listDirn, $listOrder); ?>
+							</th>
+							<!--Location-->
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCATION', 'a.observation_location', $listDirn, $listOrder); ?>
 							</th>
@@ -281,6 +292,10 @@ if (!empty($this->extra_sidebar)) {
 							</td>
 							<td>
 
+								<?php echo $item->observer_address; ?>
+							</td>
+							<td>
+
 								<?php echo $item->observer_tel; ?>
 							</td>
 							<td>
@@ -289,7 +304,27 @@ if (!empty($this->extra_sidebar)) {
 							</td>
 							<td>
 
+								<?php echo $item->informant_name; ?>
+							</td>
+							<td>
+
+								<?php echo $item->informant_address; ?>
+							</td>
+							<td>
+
+								<?php echo $item->informant_tel; ?>
+							</td>
+							<td>
+
+								<?php echo $item->informant_email; ?>
+							</td>
+							<td>
+
 								<?php echo $item->observation_datetime; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_localisation; ?>
 							</td>
 							<td>
 
@@ -301,19 +336,51 @@ if (!empty($this->extra_sidebar)) {
 							</td>
 							<td>
 
-								<?php echo $item->observation_culled; ?>
+								<?php echo $item->observation_spaces; ?>
 							</td>
 							<td>
 
-								<?php echo $item->observation_list; ?>
+								<?php echo $item->observation_spaces_identification; ?>
 							</td>
 							<td>
 
-								<?php echo $item->observation_method; ?>
+								<?php echo $item->observation_sex; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_size; ?>
 							</td>
 							<td>
 
 								<?php echo $item->observation_state; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_alive; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_datetime_release; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_death; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_datetime_death; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_abnormalities; ?>
+							</td>
+							<td>
+
+								<?php echo $item->observation_capture_traces; ?>
+							</td>
+							<td>
+
+								<?php echo $item->catch_indices;?>
 							</td>
 							<td>
 

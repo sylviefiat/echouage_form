@@ -33,6 +33,7 @@ class Cot_formsViewCot_admin extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
             throw new Exception(implode("\n", $errors));
+            
 		}
 
 		$this->addToolbar();
