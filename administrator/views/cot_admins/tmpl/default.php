@@ -141,7 +141,7 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DATE', 'a.observation_datetime', $listDirn, $listOrder); ?>
 							</th>
-							<!--Location-->
+							<!--Localisation-->
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCALISATION', 'a.observation_localistaion', $listDirn, $listOrder); ?>
 							</th>
@@ -168,10 +168,6 @@ if (!empty($this->extra_sidebar)) {
 							<!--Size-->
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_SIZE', 'a.observation_size', $listDirn, $listOrder); ?>
-							</th>
-							<!--State-->
-							<th class='left'>
-								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE', 'a.observation_state', $listDirn, $listOrder); ?>
 							</th>
 							<!--Alive-->
 							<th class='left'>
@@ -201,206 +197,191 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CATCH_INDICIES', 'a.catch_indices', $listDirn, $listOrder); ?>
 							</th>
-<!--
-				<th class='left'>
-				<?/*php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CULLED', 'a.observation_culled', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_LIST', 'a.observation_list', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_METHOD', 'a.observation_method', $listDirn, $listOrder);*/ ?>
-				</th>
-			-->
+							<!--Admin validation-->
+							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION', 'a.admin_validation', $listDirn, $listOrder); ?>
+							</th>
 
-			<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION', 'a.admin_validation', $listDirn, $listOrder); ?>
-			</th>
-
-
-			<?php if (isset($this->items[0]->id)): ?>
-				<th width="1%" class="nowrap center hidden-phone">
-					<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-				</th>
-			<?php endif; ?>
-		</tr>
-	</thead>
-	<tfoot>
-		<?php
-		if(isset($this->items[0])){
-			$colspan = count(get_object_vars($this->items[0]));
-		}
-		else{
-			$colspan = 10;
-		}
-		?>
-		<tr>
-			<td colspan="<?php echo $colspan ?>">
-				<?php echo $this->pagination->getListFooter(); ?>
-			</td>
-		</tr>
-	</tfoot>
-	<tbody>
-		<?php foreach ($this->items as $i => $item) :
-			$ordering   = ($listOrder == 'a.ordering');
-			$canCreate	= $user->authorise('core.create',		'com_cot_forms');
-			$canEdit	= $user->authorise('core.edit',			'com_cot_forms');
-			$canCheckin	= $user->authorise('core.manage',		'com_cot_forms');
-			$canChange	= $user->authorise('core.edit.state',	'com_cot_forms');
-			?>
-			<tr class="row<?php echo $i % 2; ?>">
-
-				<?php if (isset($this->items[0]->ordering)): ?>
-					<td class="order nowrap center hidden-phone">
-						<?php if ($canChange) :
-							$disableClassName = '';
-							$disabledLabel	  = '';
-							if (!$saveOrder) :
-								$disabledLabel    = JText::_('JORDERINGDISABLED');
-								$disableClassName = 'inactive tip-top';
-							endif; ?>
-							<span class="sortable-handler hasTooltip <?php echo $disableClassName?>" title="<?php echo $disabledLabel?>">
-								<i class="icon-menu"></i>
-							</span>
-							<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering;?>" class="width-20 text-area-order " />
-							<?php else : ?>
-								<span class="sortable-handler inactive" >
-									<i class="icon-menu"></i>
-								</span>
-							<?php endif; ?>
-						</td>
-					<?php endif; ?>
-					<td class="center hidden-phone">
-						<?php echo JHtml::_('grid.id', $i, $item->id); ?>
-					</td>
-					<?php if (isset($this->items[0]->state)): ?>
-						<td class="center">
-							<?php echo JHtml::_('jgrid.published', $item->state, $i, 'cot_admins.', $canChange, 'cb'); ?>
-						</td>
-					<?php endif; ?>
-
-					<td>
-						<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-							<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'cot_admins.', $canCheckin); ?>
-						<?php endif; ?>
-						<?php if ($canEdit) : ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.edit&id='.(int) $item->id); ?>">
-								<?php echo $this->escape($item->observer_name); ?></a>
-								<?php else : ?>
-									<?php echo $this->escape($item->observer_name); ?>
-								<?php endif; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observer_address; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observer_tel; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observer_email; ?>
-							</td>
-							<td>
-
-								<?php echo $item->informant_name; ?>
-							</td>
-							<td>
-
-								<?php echo $item->informant_address; ?>
-							</td>
-							<td>
-
-								<?php echo $item->informant_tel; ?>
-							</td>
-							<td>
-
-								<?php echo $item->informant_email; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_datetime; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_localisation; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_location; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_number; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_spaces; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_spaces_identification; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_sex; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_size; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_state; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_alive; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_datetime_release; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_death; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_datetime_death; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_abnormalities; ?>
-							</td>
-							<td>
-
-								<?php echo $item->observation_capture_traces; ?>
-							</td>
-							<td>
-
-								<?php echo $item->catch_indices;?>
-							</td>
-							<td>
-
-								<?php echo $item->admin_validation; ?>
-							</td>
-
+							<!--id-->
 							<?php if (isset($this->items[0]->id)): ?>
-								<td class="center hidden-phone">
-									<?php echo (int) $item->id; ?>
-								</td>
+								<th width="1%" class="nowrap center hidden-phone">
+									<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+								</th>
 							<?php endif; ?>
 						</tr>
-					<?php endforeach; ?>
-				</tbody>
-			</table>
+					</thead>
+					<tfoot>
+						<?php
+						if(isset($this->items[0])){
+							$colspan = count(get_object_vars($this->items[0]));
+						}
+						else{
+							$colspan = 10;
+						}
+						?>
+						<tr>
+							<td colspan="<?php echo $colspan ?>">
+								<?php echo $this->pagination->getListFooter(); ?>
+							</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<?php foreach ($this->items as $i => $item) :
+							$ordering   = ($listOrder == 'a.ordering');
+							$canCreate	= $user->authorise('core.create',		'com_cot_forms');
+							$canEdit	= $user->authorise('core.edit',			'com_cot_forms');
+							$canCheckin	= $user->authorise('core.manage',		'com_cot_forms');
+							$canChange	= $user->authorise('core.edit.state',	'com_cot_forms');
+							?>
+							<tr class="row<?php echo $i % 2; ?>">
 
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="boxchecked" value="0" />
-			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-			<?php echo JHtml::_('form.token'); ?>
-		</div>
-	</form>
+								<?php if (isset($this->items[0]->ordering)): ?>
+									<td class="order nowrap center hidden-phone">
+										<?php if ($canChange) :
+											$disableClassName = '';
+											$disabledLabel	  = '';
+											if (!$saveOrder) :
+												$disabledLabel    = JText::_('JORDERINGDISABLED');
+												$disableClassName = 'inactive tip-top';
+											endif; ?>
+											<span class="sortable-handler hasTooltip <?php echo $disableClassName?>" title="<?php echo $disabledLabel?>">
+												<i class="icon-menu"></i>
+											</span>
+											<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering;?>" class="width-20 text-area-order " />
+											<?php else : ?>
+												<span class="sortable-handler inactive" >
+													<i class="icon-menu"></i>
+												</span>
+											<?php endif; ?>
+										</td>
+									<?php endif; ?>
+									<td class="center hidden-phone">
+										<?php echo JHtml::_('grid.id', $i, $item->id); ?>
+									</td>
+									<?php if (isset($this->items[0]->state)): ?>
+										<td class="center">
+											<?php echo JHtml::_('jgrid.published', $item->state, $i, 'cot_admins.', $canChange, 'cb'); ?>
+										</td>
+									<?php endif; ?>
+
+									<td>
+										<?php if (isset($item->checked_out) && $item->checked_out) : ?>
+											<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'cot_admins.', $canCheckin); ?>
+										<?php endif; ?>
+										<?php if ($canEdit) : ?>
+											<a href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.edit&id='.(int) $item->id); ?>">
+												<?php echo $this->escape($item->observer_name); ?></a>
+												<?php else : ?>
+													<?php echo $this->escape($item->observer_name); ?>
+												<?php endif; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observer_address; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observer_tel; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observer_email; ?>
+											</td>
+											<td>
+
+												<?php echo $item->informant_name; ?>
+											</td>
+											<td>
+
+												<?php echo $item->informant_address; ?>
+											</td>
+											<td>
+
+												<?php echo $item->informant_tel; ?>
+											</td>
+											<td>
+
+												<?php echo $item->informant_email; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_datetime; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_localisation; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_location; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_number; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_spaces; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_spaces_identification; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_sex; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_size; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_alive; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_datetime_release; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_death; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_datetime_death; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_abnormalities; ?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_capture_traces; ?>
+											</td>
+											<td>
+
+												<?php echo $item->catch_indices;?>
+											</td>
+											<td>
+
+												<?php echo $item->admin_validation; ?>
+											</td>
+
+											<?php if (isset($this->items[0]->id)): ?>
+												<td class="center hidden-phone">
+													<?php echo (int) $item->id; ?>
+												</td>
+											<?php endif; ?>
+										</tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+
+							<input type="hidden" name="task" value="" />
+							<input type="hidden" name="boxchecked" value="0" />
+							<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+							<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+							<?php echo JHtml::_('form.token'); ?>
+						</div>
+					</form>

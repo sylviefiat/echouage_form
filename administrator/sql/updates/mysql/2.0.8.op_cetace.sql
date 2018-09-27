@@ -55,3 +55,7 @@ ALTER TABLE `#__cot_admin` CHANGE `observation_state_decomposition` `observation
 
 ALTER TABLE cetace_cot_admin ADD observation_capture_traces VARCHAR(50) NOT NULL AFTER observation_abnormalities;
 ALTER TABLE cetace_cot_admin ADD catch_indices VARCHAR(100) NOT NULL AFTER observation_capture_traces;
+
+ALTER TABLE `#__cot_admin` DROP `observation_state`; 
+ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_death` `observation_datetime_death` DATE NULL;
+ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_release` `observation_datetime_release` DATE NULL;

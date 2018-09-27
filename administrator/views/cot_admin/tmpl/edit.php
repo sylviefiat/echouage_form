@@ -91,21 +91,26 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
 					</div>
 
-					<!--References Id_location-->
+					<!--References Id_location
 					<div class="control-group">
-						<div class="control-label"><?php echo $this->form->getLabel('references'); ?></div>
+						<div class="control-label"><?php /*echo $this->form->getLabel('references'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('references'); ?></div>
 					</div>
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('id_location'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('id_location'); ?></div>
-					</diV>
+						<div class="controls"><?php echo $this->form->getInput('id_location'); */?></div>
+					</diV>-->
 
 					<!--Observer contacts-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('observer_name'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observer_name'); ?></div>
 					</div>
+					<div class="control-group">
+						<div class="control-label"><?php echo $this->form->getLabel('observer_address'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('observer_address'); ?></div>
+					</div>
+
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('observer_tel'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observer_tel'); ?></div>
@@ -121,6 +126,10 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="controls"><?php echo $this->form->getInput('informant_name'); ?></div>
 					</div>
 					<div class="control-group">
+						<div class="control-label"><?php echo $this->form->getLabel('informant_address'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('informant_address'); ?></div>
+					</div>
+					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('informant_tel'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('informant_tel'); ?></div>
 					</div>
@@ -133,10 +142,15 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="control-label"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observation_datetime'); ?></div>
 					</div>
-
+					<!--Localisation-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observation_localisation'); ?></div>
+					</div>
+					<!--Location-->
+					<div class="control-group">
+						<div class="control-label"><?php echo $this->form->getLabel('observation_location'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('observation_location'); ?></div>
 					</div>
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('observation_region'); ?></div>
@@ -177,20 +191,15 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="control-label"><?php echo $this->form->getLabel('observation_spaces_identification'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observation_spaces_identification'); ?></div>
 					</div>
-					<!--Size-->
-					<div class="control-group">
-						<div class="control-label"><?php echo $this->form->getLabel('observation_size'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('observation_size'); ?></div>
-					</div>
 					<!--Sex-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('observation_sex'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observation_sex'); ?></div>
 					</div>
-					<!--State-->
-					<div class="btn-group">
-						<div class="control-label"><?php echo $this->form->getLabel('observation_state'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('observation_state'); ?></div>
+					<!--Size-->
+					<div class="control-group">
+						<div class="control-label"><?php echo $this->form->getLabel('observation_size'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('observation_size'); ?></div>
 					</div>
 					<!--Alive-->
 					<div class="btn-group">
@@ -228,43 +237,6 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="controls"><?php echo $this->form->getInput('catch_indices'); ?></div>
 					</div>
 
-
-<!--
-			<div class="control-group">
-				<div class="control-label"><?php/* echo $this->form->getLabel('observation_culled'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_culled'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_list'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_list'); ?></div>
-			</div>
-						<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_method'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_method'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('depth_range'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('depth_range'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label">
-					<label id="jform_counting_method_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_COUNTING_METHOD_DESC');?>">
-						<?php echo JText::_('OBSERVATION_COUNTING_METHOD');?>
-					</label>
-				</div>
-				<div class="controls souslabels">
-                                        <input id="jform_counting_method_timed_swim_chbx" class="control-label" type="checkbox" name="counting_method_timed_swim" onclick="enable_timed_swim(this.checked)"> &nbsp; &nbsp;
-                                        <?php echo $this->form->getLabel('counting_method_timed_swim'); ?> <?php echo $this->form->getInput('counting_method_timed_swim'); ?> <?php echo JText::_('COUNTING_METHOD_TIMED_SWIM_END');?>
-                                </div><div class="controls souslabels">
-                                        <input id="jform_counting_method_distance_swim_chbx" class="control-label" type="checkbox" name="counting_method_distance_swim" onclick="enable_distance_swim(this.checked)" > &nbsp; &nbsp;
-                                        <?php echo $this->form->getLabel('counting_method_distance_swim'); ?> <?php echo $this->form->getInput('counting_method_distance_swim'); ?> <?php echo JText::_('COUNTING_METHOD_DISTANCE_SWIM_END');?>
-                                </div><div class="controls souslabels">
-                                        <input id="jform_counting_method_other_chbx" class="control-label" type="checkbox" name="counting_method_other" onclick="enable_other(this.checked)" > &nbsp; &nbsp;
-                                        <?php echo $this->form->getLabel('counting_method_other'); ?> <?php echo $this->form->getInput('counting_method_other'); ?> <?php echo JText::_('COUNTING_METHOD_OTHER_END');*/?>
-                                </div>
-
-			</div>
-		-->
 		<div class="control-group">
 			<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
 			<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>

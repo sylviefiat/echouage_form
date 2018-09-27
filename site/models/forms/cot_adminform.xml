@@ -343,17 +343,6 @@
 			description="CATCH_INDICES_DESC"
 			hint="CATCH_INDICES"
 			type="textarea"/>
-	<!--State-->
-	<field name="observation_state"
-			alias="observation_state"
-			class="btn-group"
-			label="OBSERVATION_STATE"
-			description="OBSERVATION_STATE_DESC"
-			type="radio"
-			required="true" >
-			<option value="mort">OBSERVATION_STATE_A</option>
-			<option value="vivant">OBSERVATION_STATE_B</option>
-	</field>
 	<!--Death-->
 	<field name="observation_death"
 			alias="observation_death"
@@ -362,9 +351,9 @@
 			description="OBSERVATION_DEATH_DESC"
 			type="radio"
 			multiple="false" >
-			<option value="animal mort avant mon arrivée">OBSERVATION_DEATH_A</option>
-			<option value="animal mort pendant mon intervention">OBSERVATION_DEATH_B</option>
-			<option value="animal euthanasié">OBSERVATION_DEATH_C</option>
+			<option value="mort avant l'arrivée de l'observateur">OBSERVATION_DEATH_A</option>
+			<option value="mort pendant l'intervention de l'observateur">OBSERVATION_DEATH_B</option>
+			<option value="euthanasié">OBSERVATION_DEATH_C</option>
 	</field>
 	<!--Date death-->
 	<field name="observation_datetime_death"
@@ -397,7 +386,7 @@
 			description="OBSERVATION_ALIVE_DESC"
 			type="checkboxes"
 			multiple="false" >
-			<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
+			<option value="animal remis à l'eau avec succès">OBSERVATION_ALIVE_A</option>
 	</field>
 		<!--Date release-->
 	<field name="observation_datetime_release"

@@ -69,6 +69,19 @@ fieldset.radio label{
       });
     });
 
+   var div = document.getElementById('champs');
+      function addInput(nam){
+          var input = document.createElement("input");
+          input.name = name;
+          div.appendChild(input);
+      }
+      function addField() {
+
+          addInput($this->form->getLabel('observation_spaces'));
+          addInput($this->form->getLabel('observation_color'));
+          addInput($this->form->getLabel('observation_size'));
+          div.appendChild(document.createElement("br"));
+      }
 
   </script>
 
@@ -221,9 +234,8 @@ fieldset.radio label{
 
 <!--Indentification-->
 <div class="col-xs-12"><?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_ROW3'); ?></div>
+<!--Spaces-->
 <div class="row">
-  <!--Spaces
-  <div class="col-xs-12"><?php //echo $this->form->getLabel('observation_spaces'); ?></div>-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-eye-open"></span></span>
@@ -319,19 +331,6 @@ fieldset.radio label{
       <div class="input-group">
         <span class="input-group-addon"><span class="fa fa-comment "></span></span>
         <?php echo $this->form->getInput('catch_indices'); ?>
-      </div>
-    </div>
-  </div>
-  <!--Animal's State-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('observation_state'); ?>
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="radio">
-            <label><?php echo $this->form->getInput('observation_state'); ?></label>
-          </div>
-        </div>
       </div>
     </div>
   </div>

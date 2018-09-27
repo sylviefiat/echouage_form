@@ -67,6 +67,7 @@ class Cot_formsControllerCot_adminForm extends Cot_formsController
 		// Initialise variables.
 		$app	= JFactory::getApplication();
 		$model = $this->getModel('Cot_adminForm', 'Cot_formsModel');
+		sprintf($model);
 		echo "<script>console.log( 'Debug Objects: sav3' );</script>";
 		// Get the user data.
 		$data = JFactory::getApplication()->input->get('jform', array(), 'array');

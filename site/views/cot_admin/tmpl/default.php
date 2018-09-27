@@ -10,7 +10,6 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-<!--
 <script type="text/javascript">
 	function getScript(url,success) {
 		var script = document.createElement('script');
@@ -62,8 +61,23 @@ getScript('//maps.google.com/maps/api/js',function() {
 		}
 	});
 });
-</script>-->
-<script type="text/javascript">
+
+var div = document.getElementById('champs');
+function addInput(nam){
+  var input = document.createElement("input");
+  input.name = name;
+  div.appendChild(input);
+}
+function addField() {
+
+  addInput($this->form->getLabel('observation_spaces'));
+  addInput($this->form->getLabel('observation_color'));
+  addInput($this->form->getLabel('observation_size'));
+  div.appendChild(document.createElement("br"));
+}
+
+</script>
+<!--<script type="text/javascript">
     function getScript(url,success) {
         var script = document.createElement('script');
         script.src = url;
@@ -139,7 +153,8 @@ getScript('//maps.google.com/maps/api/js',function() {
         }
         });
     });
-</script>
+</script>-->
+
 <?php
 //Load admin language file
 $lang = JFactory::getLanguage();
@@ -197,7 +212,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row champs">
 					<div class="col-md-3 col-lg-3 " align="center"> <span class="fa fa-eye fa-2x"></span> </div>
 					<div class=" col-md-9 col-lg-9 ">
 						<table class="table table-user-information">
@@ -240,6 +255,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								</tr>
 								<!--Spaces-->
 								<tr>
+									<td><button type="button" onclick="addField()"></button></td>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_SPACES'); ?>: </td>
 									<td><?php echo $this->item->observation_spaces; ?></td>
 								</tr>
@@ -321,7 +337,6 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 				</div>
 			</div>
 		</div>
-	</div>
 
 								<a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.edit&id='.$this->item->id); ?>"><?php echo JText::_("COM_COT_FORMS_EDIT_ITEM"); ?></a>
 
