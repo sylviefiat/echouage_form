@@ -64,7 +64,7 @@ class JDomHtmlFormInputAddresspicker extends JDomHtmlFormInput
 
 		$script = '
 		jQuery(document).ready(function(){	
-			jQuery( "#'. $inputId .'" ).addressPickerByGiro(
+			jQuery( "#'. $inputId .'" ).addressPickerWithOL(
 			{
 				mode: "'. $this->mode .'",
 				targets_prefix: "'. $this->targets_prefix .'",

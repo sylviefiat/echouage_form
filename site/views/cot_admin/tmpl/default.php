@@ -11,73 +11,6 @@
 defined('_JEXEC') or die;
 ?>
 <script type="text/javascript">
-	function getScript(url,success) {
-		var script = document.createElement('script');
-		script.src = url;
-		var head = document.getElementsByTagName('head')[0],
-		done = false;
-    // Attach handlers for all browsers
-    script.onload = script.onreadystatechange = function() {
-    	if (!done && (!this.readyState
-    		|| this.readyState == 'loaded'
-    		|| this.readyState == 'complete')) {
-    		done = true;
-    	success();
-    	script.onload = script.onreadystatechange = null;
-    	head.removeChild(script);
-    }
-};
-head.appendChild(script);
-}
-function validateItem(item_id){
-	document.getElementById('form-cot-admin-validate-' + item_id).submit();
-
-}
-var map;
-function initMap(lat,lng,zoom) {
-	var div = document.getElementById("map");
-	var map = new google.maps.Map(div, {
-		center: {lat: lat, lng: lng},
-		zoom: zoom,
-		mapTypeId: google.maps.MapTypeId.SATELLITE
-	});
-	if(zoom === 12){
-		var marker = new google.maps.Marker({
-			position: {lat: lat, lng: lng},
-			map: map,
-			title: 'Echouages!'
-		});
-	}
-}
-getScript('//maps.google.com/maps/api/js',function() {
-	js = jQuery.noConflict();
-	js(document).ready(function(){
-		var latitude = document.getElementById("latitude").innerText;
-		var longitude = document.getElementById("longitude").innerText;
-		if(!isNaN(parseFloat(latitude)) && !isNaN(parseFloat(longitude))){
-			initMap(parseFloat(latitude),parseFloat(longitude),12);
-		} else {
-			initMap(-21.5, 165.5, 5);
-		}
-	});
-});
-
-var div = document.getElementById('champs');
-function addInput(nam){
-  var input = document.createElement("input");
-  input.name = name;
-  div.appendChild(input);
-}
-function addField() {
-
-  addInput($this->form->getLabel('observation_spaces'));
-  addInput($this->form->getLabel('observation_color'));
-  addInput($this->form->getLabel('observation_size'));
-  div.appendChild(document.createElement("br"));
-}
-
-</script>
-<!--<script type="text/javascript">
     function getScript(url,success) {
         var script = document.createElement('script');
         script.src = url;
@@ -153,8 +86,7 @@ function addField() {
         }
         });
     });
-</script>-->
-
+</script>
 <?php
 //Load admin language file
 $lang = JFactory::getLanguage();

@@ -39,52 +39,6 @@ fieldset.radio label{
   width: 50px !important;
 }
 </style>
-<script type="text/javascript">
-  function getScript(url,success) {
-    var script = document.createElement('script');
-    script.src = url;
-    var head = document.getElementsByTagName('head')[0],
-    done = false;
-        // Attach handlers for all browsers
-        script.onload = script.onreadystatechange = function() {
-          if (!done && (!this.readyState
-            || this.readyState == 'loaded'
-            || this.readyState == 'complete')) {
-            done = true;
-          success();
-          script.onload = script.onreadystatechange = null;
-          head.removeChild(script);
-        }
-      };
-      head.appendChild(script);
-    }
-    
-    getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function() {
-      console.log("loaded ok");
-      js = jQuery.noConflict();
-      js(document).ready(function(){
-        js('#form-cot_admin').submit(function(event){
-
-        });
-      });
-    });
-
-   var div = document.getElementById('champs');
-      function addInput(nam){
-          var input = document.createElement("input");
-          input.name = name;
-          div.appendChild(input);
-      }
-      function addField() {
-
-          addInput($this->form->getLabel('observation_spaces'));
-          addInput($this->form->getLabel('observation_color'));
-          addInput($this->form->getLabel('observation_size'));
-          div.appendChild(document.createElement("br"));
-      }
-
-  </script>
-
   <div class="cot_admin-edit front-end-edit">
     <?php if (!empty($this->item->id)): ?>
       <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>

@@ -21,8 +21,8 @@ abstract class Cot_formsHelper
 		$from =& $config->get( 'mailfrom' );
 		$fromname = $config->get( 'fromname' );
 		$sender = array(
-		$config->get( 'mailfrom' ),
-		$config->get( 'fromname' ) );
+			$config->get( 'mailfrom' ),
+			$config->get( 'fromname' ) );
 		$mailer->setSender($sender);
 
 		// Set the recipient
@@ -32,29 +32,34 @@ abstract class Cot_formsHelper
 		$valid = "<a href='".JURI::base()."index.php/administrer-les-observations/".$data['id']."?view=cot_admin'>Aller sur le site pour valider</a>";
 
 		$body   = "<h4>Un nouveau report d'échouage a été effectué:</h4>"
-				."<div>Observateur: ".$data['observer_name']."</div>"
-				.($data['observer_tel']!== ''?"<div>Téléphone: ".$data['observer_tel']."</div>":"")
-				.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
+		."<div>Observateur: ".$data['observer_name']."</div>"
+		.($data['observer_tel']!== ''?"<div>Téléphone: ".$data['observer_tel']."</div>":"")
+		.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
 
-				."<div>Informateur: ".$data['informant_name']."</div>"
-				.($data['informant_tel']!== ''?"<div>Téléphone: ".$data['informant_tel']."</div>":"")
-				.($data['informant_email']!== ''?"<div>Mail: ".$data['informant_email']."</div>":"")
+		."<div>Informateur: ".$data['informant_name']."</div>"
+		.($data['informant_tel']!== ''?"<div>Téléphone: ".$data['informant_tel']."</div>":"")
+		.($data['informant_email']!== ''?"<div>Mail: ".$data['informant_email']."</div>":"")
 
-				."<div>Date de l'observation: ".($data['observation_datetime'])."</div>"
-				."<div>Détails sur la position de l'observation: ".$data['observation_location']."</div>"
-				."<div>Position: ".$data['observation_localisation']."</div>"
-				.($data['observation_region']!== ''?"<div>Région: ".$data['observation_region']."</div>":"")
-				.($data['observation_country']!== ''?"<div>Pays: ".$data['observation_country']."</div>":"")
-				.($data['observation_number']!== ''?"<div>Nombre d'acanthsters: ".$data['observation_number']."</div>":"")
-				.($data['observation_culled']!== ''?"<div>Nombre d'acanthsters nettoyés: ".$data['observation_culled']."</div>":"")
-				."<div>Méthode d'observation: ".implode( ',', $data['observation_method'])."</div>"
-				.($data['depth_range']!== ''?"<div>Tranche de profondeur: ".implode(", ",$data['depth_range'])."</div>":"")
-				.($data['counting_method_timed_swim']!== ''&&$data['counting_method_distance_swim']!== ''&&$data['counting_method_other']!== ''?"<div>Méthode(s) de comptage: </div>":"")
-				.($data['counting_method_timed_swim']!== ''?"<div>temps de nage: ".$data['counting_method_timed_swim']."</div>":"")
-				.($data['counting_method_distance_swim']!== ''?"<div>distance parcourue: ".$data['counting_method_distance_swim']."</div>":"")
-				.($data['counting_method_other']!== ''?"<div>autre: ".$data['counting_method_other']."</div>":"")
-				.($data['remarks']!== ''?"<div>Remarques: ".$data['remarks']."</div>":"")
-				."<div>Observation validation: ".$valid." </div>";
+		."<div>Date de l'observation: ".($data['observation_datetime'])."</div>"
+		."<div>Détails sur la position de l'observation: ".$data['observation_location']."</div>"
+		."<div>Position: ".$data['observation_localisation']."</div>"
+		.($data['observation_region']!== ''?"<div>Région: ".$data['observation_region']."</div>":"")
+		.($data['observation_country']!== ''?"<div>Pays: ".$data['observation_country']."</div>":"")
+		."<div>Type d’échouage: ".$data['observation_stranding_type']."</div>"
+		."<div>Nombre: ".$data['observation_number']."</div>"
+		."<div>Espèces: ".$data['observation_spaces']."</div>"
+		."<div>Taille:".$data['observation_size']."</div>"
+		."<div>Sex:".$data['observation_sex']."</div>"
+		."<div>Présence de bléssures, morssures:".$data['observation_abnormalities']."</div>"
+		."<div>Présence de traces de capture:".$data['observation_capture_traces']."</div>"
+		.($data['catch_indices']!== ''?"<div>Indices de capture: ".$data['catch_indices']."</div>":"")
+		."<div>Etat: </div>"
+		.($data['observation_alive']!==''?"<div>Animal: ".$data['observation_alive']."</div>":"")
+		.($data['observation_datetime_release']!==''?"<div>Date le remise à l'eau: ".$data['observation_datetime_release']."</div>":"")
+		.($data['observation_death']!==''?"<div>Animal: ".$data['observation_death']."</div>":"")
+		.($data['observation_datetime_death']!==''?"<div>Date de la mort: ".$data['observation_datetime_death']."</div>":"")
+		.($data['remarks']!== ''?"<div>Remarques: ".$data['remarks']."</div>":"")
+		."<div>Observation validation: ".$valid." </div>";
 
 
 		$subject = "Operation_Cetaces NC: nouveau report d'échouage en Nouvelle-Calédonie";
@@ -67,9 +72,9 @@ abstract class Cot_formsHelper
 		// Send email
 		$send = $mailer->Send();
 		if ( $send !== true ) {
-		    return 'Error sending email: ' . $send->__toString();
+			return 'Error sending email: ' . $send->__toString();
 		} else {
-		    return 'Mail sent';
+			return 'Mail sent';
 		}
 	}
 
