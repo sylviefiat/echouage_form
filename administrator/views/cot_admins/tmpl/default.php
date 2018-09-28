@@ -181,7 +181,7 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DEATH', 'a.observation_death', $listDirn, $listOrder); ?>
 							</th>
-							<!--Release date-->
+							<!--Death date-->
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DEATH_DATE', 'a.observation_datetime_death', $listDirn, $listOrder); ?>
 							</th>
@@ -197,11 +197,27 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CATCH_INDICIES', 'a.catch_indices', $listDirn, $listOrder); ?>
 							</th>
+							<!--Levies protocol-->
+							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CATCH_LEVIES_PROTOCOL', 'a.levies_protocole', $listDirn, $listOrder); ?>
+							</th>
+							<!--Tissue removal-->
+							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_CATCH_TISSUE_REMOVAL', 'a.observation_tissue_removal', $listDirn, $listOrder); ?>
+							</th>
 							<!--Admin validation-->
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION', 'a.admin_validation', $listDirn, $listOrder); ?>
 							</th>
-
+							<th class='left'>
+								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_REFERENCES', 'a.form_references', $listDirn, $listOrder); ?>
+							</th>
+							<!--id_location-->
+							<?php if (isset($this->items[0]->id_location)): ?>
+								<th width="1%" class="nowrap center hidden-phone">
+									<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID_LOCATION', 'a.id_location', $listDirn, $listOrder); ?>
+								</th>
+							<?php endif; ?>
 							<!--id-->
 							<?php if (isset($this->items[0]->id)): ?>
 								<th width="1%" class="nowrap center hidden-phone">
@@ -365,9 +381,25 @@ if (!empty($this->extra_sidebar)) {
 											</td>
 											<td>
 
+												<?php echo $item->levies_protocole;?>
+											</td>
+											<td>
+
+												<?php echo $item->observation_tissue_removal;?>
+											</td>
+											<td>
+
 												<?php echo $item->admin_validation; ?>
 											</td>
+											<td>
 
+												<?php echo $item->form_references; ?>
+											</td>
+											<?php if (isset($this->items[0]->id_location)): ?>
+												<td class="center hidden-phone">
+													<?php echo (int) $item->id_location; ?>
+												</td>
+											<?php endif; ?>
 											<?php if (isset($this->items[0]->id)): ?>
 												<td class="center hidden-phone">
 													<?php echo (int) $item->id; ?>

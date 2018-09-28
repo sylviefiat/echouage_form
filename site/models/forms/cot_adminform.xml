@@ -384,8 +384,8 @@
 			class="form-control"
 			label="OBSERVATION_ALIVE"
 			description="OBSERVATION_ALIVE_DESC"
-			type="checkboxes"
-			multiple="false" >
+			type="checkboxes" 
+			multiple="false">
 			<option value="animal remis à l'eau avec succès">OBSERVATION_ALIVE_A</option>
 	</field>
 		<!--Date release-->
@@ -418,14 +418,14 @@
 			type="checkboxes"
 			multiple="true" 
 			required="true">
-			<option value="peau ">OBSERVATION_TISSUE_REMOVAL_A</option>
-			<option value="dents ">OBSERVATION_TISSUE_REMOVAL_B</option>
-			<option value="parasites ">OBSERVATION_TISSUE_REMOVAL_C</option>
-			<option value="muscle ">OBSERVATION_TISSUE_REMOVAL_D</option>
-			<option value="rein ">OBSERVATION_TISSUE_REMOVAL_E</option>
-			<option value="foi ">OBSERVATION_TISSUE_REMOVAL_F</option>
-			<option value="contenu stomacal ">OBSERVATION_TISSUE_REMOVAL_G</option>
-			<option value="autres prélèvements avancés ">OBSERVATION_TISSUE_REMOVAL_H</option>
+			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
+			<option value="dents">OBSERVATION_TISSUE_REMOVAL_B</option>
+			<option value="parasites">OBSERVATION_TISSUE_REMOVAL_C</option>
+			<option value="muscle">OBSERVATION_TISSUE_REMOVAL_D</option>
+			<option value="rein">OBSERVATION_TISSUE_REMOVAL_E</option>
+			<option value="foi">OBSERVATION_TISSUE_REMOVAL_F</option>
+			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
+			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
 
 

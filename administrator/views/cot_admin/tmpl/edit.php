@@ -91,15 +91,15 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
 					</div>
 
-					<!--References Id_location
+					<!--References Id_location-->
 					<div class="control-group">
-						<div class="control-label"><?php /*echo $this->form->getLabel('references'); ?></div>
+						<div class="control-label"><?php echo $this->form->getLabel('references'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('references'); ?></div>
 					</div>
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('id_location'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('id_location'); */?></div>
-					</diV>-->
+						<div class="controls"><?php echo $this->form->getInput('id_location'); ?></div>
+					</diV>
 
 					<!--Observer contacts-->
 					<div class="control-group">

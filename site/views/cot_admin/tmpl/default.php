@@ -253,6 +253,11 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_RELEASE_DATE'); ?>: </td>
 									<td><?php echo $this->item->observation_datetime_release; ?></td>
 								</tr>
+								<!--Tissue removal-->
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_RELEASE_TISSUE_REMOVAL'); ?>: </td>
+									<td><?php echo $this->item->observation_tissue_removal; ?></td>
+								</tr>
 								<!--Remarks-->
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_REMARKS'); ?>: </td>

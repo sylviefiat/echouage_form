@@ -29,11 +29,11 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function export()
 	{
-		$nom_fichier = "operation_cetace-nc_" . date("d-m-Y");
+		$file_name = "operation_cetace-nc_" . date("d-m-Y");
 		header("Content-type: text/csv");
-		header("Content-Disposition: attachment; filename=" . $nom_fichier . ".csv");
+		header("Content-Disposition: attachment; filename=" . $file_name . ".csv");
 		//header("Content-type: application/octet-stream");
-		//header("Content-Disposition: attachment; filename=" . $nom_fichier . ".xls");
+		//header("Content-Disposition: attachment; filename=" . $file_name . ".xls");
 		header("Pragma: no-cache");
 		header("Expires: 0");
 		//header("Lacation: excel.htm?id=yes");

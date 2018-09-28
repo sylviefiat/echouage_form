@@ -314,7 +314,8 @@
 			alias="observation_alive"
 			label="OBSERVATION_ALIVE"
 			description="OBSERVATION_ALIVE_DESC"
-			type="checkboxes" >
+			type="checkboxes" 
+			multiple="false">
 			<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
 	</field>
 	<!--Date release-->
@@ -343,89 +344,23 @@
 			type="checkboxes"
 			multiple="true" 
 			required="true">
-			<option value="peau ">OBSERVATION_TISSUE_REMOVAL_A</option>
-			<option value="dents ">OBSERVATION_TISSUE_REMOVAL_B</option>
-			<option value="parasites ">OBSERVATION_TISSUE_REMOVAL_C</option>
-			<option value="muscle ">OBSERVATION_TISSUE_REMOVAL_D</option>
-			<option value="rein ">OBSERVATION_TISSUE_REMOVAL_E</option>
-			<option value="foi ">OBSERVATION_TISSUE_REMOVAL_F</option>
-			<option value="contenu stomacal ">OBSERVATION_TISSUE_REMOVAL_G</option>
-			<option value="autres prélèvements avancés ">OBSERVATION_TISSUE_REMOVAL_H</option>
+			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
+			<option value="dents">OBSERVATION_TISSUE_REMOVAL_B</option>
+			<option value="parasites">OBSERVATION_TISSUE_REMOVAL_C</option>
+			<option value="muscle">OBSERVATION_TISSUE_REMOVAL_D</option>
+			<option value="rein">OBSERVATION_TISSUE_REMOVAL_E</option>
+			<option value="foi">OBSERVATION_TISSUE_REMOVAL_F</option>
+			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
+			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
-
-
-<!--	<field name="observation_culled"
-			alias="observation_culled"
-			label="OBSERVATION_CULLED"
-			labelclass="control-label"
-			description="OBSERVATION_CULLED_DESC"
-			type="cktext"/>
-
-	<field name="observation_method"
-			alias="observation_method"
-			label="OBSERVATION_METHOD"
-			description="OBSERVATION_METHOD_DESC"
-			type="checkboxes"
-			required="true"
-			multiple="true" >
-		<option value="snorkelling">Snorkelling</option>
-		<option value="scuba diving">Scuba diving</option>
-	</field>
-
-	<field name="counting_method_timed_swim"
-			alias="counting_method_timed_swim"
-			type="cktext"
-			labelclass="control-label"
-			label="COUNTING_METHOD_TIMED_SWIM"
-			description="COUNTING_METHOD_TIMED_SWIM_DESC"/>
-
-	<field name="counting_method_distance_swim"
-			alias="counting_method_distance_swim"
-			type="cktext"
-			labelclass="control-label"
-			label="COUNTING_METHOD_DISTANCE_SWIM"
-			description="COUNTING_METHOD_DISTANCE_SWIM_DESC"/>
-
-	<field name="counting_method_other"
-			alias="counting_method_other"
-			type="cktext"
-			labelclass="control-label"
-			label="COUNTING_METHOD_OTHER"
-			description="COUNTING_METHOD_OTHER_DESC"/>
-
-	<field name="depth_range"
-			alias="depth_range"
-			label="depth_range"
-			description="depth_range_DESC"
-			type="checkboxes"
-			required="true"
-			multiple="true" >
-		<option value="shallow">Shallow (less than 2m)</option>
-		<option value="medium">Medium (2-10m)</option>
-		<option value="deep">Deep (more than 10m)</option>
-	</field>
-	<field name="observation_state"
-			alias="observation_state"
-			label="OBSERVATION_STATE"
-			description="OBSERVATION_STATE_DESC"
-			size="1"
-			type="cklist"
-			autocomplete="off"
-			nullLabel="OBSERVATION_LIST_NULL"
-			>
-		<option value="death">OBSERVATION_STATE_A</option>
-		<option value="alive">OBSERVATION_STATE_B</option>
-	</field>
--->
-
+	<!--Remarks-->
 	<field 	name="remarks"
 			alias="remarks"
 			label="REMARKS"
 			filter="STRING"
 			description="REMARKS_DESC"
 			type="cktextarea"/>
-
-
+	<!--Admin validation-->
 	<field 	name="admin_validation"
 			alias="admin_validation"
 			label="ADMIN_VALIDATION"

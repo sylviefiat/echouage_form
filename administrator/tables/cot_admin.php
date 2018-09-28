@@ -61,13 +61,9 @@ class Cot_formsTablecot_Admin extends JTable {
             $this->setRules($array['rules']);
         }
 
-	// Set up for specific checkboxes component for observation method
-	if (array_key_exists( 'observation_method', $array ) && is_array( $array['observation_method'] )) {
-		$array['observation_method'] = implode( ',', $array['observation_method'] );
-	}
-	// Set up for specific checkboxes component for depth range
-	if (array_key_exists( 'depth_range', $array ) && is_array( $array['depth_range'] )) {
-		$array['depth_range'] = implode( ',', $array['depth_range'] );
+	// Set up for specific checkboxes component for observation tissue removal
+	if (array_key_exists( 'observation_tissue_removal', $array ) && is_array( $array['observation_tissue_removal'] )) {
+		$array['observation_tissue_removal'] = implode( ',', $array['observation_tissue_removal'] );
 	}
 
         return parent::bind($array, $ignore);
