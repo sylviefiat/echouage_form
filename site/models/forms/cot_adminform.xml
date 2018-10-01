@@ -269,6 +269,27 @@
 			<option value="femelle">OBSERVATION_SEX_B</option>
 			<option value="inconnu">OBSERVATION_SEX_C</option>
 	</field>
+	<!--Color-->
+	<field name="observation_color"
+			alias="observation_color"
+			class="form-control"
+			label="OBSERVATION_COLOR"
+			labelclass="control-label"
+			description="OBSERVATION_COLOR_DESC"
+			hint="OBSERVATION_COLOR"
+			type="text"/>
+	<!--Sex-->
+	<field name="observation_sex"
+			alias="observation_sex"
+			class="btn-group"
+			label="OBSERVATION_SEX"
+			description="OBSERVATION_SEX_DESC"
+			type="radio"
+			required="true" >
+			<option value="mâle">OBSERVATION_SEX_A</option>
+			<option value="femelle">OBSERVATION_SEX_B</option>
+			<option value="inconnu">OBSERVATION_SEX_C</option>
+	</field>
 	<!--Encoche médiane à la caudale-->
 	<field name="observation_caudal"
 			alias="observation_caudal"
@@ -280,26 +301,102 @@
 			<option value="présente">OBSERVATION_CAUDAL_A</option>
 			<option value="absente">OBSERVATION_CAUDAL_B</option>
 	</field>
-	<!--Color-->
-	<field name="observation_color"
-			alias="observation_color"
+	<!--Bec-->
+	<field name="observation_beak"
+			alias="observation_beak"
 			class="form-control"
-			label="OBSERVATION_COLOR"
+			label="OBSERVATION_BEAK"
+			description="OBSERVATION_BEAK_DESC"
+			type="checkboxes" 
+			multiple="false">
+			<option value="Bec">OBSERVATION_BEAK_A</option>
+	</field>
+	<!--Sillons-->
+	<field name="observation_furrows"
+			alias="observation_furrows"
+			class="form-control"
+			label="OBSERVATION_FURROWS"
+			description="OBSERVATION_FURROWS_DESC"
+			type="checkboxes" 
+			multiple="false">
+			<option value="Bec">OBSERVATION_FURROWS</option>
+	</field>
+	<!--Dents-->
+	<field name="nb_teeth_upper_right"
+			 alias="nb_teeth_upper_right"
+			 class="form-control"
+			 label="OBSERVATION_UPPER_RIGHT"
+			 description="OBSERVATION_UPPER_RIGHT_DESC"
+			 hint="OBSERVATION_UPPER_RIGHT"
+			 labelclass="control-label"
+			 type="text"/>
+	<field name="nb_teeth_upper_left"
+			 alias="nb_teeth_upper_left"
+			 class="form-control"
+			 label="OBSERVATION_UPPER_LEFT"
+			 description="OBSERVATION_UPPER_LEFT_DESC"
+			 hint="OBSERVATION_UPPER_LEFT"
+			 labelclass="control-label"
+			 type="text"/>
+	<field name="nb_teeth_lower_right"
+			 alias="nb_teeth_lower_right"
+			 class="form-control"
+			 label="OBSERVATION_LOWER_RIGHT"
+			 description="OBSERVATION_LOWER_RIGHT_DESC"
+			 hint="OBSERVATION_LOWER_RIGHT"
+			 labelclass="control-label"
+			 type="text"/>
+	<field name="nb_teeth_lower_left"
+			 alias="nb_teeth_lower_left"
+			 class="form-control"
+			 label="OBSERVATION_LOWER_LEFT"
+			 description="OBSERVATION_LOWER_LEFT_DESC"
+			 hint="OBSERVATION_LOWER_LEFT"
+			 labelclass="control-label"
+			 type="text"/>
+	<field name="observation_base_diametre"
+			alias="observation_base_diametre"
+			class="form-control"
+			label="OBSERVATION_BASE_DIAMETRE"
 			labelclass="control-label"
-			description="OBSERVATION_COLOR_DESC"
-			hint="OBSERVATION_COLOR"
+			description="OBSERVATION_BASE_DIAMETRE_DESC"
+			hint="OBSERVATION_BASE_DIAMETRE"
 			type="text"/>
-	<!--Encoche médiane à la caudale-->
-	<field name="observation_sex"
-			alias="observation_sex"
-			class="btn-group"
-			label="OBSERVATION_SEX"
-			description="OBSERVATION_SEX_DESC"
-			type="radio"
-			required="true" >
-			<option value="mâle">OBSERVATION_SEX_A</option>
-			<option value="femelle">OBSERVATION_SEX_B</option>
-			<option value="inconnu">OBSERVATION_SEX_C</option>
+	<!--Fanons-->
+	<field name="observation_baleen_color"
+			alias="observation_baleen_color"
+			class="form-control"
+			label="OBSERVATION_BALEEN_COLOR"
+			labelclass="control-label"
+			description="OBSERVATION_BALEEN_COLOR_DESC"
+			hint="OBSERVATION_BALEEN_COLOR"
+			type="text"/>
+	<field name="observation_baleen_height"
+			alias="observation_baleen_height"
+			class="form-control"
+			label="OBSERVATION_BALEEN_HEIGHT"
+			labelclass="control-label"
+			description="OBSERVATION_BALEEN_HEIGHT_DESC"
+			hint="OBSERVATION_BALEEN_HEIGHT"
+			type="text"/>
+	<field name="observation_baleen_base_diametre"
+			alias="observation_baleen_base_diametre"
+			class="form-control"
+			label="OBSERVATION_BALEEN_BASE_DIAMETRE"
+			labelclass="control-label"
+			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
+			hint="OBSERVATION_BALEEN_BASE_DIAMETRE"
+			type="text"/>
+	<!--Defenses-->
+	<field name="observation_defenses"
+			alias="observation_defenses"
+			class="form-control"
+			label="OBSERVATION_DEFENSES"
+			labelclass="control-label"
+			description="OBSERVATION_DEFENSES_DESC"
+			hint="OBSERVATION_DEFENSES"
+			type="checkboxes">
+			<option value="Defenses">OBSERVATION_DEFENSES</option>
 	</field>
 	<!--Size-->
 	<field name="observation_size"

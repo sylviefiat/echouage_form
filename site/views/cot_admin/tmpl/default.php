@@ -180,6 +180,11 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LONGITUDE'); ?>: </td>
 									<td id="longitude"><?php echo $this->item->observation_longitude; ?></td>
 								</tr>
+								<!--Stranding type-->
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_STRANDING_TYPE'); ?>: </td>
+									<td><?php echo $this->item->observation_stranding_type; ?></td>
+								</tr>
 								<!--Number-->
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_NUMBER'); ?>: </td>
@@ -187,7 +192,6 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								</tr>
 								<!--Spaces-->
 								<tr>
-									<td><button type="button" onclick="addField()"></button></td>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_SPACES'); ?>: </td>
 									<td><?php echo $this->item->observation_spaces; ?></td>
 								</tr>
@@ -198,6 +202,21 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo $this->item->observation_spaces_identification; ?></td>
 								</tr>
 								<tr>
+								<!--Sexe-->
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_SEX'); ?>: </td>
+									<td><?php echo $this->item->observation_sex; ?></td>
+								</tr>
+								<!--Color-->
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_COLOR'); ?>: </td>
+									<td><?php echo $this->item->observation_color; ?></td>
+								</tr>
+								<!--Caudale-->
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_CAUDAL'); ?>: </td>
+									<td><?php echo $this->item->observation_caudal; ?></td>
+								</tr>
 								<!--Size-->
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_SIZE'); ?>: </td>
@@ -218,11 +237,6 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_CATCH_INDICIES'); ?>: </td>
 									<td><?php echo $this->item->catch_indices; ?></td>
 								</tr>
-								<!--Sex-->
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_SEX'); ?>: </td>
-									<td><?php echo $this->item->observation_sex; ?></td>
-								</tr>
 								<!--State-->
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_STATE'); ?>: </td>
@@ -242,6 +256,11 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_STATE_DECOMPOSITION'); ?>: </td>
 									<td><?php echo $this->item->observation_state_decomposition; ?></td>
+								</tr>
+								<!--Levies protocol-->
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LEVIES_PROTOCOL'); ?>: </td>
+									<td><?php echo $this->item->levies_protocole; ?></td>
 								</tr>
 								<!--Alive-->
 								<tr>

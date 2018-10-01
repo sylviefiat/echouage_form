@@ -59,3 +59,4 @@ ALTER TABLE cetace_cot_admin ADD catch_indices VARCHAR(100) NOT NULL AFTER obser
 ALTER TABLE `#__cot_admin` DROP `observation_state`; 
 ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_death` `observation_datetime_death` DATE NULL;
 ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_release` `observation_datetime_release` DATE NULL;
+

@@ -25,7 +25,6 @@ $user = JFactory::getUser();
 <!-- This should probably be moved to the template CSS file -->
 <style>
 
-
 #jform_rules-lbl{
   display:none;
 }
@@ -38,7 +37,13 @@ $user = JFactory::getUser();
 fieldset.radio label{
   width: 50px !important;
 }
+
+.radio {
+  display: inline-block;
+}
+
 </style>
+
 <script type="text/javascript">
 
  function getScript(url,success) {
@@ -270,7 +275,7 @@ fieldset.radio label{
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_stranding_type'); ?>
       <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
+        <div class="radio-inline">
           <label><?php echo $this->form->getInput('observation_stranding_type'); ?></label>
         </div>
       </div>
