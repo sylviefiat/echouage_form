@@ -60,3 +60,26 @@ ALTER TABLE `#__cot_admin` DROP `observation_state`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_death` `observation_datetime_death` DATE NULL;
 ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_release` `observation_datetime_release` DATE NULL;
 
+ALTER TABLE cetace_cot_admin
+ADD `observation_furrows` VARCHAR(100) NOT NULL,
+ADD `nb_teeth_upper_right` VARCHAR(100) NOT NULL,
+ADD `nb_teeth_upper_left` VARCHAR(100) NOT NULL,
+ADD `nb_teeth_lower_right` VARCHAR(100) NOT NULL,
+ADD `nb_teeth_lower_left` VARCHAR(100) NOT NULL,
+ADD `observation_base_diametre` VARCHAR(100) NOT NULL,
+ADD `observation_baleen_color` VARCHAR(100) NOT NULL,
+ADD `observation_baleen_height` VARCHAR(100) NOT NULL,
+ADD `observation_baleen_base_diametre` VARCHAR(100) NOT NULL, 
+ADD `observation_defenses` VARCHAR(100) NOT NULL;
+
+ALTER TABLE `cetace_cot_admin` CHANGE `observation_furrows` `observation_furrows` VARCHAR(100) NOT NULL AFTER `observation_beak`;
+ALTER TABLE `cetace_cot_admin` CHANGE `nb_teeth_upper_right` `nb_teeth_upper_right` VARCHAR(100) NOT NULL AFTER `observation_furrows`;
+ALTER TABLE `cetace_cot_admin` CHANGE `nb_teeth_upper_left` `nb_teeth_upper_left` VARCHAR(100) NOT NULL AFTER `nb_teeth_upper_right`;
+ALTER TABLE `cetace_cot_admin` CHANGE `nb_teeth_lower_right` `nb_teeth_lower_right` VARCHAR(100) NOT NULL AFTER `nb_teeth_upper_left`;
+ALTER TABLE `cetace_cot_admin` CHANGE `nb_teeth_lower_left` `nb_teeth_lower_left` VARCHAR(100) NOT NULL AFTER `nb_teeth_lower_right`;
+ALTER TABLE `cetace_cot_admin` CHANGE `observation_base_diametre` `observation_base_diametre` VARCHAR(100) NOT NULL AFTER `nb_teeth_lower_left`;
+ALTER TABLE `cetace_cot_admin` CHANGE `observation_baleen_color` `observation_baleen_color` VARCHAR(100) NOT NULL AFTER `observation_base_diametre`;
+ALTER TABLE `cetace_cot_admin` CHANGE `observation_baleen_height` `observation_baleen_height` VARCHAR(100) NOT NULL AFTER `observation_baleen_color`;
+ALTER TABLE `cetace_cot_admin` CHANGE `observation_baleen_base_diametre` `observation_baleen_base_diametre` VARCHAR(100) NOT NULL 
+AFTER `observation_baleen_height`;
+ALTER TABLE `cetace_cot_admin` CHANGE `observation_defenses` `observation_defenses` VARCHAR(100) NOT NULL AFTER `observation_baleen_base_diametre`;
