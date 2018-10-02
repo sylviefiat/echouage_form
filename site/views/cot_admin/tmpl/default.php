@@ -86,6 +86,12 @@ defined('_JEXEC') or die;
         }
         });
     });
+
+    function hideData() {
+    	document.getElementById("squeaker").style.visibility = "hidden";
+    }
+
+
 </script>
 <?php
 //Load admin language file
@@ -110,6 +116,10 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo $this->item->observer_name; ?></td>
 								</tr>
 								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER_ADDRESS'); ?>: </td>
+									<td><?php echo $this->item->observer_address; ?></td>
+								</tr>
+								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER_TEL'); ?>: </td>
 									<td><?php echo $this->item->observer_tel; ?></td>
 								</tr>
@@ -132,6 +142,10 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo $this->item->informant_name; ?></td>
 								</tr>
 								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT_ADDRESS'); ?>: </td>
+									<td><?php echo $this->item->informant_address; ?></td>
+								</tr>
+								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT_TEL'); ?>: </td>
 									<td><?php echo $this->item->informant_tel; ?></td>
 								</tr>
@@ -143,8 +157,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 						</table>
 					</div>
 				</div>
-
-				<div class="row champs">
+				<div class="row">
 					<div class="col-md-3 col-lg-3 " align="center"> <span class="fa fa-eye fa-2x"></span> </div>
 					<div class=" col-md-9 col-lg-9 ">
 						<table class="table table-user-information">
@@ -237,15 +250,10 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_CATCH_INDICIES'); ?>: </td>
 									<td><?php echo $this->item->catch_indices; ?></td>
 								</tr>
-								<!--State-->
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_STATE'); ?>: </td>
-									<td><?php echo $this->item->observation_state; ?></td>
-								</tr>
 								<!--Death-->
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_DEATH'); ?>: </td>
-									<td><?php echo $this->item->observation_death; ?></td>
+									<td ><?php echo $this->item->observation_death; ?></td>
 								</tr>
 								<!--Death date-->
 								<tr>
@@ -265,7 +273,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								<!--Alive-->
 								<tr>
 									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_RELEASE'); ?>: </td>
-									<td><?php echo $this->item->observation_datetime_release; ?></td>
+									<td><?php echo $this->item->observation_alive; ?></td>
 								</tr>
 								<!--Release date-->
 								<tr>

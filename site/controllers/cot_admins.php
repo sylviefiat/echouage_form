@@ -21,7 +21,7 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 	 * Proxy for getModel.
 	 * @since	1.6
 	 */
-	public function getModel($name = 'Cot_admins', $prefix = 'Cot_formsModel')
+	public function getModel($name = 'Cot_admins', $prefix = 'Cot_formsModel', $config = array())
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
@@ -29,15 +29,16 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function export()
 	{
-		$file_name = "operation_cetace-nc_" . date("d-m-Y");
+		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
+		$this->getModel()->getCsv();
 		header('Content-type: text/csv; charset=utf-8');
-		header("Content-Disposition: attachment; filename=operation_cetace-nc.csv");
+		header("Content-Disposition: attachment; filename=" . $file_name . "");
 		//header("Content-type: application/octet-stream");
 		//header("Content-Disposition: attachment; filename=" . $file_name . ".xls");
-		header("Pragma: no-cache");
+		//header("Pragma: no-cache");
 		header("Expires: 0");
+		header('Cache-Control: no-cache'); 
 		//header("Lacation: excel.htm?id=yes");	
-		$this->getModel()->getCsv();
 		jexit();
 	}
-}
+}	

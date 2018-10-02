@@ -56,7 +56,6 @@ class Cot_formsModelCot_admins extends JModelList {
                 'observation_capture_traces','a.observation_capture_traces',
                 'catch_indices','a.catch_indices',
                 'observation_sex','a.observation_sex',
-                'observation_state', 'a.observation_state',
                 'observation_state_decomposition', 'a.observation_state_decomposition',
                 'levies_protocole', 'a.levies_protocole',
 		        'remarks', 'a.remarks',

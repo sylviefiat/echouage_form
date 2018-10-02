@@ -104,18 +104,21 @@ class Cot_formsModelCot_admins extends JModelList {
       $db = $this->getDbo();
 
       $cols = array_keys($db->getTableColumns('#__cot_admin'));
+      for($cptr=1; $cptr<5; $cptr++){ array_pop($cols); }
       $items = $db->setQuery($this->getListQuery())->loadObjectList();
-      $csv=fopen('php://ouput', 'w');
-      fprintf($csv, chr(0xEF).ch(0xBB).chr(0xBF));
+      $csv =  fopen('php://output', 'w');
+      fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
       fputcsv($csv, $cols);
 
       foreach($items as $line){
         $in = (array) $line;
+        for($cptr=1; $cptr<5; $cptr++){ array_pop($in); }
         fputcsv($csv, (array) $in);
       }
 
       return fclose($csv);
     }
+  }
 
 /*
     // Fonction de conversion latitude_dmd
@@ -249,4 +252,4 @@ class Cot_formsModelCot_admins extends JModelList {
     }
     */
 
-}
+

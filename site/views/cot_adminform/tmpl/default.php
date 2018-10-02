@@ -88,33 +88,18 @@ fieldset.radio label{
       }
     }
 
-    /*Fonction ajout et suppression de champs version 1*/
-    var div = document.getElementById('champs');
-    function addInput(nam){
-      var input = document.createElement("input");
-      input.name = name;
-      div.appendChild(input);
-    }
-    function addField() {
-      addInput("espece[]");
-        /*addInput("contenu[]");
-        addInput("description[]");*/
-        div.appendChild(document.createElement("br"));
-      }
-
-
-
       /*Fonction ajout et suppression de champs version 2*/
 
-      function create_champ(i){ 
-        var i2 = i + 1; 
-        document.getElementById('input_'+i); 
-        document.getElementById('input_'+i).innerHTML += (i <= 100) ? '' : ''; 
-        document.getElementById('in_'+i).value = document.getElementById('out_'+(i-1)).value; 
-        document.getElementById('espece[]').value = i; 
+      function create_field(i){ 
+        var obj = document.getElementById('field'); 
+        var field = obj.cloneNode(true);
+        obj.style.display='';
+        inputs = field.getElementsByTagName('input');
+        for(var i = 0; i < inputs.length; ++i) inputs[i].value = "";
+        document.getElementById('form1').appendChild(field); 
       } 
 
-      function supr_champ(i) 
+      function supr_field(i) 
       { 
         var Parent; 
         var Obj = document.getElementById ( 'input_'+i) ; 
@@ -285,8 +270,8 @@ fieldset.radio label{
   <div class="col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="input-group">
-      <span class="input-group-addon"> <span class="fa fa-eye-open"></span>
-      <!--<input id="champs" type="text" class="control-label" name="espece[]" >-->
+      <span class="input-group-addon"><span class="fa fa-eye-open"></span>
+      <!--<input id="field" type="text" class="control-label" name="espece" >-->
     </span>
     <?php echo $this->form->getInput('observation_spaces'); ?>
   </div>
