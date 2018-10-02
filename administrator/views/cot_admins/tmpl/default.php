@@ -123,7 +123,6 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVER_EMAIL', 'a.observer_mail', $listDirn, $listOrder); ?>
 							</th>
-
 							<!--Informant contacts-->
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_INFORMANT_NAME', 'a.informant_name', $listDirn, $listOrder); ?>
@@ -215,7 +214,7 @@ if (!empty($this->extra_sidebar)) {
 							<!--id_location-->
 							<?php if (isset($this->items[0]->id_location)): ?>
 								<th width="1%" class="nowrap center hidden-phone">
-									<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID_LOCATION', 'a.id_location', $listDirn, $listOrder); ?>
+									<?php echo JHtml::_('grid.sort', 'COM_COT_FORMS_COT_ADMINS_ID_LOCATION', 'a.id_location', $listDirn, $listOrder); ?>
 								</th>
 							<?php endif; ?>
 							<!--id-->
@@ -395,11 +394,9 @@ if (!empty($this->extra_sidebar)) {
 
 												<?php echo $item->form_references; ?>
 											</td>
-											<?php if (isset($this->items[0]->id_location)): ?>
-												<td class="center hidden-phone">
+											<td>
 													<?php echo (int) $item->id_location; ?>
-												</td>
-											<?php endif; ?>
+											</td>
 											<?php if (isset($this->items[0]->id)): ?>
 												<td class="center hidden-phone">
 													<?php echo (int) $item->id; ?>
