@@ -460,7 +460,6 @@
 			description="OBSERVATION_DATE_DEATH_DESC"
 			hint="OBSERVATION_DATE_DEATH"
 			type="ckcalendar"
-			default="NOW"
 			format="Y-m-d"/>
 	<!--State decomposition-->
 	<field name="observation_state_decomposition"
@@ -493,7 +492,6 @@
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			hint="OBSERVATION_DATE_RELEASE"
 			type="ckcalendar"
-			default="NOW"
 			format="Y-m-d"/>
 	<!--Levies protocole-->
 	<field name="levies_protocole"

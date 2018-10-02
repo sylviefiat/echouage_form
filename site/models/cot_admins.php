@@ -109,10 +109,9 @@ class Cot_formsModelCot_admins extends JModelList {
       fprintf($csv, chr(0xEF).ch(0xBB).chr(0xBF));
       fputcsv($csv, $cols);
 
-      foreach($items, as $line)
-      {
+      foreach($items as $line){
         $in = (array) $line;
-        fputcsv($csv, (array) $in)
+        fputcsv($csv, (array) $in);
       }
 
       return fclose($csv);

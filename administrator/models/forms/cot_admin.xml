@@ -86,7 +86,7 @@
 			label="INFORMANT_EMAIL"
 			description="INFORMANT_EMAIL_DESC"
 			type="email"/>
-
+	<!--Date-->
 	<field 	name="observation_datetime"
 			alias="observation_datetime"
 			class="form-control form-calendar"
@@ -372,8 +372,7 @@
 			label="OBSERVATION_DATE_DEATH"
 			description="OBSERVATION_DATE_DEATH_DESC"
 			type="ckcalendar"
-						default="NOW"
-						format="Y-m-d"/>
+			format="Y-m-d"/>
 	<!--State decomposition-->
 	<field 	name="observation_state_decomposition"
 			alias="observation_state_decomposition"
@@ -401,7 +400,6 @@
 			label="OBSERVATION_DATE_RELEASE"
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			type="ckcalendar"
-			default="NOW"
 			format="Y-m-d"/>
 	<!--Levies protocole-->
 	<field 	name="levies_protocole"

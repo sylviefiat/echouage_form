@@ -93,7 +93,8 @@ class Cot_formsControllerCot_admin extends Cot_formsController {
 
         // Redirect to the list screen.
         $this->setMessage(JText::_('COM_COT_FORMS_ITEM_COT_ADMIN_SAVED_SUCCESSFULLY'));
-        $menu = & JSite::getMenu();
+        //$menu = & JSite::getMenu();
+        $menu = & JFactory::getApplication()->getMenu();
         $item = $menu->getActive();
         $this->setRedirect(JRoute::_($item->link, false));
     }
@@ -131,7 +132,8 @@ class Cot_formsControllerCot_admin extends Cot_formsController {
         }
 
         // Redirect to the list screen.
-        $menu = & JSite::getMenu();
+        //$menu = & JSite::getMenu();
+        $menu = & JFactory::getApplication()->getMenu();
         $item = $menu->getActive();
         $this->setRedirect(JRoute::_($item->link, false));
     }
@@ -169,7 +171,8 @@ class Cot_formsControllerCot_admin extends Cot_formsController {
         }
 
         // Redirect to the list screen.
-        $menu = & JSite::getMenu();
+        //$menu = & JSite::getMenu();
+        $menu = & JFactory::getApplication()->getMenu();
         $item = $menu->getActive();
         $this->setRedirect(JRoute::_($item->link, false));
     }
