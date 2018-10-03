@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `observer_tel` VARCHAR(100)  NOT NULL ,
 `observer_email` VARCHAR(100)  NOT NULL ,
 `informant_name` VARCHAR(100) NOT NULL,
-`informant_address` VARCHAR(200) NOT NULL
+`informant_address` VARCHAR(200) NOT NULL,
 `informant_tel` VARCHAR(100) NOT NULL,
 `informant_email` VARCHAR(100) NOT NULL,
 `observation_date` VARCHAR(100) NOT NULL ,
