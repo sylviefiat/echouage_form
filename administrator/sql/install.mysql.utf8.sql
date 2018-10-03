@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__cot_admin` (
+CREATE TABLE IF NOT EXISTS `#__grounding_admin` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `form_references` VARCHAR(50) NOT NULL DEFAULT 'EC2018',
 `id_location` INT(12) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `informant_address` VARCHAR(200) NOT NULL,
 `informant_tel` VARCHAR(100) NOT NULL,
 `informant_email` VARCHAR(100) NOT NULL,
-`observation_date` VARCHAR(100) NOT NULL ,
+`observation_datetime` VARCHAR(100) NOT NULL ,
 `observation_location` TEXT NOT NULL ,
 `observation_localisation` VARCHAR(100) NOT NULL ,
 `observation_region` VARCHAR(100) NOT NULL ,

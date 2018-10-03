@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Echouage Forms helper.
+ * Grounding Forms helper.
  */
 class Cot_formsHelper
 {

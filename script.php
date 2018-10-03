@@ -117,7 +117,7 @@ class com_cot_formsInstallerScript
 		}
 
 		$app = JFactory::getApplication();
-		$txtComponent = JText::_('Echouage Forms');
+		$txtComponent = JText::_('Grounding Forms');
 		$app->enqueueMessage(JText::sprintf('%s %s was successfull.', $txtAction, $txtComponent));
 	}
 
