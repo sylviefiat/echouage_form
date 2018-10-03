@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__grounding_admin` (
+CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `form_references` VARCHAR(50) NOT NULL DEFAULT 'EC2018',
 `id_location` INT(12) NOT NULL,
