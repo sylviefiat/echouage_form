@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `form_references` VARCHAR(50) NOT NULL DEFAULT 'EC2018',
 `id_location` INT(12) NOT NULL,
 `observer_name` VARCHAR(100)  NOT NULL ,
-`observer_address` VARCHAR(200) NOT NULL
+`observer_address` VARCHAR(200) NOT NULL,
 `observer_tel` VARCHAR(100)  NOT NULL ,
 `observer_email` VARCHAR(100)  NOT NULL ,
 `informant_name` VARCHAR(100) NOT NULL,
