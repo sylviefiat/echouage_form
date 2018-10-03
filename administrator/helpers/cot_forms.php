@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Cot forms helper.
+ * Echouage Forms helper.
  */
 class Cot_formsHelper
 {
