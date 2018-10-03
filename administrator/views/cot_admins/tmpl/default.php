@@ -291,7 +291,6 @@ if (!empty($this->extra_sidebar)) {
 												<?php endif; ?>
 											</td>
 											<td>
-
 												<?php echo $item->observer_address; ?>
 											</td>
 											<td>

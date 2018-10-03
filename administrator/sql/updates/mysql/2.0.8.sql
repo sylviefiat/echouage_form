@@ -1,4 +1,4 @@
-ALTER TABLE `#__cot_admin` ADD `id_location` VARCHAR(50) NOT NULL AFTER `id`;
+ALTER TABLE `#__cot_admin` ADD `id_location` INT(12) NOT NULL AFTER `id`;
 ALTER TABLE `#__cot_admin` ADD `form_references` VARCHAR(50) NOT NULL AFTER `id`;
 
 ALTER TABLE `#__cot_admin` ADD `informant_name` VARCHAR(100) NOT NULL AFTER `observer_email`;
@@ -45,7 +45,6 @@ ALTER TABLE `#__cot_admin` ADD `observation_death` VARCHAR(100) NOT NULL AFTER `
 ALTER TABLE `#__cot_admin` CHANGE `observation_spaces` `observation_spaces` VARCHAR(100) NOT NULL AFTER `observation_number`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_spaces_identification` `observation_spaces_identification` VARCHAR(100) NOT NULL AFTER `observation_spaces`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_sex` `observation_sex` VARCHAR(100) NOT NULL AFTER `observation_spaces_identification`;
-ALTER TABLE `#__cot_admin` CHANGE `observation_sex` `observation_sex` VARCHAR(100) NOT NULL AFTER `observation_spaces_identification`;
 ALTER TABLE `#__cot_admin` ADD `observation_color` VARCHAR(100) NOT NULL AFTER `observation_sex`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_caudal` `observation_caudal` VARCHAR(50) NOT NULL AFTER `observation_color`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_abnormalities` `observation_abnormalities` VARCHAR(50) NOT NULL AFTER `observation_caudal`;
@@ -53,10 +52,9 @@ ALTER TABLE `#__cot_admin` CHANGE `observation_size` `observation_size` VARCHAR(
 ALTER TABLE `#__cot_admin` ADD `observation_alive` VARCHAR(100) NOT NULL AFTER `observation_datetime_death`;
 ALTER TABLE `#__cot_admin` CHANGE `observation_state_decomposition` `observation_state_decomposition` VARCHAR(100) NOT NULL AFTER `observation_datetime_death`;
 
-ALTER TABLE cetace_cot_admin ADD observation_capture_traces VARCHAR(50) NOT NULL AFTER observation_abnormalities;
-ALTER TABLE cetace_cot_admin ADD catch_indices VARCHAR(100) NOT NULL AFTER observation_capture_traces;
+ALTER TABLE cetace_cot_admin ADD `observation_capture_traces` VARCHAR(50) NOT NULL AFTER `observation_abnormalities`;
+ALTER TABLE cetace_cot_admin ADD `catch_indices` VARCHAR(100) NOT NULL AFTER `observation_capture_traces`;
 
-ALTER TABLE `#__cot_admin` DROP `observation_state`; 
 ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_death` `observation_datetime_death` DATE NULL;
 ALTER TABLE `#__cot_admin` CHANGE `observation_datetime_release` `observation_datetime_release` DATE NULL;
 

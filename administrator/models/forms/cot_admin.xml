@@ -278,8 +278,8 @@
 			 description="OBSERVATION_LOWER_LEFT_DESC"
 			 labelclass="control-label"
 			 type="text"/>
-	<field name="observation_base_diametre"
-			alias="observation_base_diametre"
+	<field name="observation_teeth_base_diametre"
+			alias="observation_teeth_base_diametre"
 			label="OBSERVATION_BASE_DIAMETRE"
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
@@ -297,8 +297,8 @@
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_HEIGHT_DESC"
 			type="text"/>
-	<field name="observation_baleen_base_diametre"
-			alias="observation_baleen_base_diametre"
+	<field name="observation_baleen_base_height"
+			alias="observation_baleen_base_height"
 			label="OBSERVATION_BALEEN_BASE_DIAMETRE"
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
