@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Grounding Forms helper.
+ * Stranding Forms helper.
  */
 class Cot_formsHelper
 {

@@ -117,7 +117,7 @@ class com_cot_formsInstallerScript
 		}
 
 		$app = JFactory::getApplication();
-		$txtComponent = JText::_('Grounding Forms');
+		$txtComponent = JText::_('Stranding Forms');
 		$app->enqueueMessage(JText::sprintf('%s %s was successfull.', $txtAction, $txtComponent));
 	}
 

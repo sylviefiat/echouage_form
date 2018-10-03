@@ -98,13 +98,61 @@ class Cot_formsModelCot_admins extends JModelList {
         return parent::getItems();
     }
 
-    public function getCsv()
+public function getCsv()
     {
       $this->populateState();
       $db = $this->getDbo();
 
       $cols = array_keys($db->getTableColumns('#__cot_admin'));
-      for($cptr=1; $cptr<5; $cptr++){ array_pop($cols); }
+
+      // Count the columns number
+      $nb_columns = count($cols); 
+
+      // Delete the columns header
+      for($cptr=0; $cptr<$nb_columns; $cptr++){ array_pop($cols); }
+      
+      array_push($cols, 'Id', 'Référence', 'Id_location', 'Observateur', 'Informateur', 'Espèce', 'Date_examen', 'Année', 'Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Observations', 'Prélèvements', 'Stockage_lieu');
+
+      
+
+      // New field's index
+      $id = array_search('Id', $cols);
+      $id_location = array_search('Id_location', $cols);
+      $spaces = array_search('Espèce', $cols);
+      $date = array_search('Date_examen', $cols);
+      $year = array_search('Année', $cols);
+      $country = array_search('Collectivité', $cols);
+      $dpt = array_search('Dpt', $cols);
+      $region = array_search('Commune', $cols);
+      $place = array_search('Lieu', $cols);
+      $lat = array_search('Position_latitude', $cols);
+      $long = array_search('Postion_longitude', $cols);
+      $number = array_search('Nombre', $cols);
+      $sex = array_search('Sexe', $cols);
+      $size = array_search('Longueur', $cols);
+      $precision = array_search('Précision', $cols);
+      $dcc = array_search('DCC', $cols);
+      $informant = array_search('Informateur', $cols);
+      $observer = array_search('Observateur', $cols);
+      $observations = array_search('Observations', $cols);
+      $levies = array_search('Prélèvements', $cols);
+      $stock = array_search('Stockage_lieu', $cols);
+
+      $ob_name = array_search('observer_name', $cols);
+      $ob_address = array_search('observer_address', $cols);
+      $ob_tel = array_search('observer_tel', $cols);
+      $ob_email = array_search('observer_email', $cols);
+
+      $ob_lat = array_search('observer_latitude', $cols);
+      $ob_long = array_search('observer_longitude', $cols);
+
+      // Changement d'index pour que les nouveaux champs soient bien placés
+      $cols = $this->change_key( $cols, $lat, $ob_lat );
+      $cols = $this->change_key( $cols, $long, $ob_long );
+
+      // nettoyage des variables à la fin de leur utilisation
+      unset($lat, $long, $ob_lat, $ob_long);
+
       $items = $db->setQuery($this->getListQuery())->loadObjectList();
       $csv =  fopen('php://output', 'w');
       fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
@@ -113,6 +161,24 @@ class Cot_formsModelCot_admins extends JModelList {
       foreach($items as $line){
         $in = (array) $line;
         for($cptr=1; $cptr<5; $cptr++){ array_pop($in); }
+
+        // déplacement des données
+          $lat =  $in['observation_latitude'];
+          $long = $in['observation_longitude'];
+          $ob_lat = $in['Position_latitude'];
+          $ob_long = $in['Postion_longitude'];
+
+        // Echange des données des champs spécifier
+          $in['Position_latitude'] = $lat;
+          $in['Postion_longitude'] = $long;
+          $in['observation_latitude'] = $ob_lat;
+          $in['observation_longitude'] = $ob_long;
+        // Fin: Echange des données
+
+        // nettoyage des variables à la fin de leur utilisation
+            unset($num, $culled, $lat_dmd, $long_dmd, $remarks);
+
+
         fputcsv($csv, (array) $in);
       }
 
