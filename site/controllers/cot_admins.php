@@ -27,10 +27,27 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 		return $model;
 	}
 
-	public function export()
+		// Sample export
+	public function sampleExport()
 	{
 		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
-		$this->getModel()->getCsv();
+		$this->getModel()->sampleGetCsv();
+		header('Content-type: text/csv; charset=utf-8');
+		header("Content-Disposition: attachment; filename=" . $file_name . "");
+		//header("Content-type: application/octet-stream");
+		//header("Content-Disposition: attachment; filename=" . $file_name . ".xls");
+		//header("Pragma: no-cache");
+		header("Expires: 0");
+		header('Cache-Control: no-cache'); 
+		//header("Lacation: excel.htm?id=yes");	
+		jexit();
+	}
+
+	// Extended export
+	public function extendedExport()
+	{
+		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
+		$this->getModel()->extendedGetCsv();
 		header('Content-type: text/csv; charset=utf-8');
 		header("Content-Disposition: attachment; filename=" . $file_name . "");
 		//header("Content-type: application/octet-stream");

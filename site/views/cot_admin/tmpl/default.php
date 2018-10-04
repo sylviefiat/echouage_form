@@ -112,19 +112,21 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 						<table class="table table-user-information">
 							<tbody>
 								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER_NAME'); ?>: </td>
+									<th rowspan="4"> <?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER') ?></th>
+								</tr>
+								<tr>
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_NAME'); ?>: </td>
 									<td><?php echo $this->item->observer_name; ?></td>
-								</tr>
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER_ADDRESS'); ?>: </td>
+								
+								
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_ADDRESS'); ?>: </td>
 									<td><?php echo $this->item->observer_address; ?></td>
-								</tr>
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER_TEL'); ?>: </td>
+								
+								
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_TEL'); ?>: </td>
 									<td><?php echo $this->item->observer_tel; ?></td>
-								</tr>
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVER_EMAIL'); ?>: </td>
+								
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_EMAIL'); ?>: </td>
 									<td><?php echo $this->item->observer_email; ?></td>
 								</tr>
 							</tbody>
@@ -138,19 +140,23 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 						<table class="table table-user-information">
 							<tbody>
 								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT_NAME'); ?>: </td>
+									<th rowspan="4"> <?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT') ?></th>
+								</tr>
+								<tr>
+									
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_NAME'); ?>: </td>
 									<td><?php echo $this->item->informant_name; ?></td>
-								</tr>
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT_ADDRESS'); ?>: </td>
+								
+								
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_ADDRESS'); ?>: </td>
 									<td><?php echo $this->item->informant_address; ?></td>
-								</tr>
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT_TEL'); ?>: </td>
+								
+								
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_TEL'); ?>: </td>
 									<td><?php echo $this->item->informant_tel; ?></td>
-								</tr>
-								<tr>
-									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_INFORMANT_EMAIL'); ?>: </td>
+								
+								
+									<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_EMAIL'); ?>: </td>
 									<td><?php echo $this->item->informant_email; ?></td>
 								</tr>
 							</tbody>

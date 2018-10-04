@@ -92,6 +92,11 @@ defined('_JEXEC') or die;
 	<?php echo JText::_("COM_COT_FORMS_ADD_ITEM"); ?></a>
 	&nbsp;
 	<?php if ($show): ?>
-		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.export'); ?>">
-			<?php echo JText::_("COM_COT_FORMS_EXPORT_ITEM"); ?></a>
+		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.sampleExport'); ?>">
+			<?php echo JText::_("COM_COT_FORMS_SAMPLE_EXPORT_ITEM"); ?></a>
+		<?php endif; ?>
+	&nbsp;
+	<?php if ($show): ?>
+		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.extendedExport'); ?>">
+			<?php echo JText::_("COM_COT_FORMS_EXTENDED_EXPORT_ITEM"); ?></a>
 		<?php endif; ?>
