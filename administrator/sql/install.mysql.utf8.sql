@@ -42,12 +42,12 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `observation_capture_traces` VARCHAR(50) NOT NULL,
 `catch_indices` VARCHAR(100) NOT NULL,
 `observation_death` VARCHAR(100) NOT NULL,
-`observation_datetime_death` DATE NOT NULL,
+`observation_datetime_death` VARCHAR(100) NOT NULL,
 `observation_state_decomposition` VARCHAR(100) NOT NULL,
 `levies_protocole` VARCHAR(100) NOT NULL,
 `label_references` VARCHAR(250) NOT NULL,
 `observation_alive` VARCHAR(100) NOT NULL,
-`observation_datetime_release` DATE NOT NULL,
+`observation_datetime_release` VARCHAR(100) NOT NULL,
 `observation_tissue_removal` VARCHAR(200) NOT NULL,
 `remarks` TEXT NOT NULL,
 `localisation` POINT NOT NULL ,
@@ -64,3 +64,6 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 CREATE TRIGGER `#__trig_cot_admin_update` BEFORE UPDATE ON `#__cot_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
 
+CREATE TRIGGER `#__trig_cot_admin_year` AFTER INSERT ON `#__cot_admin`
+FOR EACH ROW BEGIN
+UPDATE `#__cot_admin` SET `observation_year` = YEAR(`observation_datetime`) WHERE `id` = NEW.id;

@@ -8,7 +8,7 @@
     <authorEmail>sylvie.fiat@ird.fr</authorEmail>
     <authorUrl>http://umr-entropie.ird.nc</authorUrl>
     <version>2.0.7</version>
-    <description>OREANET forms</description>
+    <description>OP_CETACE forms</description>
     
     <install> <!-- Runs on install -->
         <sql>
