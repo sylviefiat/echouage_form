@@ -67,3 +67,4 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 CREATE TRIGGER `#__trig_cot_admin_year` AFTER INSERT ON `#__cot_admin`
 FOR EACH ROW BEGIN
 UPDATE `#__cot_admin` SET `observation_year` = YEAR(`observation_datetime`) WHERE `id` = NEW.id;
+END;
