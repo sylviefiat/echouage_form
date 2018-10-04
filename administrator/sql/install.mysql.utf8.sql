@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `informant_address` VARCHAR(200) NOT NULL,
 `informant_tel` VARCHAR(100) NOT NULL,
 `informant_email` VARCHAR(100) NOT NULL,
-`observation_datetime` VARCHAR(100) NOT NULL ,
+`observation_datetime` DATE NOT NULL ,
+`observation_year` VARCHAR(100) NOT NULL ,
+`observation_month` VARCHAR(100) NOT NULL,
 `observation_location` TEXT NOT NULL ,
 `observation_localisation` VARCHAR(100) NOT NULL ,
 `observation_region` VARCHAR(100) NOT NULL ,
@@ -61,3 +63,13 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 
 CREATE TRIGGER `#__trig_cot_admin_update` BEFORE UPDATE ON `#__cot_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TRIGGER `#__trig_cot_admin_year` AFTER INSERT ON `#__cot_admin`
+FOR EACH ROW BEGIN
+UPDATE `#__cot_admin` SET `observation_year` = YEAR(NOW()) WHERE `id` = NEW.id
+END;
+
+CREATE TRIGGER `#__trig_cot_admin_month` AFTER INSERT ON `#__cot_admin`
+FOR EACH ROW BEGIN
+UPDATE `#__cot_admin` SET `observation_month` = MONTH(NOW()) WHERE `id` = NEW.id
+END;

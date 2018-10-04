@@ -68,8 +68,6 @@ defined('_JEXEC') or die;
 						<?php echo JHtml::_('form.token'); ?>
 					</form>
 				<?php } ?>
-				
-				
 			</li>
 		<?php endforeach; ?>
 		<?php
@@ -92,11 +90,12 @@ defined('_JEXEC') or die;
 	<?php echo JText::_("COM_COT_FORMS_ADD_ITEM"); ?></a>
 	&nbsp;
 	<?php if ($show): ?>
-		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.sampleExport'); ?>">
+		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.exportS()'); ?>">
 			<?php echo JText::_("COM_COT_FORMS_SAMPLE_EXPORT_ITEM"); ?></a>
 		<?php endif; ?>
+
 	&nbsp;
 	<?php if ($show): ?>
-		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.extendedExport'); ?>">
+		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admins.exportE()'); ?>">
 			<?php echo JText::_("COM_COT_FORMS_EXTENDED_EXPORT_ITEM"); ?></a>
 		<?php endif; ?>

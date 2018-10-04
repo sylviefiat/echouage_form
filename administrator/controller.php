@@ -26,7 +26,7 @@ class Cot_formsController extends JControllerLegacy
 	{
 		require_once JPATH_COMPONENT.'/helpers/cot_forms.php';
 
-		$view		= JFactory::getApplication()->input->getCmd('view', 'cot_admins');
+		$view = JFactory::getApplication()->input->getCmd('view', 'cot_admins');
         JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);
