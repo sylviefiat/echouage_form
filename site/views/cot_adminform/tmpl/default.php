@@ -47,20 +47,20 @@ fieldset.radio label{
 <script type="text/javascript">
 
  function getScript(url,success) {
-  var script = document.createElement('script');
-  script.src = url;
-  var head = document.getElementsByTagName('head')[0],
-  done = false;
-        // Attach handlers for all browsers
-        script.onload = script.onreadystatechange = function() {
-          if (!done && (!this.readyState
-            || this.readyState == 'loaded'
-            || this.readyState == 'complete')) {
-            done = true;
-          success();
-          script.onload = script.onreadystatechange = null;
-          head.removeChild(script);
-        }
+    var script = document.createElement('script');
+    script.src = url;
+    var head = document.getElementsByTagName('head')[0],
+    done = false;
+    // Attach handlers for all browsers
+    script.onload = script.onreadystatechange = function() {
+      if (!done && (!this.readyState
+        || this.readyState == 'loaded'
+        || this.readyState == 'complete')) {
+        done = true;
+      success();
+      script.onload = script.onreadystatechange = null;
+      head.removeChild(script);
+    }
       };
       head.appendChild(script);
     }
@@ -88,8 +88,29 @@ fieldset.radio label{
       }
     }
 
-      /*Fonction ajout et suppression de champs version 2*/
 
+    function choixUser(btn,champ1,champ2) 
+    { 
+      if (btn.id == "dead"){ 
+      display(champ1,true); 
+      display(champ2,false); 
+      } 
+      else if (btn.id == "alive"){ 
+      display(champ2,true); 
+      display(champ1,false); 
+      } 
+    } 
+
+    function display(div, affiche) { 
+        if (affiche){ 
+        document.getElementById(div).style.display="block"; 
+        } 
+        else { 
+        document.getElementById(div).style.display="none"; 
+        } 
+    }
+
+      /*Fonction ajout et suppression de champs version 2*/
       function create_field(i){ 
         var obj = document.getElementById('field'); 
         var field = obj.cloneNode(true);
@@ -255,6 +276,7 @@ fieldset.radio label{
     </div>
   </div>
   <!--Number-->
+  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_number'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
@@ -366,24 +388,39 @@ fieldset.radio label{
       </div>
     </div>
   </div>
+<!--Sate-->
+<div class="row">
+  <div class="col-xs-12">
+      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_STATE_DESC');?>">
+        <?php echo JText::_('OBSERVATION_STATE');?>
+      </label>
+    </div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-10">
+        <div class="radio">
+          <span>
+            <?php echo JText::_("OBSERVATION_STATE_A")?>
+            <input id ="dead" type="radio" name="mammal state" class="control-label" value="mort" onclick="choixUser(this,'dead_field','alive_field')">
+          </span>
+          <span>
+            <?php echo JText::_("OBSERVATION_STATE_B")?>
+            <input id ="alive" type="radio" name="mammal state" class="control-label" value="vivant" onclick="choixUser(this,'dead_field','alive_field')">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <!--Dead animal-->
-  <div class="row">
+  <div class="row" id="dead_field" style="display: none;">
     <div class="col-xs-12">
       <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_DEAD_ANIMAL_DESC');?>">
         <?php echo JText::_('OBSERVATION_DEAD_ANIMAL');?>
       </label>
     </div>
-    <!--<div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="input-group">
-       <span class="input-group-addon">
-        <input id="jform_counting_method_timed_swim_chbx" class="control-label" type="checkbox" name="counting_method_timed_swim" onclick="enable_timed_swim(this.checked)">
-      </span>
-      <?php //echo $this->form->getInput('observation_death'); ?>
-    </div>
-  </div>-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
-      <?php //echo $this->form->getLabel('observation_death'); ?>
       <div class="col-xs-offset-3 col-xs-10">
         <div class="radio">
           <label><?php echo $this->form->getInput('observation_death'); ?></label>
@@ -423,7 +460,7 @@ fieldset.radio label{
   </div>
 </div>
 <!--Living animal-->
-<div class="row">
+<div class="row" id="alive_field" style="display: none;">
   <div class="row">
     <div class="col-xs-12">
       <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_LIVING_ANIMAL_DESC');?>">
@@ -432,7 +469,6 @@ fieldset.radio label{
     </div>
     <div class="col-lg-6 col-md-6 col-xs-12">
       <div class="form-group">
-        <?php //echo $this->form->getLabel('observation_alive'); ?>
         <div class="col-xs-offset-2 col-xs-10">
           <div class="checkbox">
             <label><?php echo $this->form->getInput('observation_alive'); ?></label>
@@ -450,7 +486,7 @@ fieldset.radio label{
     </div>
   </div>
 </div>
-<!--Tissue removal-->
+<!--Tissue removal alive-->
 <div class="row">
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
@@ -463,6 +499,20 @@ fieldset.radio label{
     </div>
   </div>
 </div>
+<!--Tissue removal death
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php //echo $this->form->getLabel('observation_tissue_removal'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="checkbox">
+          <label><?php //echo $this->form->getInput('observation_tissue_removal'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
 <!--Measures
 <div class="row">
   

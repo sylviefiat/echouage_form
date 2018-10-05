@@ -27,7 +27,7 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 		return $model;
 	}
 
-	public function exportS()
+	public function sampleExport()
 	{
 		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
 	    $this->getModel()->getCsv(0);
@@ -42,7 +42,7 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 		jexit();
 	}
 
-	public function exportE()
+	public function extendedExport()
 	{
 		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
 		$this->getModel()->getCsv(1);

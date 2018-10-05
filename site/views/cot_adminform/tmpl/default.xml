@@ -13,7 +13,7 @@
 			alias="email_admin"
 			label="COM_COT_FORMS_EMAIL_ADMIN_FIELD_LABEL"
 			require="true"
-                	description="COM_COT_FORMS_EMAIL_ADMIN_FIELD_LABEL_FORM"
+            description="COM_COT_FORMS_EMAIL_ADMIN_FIELD_LABEL_FORM"
 			type="email"> 
 	    </field>
             <field

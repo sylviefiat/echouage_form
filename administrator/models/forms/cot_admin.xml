@@ -334,8 +334,7 @@
 			label="OBSERVATION_ABNORMALITIES"
 			description="OBSERVATION_ABNORMALITIES_DESC"
 			type="radio"
-			required="true"
-			multiple="false" >
+			required="true" >
 			<option value="oui">JYES</option>
 			<option value="non">JNO</option>
 	</field>

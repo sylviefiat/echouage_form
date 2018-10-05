@@ -132,6 +132,17 @@
 			description="OBSERVATION_DAY_DESC"
 			hint="OBSERVATION_DAY"
 			type="text"/>
+	-->
+
+	<field name="observation_hours"
+			alias="observation_hours"
+			class="form-control"
+			label="OBSERVTION_HOURS"
+			description="OBSERVTION_HOURS_DESC"
+			hint="OBSERVTION_HOURS"
+			type="text"
+			default="CURENT_TIME"
+		/>
 
 	<field name="observation_month"
 			alias="observation_month"
@@ -148,7 +159,6 @@
 			description="OBSERVATION_CULLED_DESC"
 			hint="OBSERVATION_YEAR"
 			type="text"/>
-		-->
 
 	<field name="observation_location"
 			alias="observation_location"
@@ -440,14 +450,14 @@
 			description="CATCH_INDICES_DESC"
 			hint="CATCH_INDICES"
 			type="textarea"/>
+
 	<!--Death-->
 	<field name="observation_death"
 			alias="observation_death"
 			class="btn-group"
 			label="OBSERVATION_DEATH"
 			description="OBSERVATION_DEATH_DESC"
-			type="radio"
-			multiple="false" >
+			type="radio">
 			<option value="mort avant l'arrivée de l'observateur">OBSERVATION_DEATH_A</option>
 			<option value="mort pendant l'intervention de l'observateur">OBSERVATION_DEATH_B</option>
 			<option value="euthanasié">OBSERVATION_DEATH_C</option>
@@ -522,70 +532,6 @@
 			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
-
-
-<!--
-	<field name="observation_culled"
-			alias="observation_culled"
-			class="form-control"
-			label="OBSERVATION_CULLED"
-			labelclass="control-label"
-			description="OBSERVATION_CULLED_DESC"
-			hint="OBSERVATION_CULLED"
-			type="text"/>
-
-	<field name="observation_method"
-			alias="observation_method"
-			class="form-control"
-			label="OBSERVATION_METHOD"
-			description="OBSERVATION_METHOD_DESC"
-			type="checkboxes"
-			required="true"
-			multiple="true" >
-		<option value="snorkelling">OBSERVATION_METHOD_A</option>
-		<option value="scuba diving">OBSERVATION_METHOD_B</option>
-	</field>
-
-	<field name="counting_method_timed_swim"
-			alias="counting_method_timed_swim"
-			class="form-control"
-			type="text"
-			labelclass="control-label"
-			label="COUNTING_METHOD_TIMED_SWIM"
-			description="COUNTING_METHOD_TIMED_SWIM_DESC"
-			hint="COUNTING_METHOD_TIMED_SWIM"/>
-
-	<field name="counting_method_distance_swim"
-			alias="counting_method_distance_swim"
-			class="form-control"
-			type="text"
-			labelclass="control-label"
-			label="COUNTING_METHOD_DISTANCE_SWIM"
-			description="COUNTING_METHOD_DISTANCE_SWIM_DESC"
-			hint="COUNTING_METHOD_DISTANCE_SWIM"/>
-
-	<field name="counting_method_other"
-			alias="counting_method_other"
-			class="form-control"
-			type="text"
-			labelclass="control-label"
-			label="COUNTING_METHOD_OTHER"
-			description="COUNTING_METHOD_OTHER_DESC"
-			hint="COUNTING_METHOD_OTHER"/>
-
-	<field name="depth_range"
-			alias="depth_range"
-			class="form-control"
-			label="depth_range"
-			description="depth_range_DESC"
-			type="checkboxes"
-			required="true"
-			multiple="true" >
-		<option value="shallow">DEPTH_RANGE_A</option>
-		<option value="medium">DEPTH_RANGE_B</option>
-		<option value="deep">DEPTH_RANGE_C</option>
-	</field>
--->
 
 	<field name="remarks"
 			alias="remarks"

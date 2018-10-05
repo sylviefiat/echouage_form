@@ -90,7 +90,6 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
 					</div>
-
 					<!--References Id_location-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('references'); ?></div>
@@ -100,7 +99,6 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="control-label"><?php echo $this->form->getLabel('id_location'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('id_location'); ?></div>
 					</diV>
-
 					<!--Observer contacts-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('observer_name'); ?></div>
@@ -119,7 +117,6 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="control-label"><?php echo $this->form->getLabel('observer_email'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observer_email'); ?></div>
 					</div>
-
 					<!--Informant contacts-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('informant_name'); ?></div>
@@ -237,15 +234,15 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="controls"><?php echo $this->form->getInput('catch_indices'); ?></div>
 					</div>
 
-		<div class="control-group">
-			<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
-			<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
-		</div>
+					<div class="control-group">
+						<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
+					</div>
 
-		<div class="control-group">
-			<div class="control-label"><?php echo $this->form->getLabel('admin_validation'); ?></div>
-			<div class="controls"><?php echo $this->form->getInput('admin_validation'); ?></div>
-		</div>
+					<div class="control-group">
+						<div class="control-label"><?php echo $this->form->getLabel('admin_validation'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('admin_validation'); ?></div>
+					</div>
 
 	</fieldset>
 </div>
