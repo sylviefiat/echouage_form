@@ -173,7 +173,7 @@ class Cot_formsModelCot_admins extends JModelList {
         return fclose($csv);
 
       }else {
-          array_push($cols, 'Id', 'Référence', 'Id_location', 'Espèce', 'Sigle or mass stranding', '','Date_examen', 'Collectivité', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Commentaires')
+          array_push($cols, 'Id', 'Référence', 'Id_location', 'Espèce', 'Single or mass stranding', '','Date_examen', 'Collectivité', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Commentaires');
           $items = $db->setQuery($this->getListQuery())->loadObjectList();
           $csv =  fopen('php://output', 'w');
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
