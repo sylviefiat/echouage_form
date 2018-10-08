@@ -108,7 +108,7 @@
 			label="OBSERVATION_DAY"
 			description="OBSERVATION_DAY_DESC"
 			type="cktext"/>
-
+-->
 	<field name="observation_month"
 			alias="observation_month"
 			label="OBSERVATION_MONTH"
@@ -118,9 +118,9 @@
 	<field name="observation_year"
 			alias="observation_year"
 			label="OBSERVATION_YEAR"
-			description="OBSERVATION_CULLED_DESC"
+			description="OBSERVATION_YEAR_DESC"
 			type="cktext"/>
--->
+
 	<field 	name="observation_location"
 			alias="observation_location"
 			label="OBSERVATION_LOCATION"
@@ -253,7 +253,7 @@
 			multiple="false">
 			<option value="Bec">OBSERVATION_FURROWS</option>
 	</field>
-	<!--Dents-->
+	<!--Tooth-->
 	<field name="nb_teeth_upper_right"
 			 alias="nb_teeth_upper_right"
 			 label="OBSERVATION_UPPER_RIGHT"
@@ -280,11 +280,11 @@
 			 type="text"/>
 	<field name="observation_teeth_base_diametre"
 			alias="observation_teeth_base_diametre"
-			label="OBSERVATION_BASE_DIAMETRE"
+			label="OBSERVATION_BASE_DIAMETRE_LBL"
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
 			type="text"/>
-	<!--Fanons-->
+	<!--Baleen-->
 	<field name="observation_baleen_color"
 			alias="observation_baleen_color"
 			label="OBSERVATION_BALEEN_COLOR"

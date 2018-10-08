@@ -311,7 +311,7 @@
 			<option value="présente">OBSERVATION_CAUDAL_A</option>
 			<option value="absente">OBSERVATION_CAUDAL_B</option>
 	</field>
-	<!--Bec-->
+	<!--Beak-->
 	<field name="observation_beak"
 			alias="observation_beak"
 			class="form-control"
@@ -319,9 +319,9 @@
 			description="OBSERVATION_BEAK_DESC"
 			type="checkboxes" 
 			multiple="false">
-			<option value="Bec">OBSERVATION_BEAK_A</option>
+			<option value="Bec">OBSERVATION_BEAK</option>
 	</field>
-	<!--Sillons-->
+	<!--Furrows-->
 	<field name="observation_furrows"
 			alias="observation_furrows"
 			class="form-control"
@@ -329,9 +329,9 @@
 			description="OBSERVATION_FURROWS_DESC"
 			type="checkboxes" 
 			multiple="false">
-			<option value="Bec">OBSERVATION_FURROWS</option>
+			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
 	</field>
-	<!--Dents-->
+	<!--Tooth-->
 	<field name="nb_teeth_upper_right"
 			 alias="nb_teeth_upper_right"
 			 class="form-control"
@@ -367,12 +367,12 @@
 	<field name="observation_teeth_base_diametre"
 			alias="observation_teeth_base_diametre"
 			class="form-control"
-			label="OBSERVATION_BASE_DIAMETRE"
+			label="OBSERVATION_BASE_DIAMETRE_LBL"
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
-			hint="OBSERVATION_BASE_DIAMETRE"
+			hint="OBSERVATION_BASE_DIAMETRE_LBL"
 			type="text"/>
-	<!--Fanons-->
+	<!--Baleen-->
 	<field name="observation_baleen_color"
 			alias="observation_baleen_color"
 			class="form-control"
