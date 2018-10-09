@@ -545,6 +545,17 @@
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
 
+	<!--Stockage location-->
+	<field name="observation_location_stock"
+			alias="observation_location_stock"
+			class="form-control"
+			label="OBSERVATION_LOCATION_STOCK"
+			labelclass="control-label"
+			description="OBSERVATION_LOCATION_STOCK_DESC"
+			hint="OBSERVATION_LOCATION_STOCK"
+			type="text"
+			required="true"/>
+
 	<field name="remarks"
 			alias="remarks"
 			class="form-control"

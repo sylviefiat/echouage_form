@@ -1,5 +1,4 @@
 CREATE TABLE IF NOT EXISTS `#__cot_admin` (
-`form_references` VARCHAR(50) NOT NULL,
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `id_location` INT(12) NOT NULL,
 `observer_name` VARCHAR(100)  NOT NULL ,
@@ -48,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `observation_alive` VARCHAR(100) NOT NULL,
 `observation_datetime_release` VARCHAR(100) NOT NULL,
 `observation_tissue_removal` VARCHAR(200) NOT NULL,
+`observation_location_stock` VARCHAR(100) NOT NULL,
 `remarks` TEXT NOT NULL,
 `localisation` POINT NOT NULL ,
 `created_by` INT(11)  NOT NULL ,

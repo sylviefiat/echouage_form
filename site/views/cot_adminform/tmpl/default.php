@@ -676,7 +676,15 @@ function transpo(i) {
       </div>
     </div>
   </div>
-
+  <!--Stockage location-->
+  <div class="row">
+   <div class="col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
+   <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="input-group">
+      <?php echo $this->form->getInput('observation_location_stock'); ?>
+    </div>
+  </div>
+</div>
   <!--Remarks-->
   <div class="row">
    <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>

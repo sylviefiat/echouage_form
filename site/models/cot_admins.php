@@ -58,7 +58,7 @@ class Cot_formsModelCot_admins extends JModelList {
      * @return	JDatabaseQuery
      * @since	1.6
      */
-    protected function getListQuerySample() {
+    protected function getListQuerySimple() {
       // Create a new query object.
       $db = $this->getDbo();
       $query = $db->getQuery(true);
@@ -69,7 +69,7 @@ class Cot_formsModelCot_admins extends JModelList {
                     'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0",id_location),
                                     a.observation_spaces,
                                     a.observation_datetime,
-                                    Year(observation_datetime) ,
+                                    Year(observation_datetime),
                                     a.observation_country,
                                     988,
                                     a.observation_region,
@@ -85,9 +85,7 @@ class Cot_formsModelCot_admins extends JModelList {
                                     CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
                                     a.catch_indices,
                                     a.observation_tissue_removal,
-                                    a.form_references,
-                                    a.observer_name,
-                                    a.id,
+                                    a.observation_location_stock,
                                     a.admin_validation'
 
             )
@@ -184,14 +182,15 @@ class Cot_formsModelCot_admins extends JModelList {
       if($var == 0) {
           array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
 
-          $items = $db->setQuery($this->getListQuerySample())->loadObjectList();
+          $items = $db->setQuery($this->getListQuerySimple())->loadObjectList();
           $csv =  fopen('php://output', 'w');
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
           fputcsv($csv, $cols);
 
           foreach($items as $line){
             $in = (array) $line;
-            for($i=0; $i<=3; $i++){array_pop($in);}
+            array_pop($in);
+            array_pop($in);
             fputcsv($csv, (array) $in);
           }
         return fclose($csv);
