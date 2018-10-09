@@ -66,13 +66,12 @@ class Cot_formsModelCot_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
             $this->getState(
-                    'list.select', 'a.id,
-                                    a.form_references,
-                                    a.id_location,
+                    'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0",id_location),
                                     a.observation_spaces,
                                     a.observation_datetime,
-                                    Year(observation_datetime),
+                                    Year(observation_datetime) ,
                                     a.observation_country,
+                                    988,
                                     a.observation_region,
                                     a.observation_localisation,
                                     a.observation_latitude,
@@ -88,6 +87,7 @@ class Cot_formsModelCot_admins extends JModelList {
                                     a.observation_tissue_removal,
                                     a.form_references,
                                     a.observer_name,
+                                    a.id,
                                     a.admin_validation'
 
             )
@@ -182,7 +182,7 @@ class Cot_formsModelCot_admins extends JModelList {
       for($cptr=0; $cptr<$nb_columns; $cptr++){ array_pop($cols); }
 
       if($var == 0) {
-          array_push($cols, 'Id', 'Référence', 'Id_location', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements');
+          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
 
           $items = $db->setQuery($this->getListQuerySample())->loadObjectList();
           $csv =  fopen('php://output', 'w');
@@ -191,7 +191,7 @@ class Cot_formsModelCot_admins extends JModelList {
 
           foreach($items as $line){
             $in = (array) $line;
-            for($i=0; $i<=2; $i++){array_pop($in);}
+            for($i=0; $i<=3; $i++){array_pop($in);}
             fputcsv($csv, (array) $in);
           }
         return fclose($csv);
