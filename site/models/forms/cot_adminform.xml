@@ -406,7 +406,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
 			hint="OBSERVATION_SIZE"
-			type="text"
+			type="NUMBER"
 			required="true"/>
 
 	<!--Size precision-->

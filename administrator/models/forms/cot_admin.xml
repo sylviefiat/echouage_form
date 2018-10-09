@@ -330,7 +330,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
 			required="true"
-			type="text"
+			type="NUMBER"
 			required="true"/>
 
 	<!--Size precision-->

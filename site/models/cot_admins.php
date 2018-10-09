@@ -119,7 +119,6 @@ class Cot_formsModelCot_admins extends JModelList {
       $query->select(
               $this->getState(
                       'list.select', 'a.id,
-                                      a.form_references,
                                       a.id_location,
                                       Year(observation_datetime),
                                       Month(observation_datetime),
@@ -196,7 +195,7 @@ class Cot_formsModelCot_admins extends JModelList {
         return fclose($csv);
 
       }else {
-          array_push($cols, 'Id', 'References', 'Id_location', 'Year', 'Month', 'Date', 'Location', 'Spaces', 'Head identification', 'Single or mass starnding', 'Number', 'Type', 'Length', 'Levies', 'Sex', 'Evidence for cause of death', 'Contact', 'Origin of information', 'Comment');
+          array_push($cols, 'Id', 'References', 'Id_location', 'Année', 'Mois', 'Date', 'Lieu', 'Espèce', 'Face', 'Echouage isolé ou en masse', 'Nombre', 'Type', 'Longueur', 'Prélèvements', 'Sexe', 'Les cause de la mort', 'Contactes', "Origine de l'information", 'Remarques');
           $items = $db->setQuery($this->getListQuery())->loadObjectList();
           $csv =  fopen('php://output', 'w');
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
