@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `#__cot_admin` (
+`form_references` VARCHAR(50) NOT NULL,
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-`form_references` VARCHAR(50) NOT NULL DEFAULT 'EC2018',
 `id_location` INT(12) NOT NULL,
 `observer_name` VARCHAR(100)  NOT NULL ,
 `observer_address` VARCHAR(200) NOT NULL,
@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `observation_spaces` VARCHAR(100) NOT NULL,
 `observation_spaces_identification` VARCHAR(100) NOT NULL,
 `observation_size` VARCHAR(100) NOT NULL,
+`observation_size_precision` VARCHAR(50) NOT NULL,
 `observation_sex` VARCHAR(100) NOT NULL,
 `observation_color` VARCHAR(100) NOT NULL ,
 `observation_caudal` VARCHAR(50) NOT NULL,

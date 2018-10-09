@@ -5,8 +5,9 @@
 <fieldset 	name="cot_admin.details"
 			label="OBSERVATION_ADMIN_REPORT"
 			printable="true"
-			addfieldpath="/libraries/jdom/jform/fields"
-		>
+			addfieldpath="/libraries/jdom/jform/fields">
+
+	<!--Id-->
 	<field 	name="id"
 		   	alias="id"
 		   	label="ID"
@@ -22,6 +23,7 @@
 			description="REFERENCES_DESC"
 			readonly="true"
 			type="cktext"/>
+
 	<!--Location_ID-->
 	<field 	name="id_location"
 			alias="id_location"
@@ -39,20 +41,17 @@
 			description="OBSERVER_NAME_DESC"
 			required="true"
 			type="cktext"/>
-
 	<field name="observer_address"
 			alias="observer_address"
 			label="OBSERVER_ADDRESS"
 			filter="STRING"
 			description="OBSERVER_ADDRESS_DESC"
 			type="text"/>
-
 	<field 	name="observer_tel"
 			alias="observer_tel"
 			label="OBSERVER_TEL"
 			description="OBSERVER_TEL_DESC"
 			type="tel"/>
-
 	<field 	name="observer_email"
 			alias="observer_email"
 			label="OBSERVER_EMAIL"
@@ -67,25 +66,23 @@
 			description="INFORMANT_NAME_DESC"
 			required="true"
 			type="text"/>
-
 	<field name="informant_address"
 			alias="informant_address"
 			label="INFORMANT_ADDRESS"
 			filter="STRING"
 			description="INFORMANT_ADDRESS_DESC"
 			type="text"/>
-
 	<field 	name="informant_tel"
 			alias="informant_tel"
 			label="INFORMANT_TEL"
 			description="INFORMANT_TEL_DESC"
 			type="tel"/>
-
 	<field 	name="informant_email"
 			alias="informant_email"
 			label="INFORMANT_EMAIL"
 			description="INFORMANT_EMAIL_DESC"
 			type="email"/>
+
 	<!--Date-->
 	<field 	name="observation_datetime"
 			alias="observation_datetime"
@@ -108,7 +105,7 @@
 			label="OBSERVATION_DAY"
 			description="OBSERVATION_DAY_DESC"
 			type="cktext"/>
--->
+
 	<field name="observation_month"
 			alias="observation_month"
 			label="OBSERVATION_MONTH"
@@ -120,14 +117,14 @@
 			label="OBSERVATION_YEAR"
 			description="OBSERVATION_YEAR_DESC"
 			type="cktext"/>
-
+-->
+	<!--Position-->
 	<field 	name="observation_location"
 			alias="observation_location"
 			label="OBSERVATION_LOCATION"
 			filter="STRING"
 			description="OBSERVATION_LOCATION_DESC"
 			type="cktextarea"/>
-
 	<field 	name="observation_localisation"
 			alias="observation_localisation"
 			label="OBSERVATION_PICK"
@@ -136,7 +133,6 @@
 			mode="modal"
 			class="formatted_address"
 			type="ckaddresspicker"/>
-
 	<field 	name="observation_region"
 			alias="region"
 			label="OBSERVATION_REGION"
@@ -144,7 +140,6 @@
 			filter="STRING"
 			class="region"
 			type="cktext"/>
-
 	<field 	name="observation_country"
 			alias="country"
 			label="OBSERVATION_COUNTRY"
@@ -152,7 +147,6 @@
 			filter="STRING"
 			class="country"
 			type="cktext"/>
-
 	<field 	name="observation_country_code"
 			alias="country_code"
 			label="OBSERVATION_COUNTRY_CODE"
@@ -160,7 +154,6 @@
 			filter="STRING"
 			class="country_code"
 			type="cktext"/>
-
 	<field 	name="observation_latitude"
 			alias="latitude"
 			label="OBSERVATION_LATITUDE"
@@ -168,7 +161,6 @@
 			filter="FLOAT"
 			class="latitude"
 			type="cktext"/>
-
 	<field 	name="observation_longitude"
 			alias="longitude"
 			label="OBSERVATION_LONGITUDE"
@@ -184,9 +176,10 @@
 			description="OBSERVATION_STRANDING_TYPE_DESC"
 			type="radio"
 			required="true" >
-			<option value="isolé">OBSERVATION_STRANDING_TYPE_A</option>
-			<option value="en groupe">OBSERVATION_STRANDING_TYPE_B</option>
+			<option value="S">OBSERVATION_STRANDING_TYPE_A</option>
+			<option value="M">OBSERVATION_STRANDING_TYPE_B</option>
 	</field>
+
 	<!--Number-->
 	<field 	name="observation_number"
 			alias="observation_number"
@@ -195,6 +188,7 @@
 			labelclass="control-label"
 			type="cktext"
 			required="true"/>
+
 	<!--Spaces-->
 	<field 	name="observation_spaces"
 		 	alias="observation_spaces"
@@ -203,6 +197,7 @@
 		 	labelclass="control-label"
 		 	type="text"
 		 	required="true"/>
+
  	<!--Spaces identification-->
 	<field 	name="observation_spaces_identification"
 			alias="observation_spaces_identification"
@@ -212,7 +207,9 @@
 			required="true" >
 			<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
 			<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
+			<option value="inconnu">OBSERVATION_SPACES_IDENTIFICATION_C</option>
 	</field>
+
 	<!--Sex-->
 	<field 	name="observation_sex"
 		 	alias="observation_sex"
@@ -221,10 +218,11 @@
 			type="radio"
 			required="true"
 			multiple="false" >
-			<option value="mâle">OBSERVATION_SEX_A</option>
-			<option value="femelle">OBSERVATION_SEX_B</option>
+			<option value="M">OBSERVATION_SEX_A</option>
+			<option value="F">OBSERVATION_SEX_B</option>
 			<option value="inconnu">OBSERVATION_SEX_C</option>
 	</field>
+
 	<!--Encoche médiane à la caudale-->
 	<field name="observation_caudal"
 			alias="observation_caudal"
@@ -234,25 +232,27 @@
 			required="true" >
 			<option value="présente">OBSERVATION_CAUDAL_A</option>
 			<option value="absente">OBSERVATION_CAUDAL_B</option>
+			<option value="inconnu">OBSERVATION_CAUDAL_C</option>
 	</field>
+
 	<!--Bec-->
 	<field name="observation_beak"
 			alias="observation_beak"
 			label="OBSERVATION_BEAK"
 			description="OBSERVATION_BEAK_DESC"
-			type="checkboxes" 
-			multiple="false">
+			type="checkboxes">
 			<option value="bec">OBSERVATION_BEAK_A</option>
 	</field>
+
 	<!--Sillons-->
 	<field name="observation_furrows"
 			alias="observation_furrows"
 			label="OBSERVATION_FURROWS"
 			description="OBSERVATION_FURROWS_DESC"
-			type="checkboxes" 
-			multiple="false">
+			type="checkboxes">
 			<option value="Bec">OBSERVATION_FURROWS</option>
 	</field>
+
 	<!--Tooth-->
 	<field name="nb_teeth_upper_right"
 			 alias="nb_teeth_upper_right"
@@ -284,6 +284,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
 			type="text"/>
+
 	<!--Baleen-->
 	<field name="observation_baleen_color"
 			alias="observation_baleen_color"
@@ -303,15 +304,17 @@
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
 			type="text"/>
+
 	<!--Defenses-->
 	<field name="observation_defenses"
 			alias="observation_defenses"
 			label="OBSERVATION_DEFENSES"
 			labelclass="control-label"
 			description="OBSERVATION_DEFENSES_DESC"
-			type="checkboxes">
-			<option value="Defenses">OBSERVATION_DEFENSES</option>
+			type="radio">
+			<option value="defenses">OBSERVATION_DEFENSES</option>
 	</field>
+
 	<!--Color-->
 	<field 	name="observation_color"
 			alias="observation_color"
@@ -319,6 +322,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_COLOR_DESC"
 			type="text"/>
+
 	<!--Size-->
 	<field 	name="observation_size"
 			alias="observation_size"
@@ -328,6 +332,19 @@
 			required="true"
 			type="text"
 			required="true"/>
+
+	<!--Size precision-->
+	<field name="observation_size_precision"
+			alias="observation_size_precision"
+			label="OBSERVATION_SIZE_PRECISION"
+			labelclass="control-label"
+			description="OBSERVATION_SIZE_PRECISION_DESC"
+			type="radio"
+			required="true">
+			<option value="1">OBSERVATION_SIZE_PRECISION_A</option>
+			<option value="2">OBSERVATION_SIZE_PRECISION_B</option>
+	</field>
+
 	<!--Abnormalities-->
 	<field 	name="observation_abnormalities"
 			alias="observation_abnormalities"
@@ -335,9 +352,11 @@
 			description="OBSERVATION_ABNORMALITIES_DESC"
 			type="radio"
 			required="true" >
-			<option value="oui">JYES</option>
-			<option value="non">JNO</option>
+			<option value="oui">OBSERVATION_ABNORMALITIES_A</option>
+			<option value="non">OBSERVATION_ABNORMALITIES_B</option>
+			<option value="inconnu">OBSERVATION_ABNORMALITIES_C</option>
 	</field>
+
 	<!--Capture traces-->
 	<field 	name="observation_capture_traces"
 			alias="observation_capture_traces"
@@ -347,7 +366,9 @@
 			required="true" >
 			<option value="probable">OBSERVATION_CAPTURE_TRACES_A</option>
 			<option value="certaine">OBSERVATION_CAPTURE_TRACES_B</option>
+			<option value="inconnu">OBSERVATION_CAPTURE_TRACES_C</option>
 	</field>
+
 	<!--Catch indices-->
 	<field 	name="catch_indices"
 			alias="catch_indices"
@@ -355,6 +376,7 @@
 			filter="STRING"
 			description="CATCH_INDICES_DESC"
 			type="textarea"/>
+
 	<!--Death-->
 	<field 	name="observation_death"
 			alias="observation_death"
@@ -365,6 +387,7 @@
 			<option value="mort pendant l'intervention de l'observateur">OBSERVATION_DEATH_B</option>
 			<option value="euthanasié">OBSERVATION_DEATH_C</option>
 	</field>
+
 	<!--Date death-->
 	<field 	name="observation_datetime_death"
 			alias="observation_datetime_death"
@@ -372,6 +395,7 @@
 			description="OBSERVATION_DATE_DEATH_DESC"
 			type="ckcalendar"
 			format="Y-m-d"/>
+
 	<!--State decomposition-->
 	<field 	name="observation_state_decomposition"
 			alias="observation_state_decomposition"
@@ -384,6 +408,7 @@
 			<option value="très putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
 			<option value="restes">OBSERVATION_STATE_DECOMPOSITION_E</option>
 	</field>
+
 	<!--Alive-->
 	<field 	name="observation_alive"
 			alias="observation_alive"
@@ -393,6 +418,7 @@
 			multiple="false">
 			<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
 	</field>
+
 	<!--Date release-->
 	<field 	name="observation_datetime_release"
 			alias="observation_datetime_release"
@@ -400,6 +426,7 @@
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			type="ckcalendar"
 			format="Y-m-d"/>
+
 	<!--Levies protocole-->
 	<field 	name="levies_protocole"
 			alias="levies_protocole"
@@ -410,6 +437,7 @@
 			<option value="intermédiaire">LEVIES_PROTOCOL_B</option>
 			<option value="complet">LEVIES_PROTOCOL_C</option>
 	</field>
+
 	<!--Tissue removal-->
 	<field name="observation_tissue_removal"
 			alias="observation_tissue_removal"
@@ -427,6 +455,7 @@
 			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
+
 	<!--Remarks-->
 	<field 	name="remarks"
 			alias="remarks"
@@ -434,6 +463,7 @@
 			filter="STRING"
 			description="REMARKS_DESC"
 			type="cktextarea"/>
+
 	<!--Admin validation-->
 	<field 	name="admin_validation"
 			alias="admin_validation"

@@ -80,6 +80,7 @@ class Cot_formsModelCot_admins extends JModelList {
                                     a.observation_number,
                                     a.observation_sex,
                                     a.observation_size,
+                                    a.observation_size_precision,
                                     a.observation_state_decomposition,
                                     CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
                                     CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),

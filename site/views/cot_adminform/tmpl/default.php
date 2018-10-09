@@ -327,8 +327,8 @@ function transpo(i) {
       </div>
     </div>
   </div>
-  <!--Color-->
 </div>
+ <!--Color-->
 <div class="col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
 <div class="col-lg-6 col-md-6 col-xs-12">
   <div class="input-group">
@@ -392,10 +392,21 @@ function transpo(i) {
             <?php echo JText::_("OBSERVATION_BALEEN_LBL")?>
             <input id ="baleen" type="radio" name="mammal baleen" class="control-label" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field')">
           </span>
+          <label><?php echo $this->form->getInput('observation_defenses'); ?></label>
         </div>
       </div>
     </div>
   </div>
+  <!--<div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php //echo $this->form->getLabel('observation_caudal'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          
+        </div>
+      </div>
+    </div>
+  </div>-->
 </div>
 <!--Tooth-->
 <div class="row" id="tooth_field" style="display: none;">
@@ -506,6 +517,17 @@ function transpo(i) {
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
       <?php echo $this->form->getInput('observation_size'); ?>
+    </div>
+  </div>
+  <!--Size précision-->
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('observation_size_precision'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('observation_size_precision'); ?></label>
+        </div>
+      </div>
     </div>
   </div>
 </div>
