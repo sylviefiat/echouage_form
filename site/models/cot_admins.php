@@ -118,24 +118,24 @@ class Cot_formsModelCot_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
               $this->getState(
-                      'list.select', 'a.id,
-                                      a.id_location,
+                      'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0",id_location),
                                       Year(observation_datetime),
                                       Month(observation_datetime),
                                       a.observation_datetime,
-                                      a.observation_localisation,
+                                      CONCAT(observation_localisation," ", observation_region),
                                       a.observation_spaces,
-                                      CONCAT(observation_beak, " ", observation_furrows),
                                       a.observation_stranding_type,
                                       a.observation_number,
-                                      CONCAT(observation_death, " ", observation_state_decomposition, observation_alive),
+                                      CONCAT(observation_death, " ", observation_alive),
+                                      observation_state_decomposition,
                                       a.observation_size,
                                       a.observation_tissue_removal,
                                       a.observation_sex,
                                       a.catch_indices,
-                                      CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
+                                      CONCAT(a.observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
                                       CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
                                       a.remarks,
+                                      a.id,
                                       a.observer_name,
                                       a.admin_validation'
 
@@ -195,7 +195,7 @@ class Cot_formsModelCot_admins extends JModelList {
         return fclose($csv);
 
       }else {
-          array_push($cols, 'Id', 'References', 'Id_location', 'Année', 'Mois', 'Date', 'Lieu', 'Espèce', 'Face', 'Echouage isolé ou en masse', 'Nombre', 'Type', 'Longueur', 'Prélèvements', 'Sexe', 'Les cause de la mort', 'Contactes', "Origine de l'information", 'Remarques');
+          array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Lieu', 'Espèce', 'Echouage isolé ou en masse', 'Nombre', 'Type', 'DCC', 'Longueur', 'Prélèvements', 'Sexe', 'Les cause de la mort', 'Contactes', "Origine de l'information", 'Remarques');
           $items = $db->setQuery($this->getListQuery())->loadObjectList();
           $csv =  fopen('php://output', 'w');
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
@@ -203,7 +203,10 @@ class Cot_formsModelCot_admins extends JModelList {
 
           foreach($items as $line){
             $in = (array) $line;
-            for($i=0; $i<=2; $i++){array_pop($in);}
+            array_pop($in);
+            array_pop($in);
+            array_pop($in);
+            array_pop($in);
             fputcsv($csv, (array) $in);
           }
         return fclose($csv);

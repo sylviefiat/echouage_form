@@ -208,9 +208,6 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION', 'a.admin_validation', $listDirn, $listOrder); ?>
 							</th>
-							<th class='left'>
-								<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_REFERENCES', 'a.form_references', $listDirn, $listOrder); ?>
-							</th>
 							<!--id_location-->
 							<?php if (isset($this->items[0]->id_location)): ?>
 								<th width="1%" class="nowrap center hidden-phone">
@@ -388,10 +385,6 @@ if (!empty($this->extra_sidebar)) {
 											<td>
 
 												<?php echo $item->admin_validation; ?>
-											</td>
-											<td>
-
-												<?php echo $item->form_references; ?>
 											</td>
 											<td>
 													<?php echo (int) $item->id_location; ?>

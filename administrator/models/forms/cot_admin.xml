@@ -176,8 +176,8 @@
 			description="OBSERVATION_STRANDING_TYPE_DESC"
 			type="radio"
 			required="true" >
-			<option value="S">OBSERVATION_STRANDING_TYPE_A</option>
-			<option value="M">OBSERVATION_STRANDING_TYPE_B</option>
+			<option value="isolé">OBSERVATION_STRANDING_TYPE_A</option>
+			<option value="en masse">OBSERVATION_STRANDING_TYPE_B</option>
 	</field>
 
 	<!--Number-->
@@ -311,7 +311,7 @@
 			label="OBSERVATION_DEFENSES"
 			labelclass="control-label"
 			description="OBSERVATION_DEFENSES_DESC"
-			type="radio">
+			type="checkboxes">
 			<option value="defenses">OBSERVATION_DEFENSES</option>
 	</field>
 
@@ -330,7 +330,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
 			required="true"
-			type="NUMBER"
+			type="text"
 			required="true"/>
 
 	<!--Size precision-->

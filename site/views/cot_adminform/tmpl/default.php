@@ -71,41 +71,50 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
     js('#form-cot_admin').submit(function(event){
 
     }); 
-    document.getElementById("jform_counting_method_timed_swim_chbx").checked = document.getElementById("jform_counting_method_timed_swim").value.length>0?1:0;
+    /*document.getElementById("jform_counting_method_timed_swim_chbx").checked = document.getElementById("jform_counting_method_timed_swim").value.length>0?1:0;
 
-    enable_timed_swim(document.getElementById("jform_counting_method_timed_swim").value.length>0?true:false);
+    enable_timed_swim(document.getElementById("jform_counting_method_timed_swim").value.length>0?true:false);*/
 
 
   });
 });
 
-function enable_timed_swim(status) {
+/*function enable_timed_swim(status) {
   if(!status){
     document.getElementById("jform_counting_method_timed_swim").value = "";
     document.getElementById("jform_counting_method_timed_swim").setAttribute('readonly','readonly');
   } else {
     document.getElementById("jform_counting_method_timed_swim").removeAttribute('readonly');
   }
-}
+}*/
 
 
-function choixUser(btn,champ1,champ2) 
+function choixUser(btn,champ1,champ2, champ3) 
 { 
   if (btn.id == "dead"){ 
     display(champ1,true); 
     display(champ2,false); 
+    display(champ3,false); 
   } 
   else if (btn.id == "alive"){ 
     display(champ2,true); 
-    display(champ1,false); 
+    display(champ1,false);
+    display(champ3,false);  
   }
   if(btn.id == "tooth"){
     display(champ1,true); 
     display(champ2,false);
+    display(champ3,false);
   }
   else if(btn.id == "baleen"){
     display(champ2,true); 
-    display(champ1,false); 
+    display(champ1,false);
+    display(champ3,false);  
+  }
+  else if (btn.id = "defenses") {
+    display(champ3,true);
+    display(champ1,false);
+    display(champ2,false);
   }
 } 
 
@@ -328,7 +337,7 @@ function transpo(i) {
     </div>
   </div>
 </div>
- <!--Color-->
+<!--Color-->
 <div class="col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
 <div class="col-lg-6 col-md-6 col-xs-12">
   <div class="input-group">
@@ -386,27 +395,20 @@ function transpo(i) {
         <div class="radio">
           <span>
             <?php echo JText::_("OBSERVATION_TOOTH")?>
-            <input id ="tooth" type="radio" name="mammal tooth" class="control-label" value="dents" onclick="choixUser(this,'tooth_field','baleen_field')">
+            <input id ="tooth" type="radio" name="mammal other" class="control-label" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
           </span>
           <span>
             <?php echo JText::_("OBSERVATION_BALEEN_LBL")?>
-            <input id ="baleen" type="radio" name="mammal baleen" class="control-label" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field')">
+            <input id ="baleen" type="radio" name="mammal other" class="control-label" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
           </span>
-          <label><?php echo $this->form->getInput('observation_defenses'); ?></label>
+          <span>
+            <?php echo JText::_("OBSERVATION_DEFENSES")?>
+            <input id ="defenses" type="radio" name="mammal other" class="control-label" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
+          </span>
         </div>
       </div>
     </div>
   </div>
-  <!--<div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <?php //echo $this->form->getLabel('observation_caudal'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          
-        </div>
-      </div>
-    </div>
-  </div>-->
 </div>
 <!--Tooth-->
 <div class="row" id="tooth_field" style="display: none;">
@@ -509,6 +511,19 @@ function transpo(i) {
     </div>
   </div>
 </div>
+<!--Defense-->
+<div class="row" id="defences_field" style="display: none;">
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php //echo $this->form->getLabel('observation_defenses'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="checkbox">
+          <label><?php echo $this->form->getInput('observation_defenses'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <div class="row">
   <!--Size-->
@@ -567,7 +582,7 @@ function transpo(i) {
       </div>
     </div>
   </div>
-  <!--Sate-->
+  <!--State-->
   <div class="row">
     <div class="col-xs-12">
       <label id="jform_state_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_STATE_DESC');?>">
@@ -580,11 +595,11 @@ function transpo(i) {
           <div class="radio">
             <span>
               <?php echo JText::_("OBSERVATION_STATE_A")?>
-              <input id ="dead" type="radio" name="mammal state" class="control-label" value="mort" onclick="choixUser(this,'dead_field','alive_field')">
+              <input id ="dead" type="radio" name="mammal state" class="control-label" value="mort" onclick="choixUser(this,'dead_field','alive_field', '')">
             </span>
             <span>
               <?php echo JText::_("OBSERVATION_STATE_B")?>
-              <input id ="alive" type="radio" name="mammal state" class="control-label" value="vivant" onclick="choixUser(this,'dead_field','alive_field')">
+              <input id ="alive" type="radio" name="mammal state" class="control-label" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')">
             </span>
           </div>
         </div>
@@ -685,15 +700,15 @@ function transpo(i) {
     </div>
   </div>
 </div>
-  <!--Remarks-->
-  <div class="row">
-   <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
-   <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-comment "></span></span>
-      <?php echo $this->form->getInput('remarks'); ?>
-    </div>
+<!--Remarks-->
+<div class="row">
+ <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
+ <div class="col-lg-12 col-md-12 col-xs-12">
+  <div class="input-group">
+    <span class="input-group-addon"><span class="fa fa-comment "></span></span>
+    <?php echo $this->form->getInput('remarks'); ?>
   </div>
+</div>
 </div>
 <!--Admin validation-->
 <?php if($user->id != 0){ ?>

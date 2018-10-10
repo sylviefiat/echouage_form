@@ -29,7 +29,7 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function sampleExport()
 	{
-		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
+		$file_name = "NC_RNE_" . date("d-m-Y"). ".csv";
 	    $this->getModel()->getCsv(0);
 		header('Content-type: text/csv; charset=utf-8');
 		header("Content-Disposition: attachment; filename=" . $file_name . "");
@@ -44,7 +44,7 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function extendedExport()
 	{
-		$file_name = "operation_cetace-nc_" . date("d-m-Y"). ".csv";
+		$file_name = "Echouages_NC_" . date("d-m-Y"). ".csv";
 		$this->getModel()->getCsv(1);
 		header('Content-type: text/csv; charset=utf-8');
 		header("Content-Disposition: attachment; filename=" . $file_name . "");

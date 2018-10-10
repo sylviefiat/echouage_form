@@ -22,16 +22,17 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 <script type="text/javascript">
 	js = jQuery.noConflict();
 	js(document).ready(function() {
+		/*
 		document.getElementById("jform_counting_method_timed_swim_chbx").checked = document.getElementById("jform_counting_method_timed_swim").value.length>0?1:0;
 		document.getElementById("jform_counting_method_distance_swim_chbx").checked = document.getElementById("jform_counting_method_distance_swim").value.length>0?1:0;
 		document.getElementById("jform_counting_method_other_chbx").checked = document.getElementById("jform_counting_method_other").value.length>0?1:0;
 
 		enable_timed_swim(document.getElementById("jform_counting_method_timed_swim").value.length>0?true:false);
 		enable_distance_swim(document.getElementById("jform_counting_method_distance_swim").value.length>0?true:false);
-		enable_other(document.getElementById("jform_counting_method_other").value.length>0?true:false);
+		enable_other(document.getElementById("jform_counting_method_other").value.length>0?true:false);*/
 	});
 
-	function enable_timed_swim(status) {
+	/*function enable_timed_swim(status) {
 		if(!status){
 			document.getElementById("jform_counting_method_timed_swim").value = "";
 			document.getElementById("jform_counting_method_timed_swim").setAttribute('readonly','readonly');
@@ -56,7 +57,7 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 		} else {
 			document.getElementById("jform_counting_method_other").removeAttribute('readonly');
 		}
-	}
+	}*/
 
 	Joomla.submitbutton = function(task)
 	{
@@ -233,12 +234,10 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 						<div class="control-label"><?php echo $this->form->getLabel('catch_indices'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('catch_indices'); ?></div>
 					</div>
-
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
 					</div>
-
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('admin_validation'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('admin_validation'); ?></div>
