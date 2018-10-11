@@ -1,7 +1,7 @@
 <?php
 /**
- * @version     2.0.7
- * @package     com_cot_forms
+ * @version     1.0.0
+ * @package     com_stranding_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Sylvie Fiat <sylvie.fiat@ird.fr>
@@ -14,12 +14,12 @@ defined('DS') or define("DS", DIRECTORY_SEPARATOR);
 
 
 /**
-* Script file of Cot_forms component
+* Script file of Stranding_forms component
 *
-* @package	Cot_forms
+* @package	Stranding_forms
 * @subpackage	Installer
 */
-class com_cot_formsInstallerScript
+class com_stranding_formsInstallerScript
 {
 	/**
 	* Called on installation
@@ -32,7 +32,7 @@ class com_cot_formsInstallerScript
 	*/
 	public function install(JAdapterInstance $adapter)
 	{
-		$adapter->getParent()->setRedirectURL('index.php?option=com_cot_forms');
+		$adapter->getParent()->setRedirectURL('index.php?option=com_stranding_forms');
 
 
 	}
@@ -95,7 +95,7 @@ class com_cot_formsInstallerScript
 				$db = JFactory::getDBO();
 				$query = "UPDATE #__assets SET "
 					. ' rules=\'{"core.admin":[],"core.manage":[],"core.create":{"1":1},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.view.own":{"2":1},"core.edit.own":[],"core.delete.own":[]}\''
-					. " WHERE name='com_cot_forms'";
+					. " WHERE name='com_stranding_forms'";
 				$db->setQuery($query);
 				$db->query();
 				break;
@@ -178,7 +178,7 @@ class com_cot_formsInstallerScript
 	public function update(JAdapterInstance $adapter)
 	{
 		$this->deleteUnexistingFiles();
-		$adapter->getParent()->setRedirectURL('index.php?option=com_cot_forms');
+		$adapter->getParent()->setRedirectURL('index.php?option=com_stranding_forms');
 	}
 
 	/**
@@ -189,26 +189,26 @@ class com_cot_formsInstallerScript
 	public function deleteUnexistingFiles()
 	{
 		$files = array(
-			'/administrator/components/com_cot_forms/controllers/cot_public.php',
-			'/administrator/components/com_cot_forms/controllers/cot_publics.php',
-			'/administrator/components/com_cot_forms/models/cot_public.php',
-			'/administrator/components/com_cot_forms/models/cot_publics.php',
-			'/administrator/components/com_cot_forms/models/forms/cot_public.xml',
-			'/administrator/components/com_cot_forms/tables/cot_public.php',
-			'/components/com_cot_forms/controllers/cot_public.php',
-			'/components/com_cot_forms/controllers/cot_publicform.php',
-			'/components/com_cot_forms/controllers/cot_publics.php',
-			'/components/com_cot_forms/models/cot_public.php',
-			'/components/com_cot_forms/models/cot_publicform.php',
-			'/components/com_cot_forms/models/cot_publics.php',
-			'/components/com_cot_forms/models/forms/cot_publicform.xml'
+			'/administrator/components/com_stranding_forms/controllers/stranding_public.php',
+			'/administrator/components/com_stranding_forms/controllers/stranding_publics.php',
+			'/administrator/components/com_stranding_forms/models/stranding_public.php',
+			'/administrator/components/com_stranding_forms/models/stranding_publics.php',
+			'/administrator/components/com_stranding_forms/models/forms/stranding_public.xml',
+			'/administrator/components/com_stranding_forms/tables/stranding_public.php',
+			'/components/com_stranding_forms/controllers/stranding_public.php',
+			'/components/com_stranding_forms/controllers/stranding_publicform.php',
+			'/components/com_stranding_forms/controllers/stranding_publics.php',
+			'/components/com_stranding_forms/models/stranding_public.php',
+			'/components/com_stranding_forms/models/stranding_publicform.php',
+			'/components/com_stranding_forms/models/stranding_publics.php',
+			'/components/com_stranding_forms/models/forms/stranding_publicform.xml'
 		);
 		$folders = array(
-			'/administrator/components/com_cot_forms/views/cot_public',
-			'/administrator/components/com_cot_forms/views/cot_publics',
-			'/components/com_cot_forms/views/cot_public',
-			'/components/com_cot_forms/views/cot_publicform',
-			'/components/com_cot_forms/views/cot_publics'
+			'/administrator/components/com_stranding_forms/views/stranding_public',
+			'/administrator/components/com_stranding_forms/views/stranding_publics',
+			'/components/com_stranding_forms/views/stranding_public',
+			'/components/com_stranding_forms/views/stranding_publicform',
+			'/components/com_stranding_forms/views/stranding_publics'
 		);
 		jimport('joomla.filesystem.file');
 		foreach ($files as $file){

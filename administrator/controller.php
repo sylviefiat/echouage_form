@@ -1,7 +1,7 @@
 <?php
 /**
- * @version     2.0.7
- * @package     com_cot_forms
+ * @version     1.0.0
+ * @package     com_stranding_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Sylvie Fiat <sylvie.fiat@ird.fr>
@@ -11,7 +11,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-class Cot_formsController extends JControllerLegacy
+class Stranding_formsController extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.
@@ -24,9 +24,9 @@ class Cot_formsController extends JControllerLegacy
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
-		require_once JPATH_COMPONENT.'/helpers/cot_forms.php';
+		require_once JPATH_COMPONENT.'/helpers/stranding_forms.php';
 
-		$view = JFactory::getApplication()->input->getCmd('view', 'cot_admins');
+		$view = JFactory::getApplication()->input->getCmd('view', 'stranding_admins');
         JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);

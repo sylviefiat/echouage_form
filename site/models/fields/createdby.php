@@ -1,7 +1,7 @@
 <?php
 /**
- * @version     2.0.7
- * @package     com_cot_forms
+ * @version     1.0.0
+ * @package     com_stranding_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Syvlei Fiat <sylvie.fiat@ird.fr> 

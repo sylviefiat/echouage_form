@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset name="component"
-		label="COM_COT_FORMS_COMPONENT_LABEL"
-		description="COM_COT_FORMS_COMPONENT_DESC"
+		label="COM_STRANDING_FORMS_COMPONENT_LABEL"
+		description="COM_STRANDING_FORMS_COMPONENT_DESC"
 	>
 
         <field name="test"
              type="radio"
              default="1"
-             label="COM_COT_FORMS_TEST_LABEL"
-             description="COM_COT_FORMS_TEST_DESC">
+             label="COM_STRANDING_FORMS_TEST_LABEL"
+             description="COM_STRANDING_FORMS_TEST_DESC">
                  <option value="0">JHIDE</option>
                  <option value="1">JSHOW</option>
          </field>
@@ -24,7 +24,7 @@
 		<field 
             name="rules" 
             type="rules"
-			component="com_cot_forms"
+			component="com_stranding_forms"
             class="inputbox"
 			filter="rules"
 			validate="rules"

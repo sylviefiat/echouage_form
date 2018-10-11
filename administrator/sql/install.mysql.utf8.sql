@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__cot_admin` (
+CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `id_location` INT(12) NOT NULL,
 `observer_name` VARCHAR(100)  NOT NULL ,
@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `observation_country` VARCHAR(100) NOT NULL ,
 `observation_latitude` VARCHAR(100) NOT NULL ,
 `observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_commune` VARCHAR(100) NOT NULL,
 `observation_stranding_type` VARCHAR(100) NOT NULL,
 `observation_number` VARCHAR(100)  NOT NULL ,
 `observation_spaces` VARCHAR(100) NOT NULL,
@@ -57,8 +58,8 @@ PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
 
 
-CREATE TRIGGER `#__trig_cot_admin_insert` BEFORE INSERT ON `#__cot_admin`
+CREATE TRIGGER `#__trig_stranding_admin_insert` BEFORE INSERT ON `#__stranding_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
 
-CREATE TRIGGER `#__trig_cot_admin_update` BEFORE UPDATE ON `#__cot_admin`
+CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
