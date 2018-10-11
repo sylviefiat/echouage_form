@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_stranding_forms</name>
-    <creationDate>2017-11-27</creationDate>
+    <creationDate>2018-11-30</creationDate>
     <copyright>Copyright (C) 2014. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Ezechiel Wahoulo, Sylvie Fiat</author>
     <authorEmail>sylvie.fiat@ird.fr</authorEmail>
     <authorUrl>http://umr-entropie.ird.nc</authorUrl>
     <version>1.0.0</version>
-    <description>OP_CETACE forms</description>
+    <description>Stranding forms</description>
     
     <install> <!-- Runs on install -->
         <sql>
