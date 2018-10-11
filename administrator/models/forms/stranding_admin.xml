@@ -166,8 +166,9 @@
 			label="OBSERVATION_COMMUNE"
 			description="OBSERVATION_COMMUNE_DESC"
 			filter="STRING"
-			class="region"
-			type="text"/>
+			class="commune"
+			type="text"
+			required="true"/>
 
 	<!--Stranding type-->
 	<field 	name="observation_stranding_type"
@@ -186,7 +187,9 @@
 			label="OBSERVATION_NUMBER"
 			description="OBSERVATION_NUMBER_DESC"
 			labelclass="control-label"
-			type="cktext"
+			type="number"
+			min="0"
+			max="500"
 			required="true"/>
 
 	<!--Spaces-->
@@ -329,8 +332,9 @@
 			label="OBSERVATION_SIZE"
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
-			required="true"
-			type="text"
+			type="number"
+			min="0"
+			max="100"
 			required="true"/>
 
 	<!--Size precision-->

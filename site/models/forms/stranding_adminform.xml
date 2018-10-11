@@ -211,14 +211,15 @@
 			label="OBSERVATION_COMMUNE"
 			description="OBSERVATION_COMMUNE_DESC"
 			filter="STRING"
-			class="region form-control"
+			class="commune form-control"
 			hint="OBSERVATION_COMMUNE"
-			type="text"/>
+			type="text"
+			required="true"/>
 
 	<!--Stranding type-->
 	<field 	name="observation_stranding_type"
 			alias="observation_stranding_type"
-			class="btn-group"
+			class="custom-control custom-radio custom-control-inline"
 			label="OBSERVATION_STRANDING_TYPE"
 			description="OBSERVATION_STRANDING_TYPE_DESC"
 			type="radio"
@@ -235,7 +236,9 @@
 			description="OBSERVATION_NUMBER_DESC"
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
-			type="text"
+			type="number"
+			min="0"
+			max="500"
 			required="true"/>
 
 	<!--Spaces-->
@@ -406,7 +409,9 @@
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
 			hint="OBSERVATION_SIZE"
-			type="text"
+			type="number"
+			min="0"
+			max="100"
 			required="true"/>
 
 	<!--Size precision-->

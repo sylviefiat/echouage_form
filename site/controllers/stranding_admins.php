@@ -57,4 +57,19 @@ class Stranding_formsControllerStranding_admins extends Stranding_formsControlle
 		jexit();
 	}
 
+	public function animalExport()
+	{
+		$file_name = "Animal_" . date("d-m-Y"). ".csv";
+		$this->getModel()->getCsv(2);
+		header('Content-type: text/csv; charset=utf-8');
+		header("Content-Disposition: attachment; filename=" . $file_name . "");
+		//header("Content-type: application/octet-stream");
+		//header("Content-Disposition: attachment; filename=" . $file_name . ".xls");
+		//header("Pragma: no-cache");
+		header("Expires: 0");
+		header('Cache-Control: no-cache'); 
+		//header("Lacation: excel.htm?id=yes");	
+		jexit();
+	}
+
 }	

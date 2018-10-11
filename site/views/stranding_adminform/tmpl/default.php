@@ -278,15 +278,20 @@ function transpo(i) {
     <?php echo $this->form->getInput('observation_longitude'); ?>
   </div>
 </div>
+<div class="col-md-6 col-md-6 col-xs-12">
+  <div class="input-group">
+    <span class="input-group-addon"></span>
+    <?php echo $this->form->getInput('observation_commune'); ?>
+  </div>
 </div>
-
+</div>
 <div class="row">
   <!--Stranding type-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_stranding_type'); ?>
       <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio-inline">
+        <div class="radio">
           <label><?php echo $this->form->getInput('observation_stranding_type'); ?></label>
         </div>
       </div>
@@ -322,17 +327,6 @@ function transpo(i) {
     <div class="col-xs-offset-2 col-xs-10">
       <div class="radio">
         <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
-      </div>
-    </div>
-  </div>
-</div>
-<!--Sex-->
-<div class="col-lg-6 col-md-6 col-xs-12">
-  <div class="form-group">
-    <?php echo $this->form->getLabel('observation_sex'); ?>
-    <div class="col-xs-offset-2 col-xs-10">
-      <div class="radio">
-        <label><?php echo $this->form->getInput('observation_sex'); ?></label>
       </div>
     </div>
   </div>
@@ -389,25 +383,21 @@ function transpo(i) {
       <?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT');?>
     </label>
   </div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-3 col-xs-10">
-        <div class="radio">
-          <span>
-            <?php echo JText::_("OBSERVATION_TOOTH")?>
-            <input id ="tooth" type="radio" name="mammal other" class="control-label" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-          </span>
-          <span>
-            <?php echo JText::_("OBSERVATION_BALEEN_LBL")?>
-            <input id ="baleen" type="radio" name="mammal other" class="control-label" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-          </span>
-          <span>
-            <?php echo JText::_("OBSERVATION_DEFENSES")?>
-            <input id ="defenses" type="radio" name="mammal other" class="control-label" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
-          </span>
-        </div>
-      </div>
+
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="custom-control custom-radio custom-control-inline">
+      <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
+      <label class="custom-control-label" for="tooth"><?php echo JText::_("OBSERVATION_TOOTH")?></label>
     </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input id ="baleen" type="radio" name="mammalOther" class="custom-control-input" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
+      <label class="custom-control-label" for="baleen"><?php echo JText::_("OBSERVATION_BALEEN_LBL")?></label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
+      <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES")?></label>
+    </div>
+
   </div>
 </div>
 <!--Tooth-->
@@ -525,30 +515,42 @@ function transpo(i) {
   </div>
 </div>
 </div>
+
+<!--Animal-->
+<div class="col-xs-12"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
 <div class="row">
-  <!--Size-->
-  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_size'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
-      <?php echo $this->form->getInput('observation_size'); ?>
+  <div class="row">
+    <!--Size-->
+    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_size'); ?></div>
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="input-group">
+        <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
+        <?php echo $this->form->getInput('observation_size'); ?>
+      </div>
     </div>
-  </div>
-  <!--Size précision-->
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('observation_size_precision'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('observation_size_precision'); ?></label>
+    <!--Size précision-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('observation_size_precision'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="radio">
+            <label><?php echo $this->form->getInput('observation_size_precision'); ?></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Sex-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('observation_sex'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="radio">
+            <label><?php echo $this->form->getInput('observation_sex'); ?></label>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!--Animal-->
-<div class="col-xs-12"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
-<div class="row">
   <div class="row">
     <!--Abnormalities-->
     <div class="col-lg-6 col-md-6 col-xs-12">
@@ -589,126 +591,120 @@ function transpo(i) {
         <?php echo JText::_('OBSERVATION_STATE');?>
       </label>
     </div>
-    <div class="col-lg-6 col-md-6 col-xs-12">
-      <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-10">
-          <div class="radio">
-            <span>
-              <?php echo JText::_("OBSERVATION_STATE_A")?>
-              <input id ="dead" type="radio" name="mammal state" class="control-label" value="mort" onclick="choixUser(this,'dead_field','alive_field', '')">
-            </span>
-            <span>
-              <?php echo JText::_("OBSERVATION_STATE_B")?>
-              <input id ="alive" type="radio" name="mammal state" class="control-label" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')">
-            </span>
+    <div class="col-lg-12 col-md-12 col-xs-12">
+      <div class="custom-control custom-radio custom-control-inline">   
+        <input id ="dead" type="radio" name="mammalState" class="custom-control-input" value="mort" onclick="choixUser(this,'dead_field','alive_field', '')">
+        <label class="custom-control-label" for="dead"><?php echo JText::_("OBSERVATION_STATE_A")?></label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input id ="alive" type="radio" name="mammalState" class="custom-control-input" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')">
+        <label class="custom-control-label" for="alive"><?php echo JText::_("OBSERVATION_STATE_B")?></label>
+      </div> 
+      </div>
+    </div>
+    <!--Dead animal-->
+    <div class="row" id="dead_field" style="display: none;">
+      <div class="col-xs-12">
+        <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_DEAD_ANIMAL_DESC');?>">
+          <?php echo JText::_('OBSERVATION_DEAD_ANIMAL');?>
+        </label>
+      </div>
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <div class="col-xs-offset-3 col-xs-10">
+            <div class="radio">
+              <label><?php echo $this->form->getInput('observation_death'); ?></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Death date-->
+      <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_death'); ?></div>
+      <div class="col-lg-4 col-md-6 col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
+          <?php echo $this->form->getInput('observation_datetime_death'); ?>
+        </div>
+      </div>
+      <!--State decomposition-->
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <?php echo $this->form->getLabel('observation_state_decomposition'); ?>
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="radio">
+              <label><?php echo $this->form->getInput('observation_state_decomposition'); ?></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Levies protocol-->
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <?php echo $this->form->getLabel('levies_protocole'); ?>
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="radio">
+              <label><?php echo $this->form->getInput('levies_protocole'); ?></label>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--Dead animal-->
-  <div class="row" id="dead_field" style="display: none;">
-    <div class="col-xs-12">
-      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_DEAD_ANIMAL_DESC');?>">
-        <?php echo JText::_('OBSERVATION_DEAD_ANIMAL');?>
-      </label>
+    <!--Living animal-->
+    <div class="row" id="alive_field" style="display: none;">
+      <div class="col-xs-12">
+        <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_LIVING_ANIMAL_DESC');?>">
+          <?php echo JText::_('OBSERVATION_LIVING_ANIMAL');?>
+        </label>
+      </div>
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="checkbox">
+              <label><?php echo $this->form->getInput('observation_alive'); ?></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Release date-->
+      <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
+      <div class="col-lg-4 col-md-6 col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
+          <?php echo $this->form->getInput('observation_datetime_release'); ?>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-xs-12">
-      <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-10">
-          <div class="radio">
-            <label><?php echo $this->form->getInput('observation_death'); ?></label>
+    <!--Tissue removal alive-->
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <?php echo $this->form->getLabel('observation_tissue_removal'); ?>
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="checkbox">
+              <label><?php echo $this->form->getInput('observation_tissue_removal'); ?></label>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!--Death date-->
-    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_death'); ?></div>
-    <div class="col-lg-4 col-md-6 col-xs-12">
+    <!--Stockage location-->
+    <div class="row">
+     <div class="col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
+     <div class="col-lg-12 col-md-12 col-xs-12">
       <div class="input-group">
-        <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
-        <?php echo $this->form->getInput('observation_datetime_death'); ?>
-      </div>
-    </div>
-    <!--State decomposition-->
-    <div class="col-lg-6 col-md-6 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('observation_state_decomposition'); ?>
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="radio">
-            <label><?php echo $this->form->getInput('observation_state_decomposition'); ?></label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Levies protocol-->
-    <div class="col-lg-6 col-md-6 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('levies_protocole'); ?>
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="radio">
-            <label><?php echo $this->form->getInput('levies_protocole'); ?></label>
-          </div>
-        </div>
+        <?php echo $this->form->getInput('observation_location_stock'); ?>
       </div>
     </div>
   </div>
-  <!--Living animal-->
-  <div class="row" id="alive_field" style="display: none;">
-    <div class="col-xs-12">
-      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_LIVING_ANIMAL_DESC');?>">
-        <?php echo JText::_('OBSERVATION_LIVING_ANIMAL');?>
-      </label>
-    </div>
-    <div class="col-lg-6 col-md-6 col-xs-12">
-      <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="checkbox">
-            <label><?php echo $this->form->getInput('observation_alive'); ?></label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Release date-->
-    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
-    <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="input-group">
-        <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
-        <?php echo $this->form->getInput('observation_datetime_release'); ?>
-      </div>
-    </div>
-  </div>
-  <!--Tissue removal alive-->
+  <!--Remarks-->
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('observation_tissue_removal'); ?>
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="checkbox">
-            <label><?php echo $this->form->getInput('observation_tissue_removal'); ?></label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Stockage location-->
-  <div class="row">
-   <div class="col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
+   <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
    <div class="col-lg-12 col-md-12 col-xs-12">
     <div class="input-group">
-      <?php echo $this->form->getInput('observation_location_stock'); ?>
+      <span class="input-group-addon"><span class="fa fa-comment "></span></span>
+      <?php echo $this->form->getInput('remarks'); ?>
     </div>
   </div>
-</div>
-<!--Remarks-->
-<div class="row">
- <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
- <div class="col-lg-12 col-md-12 col-xs-12">
-  <div class="input-group">
-    <span class="input-group-addon"><span class="fa fa-comment "></span></span>
-    <?php echo $this->form->getInput('remarks'); ?>
-  </div>
-</div>
 </div>
 <!--Admin validation-->
 <?php if($user->id != 0){ ?>
