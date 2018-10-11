@@ -383,7 +383,6 @@ function transpo(i) {
       <?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT');?>
     </label>
   </div>
-
   <div class="col-lg-12 col-md-12 col-xs-12">
     <div class="custom-control custom-radio custom-control-inline">
       <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
@@ -397,7 +396,28 @@ function transpo(i) {
       <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
       <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES")?></label>
     </div>
-
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('levies'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('levies'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('photos'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('photos'); ?></label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!--Tooth-->

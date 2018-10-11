@@ -411,7 +411,7 @@
 			hint="OBSERVATION_SIZE"
 			type="number"
 			min="0"
-			max="100"
+			max="9000"
 			required="true"/>
 
 	<!--Size precision-->
@@ -530,6 +530,29 @@
 			<option value="intermédiaire">LEVIES_PROTOCOL_B</option>
 			<option value="complet">LEVIES_PROTOCOL_C</option>
 	</field>
+
+	<!--Levies-->
+	<field name="levies"
+			alias="levies"
+			class="btn-group"
+			label="LEVIES"
+			description="LEVIES_DESC"
+			type="radio">
+			<option value="Oui">JYES</option>
+			<option value="Non">JNO</option>
+	</field>
+
+	<!--Photos-->
+	<field name="photos"
+			alias="photos"
+			class="btn-group"
+			label="PHOTOS"
+			description="PHOTOS_DESC"
+			type="radio">
+			<option value="Oui">JYES</option>
+			<option value="Non">JNO</option>
+	</field>
+
 
 	<!--Tissue removal-->
 	<field name="observation_tissue_removal"

@@ -82,7 +82,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                     a.observation_sex,
                                     a.observation_size,
                                     a.observation_size_precision,
-                                    a.observation_state_decomposition,
+                                    CONCAT(observation_state_decomposition, observation_alive),
                                     CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
                                     CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
                                     a.catch_indices,
@@ -162,7 +162,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
     }
 
     // The animal data output
-    protected function getListQuery() {
+    protected function getListQueryAnimal() {
     // Create a new query object.
     $db = $this->getDbo();
     $query = $db->getQuery(true);
@@ -256,7 +256,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         return fclose($csv);
 
       }else if($var == 1) {
-            array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Lieu', 'Espèce', 'Echouage isolé ou en groupe', "Nombre d'individus", 'Identification', 'Sexe', 'Contactes', "Origine de l'information", 'Remarques');
+            array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', "Contactes de l'observateur", "Origine de l'information", 'Prélèvements','Photos','Remarques');
             $items = $db->setQuery($this->getListQuery())->loadObjectList();
             $csv =  fopen('php://output', 'w');
             fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));

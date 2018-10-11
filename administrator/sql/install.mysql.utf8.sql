@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 `observation_datetime_death` VARCHAR(100) NOT NULL,
 `observation_state_decomposition` VARCHAR(100) NOT NULL,
 `levies_protocole` VARCHAR(100) NOT NULL,
+`levies` VARCHAR(50) NOT NULL,
+`photos` VARCHAR(50) NOT NULL,
 `label_references` VARCHAR(250) NOT NULL,
 `observation_alive` VARCHAR(100) NOT NULL,
 `observation_datetime_release` VARCHAR(100) NOT NULL,
