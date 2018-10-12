@@ -341,7 +341,7 @@
 	<!--Defenses-->
 	<field name="observation_defenses"
 			alias="observation_defenses"
-			label="OBSERVATION_DEFENSES"
+			label="OBSERVATION_DEFENSES_LBL"
 			labelclass="control-label"
 			description="OBSERVATION_DEFENSES_DESC"
 			type="checkboxes">

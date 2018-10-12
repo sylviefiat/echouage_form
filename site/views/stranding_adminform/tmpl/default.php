@@ -133,15 +133,64 @@ function display(div, affiche) {
   } 
 }
 
+
+function duplic(element)
+{
+  clone1 = document.getElementById("spaces").cloneNode(true);
+  clone1.id="spaces1";
+  document.getElementById(element).appendChild (clone1);
+  clone2 = document.getElementById("spaces_identification").cloneNode(true);
+  clone2.id = "spaces_identification1";
+  document.getElementById(element).appendChild (clone2);
+  clone3 = document.getElementById("color").cloneNode(true);
+  clone3.id="color1";
+  document.getElementById(element).appendChild (clone3);
+  clone4 = document.getElementById("caudale").cloneNode(true);
+  clone4.id="caudale1";
+  document.getElementById(element).appendChild (clone4);
+  clone5 = document.getElementById("beak").cloneNode(true);
+  clone5.id="beak1";
+  document.getElementById(element).appendChild (clone5);
+  clone6 = document.getElementById("furrows").cloneNode(true);
+  clone6.id="furrows1";
+  document.getElementById(element).appendChild (clone6);
+  clone7 = document.getElementById("other_caracts").cloneNode(true);
+  clone7.id="other_caracts1";
+  clone7_1 = document.getElementById("tooth").cloneNode(true);
+  clone7_1.id = "tooth1";
+  document.getElementById(clone7).appendChild(clone7_1);
+  clone7_2 = document.getElementById("baleen").cloneNode(true);
+  clone7_2.id = "baleen1";
+  document.getElementById(clone7).appendChild(clone7_2);
+  clone7_3 = document.getElementById("defenses").cloneNode(true);
+  clone7_3.id = "defenses1";
+  document.getElementById(clone7).appendChild(clone7_3);
+  document.getElementById(element).appendChild (clone7);
+  clone8 = document.getElementById("levies_photo").cloneNode(true);
+  clone8.id="levies_photo1";
+  document.getElementById(element).appendChild (clone8);
+  clone9 = document.getElementById("tooth_field").cloneNode(true);
+  clone9.id="tooth_field1";
+  document.getElementById(element).appendChild (clone9);
+  clone10 = document.getElementById("baleen_field").cloneNode(true);
+  clone10.id = "baleen_field1";
+  document.getElementById(element).appendChild (clone10);
+  clone11 = document.getElementById("defences_field").cloneNode(true);
+  clone11.id = "defences_field1";
+  document.getElementById(element).appendChild (clone11);
+}
+
 /*Fonction ajout et suppression de champs version 2*/
-function create_field(i){ 
-  var obj = document.getElementById('field'); 
-  var field = obj.cloneNode(true);
-  obj.style.display='';
-  inputs = field.getElementsByTagName('input');
-  for(var i = 0; i < inputs.length; ++i) inputs[i].value = "";
-    document.getElementById('form1').appendChild(field); 
-} 
+
+function addDiv(name, field){
+    var div = document.createElement("div");
+    div.name = name;
+    field.appendChild(div);
+}
+function addField(name, field) {
+  var div = document.getElementById('identification');
+    addDiv(name, field);
+}
 
 function supr_field(i) 
 { 
@@ -203,10 +252,6 @@ function transpo(i) {
       </div>
     </div>
     <label><?php echo JText::_('INFORMANT_CONTACT');?></label>
-    <!--<div class="show_informant_contact" onclick="toggleContainer('informant_field')">
-      
-      <?php //echo $this->form->getLabel('informant_name'); ?>
-    </div>-->
     <button type="button" name="informantBtn" class="btn btn-primary" value="informateur" onclick="toggleContainer('informant_field')"><?php echo $this->form->getLabel('informant_name'); ?></button>
     <!--Informant contacts-->
     <div class="row" id="informant_field" style="display: none;">
@@ -314,11 +359,13 @@ function transpo(i) {
 </div>
 <!--Indentification-->
 <div class="col-xs-12"><h4 class="fa fa-eye fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></div>
-<!--Spaces-->
-<div class="row">
-  <!--<button type="button" onclick="addField()" >+</button>-->
+
+<button type="button" onclick="duplic('identification')" >+</button>
+<!--<button type="button" onclick="supr_field('spaces')" >-</button>-->
+<div class="row" id="identification">
+  <!--Spaces-->
   <div class="col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-eye-open"></span>
       <!--<input id="field" type="text" class="control-label" name="espece" >-->
@@ -327,7 +374,7 @@ function transpo(i) {
   </div>
 </div>
 <!--Spaces identification-->
-<div class="col-lg-6 col-md-6 col-xs-12">
+<div class="col-lg-6 col-md-6 col-xs-12" id="spaces_identification" name="id_espece[]">
   <div class="form-group">
     <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
     <div class="col-xs-offset-2 col-xs-10">
@@ -339,15 +386,14 @@ function transpo(i) {
 </div>
 <!--Color-->
 <div class="col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
-<div class="col-lg-6 col-md-6 col-xs-12">
+<div class="col-lg-6 col-md-6 col-xs-12" id="color">
   <div class="input-group">
     <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
     <?php echo $this->form->getInput('observation_color'); ?>
   </div>
 </div>
 <!--Encoche médiane à la caudale-->
-<div class="row">
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-6 col-md-6 col-xs-12" id="caudale">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_caudal'); ?>
       <div class="col-xs-offset-2 col-xs-10">
@@ -357,10 +403,9 @@ function transpo(i) {
       </div>
     </div>
   </div>
-</div>
-<div class="row">
+
   <!--Beak-->
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-6 col-md-6 col-xs-12" id="beak">
     <div class="form-group">
       <?php //echo $this->form->getLabel('observation_beak'); ?>
       <div class="col-xs-offset-2 col-xs-10">
@@ -371,7 +416,7 @@ function transpo(i) {
     </div>
   </div>
   <!--Furrows-->
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-6 col-md-6 col-xs-12" id="furrows">
     <div class="form-group">
       <?php //echo $this->form->getLabel('observation_furrows'); ?>
       <div class="col-xs-offset-2 col-xs-10">
@@ -381,11 +426,11 @@ function transpo(i) {
       </div>
     </div>
   </div>
-</div>
+
 <!--Other caracteristques-->
-<div class="row">
+<div class="row other_c" id="other_caracts">
   <div class="col-xs-12">
-    <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT_DESC');?>">
+    <label class="hasTooltip" title="<?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT_DESC');?>">
       <?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT');?>
     </label>
   </div>
@@ -400,12 +445,12 @@ function transpo(i) {
     </div>
     <div class="custom-control custom-radio custom-control-inline">
       <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
-      <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES")?></label>
+      <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES_LBL")?></label>
     </div>
   </div>
 </div>
 <!--Tooth-->
-<div class="row" id="tooth_field" style="display: none;">
+<div class="row tooth_f" id="tooth_field" style="display: none;">
   <div class="col-xs-12">
     <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_TOOTH_NUMBER_DESC');?>">
       <?php echo JText::_('OBSERVATION_TOOTH_NUMBER_LBL');?>
@@ -463,7 +508,7 @@ function transpo(i) {
   </div>
 </div>
 <!--Baleen-->
-<div class="row" id="baleen_field" style="display: none;">
+<div class="row baleen_f" id="baleen_field" style="display: none;">
   <div class="col-xs-12">
     <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_BALEEN_DESC');?>">
       <?php echo JText::_('OBSERVATION_BALEEN_LBL');?>
@@ -506,7 +551,7 @@ function transpo(i) {
   </div>
 </div>
 <!--Defense-->
-<div class="row" id="defences_field" style="display: none;">
+<div class="row defences_f" id="defences_field" style="display: none;">
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
       <?php //echo $this->form->getLabel('observation_defenses'); ?>
@@ -518,9 +563,8 @@ function transpo(i) {
     </div>
   </div>
 </div>
-</div>
 <!--Levies & photos-->
-<div class="row">
+<div class="row" id="levies_photo">
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
       <?php echo $this->form->getLabel('levies'); ?>
@@ -542,6 +586,8 @@ function transpo(i) {
     </div>
   </div>
 </div>
+</div>
+
 <!--Animal-->
 <div class="col-xs-12"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
 <div class="row">

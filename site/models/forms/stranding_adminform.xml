@@ -280,7 +280,7 @@
 			label="OBSERVATION_SPACES_IDENTIFICATION"
 			description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
 			type="radio"
-			required="true" >
+			required="true">
 			<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
 			<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
 			<option value="inconnu">OBSERVATION_SPACES_IDENTIFICATION_C</option>
@@ -421,10 +421,9 @@
 	<field name="observation_defenses"
 			alias="observation_defenses"
 			class="form-control"
-			label="OBSERVATION_DEFENSES"
+			label="OBSERVATION_DEFENSES_LBL"
 			labelclass="control-label"
 			description="OBSERVATION_DEFENSES_DESC"
-			hint="OBSERVATION_DEFENSES"
 			type="checkboxes">
 			<option value="defenses">OBSERVATION_DEFENSES</option>
 	</field>
