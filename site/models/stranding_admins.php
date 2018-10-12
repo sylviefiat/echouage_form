@@ -86,7 +86,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                     CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
                                     CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
                                     a.catch_indices,
-                                    a.observation_tissue_removal,
+                                    a.levies,
                                     a.observation_location_stock,
                                     a.admin_validation'
 
@@ -129,11 +129,14 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                       CONCAT(observation_localisation," ", observation_region),
                                       a.observation_latitude,
                                       a.observation_longitude,
-                                      a.observation_spaces,
                                       a.observation_stranding_type,
                                       a.observation_number,
+                                      a.observation_spaces,
+                                      a.observation_spaces_identification,
                                       CONCAT(a.observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
                                       CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
+                                      a.levies,
+                                      a.Photos,
                                       a.remarks,
                                       a.id,
                                       a.observer_name,
@@ -174,8 +177,9 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                     a.observation_sex,
                                     a.observation_size,
                                     a.observation_color,
+                                    CONCAT(observation_state_decomposition,observation_alive),
                                     a.observation_caudal,
-                                    CONCAT(observation_beak, " ", observation_furrows),
+                                    CONCAT(observation_beak, observation_furrows, observation_defenses),
                                     a.nb_teeth_upper_right,
                                     a.nb_teeth_upper_left,
                                     a.nb_teeth_lower_right,
@@ -184,12 +188,11 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                     a.observation_baleen_color,
                                     a.observation_baleen_height,
                                     a.observation_baleen_base_height,
-                                    a.observation_defenses,
                                     a.observation_abnormalities,
                                     a.observation_capture_traces,
                                     a.catch_indices,
-                                    CONCAT(observation_death,observation_alive),
-                                    CONCAT(observation_datetime_death,observation_datetime_release),
+                                    a.observation_datetime_death,
+                                    a.observation_datetime_release,
                                     a.levies_protocole,
                                     a.label_references,
                                     observation_state_decomposition,
@@ -240,7 +243,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       for($cptr=0; $cptr<$nb_columns; $cptr++){ array_pop($cols); }
 
       if($var == 0) {
-          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
+          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur en cm', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
 
           $items = $db->setQuery($this->getListQuerySimple())->loadObjectList();
           $csv =  fopen('php://output', 'w');
@@ -256,7 +259,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         return fclose($csv);
 
       }else if($var == 1) {
-            array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', "Contactes de l'observateur", "Origine de l'information", 'Prélèvements','Photos','Remarques');
+            array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', "Contact de l'observateur", "Origine de l'information", 'Prélèvements','Photos','Remarques');
             $items = $db->setQuery($this->getListQuery())->loadObjectList();
             $csv =  fopen('php://output', 'w');
             fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
@@ -272,7 +275,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           }
         return fclose($csv);
       }else {
-           array_push($cols, 'References', 'Sexe', 'Taille','Couleur','Encoche médiane à la caudale' , 'Animal mort ou vivant', 'DCC', 'Longueur', 'Prélèvements', 'Sexe', 'Les cause de la mort', 'Remarques');
+           array_push($cols, 'References', 'Sexe', 'Taille','Couleur', 'DCC', 'Encoche médiane à la caudale', 'Bec, sillons ou défences', 'Nombre dents sup droite', 'Nombre dents sup gauche', 'Nombre dents if droite', 'Nombre dents inf gauche', 'Longueur', 'Prélèvements', 'Sexe', 'Les cause de la mort', 'Remarques');
             $items = $db->setQuery($this->getListQuery())->loadObjectList();
             $csv =  fopen('php://output', 'w');
             fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));

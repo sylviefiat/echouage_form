@@ -88,6 +88,12 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
   }
 }*/
 
+function toggleContainer(name)
+    {
+      var e = document.getElementById(name);// MooTools might not be available ;)
+      e.style.display = e.style.display === 'none' ? 'block' : 'none';
+    }
+
 
 function choixUser(btn,champ1,champ2, champ3) 
 { 
@@ -111,7 +117,7 @@ function choixUser(btn,champ1,champ2, champ3)
     display(champ1,false);
     display(champ3,false);  
   }
-  else if (btn.id = "defenses") {
+  else if (btn.id == "defenses") {
     display(champ3,true);
     display(champ1,false);
     display(champ2,false);
@@ -196,8 +202,14 @@ function transpo(i) {
         </div>
       </div>
     </div>
+    <label><?php echo JText::_('INFORMANT_CONTACT');?></label>
+    <!--<div class="show_informant_contact" onclick="toggleContainer('informant_field')">
+      
+      <?php //echo $this->form->getLabel('informant_name'); ?>
+    </div>-->
+    <button type="button" name="informantBtn" class="btn btn-primary" value="informateur" onclick="toggleContainer('informant_field')"><?php echo $this->form->getLabel('informant_name'); ?></button>
     <!--Informant contacts-->
-    <div class="row">
+    <div class="row" id="informant_field" style="display: none;">
       <div class="col-xs-12"><?php echo $this->form->getLabel('informant_name'); ?></div>
       <div class="col-lg-4 col-md-6 col-xs-12">
         <div class="input-group">
@@ -276,12 +288,6 @@ function transpo(i) {
   <div class="input-group">
     <span class="input-group-addon"></span>
     <?php echo $this->form->getInput('observation_longitude'); ?>
-  </div>
-</div>
-<div class="col-md-6 col-md-6 col-xs-12">
-  <div class="input-group">
-    <span class="input-group-addon"></span>
-    <?php echo $this->form->getInput('observation_commune'); ?>
   </div>
 </div>
 </div>
@@ -395,28 +401,6 @@ function transpo(i) {
     <div class="custom-control custom-radio custom-control-inline">
       <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
       <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES")?></label>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('levies'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('levies'); ?></label>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('photos'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('photos'); ?></label>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -535,7 +519,29 @@ function transpo(i) {
   </div>
 </div>
 </div>
-
+<!--Levies & photos-->
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('levies'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('levies'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('photos'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('photos'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!--Animal-->
 <div class="col-xs-12"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
 <div class="row">
@@ -616,6 +622,7 @@ function transpo(i) {
         <input id ="dead" type="radio" name="mammalState" class="custom-control-input" value="mort" onclick="choixUser(this,'dead_field','alive_field', '')">
         <label class="custom-control-label" for="dead"><?php echo JText::_("OBSERVATION_STATE_A")?></label>
       </div>
+      <?php echo JText::_('OR')?>
       <div class="custom-control custom-radio custom-control-inline">
         <input id ="alive" type="radio" name="mammalState" class="custom-control-input" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')">
         <label class="custom-control-label" for="alive"><?php echo JText::_("OBSERVATION_STATE_B")?></label>
@@ -668,6 +675,28 @@ function transpo(i) {
           </div>
         </div>
       </div>
+      <!--Label references-->
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <?php echo $this->form->getLabel('label_references'); ?>
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="radio">
+              <label><?php echo $this->form->getInput('label_references'); ?></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Tissue removal dead-->
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="form-group">
+          <?php echo $this->form->getLabel('observation_tissue_removal_dead'); ?>
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="checkbox">
+              <label><?php echo $this->form->getInput('observation_tissue_removal_dead'); ?></label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!--Living animal-->
     <div class="row" id="alive_field" style="display: none;">
@@ -693,15 +722,13 @@ function transpo(i) {
           <?php echo $this->form->getInput('observation_datetime_release'); ?>
         </div>
       </div>
-    </div>
-    <!--Tissue removal alive-->
-    <div class="row">
+      <!--Tissue removal alive-->
       <div class="col-lg-6 col-md-6 col-xs-12">
         <div class="form-group">
-          <?php echo $this->form->getLabel('observation_tissue_removal'); ?>
+          <?php echo $this->form->getLabel('observation_tissue_removal_alive'); ?>
           <div class="col-xs-offset-2 col-xs-10">
             <div class="checkbox">
-              <label><?php echo $this->form->getInput('observation_tissue_removal'); ?></label>
+              <label><?php echo $this->form->getInput('observation_tissue_removal_alive'); ?></label>
             </div>
           </div>
         </div>

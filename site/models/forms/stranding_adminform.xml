@@ -67,7 +67,6 @@
 			label="INFORMANT_NAME"
 			filter="STRING"
 			description="INFORMANT_NAME_DESC"
-			required="true"
 			hint="INFORMANT_NAME_PL"
 			type="text"/>
 	<field name="informant_address"
@@ -205,16 +204,6 @@
 			filter="FLOAT"
 			class="longitude form-control"
 			type="text"/>
-	<!--Commune-->
-	<field name="observation_commune"
-			alias="commune"
-			label="OBSERVATION_COMMUNE"
-			description="OBSERVATION_COMMUNE_DESC"
-			filter="STRING"
-			class="commune form-control"
-			hint="OBSERVATION_COMMUNE"
-			type="text"
-			required="true"/>
 
 	<!--Stranding type-->
 	<field 	name="observation_stranding_type"
@@ -225,7 +214,7 @@
 			type="radio"
 			required="true" >
 			<option value="isolé">OBSERVATION_STRANDING_TYPE_A</option>
-			<option value="en masse">OBSERVATION_STRANDING_TYPE_B</option>
+			<option value="en groupe">OBSERVATION_STRANDING_TYPE_B</option>
 	</field>
 
 	<!--Number-->
@@ -249,8 +238,40 @@
 			 description="OBSERVATION_SPACES_DESC"
 			 hint="OBSERVATION_SPACES"
 			 labelclass="control-label"
-			 type="text"
-			 required="true"/>
+			 type="list"
+			 required="true">
+			 <option value="Pas renseigner">SPACES_0</option>
+			 <option value="Cachalot (Physeter macrocephalus)">SPACES_1</option>
+			 <option value="Cachalot pygmée (Kogia breviceps)">SPACES_2</option>
+			 <option value="Cachalot nain (Kogia sima)">SPACES_3</option>
+			 <option value="Baleine à bec de Blainville (Mesoplodon densirostris)">SPACES_4</option>
+			 <option value="Baleine à bec de longman (Indopacetus pacificus)">SPACES_5</option>
+			 <option value="Baleine à bec de Cuvier (Ziphius cavirostris)">SPACES_6</option>
+			 <option value="Orque (Orcinus orca)">SPACES_7</option>
+			 <option value="Fausse orque (Pseudorca crassidens)">SPACES_8</option>
+			 <option value="Globicéphale tropical (Globicephala macrorhynchus)">SPACES_9</option>
+			 <option value="Dauphin de Risso (Grampus griseus)">SPACES_10</option>
+			 <option value="Orque Pygmée (Feresa attenuata)">SPACES_11</option>
+			 <option value="Péponocéphale ou dauphin d’Electre (Peponocephala electra)">SPACES_12</option>
+			 <option value="Sténo ou dauphin à bec étroit (Steno bredanensis)">SPACES_13</option>
+			 <option value="Grand dauphin commun (Tursiops truncatus)">SPACES_14</option>
+			 <option value="Grand dauphin de l’Indo-Pacifique (Tursiops aduncus)">SPACES_15</option>
+			 <option value="Dauphin commun (Delphinus delphis)">SPACES_16</option>
+			 <option value="Dauphin à long bec (Stenella longirostris)">SPACES_17</option>
+			 <option value=" Dauphin tacheté pantropical (Stenella attenuata)">SPACES_18</option>
+			 <option value="Dauphin de Fraser (Lagenodelphis hosei)">SPACES_19</option>
+			 <option value="Baleine bleue pygmée (Balaenoptera musculus brevicauda)">SPACES_20</option>
+			 <option value="Rorqual commun (Balaenoptera physalus)">SPACES_21</option>
+			 <option value="Rorqual boréal ou rorqual de Rudolphi (Balaenoptera borealis)">SPACES_22</option>
+			 <option value="Rorqual tropical ou rorqual de Bryde (Balaenoptera edeni)">SPACES_23</option>
+			 <option value="Rorqual de Omura (Balaenoptera omurai)">SPACES_24</option>
+			 <option value="Petit rorqual antarctique (Balaenoptera bonaerensis)">SPACES_25</option>
+			 <option value="Petit rorqual pygmée (Balaenoptera acutorostrata subspecies)">SPACES_26</option>
+			 <option value="Baleine à bosse (Megaptera novaeangliae)">SPACES_27</option>
+			 <option value="Dugong ou vache marine (Dugong dugon)">SPACES_28</option>
+			 <option value="Otarie à fourrure de Nouvelle-Zélande (Arctophoca australis forsteri)">SPACES_29</option>
+			
+	</field>
 
 	<!--Spaces identification-->
 	<field name="observation_spaces_identification"
@@ -329,7 +350,8 @@
 			 description="OBSERVATION_UPPER_RIGHT_DESC"
 			 hint="OBSERVATION_UPPER_RIGHT"
 			 labelclass="control-label"
-			 type="text"/>
+			 type="number"
+			 max="1000"/>
 	<field name="nb_teeth_upper_left"
 			 alias="nb_teeth_upper_left"
 			 class="form-control"
@@ -337,7 +359,8 @@
 			 description="OBSERVATION_UPPER_LEFT_DESC"
 			 hint="OBSERVATION_UPPER_LEFT"
 			 labelclass="control-label"
-			 type="text"/>
+			 type="number"
+			 max="1000"/>
 	<field name="nb_teeth_lower_right"
 			 alias="nb_teeth_lower_right"
 			 class="form-control"
@@ -345,7 +368,8 @@
 			 description="OBSERVATION_LOWER_RIGHT_DESC"
 			 hint="OBSERVATION_LOWER_RIGHT"
 			 labelclass="control-label"
-			 type="text"/>
+			 type="number"
+			 max="1000"/>
 	<field name="nb_teeth_lower_left"
 			 alias="nb_teeth_lower_left"
 			 class="form-control"
@@ -353,7 +377,8 @@
 			 description="OBSERVATION_LOWER_LEFT_DESC"
 			 hint="OBSERVATION_LOWER_LEFT"
 			 labelclass="control-label"
-			 type="text"/>
+			 type="number"
+			 max="1000"/>
 	<field name="observation_teeth_base_diametre"
 			alias="observation_teeth_base_diametre"
 			class="form-control"
@@ -361,7 +386,8 @@
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
 			hint="OBSERVATION_BASE_DIAMETRE_LBL"
-			type="text"/>
+			type="number"
+			max="1000"/>
 
 	<!--Baleen-->
 	<field name="observation_baleen_color"
@@ -379,7 +405,8 @@
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_HEIGHT_DESC"
 			hint="OBSERVATION_BALEEN_HEIGHT"
-			type="text"/>
+			type="number"
+			max="1000"/>
 	<field name="observation_baleen_base_height"
 			alias="observation_baleen_base_height"
 			class="form-control"
@@ -387,7 +414,8 @@
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
 			hint="OBSERVATION_BALEEN_BASE_DIAMETRE"
-			type="text"/>
+			type="number"
+			max="1000"/>
 
 	<!--Defenses-->
 	<field name="observation_defenses"
@@ -531,13 +559,24 @@
 			<option value="complet">LEVIES_PROTOCOL_C</option>
 	</field>
 
+	<!--Label references-->
+	<field name="label_references"
+			 alias="label_references"
+			 class="form-control"
+			 label="LABEL_REFERENCES"
+			 description="LABEL_REFERENCES_DESC"
+			 hint="LABEL_REFERENCES"
+			 labelclass="control-label"
+			 type="text"/>
+
 	<!--Levies-->
 	<field name="levies"
 			alias="levies"
 			class="btn-group"
 			label="LEVIES"
 			description="LEVIES_DESC"
-			type="radio">
+			type="radio"
+			required="true">
 			<option value="Oui">JYES</option>
 			<option value="Non">JNO</option>
 	</field>
@@ -548,21 +587,31 @@
 			class="btn-group"
 			label="PHOTOS"
 			description="PHOTOS_DESC"
-			type="radio">
+			type="radio"
+			required="true">
 			<option value="Oui">JYES</option>
 			<option value="Non">JNO</option>
 	</field>
 
-
-	<!--Tissue removal-->
-	<field name="observation_tissue_removal"
-			alias="observation_tissue_removal"
+	<!--Tissue removal alive-->
+	<field name="observation_tissue_removal_alive"
+			alias="observation_tissue_removal_alive"
 			class="form-control"
 			label="OBSERVATION_TISSUE_REMOVAL"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC"
 			type="checkboxes"
-			multiple="true" 
-			required="true">
+			multiple="true">
+			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
+	</field>
+
+	<!--Tissue removal dead-->
+	<field name="observation_tissue_removal_dead"
+			alias="observation_tissue_removal_dead"
+			class="form-control"
+			label="OBSERVATION_TISSUE_REMOVAL"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC"
+			type="checkboxes"
+			multiple="true">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
 			<option value="dents">OBSERVATION_TISSUE_REMOVAL_B</option>
 			<option value="parasites">OBSERVATION_TISSUE_REMOVAL_C</option>
