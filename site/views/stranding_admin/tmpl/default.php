@@ -288,8 +288,14 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
 								</tr>
 								<!--Tissue removal-->
 								<tr>
-									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_RELEASE_TISSUE_REMOVAL'); ?>: </td>
-									<td><?php echo $this->item->observation_tissue_removal; ?></td>
+									<td>
+									<?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_RELEASE_TISSUE_REMOVAL'); ?>:
+									</td>
+									<td>
+										<?php echo $this->item->observation_tissue_removal_alive; ?>
+									
+										<?php echo $this->item->observation_tissue_removal_dead; ?>	
+									</td>
 								</tr>
 								<!--Remarks-->
 								<tr>

@@ -62,8 +62,8 @@ class Stranding_formsTablestranding_Admin extends JTable {
         }
 
 	// Set up for specific checkboxes component for observation tissue removal
-	if (array_key_exists( 'observation_tissue_removal', $array ) && is_array( $array['observation_tissue_removal'] )) {
-		$array['observation_tissue_removal'] = implode( ',', $array['observation_tissue_removal'] );
+	if (array_key_exists( 'observation_tissue_removal_dead', $array ) && is_array( $array['observation_tissue_removal_dead'] )) {
+		$array['observation_tissue_removal_dead'] = implode( ',', $array['observation_tissue_removal_dead'] );
 	}
 
         return parent::bind($array, $ignore);

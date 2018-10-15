@@ -201,7 +201,7 @@ if (!empty($this->extra_sidebar)) {
 								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_CATCH_LEVIES_PROTOCOL', 'a.levies_protocole', $listDirn, $listOrder); ?>
 							</th>
 							<!--Tissue removal-->
-							<th class='left'>
+							<th class='left' rowspan="2">
 								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_CATCH_TISSUE_REMOVAL', 'a.observation_tissue_removal', $listDirn, $listOrder); ?>
 							</th>
 							<!--Admin validation-->
@@ -380,14 +380,16 @@ if (!empty($this->extra_sidebar)) {
 											</td>
 											<td>
 
-												<?php echo $item->observation_tissue_removal;?>
+												<?php echo $item->observation_tissue_removal_alive;?>
+												
+												<?php echo $item->observation_tissue_removal_dead;?>
 											</td>
 											<td>
 
 												<?php echo $item->admin_validation; ?>
 											</td>
 											<td>
-													<?php echo (int) $item->id_location; ?>
+												<?php echo (int) $item->id_location; ?>
 											</td>
 											<?php if (isset($this->items[0]->id)): ?>
 												<td class="center hidden-phone">

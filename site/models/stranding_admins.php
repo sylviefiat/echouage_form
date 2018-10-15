@@ -140,7 +140,6 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                       CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
                                       a.levies,
                                       a.photos,
-                                      CONCAT(observation_state_decomposition,observation_alive),
                                       a.observation_caudal,
                                       CONCAT(observation_beak, observation_furrows, observation_defenses),
                                       a.nb_teeth_upper_right,
@@ -154,14 +153,16 @@ class Stranding_formsModelStranding_admins extends JModelList {
                                       a.observation_abnormalities,
                                       a.observation_capture_traces,
                                       a.catch_indices,
+                                      CONCAT(observation_state_decomposition,observation_alive),
                                       a.observation_datetime_death,
                                       a.observation_datetime_release,
                                       a.levies_protocole,
                                       a.label_references,
-                                      observation_state_decomposition,
-                                      a.observation_tissue_removal,
+                                      CONCAT(observation_tissue_removal_dead, observation_tissue_removal_alive),
                                       a.observation_location_stock,
                                       a.remarks,
+                                      a.observer_name,
+                                      a.id,
                                       a.admin_validation'
 
               )
@@ -204,7 +205,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       for($cptr=0; $cptr<$nb_columns; $cptr++){ array_pop($cols); }
 
       if($var == 0) {
-          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur en cm', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
+          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
 
           $items = $db->setQuery($this->getListQuerySimple())->loadObjectList();
           $csv =  fopen('php://output', 'w');
@@ -220,7 +221,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         return fclose($csv);
 
       }else if($var == 1) {
-            array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur', "Contact de l'observateur", "Origine de l'information", 'Prélèvements','Photos', 'DCC','Remarques');
+            array_push($cols, 'References', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur', "Contact de l'observateur", "Origine de l'information", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec, sillons sous la gorge, ou défense', 'Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort', "Date de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus','Lieu de stockage','Remarques');
             $items = $db->setQuery($this->getListQuery())->loadObjectList();
             $csv =  fopen('php://output', 'w');
             fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
@@ -228,6 +229,8 @@ class Stranding_formsModelStranding_admins extends JModelList {
 
             foreach($items as $line){
               $in = (array) $line;
+              array_pop($in);
+              array_pop($in);
               array_pop($in);
               array_pop($in);
               fputcsv($csv, (array) $in);

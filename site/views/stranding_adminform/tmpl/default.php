@@ -133,6 +133,19 @@ function display(div, affiche) {
   } 
 }
 
+var cloneId = 0;
+
+$(document).ready(function()
+{
+    $("#num").click(function()
+    {
+        var clone = $(".form-group:first").clone(true);
+        clone.find("input").prop("name", "optionsRadios" + cloneId);
+        cloneId++;
+        clone.appendTo(".row");
+    });
+});
+
 
 function duplic(element)
 {
@@ -378,7 +391,7 @@ function transpo(i) {
   <div class="form-group">
     <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
     <div class="col-xs-offset-2 col-xs-10">
-      <div class="radio">
+      <div class="radio-list">
         <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
       </div>
     </div>
@@ -428,24 +441,26 @@ function transpo(i) {
   </div>
 
 <!--Other caracteristques-->
-<div class="row other_c" id="other_caracts">
-  <div class="col-xs-12">
+<div class="row" id="other_caracts">
+   <div class="col-xs-12">
     <label class="hasTooltip" title="<?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT_DESC');?>">
       <?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT');?>
     </label>
   </div>
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="custom-control custom-radio custom-control-inline">
-      <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-      <label class="custom-control-label" for="tooth"><?php echo JText::_("OBSERVATION_TOOTH")?></label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input id ="baleen" type="radio" name="mammalOther" class="custom-control-input" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-      <label class="custom-control-label" for="baleen"><?php echo JText::_("OBSERVATION_BALEEN_LBL")?></label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
-      <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES_LBL")?></label>
+  <div class="col-lg-12 col-md-12 col-xs-12 form-group">
+    <div class="radio-list">
+       <div class="custom-control custom-radio custom-control-inline">
+        <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
+        <label class="custom-control-label" for="tooth"><?php echo JText::_("OBSERVATION_TOOTH")?></label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input id ="baleen" type="radio" name="mammalOther" class="custom-control-input" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
+        <label class="custom-control-label" for="baleen"><?php echo JText::_("OBSERVATION_BALEEN_LBL")?></label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
+        <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES_LBL")?></label>
+      </div>
     </div>
   </div>
 </div>

@@ -387,6 +387,7 @@
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
 			hint="OBSERVATION_BASE_DIAMETRE_LBL"
 			type="number"
+			step="0.01"
 			max="1000"/>
 
 	<!--Baleen-->
@@ -406,6 +407,7 @@
 			description="OBSERVATION_BALEEN_HEIGHT_DESC"
 			hint="OBSERVATION_BALEEN_HEIGHT"
 			type="number"
+			step="0.01"
 			max="1000"/>
 	<field name="observation_baleen_base_height"
 			alias="observation_baleen_base_height"
@@ -415,6 +417,7 @@
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
 			hint="OBSERVATION_BALEEN_BASE_DIAMETRE"
 			type="number"
+			step="0.01"
 			max="1000"/>
 
 	<!--Defenses-->
@@ -437,6 +440,7 @@
 			description="OBSERVATION_SIZE_DESC"
 			hint="OBSERVATION_SIZE"
 			type="number"
+			step="0.01"
 			min="0"
 			max="9000"
 			required="true"/>
@@ -532,7 +536,7 @@
 			class="form-control"
 			label="OBSERVATION_ALIVE"
 			description="OBSERVATION_ALIVE_DESC"
-			type="radio">
+			type="checkboxes">
 			<option value="6">OBSERVATION_ALIVE_A</option>
 	</field>
 

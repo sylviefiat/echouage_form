@@ -314,6 +314,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
 			type="number"
+			step="0.01"
 			max="1000"/>
 
 	<!--Baleen-->
@@ -329,6 +330,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_HEIGHT_DESC"
 			type="number"
+			step="0.01"
 			max="1000"/>
 	<field name="observation_baleen_base_height"
 			alias="observation_baleen_base_height"
@@ -336,6 +338,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
 			type="number"
+			step="0.01"
 			max="1000"/>
 
 	<!--Defenses-->
@@ -363,6 +366,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
 			type="number"
+			step="0.01"
 			min="0"
 			max="9000"
 			required="true"/>
@@ -436,11 +440,11 @@
 			label="OBSERVATION_STATE_DECOMPOSITION"
 			description="OBSERVATION_STATE_DECOMPOSITION_DESC"
 			type="radio">
-			<option value="très frais">OBSERVATION_STATE_DECOMPOSITION_A</option>
-			<option value="frais">OBSERVATION_STATE_DECOMPOSITION_B</option>
-			<option value="putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
-			<option value="très putréfié">OBSERVATION_STATE_DECOMPOSITION_D</option>
-			<option value="restes">OBSERVATION_STATE_DECOMPOSITION_E</option>
+			<option value="1">OBSERVATION_STATE_DECOMPOSITION_A</option>
+			<option value="2">OBSERVATION_STATE_DECOMPOSITION_B</option>
+			<option value="3">OBSERVATION_STATE_DECOMPOSITION_D</option>
+			<option value="4">OBSERVATION_STATE_DECOMPOSITION_D</option>
+			<option value="5">OBSERVATION_STATE_DECOMPOSITION_E</option>
 	</field>
 
 	<!--Alive-->
@@ -448,9 +452,8 @@
 			alias="observation_alive"
 			label="OBSERVATION_ALIVE"
 			description="OBSERVATION_ALIVE_DESC"
-			type="checkboxes" 
-			multiple="false">
-			<option value="animal remis à l'eau">OBSERVATION_ALIVE_A</option>
+			type="checkboxes">
+			<option value="6">OBSERVATION_ALIVE_A</option>
 	</field>
 
 	<!--Date release-->
