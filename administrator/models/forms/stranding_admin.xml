@@ -266,17 +266,19 @@
 			alias="observation_beak"
 			label="OBSERVATION_BEAK"
 			description="OBSERVATION_BEAK_DESC"
-			type="checkboxes">
-			<option value="bec">OBSERVATION_BEAK_A</option>
+			type="checkboxes"
+			multiple="false">
+			<option value="Bec">OBSERVATION_BEAK</option>
 	</field>
 
-	<!--Sillons-->
+	<!--Furrows-->
 	<field name="observation_furrows"
 			alias="observation_furrows"
 			label="OBSERVATION_FURROWS"
 			description="OBSERVATION_FURROWS_DESC"
-			type="checkboxes">
-			<option value="Bec">OBSERVATION_FURROWS</option>
+			type="checkboxes"
+			multiple="false">
+			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
 	</field>
 
 	<!--Tooth-->
@@ -347,8 +349,9 @@
 			label="OBSERVATION_DEFENSES_LBL"
 			labelclass="control-label"
 			description="OBSERVATION_DEFENSES_DESC"
-			type="checkboxes">
-			<option value="defenses">OBSERVATION_DEFENSES</option>
+			type="checkboxes"
+			multiple="false">
+			<option value="Défenses">OBSERVATION_DEFENSES</option>
 	</field>
 
 	<!--Color-->
@@ -452,7 +455,8 @@
 			alias="observation_alive"
 			label="OBSERVATION_ALIVE"
 			description="OBSERVATION_ALIVE_DESC"
-			type="checkboxes">
+			type="checkboxes"
+			multiple="false">
 			<option value="6">OBSERVATION_ALIVE_A</option>
 	</field>
 
@@ -514,7 +518,8 @@
 			label="OBSERVATION_TISSUE_REMOVAL_ALIVE"
 			description="OBSERVATION_TISSUE_REMOVAL_ALIVE_DESC"
 			type="checkboxes"
-			multiple="true">
+			multiple="true"
+			multiple="false">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
 	</field>
 

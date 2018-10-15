@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 `observation_alive` VARCHAR(100) NOT NULL,
 `observation_datetime_release` VARCHAR(100) NOT NULL,
 `observation_tissue_removal_dead` VARCHAR(200) NOT NULL,
-`observation_tissue_removal_alive` VARCHAR(50) NOT NULL,
+`observation_tissue_removal_alive` VARCHAR(50	) NOT NULL,
 `observation_location_stock` VARCHAR(100) NOT NULL,
 `remarks` TEXT NOT NULL,
 `localisation` POINT NOT NULL ,
@@ -66,3 +66,28 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 
 CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+
+CREATE TRIGGER `#__trig_update_id_location_insert` AFTER INSERT ON `#__stranding_dmin`
+FOR EACH ROW	
+BEGIN
+	DECLARE number_cptr INT;
+	IF NEW.observation_number >= 1 THEN
+		SET number_cptr = 0;
+		WHILE number_cptr <= NEW.observation_number DO
+			UPDATE `#__stranding_dmin` SET id_location = id_location + number_cptr;
+		END WHILE;
+	END IF;
+END;
+
+CREATE TRIGGER `#__trig_update_id_location_update` AFTER UPDATE ON `#__stranding_dmin`
+FOR EACH ROW	
+BEGIN
+	DECLARE number_cptr INT;
+	IF NEW.observation_number >= 1 THEN
+		SET number_cptr = 0;
+		WHILE number_cptr <= NEW.observation_number DO
+			UPDATE `#__stranding_dmin` SET id_location = id_location + number_cptr;
+		END WHILE;
+	END IF;
+END;
