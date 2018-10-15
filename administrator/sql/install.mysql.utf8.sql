@@ -69,7 +69,7 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 
 
 CREATE TRIGGER `#__trig_stranding_admin_id_location_insert` AFTER INSERT ON `#__stranding_dmin`
-FOR EACH ROW SET NEW.id_location = id_location + 1;
+FOR EACH ROW SET id_location = id_location + 1;
 
 CREATE TRIGGER `#__trig_stranding_admin_id_location_update` AFTER UPDATE ON `#__stranding_dmin`
-FOR EACH ROW SET NEW.id_location = id_location + 1;
+FOR EACH ROW SET id_location = id_location + 1;
