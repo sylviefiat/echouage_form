@@ -451,7 +451,7 @@
 	<!--Size precision-->
 	<field name="observation_size_precision"
 			alias="observation_size_precision"
-			class="form-control"
+			class="btn-group"
 			label="OBSERVATION_SIZE_PRECISION"
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_PRECISION_DESC"
