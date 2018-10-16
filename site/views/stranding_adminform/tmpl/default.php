@@ -74,8 +74,6 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
     /*document.getElementById("jform_counting_method_timed_swim_chbx").checked = document.getElementById("jform_counting_method_timed_swim").value.length>0?1:0;
 
     enable_timed_swim(document.getElementById("jform_counting_method_timed_swim").value.length>0?true:false);*/
-
-
   });
 });
 
@@ -89,137 +87,97 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
 }*/
 
 function toggleContainer(name)
-    {
+{
       var e = document.getElementById(name);// MooTools might not be available ;)
       e.style.display = e.style.display === 'none' ? 'block' : 'none';
-    }
+}
 
 
 function choixUser(btn,champ1,champ2, champ3) 
-{ 
-  if (btn.id == "dead"){ 
-    display(champ1,true); 
-    display(champ2,false); 
-    display(champ3,false); 
-  } 
-  else if (btn.id == "alive"){ 
-    display(champ2,true); 
-    display(champ1,false);
-    display(champ3,false);  
-  }
-  if(btn.id == "tooth"){
-    display(champ1,true); 
-    display(champ2,false);
-    display(champ3,false);
-  }
-  else if(btn.id == "baleen"){
-    display(champ2,true); 
-    display(champ1,false);
-    display(champ3,false);  
-  }
-  else if (btn.id == "defenses") {
-    display(champ3,true);
-    display(champ1,false);
-    display(champ2,false);
-  }
-} 
+    { 
+      if (btn.id == "dead"){ 
+        display(champ1,true); 
+        display(champ2,false); 
+        display(champ3,false); 
+      } 
+      else if (btn.id == "alive"){ 
+        display(champ2,true); 
+        display(champ1,false);
+        display(champ3,false);  
+      }
+      if(btn.id == "tooth"){
+        display(champ1,true); 
+        display(champ2,false);
+        display(champ3,false);
+      }
+      else if(btn.id == "baleen"){
+        display(champ2,true); 
+        display(champ1,false);
+        display(champ3,false);  
+      }
+      else if (btn.id == "defenses") {
+        display(champ3,true);
+        display(champ1,false);
+        display(champ2,false);
+      }
+    } 
 
 function display(div, affiche) { 
-  if (affiche){ 
-    document.getElementById(div).style.display="block"; 
-  } 
-  else { 
-    document.getElementById(div).style.display="none"; 
-  } 
-}
+      if (affiche){ 
+        document.getElementById(div).style.display="block"; 
+      } 
+      else { 
+        document.getElementById(div).style.display="none"; 
+      } 
+    }
 
-var cloneId = 0;
+    var cloneId = 0;
 
-$(document).ready(function()
-{
-    $("#num").click(function()
+    $(document).ready(function()
     {
+      $("#num").click(function()
+      {
         var clone = $(".form-group:first").clone(true);
         clone.find("input").prop("name", "optionsRadios" + cloneId);
         cloneId++;
         clone.appendTo(".row");
+      });
     });
-});
 
 
-function duplic(element)
-{
-  clone1 = document.getElementById("spaces").cloneNode(true);
-  clone1.id="spaces1";
-  document.getElementById(element).appendChild (clone1);
-  clone2 = document.getElementById("spaces_identification").cloneNode(true);
-  clone2.id = "spaces_identification1";
-  document.getElementById(element).appendChild (clone2);
-  clone3 = document.getElementById("color").cloneNode(true);
-  clone3.id="color1";
-  document.getElementById(element).appendChild (clone3);
-  clone4 = document.getElementById("caudale").cloneNode(true);
-  clone4.id="caudale1";
-  document.getElementById(element).appendChild (clone4);
-  clone5 = document.getElementById("beak").cloneNode(true);
-  clone5.id="beak1";
-  document.getElementById(element).appendChild (clone5);
-  clone6 = document.getElementById("furrows").cloneNode(true);
-  clone6.id="furrows1";
-  document.getElementById(element).appendChild (clone6);
-  clone7 = document.getElementById("other_caracts").cloneNode(true);
-  clone7.id="other_caracts1";
-  clone7_1 = document.getElementById("tooth").cloneNode(true);
-  clone7_1.id = "tooth1";
-  document.getElementById(clone7).appendChild(clone7_1);
-  clone7_2 = document.getElementById("baleen").cloneNode(true);
-  clone7_2.id = "baleen1";
-  document.getElementById(clone7).appendChild(clone7_2);
-  clone7_3 = document.getElementById("defenses").cloneNode(true);
-  clone7_3.id = "defenses1";
-  document.getElementById(clone7).appendChild(clone7_3);
-  document.getElementById(element).appendChild (clone7);
-  clone8 = document.getElementById("levies_photo").cloneNode(true);
-  clone8.id="levies_photo1";
-  document.getElementById(element).appendChild (clone8);
-  clone9 = document.getElementById("tooth_field").cloneNode(true);
-  clone9.id="tooth_field1";
-  document.getElementById(element).appendChild (clone9);
-  clone10 = document.getElementById("baleen_field").cloneNode(true);
-  clone10.id = "baleen_field1";
-  document.getElementById(element).appendChild (clone10);
-  clone11 = document.getElementById("defences_field").cloneNode(true);
-  clone11.id = "defences_field1";
-  document.getElementById(element).appendChild (clone11);
-}
+    function duplic(element)
+    {
+      clone1 = document.getElementById("spaces").cloneNode(true);
+      clone1.id="spaces1";
+      document.getElementById(element).appendChild (clone1);
+    }
 
-/*Fonction ajout et suppression de champs version 2*/
+    /*Fonction ajout et suppression de champs version 2*/
+    function addDiv(name, field){
+      var div = document.createElement("div");
+      div.name = name;
+      field.appendChild(div);
+    }
+    function addField(name, field) {
+      var div = document.getElementById('identification');
+      addDiv(name, field);
+    }
 
-function addDiv(name, field){
-    var div = document.createElement("div");
-    div.name = name;
-    field.appendChild(div);
-}
-function addField(name, field) {
-  var div = document.getElementById('identification');
-    addDiv(name, field);
-}
+    function supr_field(i) 
+    { 
+      var Parent; 
+      var Obj = document.getElementById ( 'input_'+i) ; 
 
-function supr_field(i) 
-{ 
-  var Parent; 
-  var Obj = document.getElementById ( 'input_'+i) ; 
+      if( Obj)      
+        Parent = Obj.parentNode;      
+      if( Parent) 
+       Obj.removeChild(Obj.childNodes[0]); 
 
-  if( Obj)      
-    Parent = Obj.parentNode;      
-  if( Parent) 
-   Obj.removeChild(Obj.childNodes[0]); 
+   } 
 
-} 
-
-function transpo(i) { 
-  document.getElementById('in_'+i).value = document.getElementById('out_'+(i-1)).value; 
-}
+   function transpo(i) { 
+    document.getElementById('in_'+i).value = document.getElementById('out_'+(i-1)).value; 
+  }
 
 </script>
 
@@ -370,42 +328,43 @@ function transpo(i) {
     </div>
   </div>
 </div>
-<!--Indentification-->
-<div class="col-xs-12"><h4 class="fa fa-eye fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></div>
 
-<button type="button" onclick="duplic('identification')" >+</button>
-<!--<button type="button" onclick="supr_field('spaces')" >-</button>-->
-<div class="row" id="identification">
-  <!--Spaces-->
-  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-eye-open"></span>
-      <!--<input id="field" type="text" class="control-label" name="espece" >-->
-    </span>
-    <?php echo $this->form->getInput('observation_spaces'); ?>
+<div class="stranding_admin-mammal_data" id="stranding_admin-the_clone">
+  <!--Indentification-->
+  <div class="col-xs-12" id="title_R3"><h4 class="fa fa-eye fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></div>
+
+  <!--<button type="button" onclick="supr_field('spaces')" >-</button>-->
+  <div class="row" id="identification">
+    <!--Spaces-->
+    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
+    <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
+      <div class="input-group">
+        <span class="input-group-addon"><span class="fa fa-eye-open"></span>
+        <!--<input id="field" type="text" class="control-label" name="espece" >-->
+      </span>
+      <?php echo $this->form->getInput('observation_spaces'); ?>
+    </div>
   </div>
-</div>
-<!--Spaces identification-->
-<div class="col-lg-6 col-md-6 col-xs-12" id="spaces_identification" name="id_espece[]">
-  <div class="form-group">
-    <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
-    <div class="col-xs-offset-2 col-xs-10">
-      <div class="radio-list">
-        <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
+  <!--Spaces identification-->
+  <div class="col-lg-6 col-md-6 col-xs-12" id="spaces_identification" name="id_espece[]">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio-list">
+          <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!--Color-->
-<div class="col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
-<div class="col-lg-6 col-md-6 col-xs-12" id="color">
-  <div class="input-group">
-    <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
-    <?php echo $this->form->getInput('observation_color'); ?>
+  <!--Color-->
+  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
+  <div class="col-lg-6 col-md-6 col-xs-12" id="color">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
+      <?php echo $this->form->getInput('observation_color'); ?>
+    </div>
   </div>
-</div>
-<!--Encoche médiane à la caudale-->
+  <!--Encoche médiane à la caudale-->
   <div class="col-lg-6 col-md-6 col-xs-12" id="caudale">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_caudal'); ?>
@@ -416,7 +375,6 @@ function transpo(i) {
       </div>
     </div>
   </div>
-
   <!--Beak-->
   <div class="col-lg-6 col-md-6 col-xs-12" id="beak">
     <div class="form-group">
@@ -439,9 +397,8 @@ function transpo(i) {
       </div>
     </div>
   </div>
-
-<!--Other caracteristques-->
-<div class="row" id="other_caracts">
+  <!--Other caracteristques-->
+  <div class="row" id="other_caracts">
    <div class="col-xs-12">
     <label class="hasTooltip" title="<?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT_DESC');?>">
       <?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT');?>
@@ -449,20 +406,20 @@ function transpo(i) {
   </div>
   <div class="col-lg-12 col-md-12 col-xs-12 form-group">
     <div class="radio-list">
-       <div class="custom-control custom-radio custom-control-inline">
-        <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-        <label class="custom-control-label" for="tooth"><?php echo JText::_("OBSERVATION_TOOTH")?></label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input id ="baleen" type="radio" name="mammalOther" class="custom-control-input" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-        <label class="custom-control-label" for="baleen"><?php echo JText::_("OBSERVATION_BALEEN_LBL")?></label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
-        <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES_LBL")?></label>
-      </div>
+     <div class="custom-control custom-radio custom-control-inline">
+      <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
+      <label class="custom-control-label" for="tooth"><?php echo JText::_("OBSERVATION_TOOTH")?></label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input id ="baleen" type="radio" name="mammalOther" class="custom-control-input" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
+      <label class="custom-control-label" for="baleen"><?php echo JText::_("OBSERVATION_BALEEN_LBL")?></label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field','defences_field')">
+      <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES_LBL")?></label>
     </div>
   </div>
+</div>
 </div>
 <!--Tooth-->
 <div class="row tooth_f" id="tooth_field" style="display: none;">
@@ -602,9 +559,8 @@ function transpo(i) {
   </div>
 </div>
 </div>
-
 <!--Animal-->
-<div class="col-xs-12"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
+<div class="col-xs-12" id="title_R4"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
 <div class="row">
   <div class="row">
     <!--Size-->
@@ -688,131 +644,134 @@ function transpo(i) {
         <input id ="alive" type="radio" name="mammalState" class="custom-control-input" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')">
         <label class="custom-control-label" for="alive"><?php echo JText::_("OBSERVATION_STATE_B")?></label>
       </div> 
-      </div>
     </div>
-    <!--Dead animal-->
-    <div class="row" id="dead_field" style="display: none;">
-      <div class="col-xs-12">
-        <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_DEAD_ANIMAL_DESC');?>">
-          <?php echo JText::_('OBSERVATION_DEAD_ANIMAL');?>
-        </label>
-      </div>
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <div class="col-xs-offset-3 col-xs-10">
-            <div class="radio">
-              <label><?php echo $this->form->getInput('observation_death'); ?></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Death date-->
-      <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_death'); ?></div>
-      <div class="col-lg-4 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
-          <?php echo $this->form->getInput('observation_datetime_death'); ?>
-        </div>
-      </div>
-      <!--State decomposition-->
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <?php echo $this->form->getLabel('observation_state_decomposition'); ?>
-          <div class="col-xs-offset-2 col-xs-10">
-            <div class="radio">
-              <label><?php echo $this->form->getInput('observation_state_decomposition'); ?></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Levies protocol-->
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <?php echo $this->form->getLabel('levies_protocole'); ?>
-          <div class="col-xs-offset-2 col-xs-10">
-            <div class="radio">
-              <label><?php echo $this->form->getInput('levies_protocole'); ?></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Label references-->
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <?php echo $this->form->getLabel('label_references'); ?>
-          <div class="col-xs-offset-2 col-xs-10">
-            <div class="radio">
-              <label><?php echo $this->form->getInput('label_references'); ?></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Tissue removal dead-->
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <?php echo $this->form->getLabel('observation_tissue_removal_dead'); ?>
-          <div class="col-xs-offset-2 col-xs-10">
-            <div class="checkbox">
-              <label><?php echo $this->form->getInput('observation_tissue_removal_dead'); ?></label>
-            </div>
+  </div>
+  <!--Dead animal-->
+  <div class="row" id="dead_field" style="display: none;">
+    <div class="col-xs-12">
+      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_DEAD_ANIMAL_DESC');?>">
+        <?php echo JText::_('OBSERVATION_DEAD_ANIMAL');?>
+      </label>
+    </div>
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-10">
+          <div class="radio">
+            <label><?php echo $this->form->getInput('observation_death'); ?></label>
           </div>
         </div>
       </div>
     </div>
-    <!--Living animal-->
-    <div class="row" id="alive_field" style="display: none;">
-      <div class="col-xs-12">
-        <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_LIVING_ANIMAL_DESC');?>">
-          <?php echo JText::_('OBSERVATION_LIVING_ANIMAL');?>
-        </label>
-      </div>
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <div class="col-xs-offset-2 col-xs-10">
-            <div class="checkbox">
-              <label><?php echo $this->form->getInput('observation_alive'); ?></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Release date-->
-      <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
-      <div class="col-lg-4 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
-          <?php echo $this->form->getInput('observation_datetime_release'); ?>
-        </div>
-      </div>
-      <!--Tissue removal alive-->
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="form-group">
-          <?php echo $this->form->getLabel('observation_tissue_removal_alive'); ?>
-          <div class="col-xs-offset-2 col-xs-10">
-            <div class="checkbox">
-              <label><?php echo $this->form->getInput('observation_tissue_removal_alive'); ?></label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Stockage location-->
-    <div class="row">
-     <div class="col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
-     <div class="col-lg-12 col-md-12 col-xs-12">
+    <!--Death date-->
+    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_death'); ?></div>
+    <div class="col-lg-4 col-md-6 col-xs-12">
       <div class="input-group">
-        <?php echo $this->form->getInput('observation_location_stock'); ?>
+        <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
+        <?php echo $this->form->getInput('observation_datetime_death'); ?>
+      </div>
+    </div>
+    <!--State decomposition-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('observation_state_decomposition'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="radio">
+            <label><?php echo $this->form->getInput('observation_state_decomposition'); ?></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Levies protocol-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('levies_protocole'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="radio">
+            <label><?php echo $this->form->getInput('levies_protocole'); ?></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Label references-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('label_references'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="radio">
+            <label><?php echo $this->form->getInput('label_references'); ?></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Tissue removal dead-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('observation_tissue_removal_dead'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="checkbox">
+            <label><?php echo $this->form->getInput('observation_tissue_removal_dead'); ?></label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!--Remarks-->
-  <div class="row">
-   <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
-   <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-comment "></span></span>
-      <?php echo $this->form->getInput('remarks'); ?>
+  <!--Living animal-->
+  <div class="row" id="alive_field" style="display: none;">
+    <div class="col-xs-12">
+      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_LIVING_ANIMAL_DESC');?>">
+        <?php echo JText::_('OBSERVATION_LIVING_ANIMAL');?>
+      </label>
+    </div>
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="checkbox">
+            <label><?php echo $this->form->getInput('observation_alive'); ?></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Release date-->
+    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="input-group">
+        <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
+        <?php echo $this->form->getInput('observation_datetime_release'); ?>
+      </div>
+    </div>
+    <!--Tissue removal alive-->
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="form-group">
+        <?php echo $this->form->getLabel('observation_tissue_removal_alive'); ?>
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="checkbox">
+            <label><?php echo $this->form->getInput('observation_tissue_removal_alive'); ?></label>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+</div>
+<button type="button" onclick="duplic('identification')" ><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></button>
+<!--Stockage location-->
+<div class="row">
+ <div class="col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
+ <div class="col-lg-12 col-md-12 col-xs-12">
+  <div class="input-group">
+    <?php echo $this->form->getInput('observation_location_stock'); ?>
+  </div>
+</div>
+</div>
+<!--Remarks-->
+<div class="row">
+ <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
+ <div class="col-lg-12 col-md-12 col-xs-12">
+  <div class="input-group">
+    <span class="input-group-addon"><span class="fa fa-comment "></span></span>
+    <?php echo $this->form->getInput('remarks'); ?>
+  </div>
+</div>
 </div>
 <!--Admin validation-->
 <?php if($user->id != 0){ ?>

@@ -56,7 +56,6 @@
 			label="INFORMANT_NAME"
 			filter="STRING"
 			description="INFORMANT_NAME_DESC"
-			required="true"
 			type="text"/>
 	<field name="informant_address"
 			alias="informant_address"

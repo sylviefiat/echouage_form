@@ -237,9 +237,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           }
         return fclose($csv);
       }
-      
     }
-
   }
 
 

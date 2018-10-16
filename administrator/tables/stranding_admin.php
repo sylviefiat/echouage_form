@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * stranding_admin Table class
  */
-class Stranding_formsTablestranding_Admin extends JTable {
+class Stranding_formsTableStranding_Admin extends JTable {
 
     /**
      * Constructor

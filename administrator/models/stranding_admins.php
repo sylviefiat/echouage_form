@@ -27,15 +27,11 @@ class Stranding_formsModelStranding_admins extends JModelList {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
-
-                //references and id_location
-                'references','a.references',
+                //id_location
                 'id_location','a.id_location',
-
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
-
                 // grounding data
                 'informant_name', 'a.informant_name',
                 'informant_tel', 'a.informant_tel',
