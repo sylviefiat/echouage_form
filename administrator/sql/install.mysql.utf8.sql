@@ -62,17 +62,13 @@ PRIMARY KEY (`id`)
 
 
 CREATE TRIGGER `#__trig_stranding_admin_insert` BEFORE INSERT ON `#__stranding_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ))
+	     SET NEW.id_location = NEW.id_location+1;
 
 CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ))
+	     SET NEW.id_location = NEW.id_location+1;
 
-CREATE TRIGGER `#__trig_stranding_admin_id_location_insert` AFTER INSERT ON `#__stranding_admin` 
-FOR EACH ROW SET NEW.id_location = NEW.id_location+1;
-
-
-CREATE TRIGGER `#__trig_stranding_admin_id_location_update` AFTER UPDATE ON `#__stranding_admin` 
-FOR EACH ROW SET NEW.id_location = NEW.id_location+1;
 
 
 
