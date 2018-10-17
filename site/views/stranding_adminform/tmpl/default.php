@@ -46,11 +46,11 @@ fieldset.radio label{
 
 <script type="text/javascript">
 
-function getScript(url,success) {
-  var script = document.createElement('script');
-  script.src = url;
-  var head = document.getElementsByTagName('head')[0],
-  done = false;
+  function getScript(url,success) {
+    var script = document.createElement('script');
+    script.src = url;
+    var head = document.getElementsByTagName('head')[0],
+    done = false;
     // Attach handlers for all browsers
     script.onload = script.onreadystatechange = function() {
       if (!done && (!this.readyState
@@ -79,10 +79,10 @@ function toggleContainer(name)
 {
       var e = document.getElementById(name);// MooTools might not be available ;)
       e.style.display = e.style.display === 'none' ? 'block' : 'none';
-}
+    }
 
 
-function choixUser(btn,champ1,champ2, champ3) { 
+    function choixUser(btn,champ1,champ2, champ3) { 
       if (btn.id == "dead"){ 
         display(champ1,true); 
         display(champ2,false); 
@@ -108,15 +108,15 @@ function choixUser(btn,champ1,champ2, champ3) {
         display(champ1,false);
         display(champ2,false);
       }
-} 
-function display(div, affiche) { 
+    } 
+    function display(div, affiche) { 
       if (affiche){ 
         document.getElementById(div).style.display="block"; 
       } 
       else { 
         document.getElementById(div).style.display="none"; 
       } 
-}
+    }
 
     var cloneId = 0;
 
@@ -132,23 +132,23 @@ function display(div, affiche) {
     });
 
 
-function duplic(element) {
+    function duplic(element) {
       clone1 = document.getElementById("spaces").cloneNode(true);
       clone1.id="spaces1";
       document.getElementById(element).appendChild (clone1);
-}
+    }
 
-/*Fonction ajout et suppression de champs version 2*/
-function addDiv(name, field) {
+    /*Fonction ajout et suppression de champs version 2*/
+    function addDiv(name, field) {
       var div = document.createElement("div");
       div.name = name;
       field.appendChild(div);
-}
-function addField(name, field) {
+    }
+    function addField(name, field) {
       var div = document.getElementById('identification');
       addDiv(name, field);
-}
-function supr_field(i) { 
+    }
+    function supr_field(i) { 
       var Parent; 
       var Obj = document.getElementById ( 'input_'+i) ; 
 
@@ -157,124 +157,128 @@ function supr_field(i) {
       if( Parent) 
         Obj.removeChild(Obj.childNodes[0]); 
 
-} 
-function transpo(i) { 
-    document.getElementById('in_'+i).value = document.getElementById('out_'+(i-1)).value; 
-}
+    } 
+    function transpo(i) { 
+      document.getElementById('in_'+i).value = document.getElementById('out_'+(i-1)).value; 
+    }
 
-</script>
+  </script>
 
-<div class="stranding_admin-edit front-end-edit">
-  <?php if (!empty($this->item->id)): ?>
-    <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
-    <?php else: ?>
-      <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
-      <p class="lead" style="1.3em"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
-    <?php endif; ?>
+  <div class="stranding_admin-edit front-end-edit">
+    <?php if (!empty($this->item->id)): ?>
+      <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
+      <?php else: ?>
+        <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
+        <p class="lead" style="1.3em"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
+      <?php endif; ?>
 
-    <form id="form-stranding_admin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
-      <!--Contacts-->
-      <div class="col-xs-12"><h4 class="fa fa-user fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></h4></div>
-      <!--Observer contacts-->
+      <form id="form-stranding_admin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+        <!--Contacts-->
+        <div class="col-xs-12"><h4 class="fa fa-user fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></h4></div>
+        <!--Observer contacts-->
+        <div class="row">
+         <div class="col-xs-12"><?php echo $this->form->getLabel('observer_name'); ?></div>
+         <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-user"></span></span>
+            <?php echo $this->form->getInput('observer_name'); ?>
+            <span style="display:none;" ><?php echo $this->form->getInput('id'); ?></span>
+            <span style="display:none;" ><?php echo $this->form->getInput('id_location'); ?></span>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-home"></span></span>
+            <?php echo $this->form->getInput('observer_address'); ?>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-phone"></span></span>
+            <?php echo $this->form->getInput('observer_tel'); ?>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-envelope"></span></span>
+            <?php echo $this->form->getInput('observer_email'); ?>
+          </div>
+        </div>
+      </div>
       <div class="row">
-       <div class="col-xs-12"><?php echo $this->form->getLabel('observer_name'); ?></div>
-       <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-user"></span></span>
-          <?php echo $this->form->getInput('observer_name'); ?>
-          <span style="display:none;" ><?php echo $this->form->getInput('id'); ?></span>
-          <span style="display:none;" ><?php echo $this->form->getInput('id_location'); ?></span>
+        <div class="col-lg-12 col-md-12 col-xs-12">
+          <label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_INFORMANT_CONTACT');?></label>
+          <button type="button" name="informantBtn" class="btn btn-primary" value="informateur" onclick="toggleContainer('informant_field')"><?php echo $this->form->getLabel('informant_name'); ?></button>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-home"></span></span>
-          <?php echo $this->form->getInput('observer_address'); ?>
+      <!--Informant contacts-->
+      <div class="row" id="informant_field" style="display: none;">
+        <div class="col-xs-12"><?php echo $this->form->getLabel('informant_name'); ?></div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-user"></span></span>
+            <?php echo $this->form->getInput('informant_name'); ?>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-home"></span></span>
+            <?php echo $this->form->getInput('informant_address'); ?>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-phone"></span></span>
+            <?php echo $this->form->getInput('informant_tel'); ?>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon exergue"><span class="fa fa-envelope"></span></span>
+            <?php echo $this->form->getInput('informant_email'); ?>
+          </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
+      <!--Circonstance de l'échouage-->
+      <div class="col-xs-12"><h4 class="fa fa-flag fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW2'); ?></h4></div>
+      <!--Date-->
+      <div class="row">
+       <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
+       <div class="col-lg-4 col-md-6 col-xs-12">
         <div class="input-group">
-          <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-          <?php echo $this->form->getInput('observer_tel'); ?>
+          <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
+          <?php echo $this->form->getInput('observation_datetime'); ?>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="col-lg-8 col-md-6 col-xs-12">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-envelope"></span></span>
-          <?php echo $this->form->getInput('observer_email'); ?>
-        </div>
-      </div>
-    </div>
-    <label><?php echo JText::_('INFORMANT_CONTACT');?></label>
-    <button type="button" name="informantBtn" class="btn btn-primary" value="informateur" onclick="toggleContainer('informant_field')"><?php echo $this->form->getLabel('informant_name'); ?></button>
-    <!--Informant contacts-->
-    <div class="row" id="informant_field" style="display: none;">
-      <div class="col-xs-12"><?php echo $this->form->getLabel('informant_name'); ?></div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-user"></span></span>
-          <?php echo $this->form->getInput('informant_name'); ?>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-home"></span></span>
-          <?php echo $this->form->getInput('informant_address'); ?>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-          <?php echo $this->form->getInput('informant_tel'); ?>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span class="fa fa-envelope"></span></span>
-          <?php echo $this->form->getInput('informant_email'); ?>
+          <span class="input-group-addon"><span class="fa fa-location-arrow"></span></span>
+          <?php echo $this->form->getInput('observation_location'); ?>
         </div>
       </div>
     </div>
-    <!--Circonstance de l'échouage-->
-    <div class="col-xs-12"><h4 class="fa fa-flag fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW2'); ?></h4></div>
-    <!--Date-->
     <div class="row">
-     <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
-     <div class="col-lg-4 col-md-6 col-xs-12">
+     <div class="col-xs-12"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
+     <div class="col-md-12 col-md-12 col-xs-12">
       <div class="input-group">
-        <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
-        <?php echo $this->form->getInput('observation_datetime'); ?>
-      </div>
-    </div>
-    <div class="col-lg-8 col-md-6 col-xs-12">
-      <div class="input-group">
-        <span class="input-group-addon"><span class="fa fa-location-arrow"></span></span>
-        <?php echo $this->form->getInput('observation_location'); ?>
+        <span class="input-group-addon exergue"><span class="fa fa-map-marker"></span></span>
+        <?php echo $this->form->getInput('observation_localisation'); ?>
       </div>
     </div>
   </div>
   <div class="row">
-   <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
-   <div class="col-md-12 col-md-12 col-xs-12">
+   <div class="col-md-6 col-md-6 col-xs-12">
     <div class="input-group">
-      <span class="input-group-addon exergue"><span class="fa fa-map-marker"></span></span>
-      <?php echo $this->form->getInput('observation_localisation'); ?>
+      <span class="input-group-addon"></span>
+      <?php echo $this->form->getInput('observation_region'); ?>
     </div>
   </div>
-</div>
-<div class="row">
- <div class="col-md-6 col-md-6 col-xs-12">
-  <div class="input-group">
-    <span class="input-group-addon"></span>
-    <?php echo $this->form->getInput('observation_region'); ?>
+  <div class="col-md-6 col-md-6 col-xs-12">
+    <div class="input-group">
+      <span class="input-group-addon"></span>
+      <?php echo $this->form->getInput('observation_latitude'); ?>
+    </div>
   </div>
-</div>
-<div class="col-md-6 col-md-6 col-xs-12">
-  <div class="input-group">
-    <span class="input-group-addon"></span>
-    <?php echo $this->form->getInput('observation_latitude'); ?>
-  </div>
-</div>
 </div>
 <div class="row">
  <div class="col-md-6 col-md-6 col-xs-12">
@@ -292,9 +296,9 @@ function transpo(i) {
 </div>
 <div class="row">
   <!--Stranding type-->
+  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_stranding_type'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
-      <?php echo $this->form->getLabel('observation_stranding_type'); ?>
       <div class="col-xs-offset-2 col-xs-10">
         <div class="radio">
           <label><?php echo $this->form->getInput('observation_stranding_type'); ?></label>
@@ -303,7 +307,7 @@ function transpo(i) {
     </div>
   </div>
   <!--Number-->
-  <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_number'); ?></div>
+  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_number'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
@@ -320,7 +324,7 @@ function transpo(i) {
 
   <div class="row" id="identification">
     <!--Spaces-->
-    <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
+    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
     <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
       <div class="input-group">
         <span class="input-group-addon"><span class="fa fa-eye-open"></span>
@@ -330,10 +334,10 @@ function transpo(i) {
     </div>
   </div>
   <!--Spaces identification-->
-  <div class="col-lg-6 col-md-6 col-xs-12" id="spaces_identification" name="id_espece[]">
+  <div class="col-xs-12" id="spaces_identification" name="id_espece[]"><?php echo $this->form->getLabel('observation_spaces_identification'); ?></div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
-      <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
+      <div class="col-xs-offset-6 col-xs-12">
         <div class="radio-list">
           <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
         </div>
@@ -341,7 +345,7 @@ function transpo(i) {
     </div>
   </div>
   <!--Color-->
-  <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
+  <div class="col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12" id="color">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
@@ -349,9 +353,9 @@ function transpo(i) {
     </div>
   </div>
   <!--Encoche médiane à la caudale-->
-  <div class="col-lg-6 col-md-6 col-xs-12" id="caudale">
+  <div class="col-xs-12" id="caudale"><?php echo $this->form->getLabel('observation_caudal'); ?></div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
-      <?php echo $this->form->getLabel('observation_caudal'); ?>
       <div class="col-xs-offset-2 col-xs-10">
         <div class="radio">
           <label><?php echo $this->form->getInput('observation_caudal'); ?></label>
@@ -359,11 +363,11 @@ function transpo(i) {
       </div>
     </div>
   </div>
-  <!--Beak-->
+   <!--Beak-->
+  <div class="col-xs-12"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_BEC_OR_FURROWS'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12" id="beak">
     <div class="form-group">
-      <?php //echo $this->form->getLabel('observation_beak'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
+      <div class="col-xs-offset-6 col-xs-12">
         <div class="checkbox">
           <label><?php echo $this->form->getInput('observation_beak'); ?></label>
         </div>
@@ -373,8 +377,7 @@ function transpo(i) {
   <!--Furrows-->
   <div class="col-lg-6 col-md-6 col-xs-12" id="furrows">
     <div class="form-group">
-      <?php //echo $this->form->getLabel('observation_furrows'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
+      <div class="col-xs-offset-6 col-xs-12">
         <div class="checkbox">
           <label><?php echo $this->form->getInput('observation_furrows'); ?></label>
         </div>
@@ -384,8 +387,8 @@ function transpo(i) {
   <!--Other caracteristques-->
   <div class="row" id="other_caracts">
    <div class="col-lg-12 col-md-12 col-xs-12">
-    <label class="hasTooltip" title="<?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT_DESC');?>">
-      <?php echo JText::_('OBSERVATION_IDENTIFICATION_CARACT');?>
+    <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT_DESC');?>">
+      <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT');?>
     </label>
   </div>
   <div class="col-lg-12 col-md-12 col-xs-12 form-group">
@@ -552,7 +555,7 @@ function transpo(i) {
 <div class="row">
   <div class="row">
     <!--Size-->
-    <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_size'); ?></div>
+    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_size'); ?></div>
     <div class="col-lg-6 col-md-6 col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"><span class="fa fa-arrows-h"></span></span>
@@ -606,7 +609,7 @@ function transpo(i) {
       </div>
     </div>
     <!--Catch indices-->
-     <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('catch_indices'); ?></div>
+    <div class="col-xs-12"><?php echo $this->form->getLabel('catch_indices'); ?></div>
     <div class="col-lg-6 col-md-6 col-xs-12">
       <div class="input-group"> 
         <span class="input-group-addon"><span class="fa fa-comment "></span></span>
@@ -616,7 +619,7 @@ function transpo(i) {
   </div>
   <!--State-->
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="col-xs-12">
       <label id="jform_state_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_STATE_DESC');?>">
         <?php echo JText::_('OBSERVATION_STATE');?>
       </label>
@@ -742,14 +745,14 @@ function transpo(i) {
 </div>
 <!--Stockage location-->
 <div class="row">
- <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
+ <div class="col-xs-12"><?php echo $this->form->getLabel('observation_location_stock'); ?></div>
  <div class="col-lg-12 col-md-12 col-xs-12">
-    <?php echo $this->form->getInput('observation_location_stock'); ?>
+  <?php echo $this->form->getInput('observation_location_stock'); ?>
 </div>
 </div>
 <!--Remarks-->
 <div class="row">
- <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
+ <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
  <div class="col-lg-12 col-md-12 col-xs-12">
   <div class="input-group">
     <span class="input-group-addon"><span class="fa fa-comment "></span></span>
@@ -771,7 +774,7 @@ function transpo(i) {
 <?php } ?>
 <!--Captcha-->
 <div class="row">
-  <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('captcha'); ?></div>
+  <div class="col-xs-12"><?php echo $this->form->getLabel('captcha'); ?></div>
   <div class="col-lg-12 col-md-12 col-xs-12">
     <div class="input-group">
       <?php echo $this->form->getInput('captcha'); ?>

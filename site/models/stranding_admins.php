@@ -50,8 +50,8 @@ class Stranding_formsModelStranding_admins extends JModelList {
 
         // List state information.
         parent::populateState($ordering, $direction);
-    }
-
+    } 
+    
     /**
      * Build an SQL query to load the list data.
      *

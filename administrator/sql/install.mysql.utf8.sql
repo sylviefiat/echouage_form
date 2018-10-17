@@ -67,7 +67,19 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
 
-
+DELIMITER &&
+ 
+CREATE TRIGGER `#__trig_stranding_admin_update_id_location_after_insert` AFTER INSERT ON `#__stranding_admin`
+FOR EACH ROW
+BEGIN
+    SELECT `observation_number` INTO @nb FROM `#__stranding_admin`;
+    
+    IF @nb >= 1 THEN
+    	UPDATE `#__stranding_admin` SET `id_location` = 1;
+    	WHERE `id` = NEW.id;
+END&&
+ 
+DELIMITER ;
 
 
 
