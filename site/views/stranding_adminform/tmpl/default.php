@@ -726,7 +726,7 @@ function toggleContainer(name)
         <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL');?>
       </label>
     </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="col-lg-6 col-md-6 col-xs-12">
       <div class="form-group">
         <div class="col-xs-offset-6 col-xs-12">
           <div class="checkbox">
@@ -737,14 +737,14 @@ function toggleContainer(name)
     </div>
     <!--Release date-->
     <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="col-lg-6 col-md-6 col-xs-12">
       <div class="input-group included">
         <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
         <?php echo $this->form->getInput('observation_datetime_release'); ?>
       </div>
     </div>
     <!--Tissue removal alive-->
-    <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="col-lg-6 col-md-6 col-xs-12">
       <div class="form-group">
         <?php echo $this->form->getLabel('observation_tissue_removal_alive'); ?>
         <div class="col-xs-offset-6 col-xs-12">
