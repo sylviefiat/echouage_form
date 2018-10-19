@@ -605,7 +605,7 @@
 			alias="observation_tissue_removal_alive"
 			class="form-control"
 			label="OBSERVATION_TISSUE_REMOVAL"
-			description="OBSERVATION_TISSUE_REMOVAL_DESC"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC_ALIVE"
 			type="checkboxes"
 			multiple="false">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
@@ -616,7 +616,7 @@
 			alias="observation_tissue_removal_dead"
 			class="form-control"
 			label="OBSERVATION_TISSUE_REMOVAL"
-			description="OBSERVATION_TISSUE_REMOVAL_DESC"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC_DEAD"
 			type="checkboxes"
 			multiple="true">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
@@ -628,6 +628,14 @@
 			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
+
+	<field name="observation_daulphin_mesures"
+			alias="observation_daulphin_mesures"
+			label="OBSERVATION_DAULPHIN_MESURES"
+			description="OBSERVATION_DAULPHIN_MESURES_DESC"
+			type="media"
+			directory="administrator/components/com_stranding_forms/assets/images"
+			preview="tooltip"/>
 
 	<!--Stockage location-->
 	<field name="observation_location_stock"
@@ -657,7 +665,8 @@
 			description="ADMIN_VALIDATION_DESC"
 			type="checkbox"/>
 
-	<field name="captcha" type="captcha"
+	<field name="captcha" 
+			type="captcha"
             label="CAPTCHA"
             description="CAPTCHA_DESC"
             validate="captcha"

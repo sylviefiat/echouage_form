@@ -540,6 +540,14 @@
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
 
+	<field name="observation_daulphin_mesures"
+			alias="observation_daulphin_mesures"
+			label="OBSERVATION_DAULPHIN_MESURES"
+			description="OBSERVATION_DAULPHIN_MESURES_DESC"
+			type="media"
+			directory="administrator/components/com_stranding_forms/assets/images"
+			preview="tooltip"/>
+
 	<!--Stockage location-->
 	<field name="observation_location_stock"
 			alias="observation_location_stock"

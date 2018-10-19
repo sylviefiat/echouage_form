@@ -174,7 +174,7 @@ function toggleContainer(name)
 
       <form id="form-stranding_admin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
         <!--Contacts-->
-        <div class="col-xs-12"><h4 class="fa fa-user fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></h4></div>
+        <div class="col-xs-12"><span class="input-group-addon exergue"><span class="fa fa-user fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></h4></span></span></div>
         <!--Observer contacts-->
         <div class="row">
          <div class="col-xs-12"><?php echo $this->form->getLabel('observer_name'); ?></div>
@@ -240,7 +240,7 @@ function toggleContainer(name)
         </div>
       </div>
       <!--Circonstance de l'échouage-->
-      <div class="col-xs-12"><h4 class="fa fa-flag fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW2'); ?></h4></div>
+      <div class="col-xs-12"><span class="input-group-addon exergue"><span class="fa fa-flag fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW2'); ?></h4></span></span></div>
       <!--Date-->
       <div class="row">
        <div class="col-xs-12"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
@@ -315,12 +315,14 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-
-<button type="button" onclick="duplic('identification')" ><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></button>
-
+<div class="row">
+  <div class="col-xs-12">
+    <button type="button" onclick="duplic('identification')" ><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></button>
+  </div>
+</div>
 <div class="stranding_admin-mammal_data" id="stranding_admin-the_clone">
   <!--Indentification-->
-  <div class="col-xs-12" id="title_R3"><h4 class="fa fa-eye fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></div>
+  <div class="col-xs-12" id="title_R3"><span class="input-group-addon exergue"><span class="fa fa-eye fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
 
   <div class="row" id="identification">
     <!--Spaces-->
@@ -354,6 +356,11 @@ function toggleContainer(name)
   </div>
   <!--Encoche médiane à la caudale-->
   <div class="col-xs-12" id="caudale"><?php echo $this->form->getLabel('observation_caudal'); ?></div>
+  <div class="col-lg-2 col-md-2 col-xs-4">
+     <p>
+      <img src="administrator/components/com_stranding_forms/assets/images/cetace_tail.png" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TAIL_FIN')?>" />
+    </p>
+  </div>
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
       <div class="col-xs-offset-2 col-xs-10">
@@ -364,7 +371,8 @@ function toggleContainer(name)
     </div>
   </div>
    <!--Beak-->
-  <div class="col-xs-12"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_BEC_OR_FURROWS'); ?></div>
+  <div class="col-xs-12">
+    <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_BEC_OR_FURROWS_DESC');?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_BEC_OR_FURROWS'); ?></label></div>
   <div class="col-lg-6 col-md-6 col-xs-12" id="beak">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
@@ -551,7 +559,7 @@ function toggleContainer(name)
 </div>
 </div>
 <!--Animal-->
-<div class="col-xs-12" id="title_R4"><h4 class="fa fa-shield fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></div>
+<div class="col-xs-12" id="title_R4"><span class="input-group-addon exergue"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
 <div class="row">
   <div class="row">
     <!--Size-->
@@ -620,27 +628,27 @@ function toggleContainer(name)
   <!--State-->
   <div class="row">
     <div class="col-xs-12">
-      <label id="jform_state_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_STATE_DESC');?>">
-        <?php echo JText::_('OBSERVATION_STATE');?>
+      <label id="jform_state_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE_DESC');?>">
+        <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE');?>
       </label>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
       <div class="custom-control custom-radio custom-control-inline">   
         <input id ="dead" type="radio" name="mammalState" class="custom-control-input" value="mort" onclick="choixUser(this,'dead_field','alive_field', '')">
-        <label class="custom-control-label" for="dead"><?php echo JText::_("OBSERVATION_STATE_A")?></label>
+        <label class="custom-control-label" for="dead"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE_A")?></label>
       </div>
-      <?php echo JText::_('OR')?>
+      <label><?php echo JText::_('OR')?></label>&nbsp;&nbsp;&nbsp;&nbsp;
       <div class="custom-control custom-radio custom-control-inline">
         <input id ="alive" type="radio" name="mammalState" class="custom-control-input" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')">
-        <label class="custom-control-label" for="alive"><?php echo JText::_("OBSERVATION_STATE_B")?></label>
+        <label class="custom-control-label" for="alive"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE_B")?></label>
       </div> 
     </div>
   </div>
   <!--Dead animal-->
   <div class="row" id="dead_field" style="display: none;">
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_DEAD_ANIMAL_DESC');?>">
-        <?php echo JText::_('OBSERVATION_DEAD_ANIMAL');?>
+      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL_DESC');?>">
+        <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL');?>
       </label>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -708,8 +716,8 @@ function toggleContainer(name)
   <!--Living animal-->
   <div class="row" id="alive_field" style="display: none;">
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_LIVING_ANIMAL_DESC');?>">
-        <?php echo JText::_('OBSERVATION_LIVING_ANIMAL');?>
+      <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL_DESC');?>">
+        <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL');?>
       </label>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -723,7 +731,7 @@ function toggleContainer(name)
     </div>
     <!--Release date-->
     <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
-    <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-xs-12">
       <div class="input-group">
         <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
         <?php echo $this->form->getInput('observation_datetime_release'); ?>
@@ -741,6 +749,24 @@ function toggleContainer(name)
       </div>
     </div>
   </div>
+</div>
+</div>
+<div class="row">
+  <!--<div class="col-xs-12"><?php //echo $this->form->getLabel('observation_daulphin_mesures'); ?></div>
+  <div class="col-xs-offset-6 col-xs-12">
+        <div class="form-group">
+            <label><?php //echo $this->form->getInput('observation_daulphin_mesures'); ?></label>
+        </div>
+  </div>-->
+<div class="col-lg-8 colmd-8 col-xs-12">
+  <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
+  <p>
+       <img src="administrator/components/com_stranding_forms/assets/images/dolphin.png" alt="Mesures sur cétacés" title="Renseignez les mesures" />
+    </p>&nbsp;&nbsp;
+   <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
+    <p>
+      <img src="administrator/components/com_stranding_forms/assets/images/dugong.png" alt="Mesures sur dugongs" title="Renseignez les mesures" />
+    </p>
 </div>
 </div>
 <!--Stockage location-->
@@ -782,7 +808,7 @@ function toggleContainer(name)
   </div>
 </div>
 <button type="submit" class="validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>
-<?php echo JText::_('OR'); ?>
+<label><?php echo JText::_('OR'); ?></label>&nbsp;&nbsp;&nbsp;
 <a href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_adminform.cancel'); ?>" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>
 <input type="hidden" name="option" value="com_stranding_forms" />
 <input type="hidden" name="task" value="stranding_adminform.save" />

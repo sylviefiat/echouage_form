@@ -64,8 +64,8 @@
         <languages folder="administrator">
             <language tag="fr-FR">language/fr-FR.com_stranding_forms.ini</language>
             <language tag="fr-FR">language/fr-FR.com_stranding_forms.sys.ini</language>
-			<language tag="en-GB">language/en-GB.com_stranding_forms.ini</language>
-			<language tag="en-GB">language/en-GB.com_stranding_forms.sys.ini</language>
+	    <language tag="en-GB">language/en-GB.com_stranding_forms.ini</language>
+            <language tag="en-GB">language/en-GB.com_stranding_forms.sys.ini</language>
         </languages>
     </administration>
     <scriptfile>script.php</scriptfile>
