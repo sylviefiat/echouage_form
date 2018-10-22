@@ -75,6 +75,11 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
   });
 });
 
+function fixedImage(div){
+  var e = document.getElementById(div);
+  e.style.position = 'fixed';
+}
+
 function toggleContainer(name)
 {
       var e = document.getElementById(name);// MooTools might not be available ;)
@@ -107,6 +112,18 @@ function toggleContainer(name)
         display(champ3,true);
         display(champ1,false);
         display(champ2,false);
+      }
+      if(btn.id == "cetace") {
+        display(champ2,false); 
+        display(champ1,true);
+        display(champ3,false);
+        fixedImage("cetace_measures_position"); 
+      }
+      else if(btn.id == "dugong") {
+        display(champ2,true); 
+        display(champ1,false);
+        display(champ3,false);
+        fixedImage("dugong_measures_position"); 
       }
     } 
     function display(div, affiche) { 
@@ -210,7 +227,7 @@ function toggleContainer(name)
       <div class="row">
         <div class="col-lg-12 col-md-12 col-xs-12">
           <label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_INFORMANT_CONTACT');?></label>
-          <button type="button" name="informantBtn" class="btn btn-primary" value="informateur" onclick="toggleContainer('informant_field')"><?php echo $this->form->getLabel('informant_name'); ?></button>
+          <button type="button" name="informantBtn" class="btn btn-primary" value="informateur" onclick="toggleContainer('informant_field')"><label><?php echo JText::_('RIGHT_HERE'); ?></label></button>
         </div>
       </div>
       <!--Informant contacts-->
@@ -319,54 +336,47 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
+<!--Indentification-->
 <div class="row">
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <button type="button" class="btn btn-primary" onclick="duplic('identification')" ><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></button>
-  </div>
+  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
 </div>
-<div class="stranding_admin-mammal_data" id="stranding_admin-the_clone">
-  <!--Indentification-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
+<div class="row" id="identification">
+  <!--Spaces-->
+  <div class="col-lg-12 col-md-12 col-xs-12" id="identification_title"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
+  <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-eye-open"></span>
+    </span>
+    <?php echo $this->form->getInput('observation_spaces'); ?>
   </div>
-  <div class="row" id="identification">
-    <!--Spaces-->
-    <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
-    <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
-      <div class="input-group">
-        <span class="input-group-addon"><span class="fa fa-eye-open"></span>
-        <!--<input id="field" type="text" class="control-label" name="espece" >-->
-      </span>
-      <?php echo $this->form->getInput('observation_spaces'); ?>
-    </div>
-  </div>
-  <!--Spaces identification-->
-  <div class="col-lg-12 col-md-12 col-xs-12" id="spaces_identification" name="id_espece[]"><?php echo $this->form->getLabel('observation_spaces_identification'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="radio-list">
-          <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
-        </div>
+</div>&nbsp;&nbsp;&nbsp;
+<!--Spaces identification-->
+<div class="col-lg-12 col-md-12 col-xs-12" id="spaces_identification_title"><?php echo $this->form->getLabel('observation_spaces_identification'); ?></div>
+<div class="col-lg-6 col-md-6 col-xs-12" id="spaces_identification" name="id_espece[]">
+  <div class="form-group">
+    <div class="col-xs-offset-6 col-xs-12">
+      <div class="radio-list">
+        <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
       </div>
     </div>
   </div>
-  <!--Color-->
-  <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_color'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12" id="color">
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-resize-horizontal"></span></span>
+</div>
+<!--Color-->
+<div class="col-lg-12 col-md-12 col-xs-12" id="color_title"><?php echo $this->form->getLabel('observation_color'); ?></div>
+<div class="col-lg-6 col-md-6 col-xs-12" id="color" name="couleur[]">
+  <div class="input-group">
+    <span class="input-group-addon"><span></span><stpan></span>
       <?php echo $this->form->getInput('observation_color'); ?>
     </div>
-  </div>
+  </div>&nbsp;&nbsp;&nbsp;
   <!--Encoche médiane à la caudale-->
-  <div class="col-lg-12 col-md-12 col-xs-12" id="caudale"><?php echo $this->form->getLabel('observation_caudal'); ?></div>
-  <div class="col-sm-3 col-lg-2 col-md-2 col-xs-1">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="tail_fin_title"><?php echo $this->form->getLabel('observation_caudal'); ?></div>
+  <div class="col-sm-3 col-lg-2 col-md-2 col-xs-6" id="tail_fin_image">
    <p>
     <img src="administrator/components/com_stranding_forms/assets/images/cetace_tail.png" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TAIL_FIN')?>" />
   </p>
 </div>
-<div class="col-lg-6 col-md-6 col-xs-12">
+<div class="col-lg-6 col-md-6 col-xs-12" id="tail_fin" name="tail[]">
   <div class="form-group">
     <div class="col-xs-offset-2 col-xs-10">
       <div class="radio">
@@ -375,10 +385,11 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-<!--Beak-->
-<div class="col-lg-12 col-md-12 col-xs-12">
+<!--Beak or furrows-->
+<div class="col-lg-12 col-md-12 col-xs-12" id="beak_furrows_title">
   <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_BEC_OR_FURROWS_DESC');?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_BEC_OR_FURROWS'); ?></label></div>
-  <div class="col-lg-6 col-md-6 col-xs-12" id="beak">
+  <!--Beak-->
+  <div class="col-lg-6 col-md-6 col-xs-12" id="beak" name="bec[]">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
         <div class="checkbox">
@@ -388,7 +399,7 @@ function toggleContainer(name)
     </div>
   </div>
   <!--Furrows-->
-  <div class="col-lg-6 col-md-6 col-xs-12" id="furrows">
+  <div class="col-lg-6 col-md-6 col-xs-12" id="furrows" name="sillons[]">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
         <div class="checkbox">
@@ -398,7 +409,7 @@ function toggleContainer(name)
     </div>
   </div>
   <!--Other caracteristques-->
-  <div id="other_caracts">
+  <div id="other_caracts" name="autres_caracts[]">
    <div class="col-lg-12 col-md-12 col-xs-12">
     <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT_DESC');?>">
       <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT');?>
@@ -422,8 +433,8 @@ function toggleContainer(name)
 </div>
 </div>
 <!--Tooth-->
-<div class="tooth_f" id="tooth_field" style="display: none;">
-  <div class="col-xs-12">
+<div class="tooth_f" id="tooth_field" style="display: none;" name="dents[]">
+  <div class="col-lg-12 col-md-12 col-xs-12">
     <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_TOOTH_NUMBER_DESC');?>">
       <?php echo JText::_('OBSERVATION_TOOTH_NUMBER_LBL');?>
     </label>
@@ -484,7 +495,7 @@ function toggleContainer(name)
   </div>
 </div>
 <!--Baleen-->
-<div class="baleen_f" id="baleen_field" style="display: none;">
+<div class="baleen_f" id="baleen_field" style="display: none;" name="fanons[]">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_BALEEN_DESC');?>">
       <?php echo JText::_('OBSERVATION_BALEEN_LBL');?>
@@ -527,8 +538,8 @@ function toggleContainer(name)
   </div>
 </div>
 <!--Defense-->
-<div class="row defences_f" id="defences_field" style="display: none;">
-  <div class="col-lg-6 col-md-6 col-xs-12">
+<div class="row defences_f" id="defences_field" style="display: none;" name="defense[]">
+  <div class="col-lg-12 col-md-12 col-xs-12">
     <div class="form-group">
       <?php //echo $this->form->getLabel('observation_defenses'); ?>
       <div class="col-xs-offset-2 col-xs-10">
@@ -539,33 +550,38 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-<!--Levies & photos-->
-<div id="levies_photo">
+</div>
+<div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12">
+    <button type="button" class="btn btn-primary" onclick="duplic('identification')" ><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
+  </div>
+</div>
+<!--Animal-->
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
+</div>
+<!--Levies & photos-->
+<div class="row" id="levies_photo">
+  <div class="col-lg-6 col-md-8 col-xs-12">
     <div class="form-group">
       <?php echo $this->form->getLabel('levies'); ?>
-      <div class="col-xs-offset-12 col-xs-12">
+      <div class="col-xs-offset-2 col-xs-10">
         <div class="radio">
           <label><?php echo $this->form->getInput('levies'); ?></label>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-12 col-md-12 col-xs-12">
+  <div class="col-lg-6 col-md-8 col-xs-12">
     <div class="form-group">
       <?php echo $this->form->getLabel('photos'); ?>
-      <div class="col-xs-offset-12 col-xs-12">
+      <div class="col-xs-offset-2 col-xs-10">
         <div class="radio">
           <label><?php echo $this->form->getInput('photos'); ?></label>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-<!--Animal-->
-<div class="row">
-  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
 </div>
 <div class="row">
   <!--Size-->
@@ -668,56 +684,53 @@ function toggleContainer(name)
   </div>
   <!--Death date-->
   <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime_death'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-4 col-md-4 col-xs-12">
     <div class="input-group included">
       <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
       <?php echo $this->form->getInput('observation_datetime_death'); ?>
     </div>
-  </div>
+  </div>&nbsp;&nbsp;&nbsp;
   <!--State decomposition-->
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('observation_state_decomposition'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('observation_state_decomposition'); ?></label>
-        </div>
+  <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_state_decomposition'); ?></div>
+  <div class="col-lg-8 col-md-8 col-xs-12">
+   <div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10">
+      <div class="radio">
+        <label><?php echo $this->form->getInput('observation_state_decomposition'); ?></label>
+      </div>
+    </div>
+  </div> 
+</div>
+<!--Levies protocol-->
+<div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('levies_protocole'); ?></div>
+<div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10">
+      <div class="radio">
+        <label><?php echo $this->form->getInput('levies_protocole'); ?></label>
       </div>
     </div>
   </div>
-  <!--Levies protocol-->
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('levies_protocole'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('levies_protocole'); ?></label>
-        </div>
+</div>
+<!--Label references-->
+<div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('label_references'); ?></div>
+<div class="col-lg-4 col-md-4 col-xs-12" id="color">
+  <div class="input-group">
+    <span class="input-group-addon"><span class="fa fa-tag"></span></span>
+    <?php echo $this->form->getInput('label_references'); ?>
+  </div>
+</div>&nbsp;&nbsp;&nbsp;
+<!--Tissue removal dead-->
+<div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_tissue_removal_dead'); ?></div>
+<div class="col-lg-5 col-md-5 col-xs-12">
+  <div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10">
+      <div class="checkbox">
+        <label><?php echo $this->form->getInput('observation_tissue_removal_dead'); ?></label>
       </div>
     </div>
   </div>
-  <!--Label references-->
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('label_references'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('label_references'); ?></label>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Tissue removal dead-->
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('observation_tissue_removal_dead'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="checkbox">
-          <label><?php echo $this->form->getInput('observation_tissue_removal_dead'); ?></label>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 </div>
 <!--Living animal-->
 <div class="row" id="alive_field" style="display: none;">
@@ -726,7 +739,7 @@ function toggleContainer(name)
       <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL');?>
     </label>
   </div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-4 col-md-4 col-xs-12">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
         <div class="checkbox">
@@ -737,16 +750,16 @@ function toggleContainer(name)
   </div>
   <!--Release date-->
   <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime_release'); ?></div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-4 col-md-4 col-xs-12">
     <div class="input-group included">
       <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
       <?php echo $this->form->getInput('observation_datetime_release'); ?>
     </div>
-  </div>
+  </div>&nbsp;&nbsp;&nbsp;
   <!--Tissue removal alive-->
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_tissue_removal_alive'); ?></div>
+  <div class="col-lg-4 col-md-4 col-xs-12">
     <div class="form-group">
-      <?php echo $this->form->getLabel('observation_tissue_removal_alive'); ?>
       <div class="col-xs-offset-6 col-xs-12">
         <div class="checkbox">
           <label><?php echo $this->form->getInput('observation_tissue_removal_alive'); ?></label>
@@ -755,7 +768,6 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-</div>
 <!--Mesurements-->
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R5"><span class="stranding_admin-title_row"><span class="fa fa-arrows-h fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW5'); ?></h4></span></span></div>
@@ -763,21 +775,38 @@ function toggleContainer(name)
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12" id="mesurs_info">
     <span class="fa fa-info-circle"><label class="info-mesurements"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_1');?>
-      <strong style="color: red;"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_RED');?></strong>
-      <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_2');?>
-    </label></span>
+    <strong style="color: red;"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_RED');?></strong>
+    <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_2');?>
+  </label></span>
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-xs-12">
+  <div class="radio-list">
+   <div class="custom-control custom-radio custom-control-inline">
+    <input id ="cetace" type="radio" name="measures" class="custom-control-input" value="cétacés" onclick="choixUser(this,'cetace_measures','dugong_measures', '')">
+    <label class="custom-control-label" for="cetace" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
+  </div>
+  <label><?php echo JText::_('OR'); ?></label>&nbsp;&nbsp;&nbsp;
+  <div class="custom-control custom-radio custom-control-inline">
+    <input id ="dugong" type="radio" name="measures" class="custom-control-input" value="dugongs" onclick="choixUser(this,'cetace_measures','dugong_measures', '')">
+    <label class="custom-control-label" for="dugong" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE")?></label>
   </div>
 </div>
-<!--Cetaces mesurements-->
-<div class="row">
-  <div class="col-lg-10 colmd-10 col-xs-12">
-    <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
-    <p>
-     <img src="administrator/components/com_stranding_forms/assets/images/dolphin.png" alt="Mesures sur cétacés" title="Renseignez les mesures" />
-   </p>
+</div>&nbsp;&nbsp;&nbsp;
+<!--Cetaces measurements-->
+<div id="cetace_measures" style="display: none;">
+  <div class="row" id="cetace_measures_position">
+    <div class="col-lg-9 col-md-10 col-xs-12">
+      <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
+      <p>
+       <img id="dolphin_image" src="administrator/components/com_stranding_forms/assets/images/l_dolphin.png" alt="Mesures sur cétacés" title="Renseignez les mesures" />
+     </p>
+   </div>
  </div>
-</div>
-<div class="row">
+ <div class="row">
+  <div class=" col-lg-12 col-md-12 col-xs-12">
+    <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BODY_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BODY'); ?></label>
+  </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
@@ -908,6 +937,9 @@ function toggleContainer(name)
       </div>
     </div>
   </div>
+  <div class=" col-lg-12 col-md-12 col-xs-12">
+    <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_PECTORAL_FIN_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_PECTORAL_FIN'); ?></label>
+  </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
@@ -927,6 +959,9 @@ function toggleContainer(name)
         </div>
       </div>
     </div>
+  </div>
+  <div class=" col-lg-12 col-md-12 col-xs-12">
+    <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_BACK_FLAP_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_BACK_FLAP'); ?></label>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="form-group">
@@ -948,6 +983,9 @@ function toggleContainer(name)
       </div>
     </div>
   </div>
+  <div class=" col-lg-12 col-md-12 col-xs-12">
+    <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_TAIL_FIN_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_TAIL_FIN'); ?></label>
+  </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="form-group">
       <div class="col-xs-offset-6 col-xs-12">
@@ -967,6 +1005,9 @@ function toggleContainer(name)
         </div>
       </div>
     </div>
+  </div>
+  <div class=" col-lg-12 col-md-12 col-xs-12">
+    <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BACON_THICKNESS_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BACON_THICKNESS'); ?></label>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="form-group">
@@ -999,232 +1040,250 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-<!--Dugongs mesurements-->
-<div class="row">
-  <div class="col-lg-10 colmd-10 col-xs-12">
-    <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
-  <p>
-    <img src="administrator/components/com_stranding_forms/assets/images/dugong.png" alt="Mesures sur dugongs" title="Renseignez les mesures" />
-  </p>
-  </div>
 </div>
-<div class="row">
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_a'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_a'); ?>
+<!--Dugongs measurements-->
+<div id="dugong_measures" style="display: none;">
+  <div class="row" id="dugong_measures_position" >
+    <div class="col-lg-9 col-md-10 col-xs-12">
+      <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
+      <p>
+        <img id="dugong_image" src="administrator/components/com_stranding_forms/assets/images/l_dugong.png" alt="Mesures sur dugongs" title="Renseignez les mesures" />
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class=" col-lg-12 col-md-12 col-xs-12">
+      <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BODY_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BODY'); ?></label>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_a'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_a'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_b'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_b'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_b'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_b'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_c'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_c'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_c'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_c'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_d'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_d'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_d'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_d'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_e'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_e'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_e'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_e'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_f'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_f'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_f'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_f'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_g'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_g'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_g'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_g'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_h'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_h'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_h'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_h'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_i'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_i'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_i'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_i'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_j'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_j'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_j'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_j'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_k'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_k'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_k'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_k'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_l'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_l'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_l'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_l'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_m'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_m'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_m'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_m'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_n'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_n'); ?>
+    <div class=" col-lg-12 col-md-12 col-xs-12">
+      <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_FACIAL_DISK_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_FACIAL_DISK'); ?></label>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_n'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_n'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_o'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_o'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_o'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_o'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_p'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_p'); ?>
+    <div class=" col-lg-12 col-md-12 col-xs-12">
+      <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_PECTORAL_FIN_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_PECTORAL_FIN'); ?></label>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_p'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_p'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_q'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_q'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_q'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_q'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_r'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_r'); ?>
+    <div class=" col-lg-12 col-md-12 col-xs-12">
+      <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_TAIL_FIN_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_TAIL_FIN'); ?></label>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_r'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_r'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_s'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_s'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon important_mesures"><?php echo $this->form->getLabel('observation_dugong_mesures_s'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_s'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_t'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_t'); ?>
+    <div class=" col-lg-12 col-md-12 col-xs-12">
+      <label title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BACON_THICKNESS_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_BACON_THICKNESS'); ?></label>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_t'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_t'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_u'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_u'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_u'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_u'); ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <div class="form-group">
-      <div class="col-xs-offset-6 col-xs-12">
-        <div class="input-group">
-          <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_v'); ?><span></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_v'); ?>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="col-xs-offset-6 col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><?php echo $this->form->getLabel('observation_dugong_mesures_v'); ?><span></span></span>
+            <?php echo $this->form->getInput('observation_dugong_mesures_v'); ?>
+          </div>
         </div>
       </div>
     </div>
