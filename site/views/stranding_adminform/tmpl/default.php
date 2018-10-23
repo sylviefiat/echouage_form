@@ -65,15 +65,30 @@ fieldset.radio label{
   head.appendChild(script);
 }
 
+var cloneId = 0;
+
 getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function() {
   js = jQuery.noConflict();
   js(document).ready(function(){
     js('#form-stranding_admin').submit(function(event){
-
+        //document.getElementById()
     }); 
+
+    js('#new_identification').click(function()) {
+        var clone = document.getElementById("jform_observation_spaces_identification").clone(true);
+        clone.find("input").prop("name", "jform[observation_spaces_identification]" + cloneId);
+        cloneId++;
+        document.getElementById("spaces_identification").appendChild(clone);
+        //clone.appendChild("spaces_identification");
+    }
     
   });
 });
+
+function add_new_identification_field(div) {
+  document.getElementById("")
+}
+
 
 function fixedImage(div){
   var e = document.getElementById(div);
@@ -135,25 +150,17 @@ function toggleContainer(name)
       } 
     }
 
-    var cloneId = 0;
-
-    $(document).ready(function()
-    {
-      $("#num").click(function()
-      {
-        var clone = $(".form-group:first").clone(true);
-        clone.find("input").prop("name", "optionsRadios" + cloneId);
-        cloneId++;
-        clone.appendTo(".row");
-      });
-    });
-
-
-    function duplic(element) {
+    /*function duplic(element) {
+      clone01 = document.getElementById("spaces_title").cloneNode(true);
+      clone01.id="spaces_title_1";
+      document.getElementById(element).appendChild (clone01);
       clone1 = document.getElementById("spaces").cloneNode(true);
       clone1.id="spaces1";
       document.getElementById(element).appendChild (clone1);
-    }
+      clone02 = document.getElementById("spaces_identification_title").cloneNode(true);
+      clone02.id = "spaces_identification_title_1";
+      document.getElementById(element).appendChild (clone02);
+    }*/
 
     /*Fonction ajout et suppression de champs version 2*/
     function addDiv(name, field) {
@@ -342,7 +349,7 @@ function toggleContainer(name)
 </div>
 <div class="row" id="identification">
   <!--Spaces-->
-  <div class="col-lg-12 col-md-12 col-xs-12" id="identification_title"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
+  <div class="col-lg-12 col-md-12 col-xs-12" id="spaces_title"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
   <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-eye"></span>
@@ -552,8 +559,9 @@ function toggleContainer(name)
 </div>
 </div>
 <div class="row">
+  <!--onclick="duplic('identification')"-->
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <button type="button" class="btn btn-primary" onclick="duplic('identification')" ><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
+    <button type="button" id="new_identification" class="btn btn-primary" ><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
   </div>
 </div>
 <!--Animal-->
