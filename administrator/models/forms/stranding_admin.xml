@@ -84,6 +84,109 @@
 			type="ckcalendar"
             default="NOW"
             format="Y-m-d"/>
+
+
+    <!--Hours-->
+	<field name="observation_hours"
+			alias="observation_hours"
+			label="OBSERVTION_HOURS"
+			labelclass="control-label"
+			description="OBSERVTION_HOURS_DESC"
+			type="list">
+			<option value="00">H0</option>
+			<option value="01">H1</option>
+			<option value="02">H2</option>
+			<option value="03">H3</option>
+			<option value="04">H4</option>
+			<option value="05">H5</option>
+			<option value="06">H6</option>
+			<option value="07">H7</option>
+			<option value="08">H8</option>
+			<option value="09">H9</option>
+			<option value="10">H10</option>
+			<option value="11">H11</option>
+			<option value="12">H12</option>
+			<option value="13">H13</option>
+			<option value="14">H14</option>
+			<option value="15">H15</option>
+			<option value="16">H16</option>
+			<option value="17">H17</option>
+			<option value="18">H18</option>
+			<option value="19">H19</option>
+			<option value="20">H20</option>
+			<option value="21">H21</option>
+			<option value="22">H22</option>
+			<option value="23">H23</option>
+	</field>
+
+	<!--Minutes-->
+	<field name="observation_minutes"
+			alias="observation_minutes"
+			label="OBSERVTION_MINUTES"
+			labelclass="control-label"
+			description="OBSERVTION_MINUTES_DESC"
+			type="list">
+			<option value="00">M0</option>
+			<option value="01">M1</option>
+			<option value="02">M2</option>
+			<option value="03">M3</option>
+			<option value="04">M4</option>
+			<option value="05">M5</option>
+			<option value="06">M6</option>
+			<option value="07">M7</option>
+			<option value="08">M8</option>
+			<option value="09">M9</option>
+			<option value="10">M10</option>
+			<option value="11">M11</option>
+			<option value="12">M12</option>
+			<option value="13">M13</option>
+			<option value="14">M14</option>
+			<option value="15">M15</option>
+			<option value="16">M16</option>
+			<option value="17">M17</option>
+			<option value="18">M18</option>
+			<option value="19">M19</option>
+			<option value="20">M20</option>
+			<option value="21">M21</option>
+			<option value="22">M22</option>
+			<option value="23">M23</option>
+			<option value="24">M24</option>
+			<option value="25">M25</option>
+			<option value="26">M26</option>
+			<option value="27">M27</option>
+			<option value="28">M28</option>
+			<option value="29">M29</option>
+			<option value="30">M30</option>
+			<option value="31">M31</option>
+			<option value="32">M32</option>
+			<option value="33">M33</option>
+			<option value="34">M34</option>
+			<option value="35">M35</option>
+			<option value="36">M36</option>
+			<option value="37">M37</option>
+			<option value="38">M38</option>
+			<option value="39">M39</option>
+			<option value="40">M40</option>
+			<option value="41">M41</option>
+			<option value="42">M42</option>
+			<option value="43">M43</option>
+			<option value="44">M44</option>
+			<option value="45">M45</option>
+			<option value="46">M46</option>
+			<option value="47">M47</option>
+			<option value="48">M48</option>
+			<option value="49">M49</option>
+			<option value="50">M50</option>
+			<option value="51">M51</option>
+			<option value="52">M52</option>
+			<option value="53">M53</option>
+			<option value="54">M54</option>
+			<option value="55">M55</option>
+			<option value="56">M56</option>
+			<option value="57">M57</option>
+			<option value="58">M58</option>
+			<option value="59">M59</option>
+	</field>
 <!--
 	<field name="observation_date"
 			alias="observation_date"
@@ -185,7 +288,7 @@
 	<!--Spaces-->
 	 <field name="observation_spaces"
 			 alias="observation_spaces"
-			 class="form-control"
+			 
 			 label="OBSERVATION_SPACES_LABEL"
 			 description="OBSERVATION_SPACES_DESC"
 			 hint="OBSERVATION_SPACES"
@@ -513,7 +616,7 @@
 <!--Tissue removal alive-->
 	<field name="observation_tissue_removal_alive"
 			alias="observation_tissue_removal_alive"
-			class="form-control"
+			
 			label="OBSERVATION_TISSUE_REMOVAL_ALIVE"
 			description="OBSERVATION_TISSUE_REMOVAL_ALIVE_DESC"
 			type="checkboxes"
@@ -525,7 +628,7 @@
 	<!--Tissue removal dead-->
 	<field name="observation_tissue_removal_dead"
 			alias="observation_tissue_removal_dead"
-			class="form-control"
+			
 			label="OBSERVATION_TISSUE_REMOVAL_DEAD"
 			description="OBSERVATION_TISSUE_REMOVAL_DEAD_DESC"
 			type="checkboxes"
@@ -540,13 +643,395 @@
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
 	</field>
 
-	<field name="observation_daulphin_mesures"
-			alias="observation_daulphin_mesures"
-			label="OBSERVATION_DAULPHIN_MESURES"
-			description="OBSERVATION_DAULPHIN_MESURES_DESC"
-			type="media"
-			directory="administrator/components/com_stranding_forms/assets/images"
-			preview="tooltip"/>
+	<!--Cetaces mesurements-->
+	<field name="observation_dolphin_mesures_a"
+			alias="observation_dolphin_mesures_a"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_A"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_b"
+			alias="observation_dolphin_mesures_b"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_B"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_c"
+			alias="observation_dolphin_mesures_c"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_C"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_d"
+			alias="observation_dolphin_mesures_d"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_D"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_e"
+			alias="observation_dolphin_mesures_e"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_E"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_f"
+			alias="observation_dolphin_mesures_f"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_F"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_g"
+			alias="observation_dolphin_mesures_g"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_G"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_h"
+			alias="observation_dolphin_mesures_h"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_H"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_i"
+			alias="observation_dolphin_mesures_i"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_I"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_j"
+			alias="observation_dolphin_mesures_j"
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_J"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_k"
+			alias="observation_dolphin_mesures_k"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_K"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_l"
+			alias="observation_dolphin_mesures_l"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_L"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_m"
+			alias="observation_dolphin_mesures_m"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_M"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_n"
+			alias="observation_dolphin_mesures_n"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_N"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_o"
+			alias="observation_dolphin_mesures_o"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_O"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_p"
+			alias="observation_dolphin_mesures_p"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_P"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_q"
+			alias="observation_dolphin_mesures_q"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_Q"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_r"
+			alias="observation_dolphin_mesures_r"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_R"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_s"
+			alias="observation_dolphin_mesures_s"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_S"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_t"
+			alias="observation_dolphin_mesures_t"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_T"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_u"
+			alias="observation_dolphin_mesures_u"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_U"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dolphin_mesures_v"
+			alias="observation_dolphin_mesures_v"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DOLPHIN_MESURES_V"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+
+	<!--Dugong mesurements-->
+	<field name="observation_dugong_mesures_a"
+			alias="observation_dugong_mesures_a"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_A"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_b"
+			alias="observation_dugong_mesures_b"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_B"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_c"
+			alias="observation_dugong_mesures_c"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_C"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_d"
+			alias="observation_dugong_mesures_d"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_D"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_e"
+			alias="observation_dugong_mesures_e"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_E"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_f"
+			alias="observation_dugong_mesures_f"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_F"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_g"
+			alias="observation_dugong_mesures_g"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_G"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_h"
+			alias="observation_dugong_mesures_h"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_H"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_i"
+			alias="observation_dugong_mesures_i"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_I"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_j"
+			alias="observation_dugong_mesures_j"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_J"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_k"
+			alias="observation_dugong_mesures_k"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_K"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_l"
+			alias="observation_dugong_mesures_l"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_L"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_m"
+			alias="observation_dugong_mesures_m"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_M"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_n"
+			alias="observation_dugong_mesures_n"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_N"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_o"
+			alias="observation_dugong_mesures_o"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_O"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_p"
+			alias="observation_dugong_mesures_p"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_P"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_q"
+			alias="observation_dugong_mesures_q"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_Q"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_r"
+			alias="observation_dugong_mesures_r"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_R"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_s"
+			alias="observation_dugong_mesures_s"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_S"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_t"
+			alias="observation_dugong_mesures_t"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_T"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_u"
+			alias="observation_dugong_mesures_u"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_U"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+	<field name="observation_dugong_mesures_v"
+			alias="observation_dugong_mesures_v"
+			
+			labelclass="control-label"
+			label="OBSERVATION_DUGONG_MESURES_V"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
 
 	<!--Stockage location-->
 	<field name="observation_location_stock"

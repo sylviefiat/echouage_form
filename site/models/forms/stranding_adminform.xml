@@ -120,17 +120,113 @@
 			hint="OBSERVATION_DAY"
 			type="text"/>
 	
-
+-->
+	<!--Hours-->
 	<field name="observation_hours"
 			alias="observation_hours"
 			class="form-control"
 			label="OBSERVTION_HOURS"
+			labelclass="control-label"
 			description="OBSERVTION_HOURS_DESC"
-			hint="OBSERVTION_HOURS"
-			type="text"
-			default="CURENT_TIME"
-		/>
+			type="list">
+			<option value="">--</option>
+			<option value="00">H0</option>
+			<option value="01">H1</option>
+			<option value="02">H2</option>
+			<option value="03">H3</option>
+			<option value="04">H4</option>
+			<option value="05">H5</option>
+			<option value="06">H6</option>
+			<option value="07">H7</option>
+			<option value="08">H8</option>
+			<option value="09">H9</option>
+			<option value="10">H10</option>
+			<option value="11">H11</option>
+			<option value="12">H12</option>
+			<option value="13">H13</option>
+			<option value="14">H14</option>
+			<option value="15">H15</option>
+			<option value="16">H16</option>
+			<option value="17">H17</option>
+			<option value="18">H18</option>
+			<option value="19">H19</option>
+			<option value="20">H20</option>
+			<option value="21">H21</option>
+			<option value="22">H22</option>
+			<option value="23">H23</option>
+	</field>
 
+	<!--Minutes-->
+	<field name="observation_minutes"
+			alias="observation_minutes"
+			class="form-control"
+			label="OBSERVTION_MINUTES"
+			labelclass="control-label"
+			description="OBSERVTION_MINUTES_DESC"
+			type="list">
+			<option value="">--</option>
+			<option value="00">M0</option>
+			<option value="01">M1</option>
+			<option value="02">M2</option>
+			<option value="03">M3</option>
+			<option value="04">M4</option>
+			<option value="05">M5</option>
+			<option value="06">M6</option>
+			<option value="07">M7</option>
+			<option value="08">M8</option>
+			<option value="09">M9</option>
+			<option value="10">M10</option>
+			<option value="11">M11</option>
+			<option value="12">M12</option>
+			<option value="13">M13</option>
+			<option value="14">M14</option>
+			<option value="15">M15</option>
+			<option value="16">M16</option>
+			<option value="17">M17</option>
+			<option value="18">M18</option>
+			<option value="19">M19</option>
+			<option value="20">M20</option>
+			<option value="21">M21</option>
+			<option value="22">M22</option>
+			<option value="23">M23</option>
+			<option value="24">M24</option>
+			<option value="25">M25</option>
+			<option value="26">M26</option>
+			<option value="27">M27</option>
+			<option value="28">M28</option>
+			<option value="29">M29</option>
+			<option value="30">M30</option>
+			<option value="31">M31</option>
+			<option value="32">M32</option>
+			<option value="33">M33</option>
+			<option value="34">M34</option>
+			<option value="35">M35</option>
+			<option value="36">M36</option>
+			<option value="37">M37</option>
+			<option value="38">M38</option>
+			<option value="39">M39</option>
+			<option value="40">M40</option>
+			<option value="41">M41</option>
+			<option value="42">M42</option>
+			<option value="43">M43</option>
+			<option value="44">M44</option>
+			<option value="45">M45</option>
+			<option value="46">M46</option>
+			<option value="47">M47</option>
+			<option value="48">M48</option>
+			<option value="49">M49</option>
+			<option value="50">M50</option>
+			<option value="51">M51</option>
+			<option value="52">M52</option>
+			<option value="53">M53</option>
+			<option value="54">M54</option>
+			<option value="55">M55</option>
+			<option value="56">M56</option>
+			<option value="57">M57</option>
+			<option value="58">M58</option>
+			<option value="59">M59</option>
+	</field>
+<!--
 	<field name="observation_month"
 			alias="observation_month"
 			class="form-control"
@@ -240,7 +336,7 @@
 			 labelclass="control-label"
 			 type="list"
 			 required="true">
-			 <option value="Pas renseigner">SPACES_0</option>
+			 <option value="">SPACES_0</option>
 			 <option value="Cachalot (Physeter macrocephalus)">SPACES_1</option>
 			 <option value="Cachalot pygmée (Kogia breviceps)">SPACES_2</option>
 			 <option value="Cachalot nain (Kogia sima)">SPACES_3</option>

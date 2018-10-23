@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 `informant_tel` VARCHAR(100) NOT NULL,
 `informant_email` VARCHAR(100) NOT NULL,
 `observation_datetime` DATE NOT NULL,
+`observation_hours` VARCHAR(5) NOT NULL,
+`observation_minutes` VARCHAR(5) NOT NULL,
 `observation_location` TEXT NOT NULL,
 `observation_localisation` VARCHAR(100) NOT NULL,
 `observation_region` VARCHAR(100) NOT NULL,
