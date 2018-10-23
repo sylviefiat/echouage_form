@@ -349,7 +349,7 @@ function toggleContainer(name)
     </span>
     <?php echo $this->form->getInput('observation_spaces'); ?>
   </div>
-</div>&nbsp;&nbsp;&nbsp;
+</div><p><br></p>
 <!--Spaces identification-->
 <div class="col-lg-12 col-md-12 col-xs-12" id="spaces_identification_title"><?php echo $this->form->getLabel('observation_spaces_identification'); ?></div>
 <div class="col-lg-6 col-md-6 col-xs-12" id="spaces_identification" name="id_espece[]">
@@ -368,7 +368,7 @@ function toggleContainer(name)
     <span class="input-group-addon"><span></span><stpan></span>
       <?php echo $this->form->getInput('observation_color'); ?>
     </div>
-  </div>&nbsp;&nbsp;&nbsp;
+  </div><p><br></p>
   <!--Encoche médiane à la caudale-->
   <div class="col-lg-12 col-md-12 col-xs-12" id="tail_fin_title"><?php echo $this->form->getLabel('observation_caudal'); ?></div>
   <div class="col-sm-3 col-lg-2 col-md-2 col-xs-6" id="tail_fin_image">
@@ -691,7 +691,7 @@ function toggleContainer(name)
         <?php echo $this->form->getInput('observation_datetime_death'); ?>
       </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"><span class="fa fa-clock-o"></span>
       </span>
@@ -701,7 +701,6 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-
 &nbsp;&nbsp;&nbsp;
 <!--State decomposition-->
 <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_state_decomposition'); ?></div>
@@ -1352,7 +1351,7 @@ function toggleContainer(name)
     </div>
   </div>
 </div>
-<button type="submit" class="validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>
+<button type="submit" class="validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>&nbsp;&nbsp;&nbsp;
 <label><?php echo JText::_('OR'); ?></label>&nbsp;&nbsp;&nbsp;
 <a href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_adminform.cancel'); ?>" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>
 <input type="hidden" name="option" value="com_stranding_forms" />
@@ -1361,3 +1360,4 @@ function toggleContainer(name)
 </div>
 </form>
 </div>
+
