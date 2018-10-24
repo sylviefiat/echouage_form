@@ -418,7 +418,18 @@
 			<option value="absente">OBSERVATION_CAUDAL_C</option>
 	</field>
 
-	<!--Beak-->
+	<!--Beak or Furrows-->
+	<field name="observation_beak_or_furrows"
+			alias="observation_beak_or_furrows"
+			class="btn-group"
+			label="OBSERVATION_BEAK_OR_FURROWS"
+			description="OBSERVATION_BEAK_OR_FURROWS_DESC"
+			type="radio">
+			<option value="Bec">OBSERVATION_BEAK</option>
+			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
+	</field>
+
+	<!--Beak Furrows
 	<field name="observation_beak"
 			alias="observation_beak"
 			class="form-control"
@@ -428,8 +439,6 @@
 			multiple="false">
 			<option value="Bec">OBSERVATION_BEAK</option>
 	</field>
-
-	<!--Furrows-->
 	<field name="observation_furrows"
 			alias="observation_furrows"
 			class="form-control"
@@ -438,7 +447,7 @@
 			type="checkboxes"
 			multiple="false">
 			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
-	</field>
+	</field>-->
 
 	<!--Tooth-->
 	<field name="nb_teeth_upper_right"
