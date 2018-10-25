@@ -323,7 +323,7 @@
 			labelclass="control-label"
 			type="number"
 			min="0"
-			max="500"
+			max="1000"
 			required="true"/>
 
 	<!--Spaces-->
@@ -429,25 +429,18 @@
 			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
 	</field>
 
-	<!--Beak Furrows
-	<field name="observation_beak"
-			alias="observation_beak"
-			class="form-control"
-			label="OBSERVATION_BEAK"
-			description="OBSERVATION_BEAK_DESC"
-			type="checkboxes"
-			multiple="false">
-			<option value="Bec">OBSERVATION_BEAK</option>
+	<!--Tooth, Baleen or Defenses-->
+	<field name="observation_tooth_or_baleen_or_defenses"
+			alias="observation_tooth_or_baleen_or_defenses"
+			class="btn-group"
+			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
+			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
+			type="radio">
+			<option value="Dents">OBSERVATION_TOOTH</option>
+			<option value="Fanons">OBSERVATION_BALEEN</option>
+			<option value="Défenses">OBSERVATION_DEFENSES</option>
 	</field>
-	<field name="observation_furrows"
-			alias="observation_furrows"
-			class="form-control"
-			label="OBSERVATION_FURROWS"
-			description="OBSERVATION_FURROWS_DESC"
-			type="checkboxes"
-			multiple="false">
-			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
-	</field>-->
+
 
 	<!--Tooth-->
 	<field name="nb_teeth_upper_right"

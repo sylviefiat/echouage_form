@@ -121,17 +121,17 @@ function toggleContainer(name) {
         display(champ1,false);
         display(champ3,false);  
       }
-      if(btn.id == "tooth") {
+      if(btn.id == "jform_observation_tooth_or_baleen_or_defenses0") {
         display(champ1,true); 
         display(champ2,false);
         display(champ3,false);
       }
-      else if(btn.id == "baleen") {
+      else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses1") {
         display(champ2,true); 
         display(champ1,false);
         display(champ3,false);  
       }
-      else if (btn.id == "defenses") {
+      else if (btn.id == "jform_observation_tooth_or_baleen_or_defenses2") {
         display(champ3,true);
         display(champ1,false);
         display(champ2,false);
@@ -415,7 +415,20 @@ function toggleContainer(name) {
   </div>
 
   <!--Other caracteristques-->
-  <div class="col-xs-12" id="other_caracts" name="autres_caracts[]">
+  <!--Beak or furrows-->
+  <div class="col-lg-8 col-md-8 col-xs-12" id="tail_fin" name="tail[]">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('observation_beak_or_furrows'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('observation_tooth_or_baleen_or_defenses'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--<div class="col-xs-12" id="other_caracts" name="autres_caracts[]">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT_DESC');?>">
         <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT');?>
@@ -437,7 +450,7 @@ function toggleContainer(name) {
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!--Tooth-->
   <div class="tooth_f" id="tooth_field" style="display: none;" name="dents[]">
     <div class="col-lg-12 col-md-12 col-xs-12">
