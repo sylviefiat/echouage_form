@@ -70,7 +70,7 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
   js(document).ready(function() {
     js('#form-stranding_admin').submit(function(event) {
             //The javaScript code
-    }); 
+          }); 
   });
 });
 
@@ -88,7 +88,7 @@ $(document).ready(function()
 });
 
 function add_new_identification_field(div) {
-  
+
 }
 
 function add_new_mammal_field(div) {
@@ -110,45 +110,28 @@ function toggleContainer(name) {
     }
 
     // Fonction 
-    function choixUser(btn,champ1,champ2, champ3) { 
-      if (btn.id == "dead") { 
+    function choixUser(btn,champ1,champ2) { 
+      if (btn.id == "jform_observation_dead_or_alive0") { 
         display(champ1,true); 
-        display(champ2,false); 
-        display(champ3,false); 
+        display(champ2,false);  
       } 
-      else if (btn.id == "alive") { 
+      else if (btn.id == "jform_observation_dead_or_alive1") { 
         display(champ2,true); 
-        display(champ1,false);
-        display(champ3,false);  
+        display(champ1,false); 
       }
       if(btn.id == "jform_observation_tooth_or_baleen_or_defenses0") {
         display(champ1,true); 
         display(champ2,false);
-        display(champ3,false);
       }
       else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses1") {
         display(champ2,true); 
         display(champ1,false);
-        display(champ3,false);  
       }
-      else if (btn.id == "jform_observation_tooth_or_baleen_or_defenses2") {
-        display(champ3,true);
-        display(champ1,false);
-        display(champ2,false);
-      }
-      if(btn.id == "cetace") {
+      else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses2") {
         display(champ2,false); 
-        display(champ1,true);
-        display(champ3,false);
-      //fixedImage("cetace_measures_position"); 
+        display(champ1,false);
+      }
     }
-    else if(btn.id == "dugong") {
-      display(champ2,true); 
-      display(champ1,false);
-      display(champ3,false);
-      //fixedImage("dugong_measures_position"); 
-    }
-  }
   //
   function display(div, affiche) { 
     if (affiche) 
@@ -281,41 +264,41 @@ function toggleContainer(name) {
     <!--Date-->
     <div class="row">
       <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
-     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="input-group included">
-        <span class="input-group-addon exergue com_stranding_forms_date"><span class="fa fa-calendar"></span></span>
-        <?php echo $this->form->getInput('observation_datetime'); ?>
+      <div class="col-lg-4 col-md-6 col-xs-12">
+        <div class="input-group included">
+          <span class="input-group-addon exergue com_stranding_forms_date"><span class="fa fa-calendar"></span></span>
+          <?php echo $this->form->getInput('observation_datetime'); ?>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-6 col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-location-arrow"></span></span>
+          <?php echo $this->form->getInput('observation_location'); ?>
+        </div>
       </div>
     </div>
-    <div class="col-lg-8 col-md-6 col-xs-12">
-      <div class="input-group">
-        <span class="input-group-addon"><span class="fa fa-location-arrow"></span></span>
-        <?php echo $this->form->getInput('observation_location'); ?>
+    <div class="row">
+     <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
+     <div class="col-md-12 col-md-12 col-xs-12">
+      <div class="input-group included com_stranding_forms_localisation">
+        <span class="input-group-addon exergue"><span class="fa fa-map-marker"></span></span>
+        <?php echo $this->form->getInput('observation_localisation'); ?>
       </div>
     </div>
   </div>
   <div class="row">
-   <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
-   <div class="col-md-12 col-md-12 col-xs-12">
-    <div class="input-group included com_stranding_forms_localisation">
-      <span class="input-group-addon exergue"><span class="fa fa-map-marker"></span></span>
-      <?php echo $this->form->getInput('observation_localisation'); ?>
+   <div class="col-md-6 col-md-6 col-xs-12">
+    <div class="input-group">
+      <span class="input-group-addon"></span>
+      <?php echo $this->form->getInput('observation_region'); ?>
     </div>
   </div>
-</div>
-<div class="row">
- <div class="col-md-6 col-md-6 col-xs-12">
-  <div class="input-group">
-    <span class="input-group-addon"></span>
-    <?php echo $this->form->getInput('observation_region'); ?>
+  <div class="col-md-6 col-md-6 col-xs-12">
+    <div class="input-group">
+      <span class="input-group-addon"></span>
+      <?php echo $this->form->getInput('observation_latitude'); ?>
+    </div>
   </div>
-</div>
-<div class="col-md-6 col-md-6 col-xs-12">
-  <div class="input-group">
-    <span class="input-group-addon"></span>
-    <?php echo $this->form->getInput('observation_latitude'); ?>
-  </div>
-</div>
 </div>
 <div class="row">
  <div class="col-md-6 col-md-6 col-xs-12">
@@ -415,10 +398,9 @@ function toggleContainer(name) {
   </div>
 
   <!--Other caracteristques-->
-  <!--Beak or furrows-->
-  <div class="col-lg-8 col-md-8 col-xs-12" id="tail_fin" name="tail[]">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="other_caracts" name="other_crctrstk[]">
     <div class="form-group">
-      <?php echo $this->form->getLabel('observation_beak_or_furrows'); ?>
+      <?php echo $this->form->getLabel('observation_tooth_or_baleen_or_defenses'); ?>
       <div class="col-xs-offset-2 col-xs-10">
         <div class="radio">
           <label><?php echo $this->form->getInput('observation_tooth_or_baleen_or_defenses'); ?></label>
@@ -426,31 +408,6 @@ function toggleContainer(name) {
       </div>
     </div>
   </div>
-
-
-  <!--<div class="col-xs-12" id="other_caracts" name="autres_caracts[]">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT_DESC');?>">
-        <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_IDENTIFICATION_CARACT');?>
-      </label>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12 form-group">
-      <div class="radio-list">
-        <div class="custom-control custom-radio custom-control-inline">
-          <input id ="tooth" type="radio" name="mammalOther" class="custom-control-input" value="dents" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-          <label class="custom-control-label" for="tooth"><?php echo JText::_("OBSERVATION_TOOTH")?></label>
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input id ="baleen" type="radio" name="mammalOther" class="custom-control-input" value="fanons" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-          <label class="custom-control-label" for="baleen"><?php echo JText::_("OBSERVATION_BALEEN_LBL")?></label>
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input id ="defenses" type="radio" name="mammalOther" class="custom-control-input" value="defense" onclick="choixUser(this,'tooth_field','baleen_field', 'defences_field')">
-          <label class="custom-control-label" for="defenses"><?php echo JText::_("OBSERVATION_DEFENSES_LBL")?></label>
-        </div>
-      </div>
-    </div>
-  </div>-->
   <!--Tooth-->
   <div class="tooth_f" id="tooth_field" style="display: none;" name="dents[]">
     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -526,53 +483,40 @@ function toggleContainer(name) {
         <?php echo $this->form->getLabel('observation_baleen_color'); ?>
         <div class="col-xs-offset-6 col-xs-12">
           <div class="input-group">
-             <span class="input-group-addon"><span class="fa fa-adjust"></span></span>
-            <?php echo $this->form->getInput('observation_baleen_color'); ?>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_BALEEN_MEASURES_DESC');?>">
-        <?php echo JText::_('OBSERVATION_BALEEN_MEASURES_LBL');?>
-      </label>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('observation_baleen_height'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
-          <div class="input-group">
-            <span class="input-group-addon"><span class="fa fa-arrows-v"></span></span>
-            <?php echo $this->form->getInput('observation_baleen_height'); ?>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('observation_baleen_base_height'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
-          <div class="input-group">
-            <span class="input-group-addon"><span class="fa fa-arrows-h"></span></span>
-            <?php echo $this->form->getInput('observation_baleen_base_height'); ?>
-          </div>
+           <span class="input-group-addon"><span class="fa fa-adjust"></span></span>
+           <?php echo $this->form->getInput('observation_baleen_color'); ?>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="col-lg-12 col-md-12 col-xs-12">
+    <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_BALEEN_MEASURES_DESC');?>">
+      <?php echo JText::_('OBSERVATION_BALEEN_MEASURES_LBL');?>
+    </label>
+  </div>
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('observation_baleen_height'); ?>
+      <div class="col-xs-offset-6 col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-arrows-v"></span></span>
+          <?php echo $this->form->getInput('observation_baleen_height'); ?>
         </div>
       </div>
     </div>
   </div>
-  <!--Defense-->
-  <div class="defences_f" id="defences_field" style="display: none;" name="defense[]">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
-        <?php echo $this->form->getLabel('observation_defenses'); ?>
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="checkbox">
-            <label><?php echo $this->form->getInput('observation_defenses'); ?></label>
-          </div>
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('observation_baleen_base_height'); ?>
+      <div class="col-xs-offset-6 col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-arrows-h"></span></span>
+          <?php echo $this->form->getInput('observation_baleen_base_height'); ?>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <div class="row">
   <!--onclick="duplic('identification')"-->
@@ -667,22 +611,14 @@ function toggleContainer(name) {
     </div>
   </div>
   <!--State-->
-  <div class="col-xs-12">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <label id="jform_state_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE_DESC');?>">
-        <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE');?>
-      </label>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="custom-control custom-radio custom-control-inline">   
-        <input id ="dead" type="radio" name="mammalState" class="custom-control-input" value="mort" onclick="choixUser(this,'dead_field','alive_field', '')" required="truer">
-        <label class="custom-control-label" for="dead"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE_A")?></label>
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('observation_dead_or_alive'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('observation_dead_or_alive'); ?></label>
+        </div>
       </div>
-      <label><?php echo JText::_('OR')?></label>&nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="custom-control custom-radio custom-control-inline">
-        <input id ="alive" type="radio" name="mammalState" class="custom-control-input" value="vivant" onclick="choixUser(this,'dead_field','alive_field', '')" required="true">
-        <label class="custom-control-label" for="alive"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_STATE_B")?></label>
-      </div> 
     </div>
   </div>
   <!--Dead animal-->
@@ -824,29 +760,18 @@ function toggleContainer(name) {
       <span class="fa fa-info-circle"><label class="info-mesurements"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_1');?>
       <strong style="color: red;"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_RED');?></strong>
       <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_INFO_2');?>
-      </label></span>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="radio-list">
-        <div class="custom-control custom-radio custom-control-inline">
-          <input id ="cetace" type="radio" name="measures" class="custom-control-input" value="cétacés" onclick="choixUser(this,'cetace_measures','dugong_measures', '')">
-          <label class="custom-control-label" for="cetace" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
-        </div>
-        <label><?php echo JText::_('OR'); ?></label>&nbsp;&nbsp;&nbsp;
-        <div class="custom-control custom-radio custom-control-inline">
-            <input id ="dugong" type="radio" name="measures" class="custom-control-input" value="dugongs" onclick="choixUser(this,'cetace_measures','dugong_measures', '')">
-            <label class="custom-control-label" for="dugong" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE")?></label>
-        </div>
-      </div>
-    </div>
+    </label></span>
   </div>
+</div>
 <!--Cetaces measurements-->
-<div id="cetace_measures" style="display: none;">
-  <div class="col-lg-9 col-md-10 col-xs-12" id="cetace_measures_position">
-    <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
-    <p>
-     <img id="dolphin_image" src="administrator/components/com_stranding_forms/assets/images/l_dolphin.png" alt="Mesures sur cétacés" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>" />
-   </p>
+<div id="cetace_measures">
+  <div class="row">
+    <div class="col-lg-9 col-md-10 col-xs-12" id="cetace_measures_position">
+      <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
+      <p>
+       <img id="dolphin_image" src="administrator/components/com_stranding_forms/assets/images/l_dolphin.png" alt="Mesures sur cétacés" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>" />
+     </p>
+   </div>
  </div>
  <div class="row">
    <div class=" col-lg-12 col-md-12 col-xs-12">
@@ -1087,12 +1012,14 @@ function toggleContainer(name) {
 </div>
 </div>
 <!--Dugongs measurements-->
-<div id="dugong_measures" style="display: none;">
-  <div class="col-lg-9 col-md-10 col-xs-12" id="dugong_measures_position">
-    <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
-    <p>
-      <img id="dugong_image" src="administrator/components/com_stranding_forms/assets/images/l_dugong.png" alt="Mesures sur dugongs" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>" />
-    </p>
+<div id="dugong_measures">
+  <div class="row">
+    <div class="col-lg-9 col-md-10 col-xs-12" id="dugong_measures_position">
+      <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
+      <p>
+        <img id="dugong_image" src="administrator/components/com_stranding_forms/assets/images/l_dugong.png" alt="Mesures sur dugongs" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>" />
+      </p>
+    </div>
   </div>
   <div class="row">
    <div class=" col-lg-12 col-md-12 col-xs-12">

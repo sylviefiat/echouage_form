@@ -435,10 +435,11 @@
 			class="btn-group"
 			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
-			type="radio">
-			<option value="Dents">OBSERVATION_TOOTH</option>
-			<option value="Fanons">OBSERVATION_BALEEN</option>
-			<option value="Défenses">OBSERVATION_DEFENSES</option>
+			type="radio"
+			required="true">
+			<option value="Dents" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_TOOTH</option>
+			<option value="Fanons" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_BALEEN</option>
+			<option value="Défenses" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_DEFENSES</option>
 	</field>
 
 
@@ -594,6 +595,19 @@
 			description="CATCH_INDICES_DESC"
 			hint="CATCH_INDICES"
 			type="textarea"/>
+
+
+	<!--Dead or alive-->
+	<field name="observation_dead_or_alive"
+			alias="observation_dead_or_alive"
+			class="btn-group"
+			label="OBSERVATION_DEAD_OR_ALIVE"
+			description="OBSERVATION_DEAD_OR_ALIVE_DESC"
+			type="radio"
+			required="true">
+			<option value="Mort" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_A</option>
+			<option value="Vivant" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_B</option>
+	</field>
 
 	<!--Death-->
 	<field name="observation_death"
