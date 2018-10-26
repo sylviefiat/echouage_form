@@ -69,8 +69,8 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
   js = jQuery.noConflict();
   js(document).ready(function() {
     js('#form-stranding_admin').submit(function(event) {
-            //The javaScript code
-          }); 
+      document.getElementById()
+    }); 
   });
 });
 
@@ -87,29 +87,7 @@ $(document).ready(function()
   });
 });
 
-function add_new_identification_field(div) {
-
-}
-
-function add_new_mammal_field(div) {
-
-}
-
-function add_new_measurements_field(div) {
-
-}
-
-function fixedImage(div) {
-  var e = document.getElementById(div);
-  e.style.position = 'fixed';
-}
-
-function toggleContainer(name) {
-      var e = document.getElementById(name);// MooTools might not be available ;)
-      e.style.display = e.style.display === 'none' ? 'block' : 'none';
-    }
-
-    // Fonction 
+    // 
     function choixUser(btn,champ1,champ2) { 
       if (btn.id == "jform_observation_dead_or_alive0") { 
         display(champ1,true); 
@@ -132,13 +110,43 @@ function toggleContainer(name) {
         display(champ1,false);
       }
     }
-  //
-  function display(div, affiche) { 
-    if (affiche) 
-      document.getElementById(div).style.display="block"; 
-    else 
-      document.getElementById(div).style.display="none";  
+// aficche ou pas les bloques div indiquer
+function display(div, affiche) { 
+  if (affiche) 
+    document.getElementById(div).style.display="block"; 
+  else 
+    document.getElementById(div).style.display="none";  
+}
+
+function add_new_identification_field() {
+  var nbr = document.getElementById("jform_observation_number").value; 
+  if(nbr > 1) {
+    for(var i=0; $i<nbr; i++) {
+      var btn = document.createElement("BUTTON");
+      var t = document.createTextNode("Identification"+i);
+      btn.appendChild(t);
+      document.getElementById(identification).appendChild (btn);
+    }
   }
+}
+
+function add_new_mammal_field(div) {
+
+}
+
+function add_new_measurements_field(div) {
+
+}
+
+function fixedImage(div) {
+  var e = document.getElementById(div);
+  e.style.position = 'fixed';
+}
+
+function toggleContainer(name) {
+      var e = document.getElementById(name);// MooTools might not be available ;)
+      e.style.display = e.style.display === 'none' ? 'block' : 'none';
+    }
 
   /*function duplic(element) {
     clone01 = document.getElementById("spaces_title").cloneNode(true);
@@ -201,7 +209,6 @@ function toggleContainer(name) {
           <span class="input-group-addon exergue"><span class="fa fa-user"></span></span>
           <?php echo $this->form->getInput('observer_name'); ?>
           <span style="display:none;" ><?php echo $this->form->getInput('id'); ?></span>
-          <span style="display:none;" ><?php echo $this->form->getInput('id_location'); ?></span>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-xs-12">
@@ -332,6 +339,7 @@ function toggleContainer(name) {
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
       <?php echo $this->form->getInput('observation_number'); ?>
+      <span style="display:none;" ><?php echo $this->form->getInput('id_location'); ?></span>
     </div>
   </div>
 </div>
@@ -384,7 +392,6 @@ function toggleContainer(name) {
       <img src="administrator/components/com_stranding_forms/assets/images/cetace_tail.png" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TAIL_FIN')?>" />
     </p>
   </div>
-
   <!--Beak or furrows-->
   <div class="col-lg-8 col-md-8 col-xs-12" id="tail_fin" name="tail[]">
     <div class="form-group">
@@ -396,7 +403,6 @@ function toggleContainer(name) {
       </div>
     </div>
   </div>
-
   <!--Other caracteristques-->
   <div class="col-lg-12 col-md-12 col-xs-12" id="other_caracts" name="other_crctrstk[]">
     <div class="form-group">
@@ -518,12 +524,12 @@ function toggleContainer(name) {
   </div>
 </div>
 </div>
-<div class="row">
-  <!--onclick="duplic('identification')"-->
+<!--<div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <button type="button" id="new_identification" class="btn btn-primary" ><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
+    <button type="button" id="new_identification" class="btn btn-primary" ><label><?php //echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
   </div>
-</div>
+</div>-->
+
 <!--Animal-->
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
@@ -610,7 +616,7 @@ function toggleContainer(name) {
       <?php echo $this->form->getInput('catch_indices'); ?>
     </div>
   </div>
-  <!--State-->
+  <!--Dead or Alive-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_dead_or_alive'); ?>
@@ -622,8 +628,8 @@ function toggleContainer(name) {
     </div>
   </div>
   <!--Dead animal-->
-  <div id="dead_field" style="display: none;">
-    <div class="col-lg-12 col-md-12 col-xs-12">
+  <divc class="col-lg-12 col-md-12 col-xs-12" id="dead_field" style="display: none;">
+    <div class="col-lg-6 col-md-6 col-xs-12">
       <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL_DESC');?>">
         <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL');?>
       </label>
@@ -637,18 +643,15 @@ function toggleContainer(name) {
         </div>
       </div>
     </div>
-    <!--Death date-->
-    <div class="form-inline">
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <?php echo $this->form->getLabel('observation_datetime_death'); ?>
+    <!--Death datetime-->
+    <div class="death_datetime col-lg-12 col-md-12 col-xs-12">
+      <?php echo $this->form->getLabel('observation_datetime_death'); ?>
+      <div class="form-inline">
         <div class="input-group included">
           <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
           <?php echo $this->form->getInput('observation_datetime_death'); ?>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-3 col-xs-3">
-        <?php echo $this->form->getLabel('observation_hours'); ?>
-        <div class="input-group">
+        <div class="input-group form-inline">
           <span class="input-group-addon"><span class="fa fa-clock-o"></span>
         </span>
         <?php echo $this->form->getInput('observation_hours'); ?>&nbsp;
@@ -701,8 +704,8 @@ function toggleContainer(name) {
 </div>
 </div>
 <!--Living animal-->
-<div id="alive_field" style="display: none;">
-  <div class="col-lg-12 col-md-12 col-xs-12">
+<div class="col-lg-12 col-md-12 col-xs-12" id="alive_field" style="display: none;">
+  <div class="col-lg-6 col-md-6 col-xs-12">
     <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL_DESC');?>">
       <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL');?>
     </label>
@@ -716,18 +719,15 @@ function toggleContainer(name) {
       </div>
     </div>
   </div>
-  <!--Release date-->
-  <div class="form-inline">
-    <div class="col-lg-8 col-md-8 col-xs-12">
-      <?php echo $this->form->getLabel('observation_datetime_release'); ?>
+  <!--Release datetime-->
+  <div class="release_datetime col-lg-12 col-md-12 col-xs-12">
+    <?php echo $this->form->getLabel('observation_datetime_release'); ?>
+    <div class="form-inline"> 
       <div class="input-group included">
         <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span>
         <?php echo $this->form->getInput('observation_datetime_release'); ?>
       </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-xs-4">
-      <?php echo $this->form->getLabel('observation_hours'); ?>
-      <div class="input-group">
+      <div class="input-group form-inline">
         <span class="input-group-addon"><span class="fa fa-clock-o"></span>
       </span>
       <?php echo $this->form->getInput('observation_hours'); ?>&nbsp;
@@ -735,8 +735,7 @@ function toggleContainer(name) {
       <?php echo $this->form->getInput('observation_minutes'); ?>
     </div>
   </div>
-</div>
-&nbsp;&nbsp;&nbsp;
+</div>&nbsp;&nbsp;&nbsp;
 <!--Tissue removal alive-->
 <div class="col-lg-6 col-md-6 col-xs-12">
   <div class="form-group">

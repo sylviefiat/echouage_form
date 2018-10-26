@@ -258,7 +258,8 @@
 			description="OBSERVATION_PICK_DESC"
 			filter="STRING"
 			class="formatted_address form-control"
-			type="ckaddresspicker"/>
+			type="ckaddresspicker"
+			required="true"/>
 	<field name="observation_region"
 			alias="region"
 			label="OBSERVATION_REGION"

@@ -27,7 +27,7 @@ class Stranding_formsControllerStranding_admins extends Stranding_formsControlle
 		return $model;
 	}
 
-	public function sampleExport()
+	public function simpleExport()
 	{
 		$file_name = "NC_RNE_" . date("d-m-Y"). ".csv";
 		$this->getModel()->getCsv(0);

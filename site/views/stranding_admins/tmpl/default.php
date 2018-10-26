@@ -90,7 +90,7 @@ defined('_JEXEC') or die;
 	<?php echo JText::_("COM_STRANDING_FORMS_ADD_ITEM"); ?></a>
 	&nbsp;
 	<?php if ($show): ?>
-		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admins.sampleExport()'); ?>">
+		<a class="btn btn-default" href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admins.simpleExport()'); ?>">
 			<?php echo JText::_("COM_STRANDING_FORMS_SAMPLE_EXPORT_ITEM"); ?></a>
 		<?php endif; ?>
 
