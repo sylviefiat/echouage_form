@@ -69,7 +69,8 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
   js = jQuery.noConflict();
   js(document).ready(function() {
     js('#form-stranding_admin').submit(function(event) {
-      //document.getElementById()
+
+      //add_new_identification_field(document.getElementById("jform_observation_number").value>1?true:false); 
     }); 
   });
 });
@@ -87,30 +88,30 @@ $(document).ready(function()
   });
 });
 
-    // 
-    function choixUser(btn,champ1,champ2) { 
-      if (btn.id == "jform_observation_dead_or_alive0") { 
-        display(champ1,true); 
-        display(champ2,false);  
-      } 
-      else if (btn.id == "jform_observation_dead_or_alive1") { 
-        display(champ2,true); 
-        display(champ1,false); 
-      }
-      if(btn.id == "jform_observation_tooth_or_baleen_or_defenses0") {
-        display(champ1,true); 
-        display(champ2,false);
-      }
-      else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses1") {
-        display(champ2,true); 
-        display(champ1,false);
-      }
-      else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses2") {
-        display(champ2,false); 
-        display(champ1,false);
-      }
-    }
-// aficche ou pas les bloques div indiquer
+// Vrai si choix du user, faux sinon
+function choixUser(btn,champ1,champ2) { 
+  if (btn.id == "jform_observation_dead_or_alive0") { 
+    display(champ1,true); 
+    display(champ2,false);  
+  } 
+  else if (btn.id == "jform_observation_dead_or_alive1") { 
+    display(champ2,true); 
+    display(champ1,false); 
+  }
+  if(btn.id == "jform_observation_tooth_or_baleen_or_defenses0") {
+    display(champ1,true); 
+    display(champ2,false);
+  }
+  else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses1") {
+    display(champ2,true); 
+    display(champ1,false);
+  }
+  else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses2") {
+    display(champ2,false); 
+    display(champ1,false);
+  }
+}
+// afiche ou pas les bloques div choisi
 function display(div, affiche) { 
   if (affiche) 
     document.getElementById(div).style.display="block"; 
@@ -118,16 +119,29 @@ function display(div, affiche) {
     document.getElementById(div).style.display="none";  
 }
 
+// cloner le bloc identification
 function add_new_identification_field() {
-  var nbr = document.getElementById("jform_observation_number").value; 
-  if(nbr > 1) {
-    for(var i=0; $i<nbr; i++) {
-      var btn = document.createElement("BUTTON");
-      var t = document.createTextNode("Identification"+i);
-      btn.appendChild(t);
-      document.getElementById(identification).appendChild (btn);
-    }
+  /*if(!status) {
+      document.getElementById("new_identification_btn").value = "";
   }
+  else {
+   
+  }*/
+  var new_identification = document.getElementById("identification").innerHTML;
+  document.getElementById("demo").innerHTML = new_identification;
+}
+
+function add_new_identification_btn() {
+   var nbr = document.getElementById("jform_observation_number").value; 
+    if(nbr > 1) {
+      for(var i=nbr-1; i<=nbr; i++) {
+        var identification_btn = document.createElement("BUTTON");
+        var identification_btn_text = document.createTextNode("Identification"+i);
+        identification_btn.appendChild(identification_btn_text);
+        document.getElementById('news_identification_btns').appendChild(identification_btn);
+        var mammal_btn = document.createElement("BUTTON");
+      }
+    }
 }
 
 function add_new_mammal_field(div) {
@@ -146,7 +160,7 @@ function fixedImage(div) {
 function toggleContainer(name) {
       var e = document.getElementById(name);// MooTools might not be available ;)
       e.style.display = e.style.display === 'none' ? 'block' : 'none';
-    }
+}
 
   /*function duplic(element) {
     clone01 = document.getElementById("spaces_title").cloneNode(true);
@@ -360,7 +374,7 @@ function toggleContainer(name) {
       <span class="input-group-addon"><span class="fa fa-eye"></span></span>
       <?php echo $this->form->getInput('observation_spaces'); ?>
     </div>
-  </div><p><br></p>
+  </div>
   <!--Spaces identification-->
   <div class="col-lg-6 col-md-6 col-xs-12 sp_id" id="spaces_identification" name="id_espece[]">
     <div class="form-group">
@@ -379,7 +393,7 @@ function toggleContainer(name) {
       <span class="input-group-addon"><span class="fa fa-adjust"></span><stpan></span>
         <?php echo $this->form->getInput('observation_color'); ?>
       </div>
-    </div><p><br></p>
+    </div>
     <!--Tail fin-->
     <div class="col-lg-6 col-md-6 col-xs-12" id="tail_fin" name="tail[]">
       <div class="form-group">
@@ -527,12 +541,25 @@ function toggleContainer(name) {
       </div>
     </div>
   </div>
+  <div id="news_identification_btns">
+  
 </div>
 </div>
+
+
+</div>
+
+<div class="row" id="demo">
+  
+</div>
+
 <!--<div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <button type="button" id="new_identification" class="btn btn-primary" ><label><?php //echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
+    <button type="button" id="new_identification" class="btn btn-primary" onclick="add_new_identification_field()"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
   </div>
+</div>
+<div class="row" id="demo">
+  
 </div>-->
 
 <!--Animal-->
@@ -540,27 +567,6 @@ function toggleContainer(name) {
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
 </div>
 <div class="row" id="animal">
-  <!--Levies & photos-->
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('levies'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('levies'); ?></label>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
-      <?php echo $this->form->getLabel('photos'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
-          <label><?php echo $this->form->getInput('photos'); ?></label>
-        </div>
-      </div>
-    </div>
-  </div>
   <!--Size-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <?php echo $this->form->getLabel('observation_size'); ?>
@@ -619,6 +625,27 @@ function toggleContainer(name) {
     <div class="input-group"> 
       <span class="input-group-addon"><span class="fa fa-comment "></span></span>
       <?php echo $this->form->getInput('catch_indices'); ?>
+    </div>
+  </div>
+  <!--Levies & photos-->
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('levies'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('levies'); ?></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group">
+      <?php echo $this->form->getLabel('photos'); ?>
+      <div class="col-xs-offset-2 col-xs-10">
+        <div class="radio">
+          <label><?php echo $this->form->getInput('photos'); ?></label>
+        </div>
+      </div>
     </div>
   </div>
   <!--Dead or Alive-->
@@ -1116,7 +1143,7 @@ function toggleContainer(name) {
  </div>
 </div>
 <?php } ?>
-<!--Captcha-->
+<!--Captcha
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('captcha'); ?></div>
   <div class="col-lg-12 col-md-12 col-xs-12">
@@ -1124,7 +1151,7 @@ function toggleContainer(name) {
       <?php echo $this->form->getInput('captcha'); ?>
     </div>
   </div>
-</div>
+</div>-->
 <button type="submit" class="validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>&nbsp;&nbsp;&nbsp;
 <label><?php echo JText::_('OR'); ?></label>&nbsp;&nbsp;&nbsp;
 <a href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_adminform.cancel'); ?>" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>

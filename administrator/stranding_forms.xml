@@ -43,7 +43,7 @@
         <language tag="en-GB">language/en-GB.com_stranding_forms.ini</language>
     </languages>
     <administration>
-        <menu img="components/com_stranding_forms/assets/images/s_com_stranding_forms.png" >COM_STRANDING_FORMS</menu>
+        <menu img="components/com_stranding_forms/assets/images/s_com_stranding_forms.png">COM_STRANDING_FORMS</menu>
         <submenu>
 			<menu link="option=com_stranding_forms&amp;view=stranding_admins" view="stranding_admins" img="components/com_stranding_forms/assets/images/s_stranding_admin.png" alt="Stranding_forms/Stranding_admin">COM_STRANDING_FORMS_TITLE_STRANDING_ADMINS</menu>
 			</submenu>

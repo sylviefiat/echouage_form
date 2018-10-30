@@ -325,6 +325,7 @@
 			type="number"
 			min="0"
 			max="1000"
+			onchange="add_new_identification_btn()"
 			required="true"/>
 
 	<!--Spaces-->
@@ -544,8 +545,7 @@
 			hint="OBSERVATION_SIZE"
 			type="number"
 			step="0.01"
-			min="0"
-			max="9000"
+			max="1000"
 			required="true"/>
 
 	<!--Size precision-->
@@ -1170,11 +1170,11 @@
 			description="ADMIN_VALIDATION_DESC"
 			type="checkbox"/>
 
-	<field name="captcha" 
+	<!--<field name="captcha" 
 			type="captcha"
             label="CAPTCHA"
             description="CAPTCHA_DESC"
             validate="captcha"
-            namespace="event"/>
+            namespace="event"/>-->
 </fieldset>
 </form>
