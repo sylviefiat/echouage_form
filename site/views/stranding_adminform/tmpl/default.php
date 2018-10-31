@@ -70,7 +70,7 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
   js(document).ready(function() {
     js('#form-stranding_admin').submit(function(event) {
 
-      //add_new_identification_field(document.getElementById("jform_observation_number").value>1?true:false); 
+      //add_new_identification_field(document.getElementById("jform_observation_number").value>0?true:false); 
     }); 
   });
 });
@@ -88,7 +88,15 @@ $(document).ready(function()
   });
 });
 
-// Vrai si choix du user, faux sinon
+// si affiche=true alors on affiche le block choisi, sinon pas d'affichage
+function display(div, affiche) { 
+  if (affiche) 
+    document.getElementById(div).style.display="block"; 
+  else 
+    document.getElementById(div).style.display="none";  
+}
+
+// affiche ou pas le block en focntion du choix du user
 function choixUser(btn,champ1,champ2) { 
   if (btn.id == "jform_observation_dead_or_alive0") { 
     display(champ1,true); 
@@ -111,37 +119,39 @@ function choixUser(btn,champ1,champ2) {
     display(champ1,false);
   }
 }
-// afiche ou pas les bloques div choisi
-function display(div, affiche) { 
-  if (affiche) 
-    document.getElementById(div).style.display="block"; 
-  else 
-    document.getElementById(div).style.display="none";  
+
+// affiche et masque le block au click
+function toggleContainer(name) {
+      var e = document.getElementById(name);// MooTools might not be available ;)
+      e.style.display = e.style.display === 'none' ? 'block' : 'none';
 }
+
 
 // cloner le bloc identification
-function add_new_identification_field() {
-  /*if(!status) {
-      document.getElementById("new_identification_btn").value = "";
-  }
-  else {
-   
-  }*/
+/*function add_new_identification_field() {
   var new_identification = document.getElementById("identification").innerHTML;
   document.getElementById("demo").innerHTML = new_identification;
-}
+}*/
 
-function add_new_identification_btn() {
-   var nbr = document.getElementById("jform_observation_number").value; 
+// ajoute des boutons en fonction du nombre d'animals échoués
+function add_new_btn(div, text, nbr) {
     if(nbr > 1) {
-      for(var i=nbr-1; i<=nbr; i++) {
-        var identification_btn = document.createElement("BUTTON");
-        var identification_btn_text = document.createTextNode("Identification"+i);
-        identification_btn.appendChild(identification_btn_text);
-        document.getElementById('news_identification_btns').appendChild(identification_btn);
-        var mammal_btn = document.createElement("BUTTON");
+      // même nombre de boutons que d'animals échoués
+      for(var i=2; i<=nbr; i++) {
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode(text+" "+i);
+        document.getElementById("jform_id_location").value = i;
+        btn.appendChild(t);
+        document.getElementById(div).appendChild(btn);
       }
     }
+    else if(nbr == 1) {
+      document.getElementById("jform_id_location").value = 1;
+    }
+}
+
+function delete_new_btn(div, text) {
+
 }
 
 function add_new_mammal_field(div) {
@@ -150,16 +160,6 @@ function add_new_mammal_field(div) {
 
 function add_new_measurements_field(div) {
 
-}
-
-function fixedImage(div) {
-  var e = document.getElementById(div);
-  e.style.position = 'fixed';
-}
-
-function toggleContainer(name) {
-      var e = document.getElementById(name);// MooTools might not be available ;)
-      e.style.display = e.style.display === 'none' ? 'block' : 'none';
 }
 
   /*function duplic(element) {
@@ -362,6 +362,7 @@ function toggleContainer(name) {
     </div>
   </div>
 </div>
+
 <!--Identification-->
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
@@ -541,17 +542,15 @@ function toggleContainer(name) {
       </div>
     </div>
   </div>
-  <div id="news_identification_btns">
+</div>
+<div class="col-lg-12 col-md-12 col-xs-12" id="news_identification_btns">
   
 </div>
 </div>
 
-
-</div>
-
-<div class="row" id="demo">
+<!--<div class="row" id="demo">
   
-</div>
+</div>-->
 
 <!--<div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12">
@@ -660,7 +659,7 @@ function toggleContainer(name) {
     </div>
   </div>
   <!--Dead animal-->
-  <divc class="col-lg-12 col-md-12 col-xs-12" id="dead_field" style="display: none;">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="dead_field" style="display: none;">
     <div class="col-lg-6 col-md-6 col-xs-12">
       <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL_DESC');?>">
         <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL');?>
@@ -779,6 +778,9 @@ function toggleContainer(name) {
     </div>
   </div>
 </div>
+</div>
+<div class="col-lg-12 col-md-12 col-xs-12" id="news_animal_btns">
+  
 </div>
 </div>
 <!--Measurements-->
@@ -1109,6 +1111,9 @@ function toggleContainer(name) {
     </div>&nbsp;
    </div>
  </div>
+</div>
+<div id="news_measurements_btns">
+  
 </div>
 </div>
 <!--Stockage location-->

@@ -325,7 +325,7 @@
 			type="number"
 			min="0"
 			max="1000"
-			onchange="add_new_identification_btn()"
+			onchange="add_new_btn('news_identification_btns', 'Identification', this.value), add_new_btn('news_animal_btns', 'Animal', this.value), add_new_btn('news_measurements_btns', 'Mesures', this.value)"
 			required="true"/>
 
 	<!--Spaces-->
