@@ -73,7 +73,26 @@ getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function(
       //add_new_identification_field(document.getElementById("jform_observation_number").value>0?true:false); 
     }); 
   });
+  
+  /*jQuery(document).ready(function() {
+    jQuery('input:radio').on('click', function() {
+      if(jQuery(this).attr('id') === 'jform_observation_dead_or_alive0') {
+        jQuery('#dead_field').style.display = 'block'
+        jQuery('#alive_field').style.display = 'none'
+        //display('#dead_field', true);
+        //display('#alive_field', false);
+      }
+      else if(jQuery(this).attr('id') === 'jform_observation_dead_or_alive1') {
+        jQuery('#dead_field').style.display = 'none'
+        jQuery('#alive_field').style.display = 'block'
+        //display('#dead_field', false);
+        //display('#alive_field', true);
+      }
+    })
+  })*/
+
 });
+
 
 var cloneId = 0;
 
@@ -87,14 +106,6 @@ $(document).ready(function()
     clone.appendTo(".row");
   });
 });
-
-// si affiche=true alors on affiche le block choisi, sinon pas d'affichage
-function display(div, affiche) { 
-  if (affiche) 
-    document.getElementById(div).style.display="block"; 
-  else 
-    document.getElementById(div).style.display="none";  
-}
 
 // affiche ou pas le block en focntion du choix du user
 function choixUser(btn,champ1,champ2) { 
@@ -120,6 +131,14 @@ function choixUser(btn,champ1,champ2) {
   }
 }
 
+// si affiche=true alors on affiche le block choisi, sinon pas d'affichage
+function display(div, affiche) { 
+  if (affiche) 
+    document.getElementById(div).style.display="block"; 
+  else 
+    document.getElementById(div).style.display="none";  
+}
+
 // affiche et masque le block au click
 function toggleContainer(name) {
       var e = document.getElementById(name);// MooTools might not be available ;)
@@ -128,10 +147,10 @@ function toggleContainer(name) {
 
 
 // cloner le bloc identification
-/*function add_new_identification_field() {
+function add_new_identification_field() {
   var new_identification = document.getElementById("identification").innerHTML;
   document.getElementById("demo").innerHTML = new_identification;
-}*/
+}
 
 // ajoute des boutons en fonction du nombre d'animals échoués
 function add_new_btn(div, text, nbr) {
@@ -140,6 +159,7 @@ function add_new_btn(div, text, nbr) {
       for(var i=2; i<=nbr; i++) {
         var btn = document.createElement("BUTTON");
         var t = document.createTextNode(text+" "+i);
+        // incrémentation de l'id_location
         document.getElementById("jform_id_location").value = i;
         btn.appendChild(t);
         document.getElementById(div).appendChild(btn);
@@ -381,7 +401,7 @@ function add_new_measurements_field(div) {
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
       <div class="col-xs-offset-6 col-xs-12">
-        <div class="radio-list">
+        <div class="radio">
           <label><?php echo $this->form->getInput('observation_spaces_identification'); ?></label>
         </div>
       </div>
@@ -413,11 +433,11 @@ function add_new_measurements_field(div) {
     </p>
   </div>
   <!--Beak or furrows-->
-  <div class="col-lg-8 col-md-8 col-xs-12" id="tail_fin" name="tail[]">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="tail_fin" name="tail[]">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_beak_or_furrows'); ?>
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="radio">
+      <div class="col-xs-offset-6 col-xs-12">
+        <div class="checkbox beak_or_furrows">
           <label><?php echo $this->form->getInput('observation_beak_or_furrows'); ?></label>
         </div>
       </div>
@@ -442,68 +462,48 @@ function add_new_measurements_field(div) {
       </label>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
         <?php echo $this->form->getLabel('nb_teeth_upper_right'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
             <?php echo $this->form->getInput('nb_teeth_upper_right'); ?>
           </div>
-        </div>
-      </div>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
         <?php echo $this->form->getLabel('nb_teeth_upper_left'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
             <?php echo $this->form->getInput('nb_teeth_upper_left'); ?>
           </div>
-        </div>
-      </div>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
         <?php echo $this->form->getLabel('nb_teeth_lower_right'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
             <?php echo $this->form->getInput('nb_teeth_lower_right'); ?>
           </div>
-        </div>
-      </div>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
         <?php echo $this->form->getLabel('nb_teeth_lower_left'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-tachometer"></span></span>
             <?php echo $this->form->getInput('nb_teeth_lower_left'); ?>
           </div>
-        </div>
-      </div>
     </div>
     <div class="col-lg-12 col-md-12 col-xs-12">
-      <div class="form-group">
         <?php echo $this->form->getLabel('observation_teeth_base_diametre'); ?>
-        <div class="col-xs-offset-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-arrows-h"></span></span>
             <?php echo $this->form->getInput('observation_teeth_base_diametre'); ?>
           </div>
-        </div>
-      </div>
     </div>
   </div>
   <!--Baleen-->
   <div class="baleen_f" id="baleen_field" style="display: none;" name="fanons[]">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <label id="" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_BALEEN_DESC');?>">
-        <?php echo JText::_('OBSERVATION_BALEEN_LBL');?>
+        <?php echo JText::_('OBSERVATION_BALEEN');?>
       </label>
-    </div>
+    </div>&nbsp;
     <div class="col-lg-12 col-md-12 col-xs-12">
       <div class="form-group">
         <?php echo $this->form->getLabel('observation_baleen_color'); ?>
@@ -543,9 +543,9 @@ function add_new_measurements_field(div) {
     </div>
   </div>
 </div>
-<div class="col-lg-12 col-md-12 col-xs-12" id="news_identification_btns">
+<!--<div class="col-lg-12 col-md-12 col-xs-12" id="news_identification_btns">
   
-</div>
+</div>-->
 </div>
 
 <!--<div class="row" id="demo">
@@ -658,8 +658,8 @@ function add_new_measurements_field(div) {
       </div>
     </div>
   </div>
-  <!--Dead animal-->
-  <div class="col-lg-12 col-md-12 col-xs-12" id="dead_field" style="display: none;">
+  <!--Dead animal  -->
+  <div class="col-xs-12"  id="dead_field" style="display: none;">
     <div class="col-lg-6 col-md-6 col-xs-12">
       <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL_DESC');?>">
         <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_DEAD_ANIMAL');?>
@@ -734,8 +734,8 @@ function add_new_measurements_field(div) {
   </div>
 </div>
 </div>
-<!--Living animal-->
-<div class="col-lg-12 col-md-12 col-xs-12" id="alive_field" style="display: none;">
+<!--Living animal  -->
+<div class="col-xs-12" id="alive_field" style="display: none;">
   <div class="col-lg-6 col-md-6 col-xs-12">
     <label id="jform_dead_animal_label" class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL_DESC');?>">
       <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_OBSERVATION_LIVING_ANIMAL');?>
@@ -779,9 +779,9 @@ function add_new_measurements_field(div) {
   </div>
 </div>
 </div>
-<div class="col-lg-12 col-md-12 col-xs-12" id="news_animal_btns">
+<!--<div id="news_animal_btns">
   
-</div>
+</div>-->
 </div>
 <!--Measurements-->
 <div class="row">
@@ -799,7 +799,7 @@ function add_new_measurements_field(div) {
 <!--Cetaces measurements-->
 <div class="row measurements_title" onclick="toggleContainer('cetace_measures')">
   <div class="col-lg-12 col-md-12 col-xs-12">
-       <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
+       <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
   </div>
 </div>
 <div id="cetace_measures" style="display: none;">
@@ -957,7 +957,7 @@ function add_new_measurements_field(div) {
 <!--Dugongs measurements-->
 <div class="row measurements_title" onclick="toggleContainer('dugong_measures')">
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <label class="hasTooltip measures" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
+    <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
   </div>
 </div>
 <div id="dugong_measures" style="display: none;">

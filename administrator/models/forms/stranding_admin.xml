@@ -293,8 +293,8 @@
 			 description="OBSERVATION_SPACES_DESC"
 			 hint="OBSERVATION_SPACES"
 			 labelclass="control-label"
-			 type="list"
-			 required="true">
+			 type="list">
+			 <option value="">SPACES_0</option>
 			 <option value="Cachalot (Physeter macrocephalus)">SPACES_1</option>
 			 <option value="Cachalot pygmée (Kogia breviceps)">SPACES_2</option>
 			 <option value="Cachalot nain (Kogia sima)">SPACES_3</option>
@@ -331,8 +331,7 @@
 			alias="observation_spaces_identification"
 			label="OBSERVATION_SPACES_IDENTIFICATION"
 			description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
-			type="radio"
-			required="true" >
+			type="radio">
 			<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
 			<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
 			<option value="inconnu">OBSERVATION_SPACES_IDENTIFICATION_C</option>
@@ -368,7 +367,7 @@
 			alias="observation_beak_or_furrows"
 			label="OBSERVATION_BEAK_OR_FURROWS"
 			description="OBSERVATION_BEAK_OR_FURROWS_DESC"
-			type="radio">
+			type="checkboxes">
 			<option value="Bec">OBSERVATION_BEAK</option>
 			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
 	</field>
@@ -380,9 +379,9 @@
 			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
 			type="radio">
-			<option value="Dents">OBSERVATION_TOOTH</option>
-			<option value="Fanons">OBSERVATION_BALEEN</option>
-			<option value="Défenses">OBSERVATION_DEFENSES</option>
+			<option value="Dents" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_TOOTH</option>
+			<option value="Fanons" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_BALEEN</option>
+			<option value="Défenses" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_DEFENSES</option>
 	</field>
 
 	<!--Tooth-->
@@ -447,17 +446,6 @@
 			step="0.01"
 			max="1000"/>
 
-	<!--Defenses-->
-	<field name="observation_defenses"
-			alias="observation_defenses"
-			label="OBSERVATION_DEFENSES_LBL"
-			labelclass="control-label"
-			description="OBSERVATION_DEFENSES_DESC"
-			type="checkboxes"
-			multiple="false">
-			<option value="Défenses">OBSERVATION_DEFENSES</option>
-	</field>
-
 	<!--Color-->
 	<field 	name="observation_color"
 			alias="observation_color"
@@ -520,6 +508,18 @@
 			filter="STRING"
 			description="CATCH_INDICES_DESC"
 			type="textarea"/>
+
+	<!--Dead or alive-->
+	<field name="observation_dead_or_alive"
+			alias="observation_dead_or_alive"
+			class="btn-group"
+			label="OBSERVATION_DEAD_OR_ALIVE"
+			description="OBSERVATION_DEAD_OR_ALIVE_DESC"
+			type="radio"
+			required="true">
+			<option value="Mort" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_A</option>
+			<option value="Vivant" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_B</option>
+	</field>
 
 	<!--Death-->
 	<field 	name="observation_death"

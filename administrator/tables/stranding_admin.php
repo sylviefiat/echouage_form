@@ -65,6 +65,10 @@ class Stranding_formsTableStranding_Admin extends JTable {
 	if (array_key_exists( 'observation_tissue_removal_dead', $array ) && is_array( $array['observation_tissue_removal_dead'] )) {
 		$array['observation_tissue_removal_dead'] = implode( ',', $array['observation_tissue_removal_dead'] );
 	}
+    if (array_key_exists( 'observation_beak_or_furrows', $array ) && is_array( $array['observation_beak_or_furrows'] )) {
+        $array['observation_beak_or_furrows'] = implode( ' & ', $array['observation_beak_or_furrows'] );
+    }
+    
 
         return parent::bind($array, $ignore);
     }
