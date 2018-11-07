@@ -74,7 +74,7 @@ defined('_JEXEC') or die;
           });
     
     }
-     getScript('https://openlayers.org/en/v3.17.1/build/ol.js',function() {
+     getScript('https://cdnjs.cloudflare.com/ajax/libs/openlayers/3.17.1/ol.js',function() {
         js = jQuery.noConflict();
         js(document).ready(function(){
             var latitude = document.getElementById("latitude").innerText;

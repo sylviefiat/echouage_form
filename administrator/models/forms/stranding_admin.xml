@@ -645,9 +645,11 @@
 
 	<!--Date death-->
 	<field 	name="observation_datetime_death"
+			class="form-control form-calendar"
 			alias="observation_datetime_death"
 			label="OBSERVATION_DATE_DEATH"
 			description="OBSERVATION_DATE_DEATH_DESC"
+			hint="OBSERVATION_DATE_DEATH"
 			type="ckcalendar"
 			format="Y-m-d"/>
 
@@ -676,9 +678,11 @@
 
 	<!--Date release-->
 	<field 	name="observation_datetime_release"
+			class="form-control form-calendar"
 			alias="observation_datetime_release"
 			label="OBSERVATION_DATE_RELEASE"
 			description="OBSERVATION_DATE_RELEASE_DESC"
+			hint="OBSERVATION_DATE_RELEASE"
 			type="ckcalendar"
 			format="Y-m-d"/>
 

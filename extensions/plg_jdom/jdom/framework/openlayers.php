@@ -48,8 +48,8 @@ class JDomFrameworkOpenLayers extends JDomFramework
 		}
 		
 		$doc = JFactory::getDocument();
-		$doc->addStyleSheet( 'http://openlayers.org/en/v3.17.1/css/ol.css' );
-		$doc->addScript('http://openlayers.org/en/v3.17.1/build/ol.js');
+		$doc->addStyleSheet( 'https://cdnjs.cloudflare.com/ajax/libs/openlayers/3.17.1/ol.css' );
+		$doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/openlayers/3.17.1/ol.js');
 		// fix bootstrap CSS conflict
 		$css = '.ol-style img{
 			max-width: none !important;
