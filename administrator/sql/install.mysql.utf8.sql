@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`observation_commune` VARCHAR(100) NOT NULL,
 	`observation_stranding_type` VARCHAR(100) NOT NULL,
 	`observation_number` VARCHAR(100)  NOT NULL,
+	`observation_spaces_common_name` VARCHAR(100) NOT NULL,
+	`observation_spaces_kind` VARCHAR(100) NOT NULL,
 	`observation_spaces` VARCHAR(100) NOT NULL,
 	`observation_spaces_identification` VARCHAR(11) NOT NULL,
 	`observation_size` VARCHAR(100) NOT NULL,

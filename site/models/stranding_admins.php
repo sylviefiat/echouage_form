@@ -156,8 +156,10 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.observation_capture_traces,
           a.catch_indices,
           CONCAT(observation_state_decomposition,observation_alive),
-          CONCAT(observation_datetime_death, " ", observation_hours, " ", observation_minutes),
-          CONCAT(observation_datetime_release, " ", observation_hours, " ", observation_minutes),
+          a.observation_datetime_death, 
+          CONCAT(observation_hours, " ", observation_minutes),
+          a.observation_datetime_release, 
+          CONCAT(observation_hours, " ", observation_minutes),
           a.levies_protocole,
           a.label_references,
           CONCAT(observation_tissue_removal_dead, observation_tissue_removal_alive),
@@ -240,36 +242,63 @@ class Stranding_formsModelStranding_admins extends JModelList {
 
       // Delete all the columns header
       for($cptr=0; $cptr<$nb_columns; $cptr++){ array_pop($cols); }
+        $delimiter = ';';
+        $enclosure = '"';
 
         if($var == 0) {
           array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
 
-          $items = $db->setQuery($this->getListQuerySimple())->loadObjectList();
           $csv =  fopen('php://output', 'w');
+          // encodage pour excel windows
+          //fputcsv($csv, $cols, $delimiter, $enclosure);
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
           fputcsv($csv, $cols);
 
+          $items = $db->setQuery($this->getListQuerySimple())->loadObjectList();
           foreach($items as $line){
             $in = (array) $line;
             array_pop($in);
             array_pop($in);
+            // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
+            $keys_in = array_keys($in);
+            $i = 0;
+            while($i < count($keys_in)){
+            $data = $keys_in_1[$i];
+            $in[$data] = utf8_decode ($in[$data]);
+            $i++;
+            }
+            // Fin : Convertion d'une chaîne UTF-8 en ISO-8859-1
+            //fputcsv($csv, (array) $in, $delimiter, $enclosure);
             fputcsv($csv, (array) $in);
           }
           return fclose($csv);
 
         }else if($var == 1) {
-          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur', "Contact de l'observateur", "Origine de l'information", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date et heure de la mort', "Date et heure de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Longueur total', 'Ctc longueur mâchoire sup', 'Ctc longueur mâchoire inf', 'Ctc longueur mâchoire à aileron dorsal', 'Ctc longueur mâchoire à oeil', 'Ctc longueur mâchoire à event', 'Ctc longueur mâchoire à pectoral', 'Ctc longueur mâchoire à nombril', 'Ctc longueur mâchoire à fente génitale', 'Ctc longueur mâchoire à anus', 'Ctc circonférence niveau anus', 'Ctc circonférence niveau dorsal', 'Ctc circonférence niveau pectorale','Ctc largeur aileron dorsal', 'Ctc hauteur aileron dorsal', 'Dgg longueur museau à oreille', 'Dgg longeur museau à oeil', 'Dgg longueur museau à narine', 'Dgg longueur disque facial', 'Dgg longueur museau à pectorale', 'Dgg longueur museau à nombril', 'Dgg longueur museau à fente génitale', 'Dgg longueur museau à anus', 'Dgg circonférence niveau queue', 'Dgg circonférence niveau anus', 'Dgg circonférence niveau nombrile', 'Dgg circonférence niveau pectorale', 'Dgg largeur disque facial', 'Dgg longueur disque facial pointe à la bouche', 'Longueur nageoire pectorale', 'Largeur nageoire pectorale', 'Largeur nageoire caudale', 'Hauteur nageoire caudale', 'Epaisseur du lard au dos', 'Epaisseur du lard au  flanc', 'Epaisseur du lard au ventre', 'Lieu de stockage', 'Remarques');
-          $items = $db->setQuery($this->getListQuery())->loadObjectList();
+          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur', "Contact de l'observateur", "Origine de l'information", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort','Heure de la mort', "Date de la remise à l'eau", "Heure de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Longueur total', 'Ctc longueur mâchoire sup', 'Ctc longueur mâchoire inf', 'Ctc longueur mâchoire à aileron dorsal', 'Ctc longueur mâchoire à oeil', 'Ctc longueur mâchoire à event', 'Ctc longueur mâchoire à pectoral', 'Ctc longueur mâchoire à nombril', 'Ctc longueur mâchoire à fente génitale', 'Ctc longueur mâchoire à anus', 'Ctc circonférence niveau anus', 'Ctc circonférence niveau dorsal', 'Ctc circonférence niveau pectorale','Ctc largeur aileron dorsal', 'Ctc hauteur aileron dorsal', 'Dgg longueur museau à oreille', 'Dgg longeur museau à oeil', 'Dgg longueur museau à narine', 'Dgg longueur disque facial', 'Dgg longueur museau à pectorale', 'Dgg longueur museau à nombril', 'Dgg longueur museau à fente génitale', 'Dgg longueur museau à anus', 'Dgg circonférence niveau queue', 'Dgg circonférence niveau anus', 'Dgg circonférence niveau nombrile', 'Dgg circonférence niveau pectorale', 'Dgg largeur disque facial', 'Dgg longueur disque facial pointe à la bouche', 'Longueur nageoire pectorale', 'Largeur nageoire pectorale', 'Largeur nageoire caudale', 'Hauteur nageoire caudale', 'Epaisseur du lard au dos', 'Epaisseur du lard au  flanc', 'Epaisseur du lard au ventre', 'Lieu de stockage', 'Remarques');
+          
           $csv =  fopen('php://output', 'w');
+          // encodage pour excel windows
+          //fputcsv($csv, $cols, $delimiter, $enclosure);
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
           fputcsv($csv, $cols);
 
+          $items = $db->setQuery($this->getListQuery())->loadObjectList();
           foreach($items as $line){
             $in = (array) $line;
             array_pop($in);
             array_pop($in);
             array_pop($in);
             array_pop($in);
+            // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
+            $keys_in = array_keys($in);
+            $i = 0;
+            while($i < count($keys_in)){
+            $data = $keys_in_1[$i];
+            $in[$data] = utf8_decode ($in[$data]);
+            $i++;
+            }
+            // Fin : Convertion d'une chaîne UTF-8 en ISO-8859-1
+            //fputcsv($csv, (array) $in, $delimiter, $enclosure);
             fputcsv($csv, (array) $in);
           }
           return fclose($csv);
