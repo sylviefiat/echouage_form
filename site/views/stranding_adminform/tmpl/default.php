@@ -68,42 +68,24 @@ fieldset.radio label{
 getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function() {
   js = jQuery.noConflict();
   js(document).ready(function() {
-    js('#form-stranding_admin').submit(function(event) {
-
-      //add_new_identification_field(document.getElementById("jform_observation_number").value>0?true:false); 
-    }); 
-  });
-  
-  /*jQuery(document).ready(function() {
-    jQuery('input:radio').on('click', function() {
-      if(jQuery(this).attr('id') === 'jform_observation_dead_or_alive0') {
-        jQuery('#dead_field').style.display = 'block'
-        jQuery('#alive_field').style.display = 'none'
+    js('input:radio').click(function() {
+      /*if(js(this).attr('id') === 'jform_observation_dead_or_alive0') {
         //display('#dead_field', true);
         //display('#alive_field', false);
       }
-      else if(jQuery(this).attr('id') === 'jform_observation_dead_or_alive1') {
-        jQuery('#dead_field').style.display = 'none'
-        jQuery('#alive_field').style.display = 'block'
+      else if(js(this).attr('id') === 'jform_observation_dead_or_alive1') {
         //display('#dead_field', false);
         //display('#alive_field', true);
-      }
+      }*/
     })
-  })*/
-
-});
-
-
-var cloneId = 0;
-
-$(document).ready(function()
-{
-  $("#new_identification").click(function()
-  {
-    var clone = $(".sp_id").clone(true);
-    clone.find("input").prop("name", "jform" + cloneId);
-    cloneId++;
-    clone.appendTo(".row");
+    /*var cloneId = 0;
+    js("#new_identification").click(function()
+    {
+      var clone = $(".sp_id").clone(true);
+      clone.find("input").prop("name", "jform" + cloneId);
+      cloneId++;
+      clone.appendTo(".row");
+    });*/
   });
 });
 
@@ -129,6 +111,14 @@ function choixUser(btn,champ1,champ2) {
     display(champ2,false); 
     display(champ1,false);
   }
+  if(btn.id == "jform_levies0") {
+    display(champ1,true); 
+    display(champ2,false);
+  }
+  else if(btn.id == "jform_levies1") {
+    display(champ1,false); 
+    display(champ2,false);
+  }
 }
 
 // si affiche=true alors on affiche le block choisi, sinon pas d'affichage
@@ -145,15 +135,51 @@ function toggleContainer(name) {
       e.style.display = e.style.display === 'none' ? 'block' : 'none';
 }
 
+function create_new_observation_btn(nbr) {
+  if(nbr > 1) {
+    document.getElementById("div_clone_btn").style.display="block";
+    for(var i=2; i<=nbr; i++){
+      //var btn =  document.createElement("BUTTON");
+      //var t = document.createTextNode("Observation" + " " + i);
+      //btn.appendChild(t);
+      //btn.id = "observation"+i;
+      //document.getElementById("div_observation_clone").appendChild(btn);
+      document.getElementById("jform_id_location").value = i;
+      
+    }
+  }
+  else if(nbr == 1) {
+    document.getElementById("jform_id_location").value = 1;
+  }
+}
 
 // cloner le bloc identification
-function add_new_identification_field() {
-  var new_identification = document.getElementById("identification").innerHTML;
-  document.getElementById("demo").innerHTML = new_identification;
+/*function add_new_block(nbr) {
+  if(nbr > 1) {
+    for(var i=2; i<=nbr; i++){
+      //var div = document.getElementById("div_observation_clone").innerHTML;
+      var div = document.createElement("DIV");
+      div.id = "new_div_clone"+i;
+      //div = document.getElementById("div_observation_clone").innerHTML;
+      //document.getElementById("form-stranding_admin").appendChild(div);
+
+      document.getElementById("new_div_clone").appendChild("new_div_clone"+i);
+      //document.getElementById("new_div_clone").innerHTML = div;
+      document.getElementById("jform_id_location").value = i;
+    }
+  }
+  else if(nbr == 1) {
+    document.getElementById("jform_id_location").value = 1;
+  }
+}*/
+
+function add_new_block() {
+    clone = document.getElementById("div_observation_clone").cloneNode(true);
+    document.getElementById("new_div_clone").appendChild(clone);
 }
 
 // ajoute des boutons en fonction du nombre d'animals échoués
-function add_new_btn(div, text, nbr) {
+/*function add_new_btn(div, text, nbr) {
     if(nbr > 1) {
       // même nombre de boutons que d'animals échoués
       for(var i=2; i<=nbr; i++) {
@@ -163,24 +189,13 @@ function add_new_btn(div, text, nbr) {
         document.getElementById("jform_id_location").value = i;
         btn.appendChild(t);
         document.getElementById(div).appendChild(btn);
+        btn.onclick = add_new_identification_field();
       }
     }
     else if(nbr == 1) {
       document.getElementById("jform_id_location").value = 1;
     }
-}
-
-function delete_new_btn(div, text) {
-
-}
-
-function add_new_mammal_field(div) {
-
-}
-
-function add_new_measurements_field(div) {
-
-}
+}*/
 
   /*function duplic(element) {
     clone01 = document.getElementById("spaces_title").cloneNode(true);
@@ -193,11 +208,6 @@ function add_new_measurements_field(div) {
     clone02.id = "spaces_identification_title_1";
     document.getElementById(element).appendChild (clone02);
   }*/
-
-
-  function enable_measures($status) {
-
-  }
 
   /*Fonction ajout et suppression de champs version 2*/
   function addDiv(name, field) {
@@ -383,13 +393,16 @@ function add_new_measurements_field(div) {
   </div>
 </div>
 
+<div id="div_observation_clone">
+  
+
 <!--Identification-->
-<div class="row">
+<div class="row" id="identification_title">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
 </div>
 <div class="row" id="identification">
   <!--Spaces-->
-  <div class="col-lg-6 col-md-6 col-xs-12" id="spaces" name="espece[]">
+  <div class="col-lg-6 col-md-6 col-xs-12" name="espece[]">
     <?php echo $this->form->getLabel('observation_spaces'); ?>
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-eye"></span></span>
@@ -397,7 +410,7 @@ function add_new_measurements_field(div) {
     </div>
   </div>
   <!--Spaces identification-->
-  <div class="col-lg-6 col-md-6 col-xs-12 sp_id" id="spaces_identification" name="id_espece[]">
+  <div class="col-lg-6 col-md-6 col-xs-12 sp_id" name="id_espece[]">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_spaces_identification'); ?>
       <div class="col-xs-offset-6 col-xs-12">
@@ -408,7 +421,7 @@ function add_new_measurements_field(div) {
     </div>
   </div>
   <!--Color-->
-  <div class="col-lg-6 col-md-6 col-xs-12" id="color" name="couleur[]">
+  <div class="col-lg-6 col-md-6 col-xs-12" name="couleur[]">
     <?php echo $this->form->getLabel('observation_color'); ?>
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-adjust"></span><stpan></span>
@@ -416,7 +429,7 @@ function add_new_measurements_field(div) {
       </div>
     </div>
     <!--Tail fin-->
-    <div class="col-lg-6 col-md-6 col-xs-12" id="tail_fin" name="tail[]">
+    <div class="col-lg-6 col-md-6 col-xs-12" name="tail[]">
       <div class="form-group">
         <?php echo $this->form->getLabel('observation_caudal'); ?>
         <button type="button" name="Tail_Fin_Btn" class="btn btn-light" value="Tail-Fin"onclick="toggleContainer('tail_fin_image')"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_SEE_TF_IMAGE'); ?></label></button>
@@ -433,7 +446,7 @@ function add_new_measurements_field(div) {
     </p>
   </div>
   <!--Beak or furrows-->
-  <div class="col-lg-12 col-md-12 col-xs-12" id="tail_fin" name="tail[]">
+  <div class="col-lg-12 col-md-12 col-xs-12" name="beak_or_furrows[]">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_beak_or_furrows'); ?>
       <div class="col-xs-offset-6 col-xs-12">
@@ -444,7 +457,7 @@ function add_new_measurements_field(div) {
     </div>
   </div>
   <!--Other caracteristques-->
-  <div class="col-lg-12 col-md-12 col-xs-12" id="other_caracts" name="other_crctrstk[]">
+  <div class="col-lg-12 col-md-12 col-xs-12" name="other_crctrstk[]">
     <div class="form-group">
       <?php echo $this->form->getLabel('observation_tooth_or_baleen_or_defenses'); ?>
       <div class="col-xs-offset-2 col-xs-10">
@@ -531,26 +544,9 @@ function add_new_measurements_field(div) {
         </div>
   </div>
 </div>
-<!--<div class="col-lg-12 col-md-12 col-xs-12" id="news_identification_btns">
-  
-</div>-->
 </div>
-
-<!--<div class="row" id="demo">
-  
-</div>-->
-
-<!--<div class="row">
-  <div class="col-lg-12 col-md-12 col-xs-12">
-    <button type="button" id="new_identification" class="btn btn-primary" onclick="add_new_identification_field()"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
-  </div>
-</div>
-<div class="row" id="demo">
-  
-</div>-->
-
 <!--Animal-->
-<div class="row">
+<div class="row" id="animal_title">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
 </div>
 <div class="row" id="animal">
@@ -633,6 +629,14 @@ function add_new_measurements_field(div) {
           <label><?php echo $this->form->getInput('photos'); ?></label>
         </div>
       </div>
+    </div>
+  </div>
+  <!--Stockage location-->
+ <div id="stockage_location_field" class="col-lg-12 col-md-12 col-xs-12" style="display: none;">
+  <?php echo $this->form->getLabel('observation_location_stock'); ?>
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-archive "></span></span>
+    <?php echo $this->form->getInput('observation_location_stock'); ?>
     </div>
   </div>
   <!--Dead or Alive-->
@@ -767,12 +771,9 @@ function add_new_measurements_field(div) {
   </div>
 </div>
 </div>
-<!--<div id="news_animal_btns">
-  
-</div>-->
 </div>
 <!--Measurements-->
-<div class="row">
+<div class="row" id="measurements_title">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R5"><span class="stranding_admin-title_row"><span class="fa fa-arrows-h fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW5'); ?></h4></span></span></div>
 </div>
 <div id="measurements">
@@ -785,7 +786,7 @@ function add_new_measurements_field(div) {
   </div>
 </div>
 <!--Cetaces measurements-->
-<div class="row measurements_title" onclick="toggleContainer('cetace_measures')">
+<div class="row cetaces_dugongs_measurements_title" onclick="toggleContainer('cetace_measures')">
   <div class="col-lg-12 col-md-12 col-xs-12">
        <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
   </div>
@@ -943,7 +944,7 @@ function add_new_measurements_field(div) {
  </div>
 </div>
 <!--Dugongs measurements-->
-<div class="row measurements_title" onclick="toggleContainer('dugong_measures')">
+<div class="row cetaces_dugongs_measurements_title" onclick="toggleContainer('dugong_measures')">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
   </div>
@@ -1100,19 +1101,6 @@ function add_new_measurements_field(div) {
    </div>
  </div>
 </div>
-<div id="news_measurements_btns">
-  
-</div>
-</div>
-<!--Stockage location-->
-<div class="row">
- <div class="col-lg-12 col-md-12 col-xs-12">
-  <?php echo $this->form->getLabel('observation_location_stock'); ?>
-  <div class="input-group">
-    <span class="input-group-addon"><span class="fa fa-archive "></span></span>
-    <?php echo $this->form->getInput('observation_location_stock'); ?>
-  </div>
-</div>
 </div>
 <!--Remarks-->
 <div class="row">
@@ -1123,6 +1111,16 @@ function add_new_measurements_field(div) {
     <?php echo $this->form->getInput('remarks'); ?>
   </div>
 </div>
+</div>
+
+</div>
+<div id="new_div_clone">
+  
+</div>
+<div id="div_clone_btn" class="row" style="display: none;">
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <button type="button" id="new_observation" class="btn btn-primary" onclick="add_new_block()"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
+  </div>
 </div>
 <!--Admin validation-->
 <?php if($user->id != 0){ ?>

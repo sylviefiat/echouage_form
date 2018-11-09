@@ -281,6 +281,7 @@
 			description="OBSERVATION_NUMBER_DESC"
 			labelclass="control-label"
 			type="number"
+			onchange="add_new_btn('news_clone_btns', 'Identification', this.value)"
 			min="0"
 			max="500"
 			required="true"/>
@@ -713,8 +714,8 @@
 			description="LEVIES_DESC"
 			type="radio"
 			required="true">
-			<option value="Oui">LEVIES_A</option>
-			<option value="Non">LEVIES_B</option>
+			<option value="Oui" onclick="choixUser('stockage_location_field', '')">LEVIES_A</option>
+			<option value="Non" onclick="choixUser('stockage_location_field', '')">LEVIES_B</option>
 	</field>
 
 	<!--Photos-->
@@ -1155,8 +1156,7 @@
 			label="OBSERVATION_LOCATION_STOCK"
 			labelclass="control-label"
 			description="OBSERVATION_LOCATION_STOCK_DESC"
-			type="text"
-			required="true"/>
+			type="text"/>
 
 	<!--Remarks-->
 	<field 	name="remarks"

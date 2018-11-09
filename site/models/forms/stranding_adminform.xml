@@ -313,7 +313,7 @@
 			<option value="en groupe">OBSERVATION_STRANDING_TYPE_B</option>
 	</field>
 
-	<!--Number onchange="add_new_btn('news_identification_btns', 'Identification', this.value), add_new_btn('news_animal_btns', 'Animal', this.value), add_new_btn('news_measurements_btns', 'Mesures', this.value)"-->
+	<!--Number-->
 	<field name="observation_number"
 			alias="observation_number"
 			class="form-control"
@@ -322,6 +322,7 @@
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
 			type="number"
+			onchange="create_new_observation_btn(this.value)"
 			min="0"
 			max="1000"
 			required="true"/>
@@ -647,7 +648,7 @@
 			type="number"
 			step="0.01"
 			min="0.00"
-			max="1000.00"
+			max="10000000.00"
 			required="true"/>
 
 	<!--Size precision-->
@@ -797,10 +798,9 @@
 			class="btn-group"
 			label="LEVIES"
 			description="LEVIES_DESC"
-			type="radio"
-			required="true">
-			<option value="Oui">JYES</option>
-			<option value="Non">JNO</option>
+			type="radio">
+			<option value="Oui" onclick="choixUser(this, 'stockage_location_field', '')">JYES</option>
+			<option value="Non" onclick="choixUser(this, 'stockage_location_field', '')">JNO</option>
 	</field>
 
 	<!--Photos-->
@@ -1252,8 +1252,7 @@
 			labelclass="control-label"
 			description="OBSERVATION_LOCATION_STOCK_DESC"
 			hint="OBSERVATION_LOCATION_STOCK"
-			type="text"
-			required="true"/>
+			type="text"/>
 
 	<field name="remarks"
 			alias="remarks"
