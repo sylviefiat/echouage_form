@@ -89,7 +89,6 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.levies,
           a.observation_location_stock,
           a.admin_validation'
-
         )
       );
 

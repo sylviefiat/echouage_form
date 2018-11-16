@@ -64,177 +64,759 @@ fieldset.radio label{
   };
   head.appendChild(script);
 }
-
-getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',function() {
+getScript('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',function() {
   js = jQuery.noConflict();
   js(document).ready(function() {
-    js('input:radio').click(function() {
-      /*if(js(this).attr('id') === 'jform_observation_dead_or_alive0') {
-        //display('#dead_field', true);
-        //display('#alive_field', false);
+    // affiche ou pas le block en fonction du choix du user
+    js("input[type='radio']").click(function() {
+      switch(this.id) {
+        case 'jform_observation_dead_or_alive0' :
+              displayBlock('dead_field', true);
+              displayBlock('alive_field', false);
+              break;
+        case 'jform_observation_dead_or_alive1' :
+              displayBlock('dead_field', false);
+              displayBlock('alive_field', true);
+              break;
+        case 'jform_observation_tooth_or_baleen_or_defenses0' :
+              displayBlock('tooth_field',true); 
+              displayBlock('baleen_field',false);
+              break;
+        case 'jform_observation_tooth_or_baleen_or_defenses1' :
+              displayBlock('tooth_field',false); 
+              displayBlock('baleen_field',true);
+              break;
+        case 'jform_observation_tooth_or_baleen_or_defenses2' :
+              displayBlock('tooth_field',false); 
+              displayBlock('baleen_field',false);
+              break;
+        case 'jform_levies0' :
+              displayBlock('stockage_location_field',true);
+              break;
+        case 'jform_levies1' :
+              displayBlock('stockage_location_field',false);
+              break;
       }
-      else if(js(this).attr('id') === 'jform_observation_dead_or_alive1') {
-        //display('#dead_field', false);
-        //display('#alive_field', true);
-      }*/
-    })
-    /*var cloneId = 0;
-    js("#new_identification").click(function()
-    {
-      var clone = $(".sp_id").clone(true);
-      clone.find("input").prop("name", "jform" + cloneId);
-      cloneId++;
-      clone.appendTo(".row");
-    });*/
+    });
+
+    // démasque le bouton pour le clonage si nombre > 1
+    js("#jform_observation_number").change(function() {
+        if(this.value > 1) {
+           document.getElementById("div_add_clone_btn").style.display="block";
+           document.getElementById("div_delete_clone_btn").style.display="block";
+           for(var i = 1; i <= this.value; i++){
+            // incrémente la référence
+            document.getElementById("jform_id_location").value = i;
+            document.getElementById("jform_id_location").submit();
+           }
+        }
+        else if(this.value == 1) {
+          document.getElementById("jform_id_location").value = 1;
+          document.getElementById("jform_id_location").submit();
+        }
+    });
+
+    // affiche ou masque les mesures
+    js("div").click(function(){
+      switch (this.id) {
+        case 'div_show_cetace_measurements_field' :
+              toggleContainer("cetace_measures");
+              break;
+        case 'div_show_dugong_measurements_field' :
+              toggleContainer("dugong_measures");
+              break;
+      }
+    });
+   
+    var cloneId = 0; // incrémenté en fonction du clonage
+    var obervation_cptr = 1; // pour l'affichage
+    var cptr = document.getElementById("jform_observation_number").value-2; // pour la suppression
+    js("button").click(function() {
+
+      switch (this.id) {
+
+        // affiche l'image représentative de l'encoche médiane
+        case 'show_tail_fin_image' :
+              toggleContainer("tail_fin_image");
+              break;
+
+        // bouton d'affichage, mesure sur cétacé
+        case 'jform_observation_dolphin_mesures_a_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_a_field");
+              break;
+        case 'jform_observation_dolphin_mesures_b_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_b_field");
+              break;
+        case 'jform_observation_dolphin_mesures_c_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_c_field");
+              break;
+        case 'jform_observation_dolphin_mesures_d_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_d_field");
+              break;
+        case 'jform_observation_dolphin_mesures_e_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_e_field");
+              break;
+        case 'jform_observation_dolphin_mesures_f_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_f_field");
+              break;
+        case 'jform_observation_dolphin_mesures_g_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_g_field");
+              break;
+        case 'jform_observation_dolphin_mesures_h_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_h_field");
+              break;
+        case 'jform_observation_dolphin_mesures_i_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_i_field");
+              break;
+        case 'jform_observation_dolphin_mesures_j_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_j_field");
+              break;
+        case 'jform_observation_dolphin_mesures_k_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_k_field");
+              break;
+        case 'jform_observation_dolphin_mesures_l_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_l_field");
+              break;
+        case 'jform_observation_dolphin_mesures_m_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_m_field");
+              break;
+        case 'jform_observation_dolphin_mesures_n_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_n_field");
+              break;
+        case 'jform_observation_dolphin_mesures_o_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_o_field");
+              break;
+        case 'jform_observation_dolphin_mesures_p_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_p_field");
+              break;
+        case 'jform_observation_dolphin_mesures_q_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_q_field");
+              break;
+        case 'jform_observation_dolphin_mesures_r_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_r_field");
+              break;
+        case 'jform_observation_dolphin_mesures_s_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_s_field");
+              break;
+        case 'jform_observation_dolphin_mesures_t_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_t_field");
+              break;
+        case 'jform_observation_dolphin_mesures_u_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_u_field");
+              break;
+        case 'jform_observation_dolphin_mesures_v_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_v_field");
+              break;
+
+        // bouton d'affichage, mesure sur dugong
+        case 'jform_observation_dugong_mesures_a_btn' :
+              toggleContainer("jform_observation_dugong_mesures_a_field");
+              break;
+        case 'jform_observation_dugong_mesures_b_btn' :
+              toggleContainer("jform_observation_dugong_mesures_b_field");
+              break;
+        case 'jform_observation_dugong_mesures_c_btn' :
+              toggleContainer("jform_observation_dugong_mesures_c_field");
+              break;
+        case 'jform_observation_dugong_mesures_d_btn' :
+              toggleContainer("jform_observation_dugong_mesures_d_field");
+              break;
+        case 'jform_observation_dugong_mesures_e_btn' :
+              toggleContainer("jform_observation_dugong_mesures_e_field");
+              break;
+        case 'jform_observation_dugong_mesures_f_btn' :
+              toggleContainer("jform_observation_dugong_mesures_f_field");
+              break;
+        case 'jform_observation_dugong_mesures_g_btn' :
+              toggleContainer("jform_observation_dugong_mesures_g_field");
+              break;
+        case 'jform_observation_dugong_mesures_h_btn' :
+              toggleContainer("jform_observation_dugong_mesures_h_field");
+              break;
+        case 'jform_observation_dugong_mesures_i_btn' :
+              toggleContainer("jform_observation_dugong_mesures_i_field");
+              break;
+        case 'jform_observation_dugong_mesures_j_btn' :
+              toggleContainer("jform_observation_dugong_mesures_j_field");
+              break;
+        case 'jform_observation_dugong_mesures_k_btn' :
+              toggleContainer("jform_observation_dugong_mesures_k_field");
+              break;
+        case 'jform_observation_dugong_mesures_l_btn' :
+              toggleContainer("jform_observation_dugong_mesures_l_field");
+              break;
+        case 'jform_observation_dugong_mesures_m_btn' :
+              toggleContainer("jform_observation_dugong_mesures_m_field");
+              break;
+        case 'jform_observation_dugong_mesures_n_btn' :
+              toggleContainer("jform_observation_dugong_mesures_n_field");
+              break;
+        case 'jform_observation_dugong_mesures_o_btn' :
+              toggleContainer("jform_observation_dugong_mesures_o_field");
+              break;
+        case 'jform_observation_dugong_mesures_p_btn' :
+              toggleContainer("jform_observation_dugong_mesures_p_field");
+              break;
+        case 'jform_observation_dugong_mesures_q_btn' :
+              toggleContainer("jform_observation_dugong_mesures_q_field");
+              break;
+        case 'jform_observation_dugong_mesures_r_btn' :
+              toggleContainer("jform_observation_dugong_mesures_r_field");
+              break;
+        case 'jform_observation_dugong_mesures_s_btn' :
+              toggleContainer("jform_observation_dugong_mesures_s_field");
+              break;
+        case 'jform_observation_dugong_mesures_t_btn' :
+              toggleContainer("jform_observation_dugong_mesures_t_field");
+              break;
+        case 'jform_observation_dugong_mesures_u_btn' :
+              toggleContainer("jform_observation_dugong_mesures_u_field");
+              break;
+        case 'jform_observation_dugong_mesures_v_btn' :
+              toggleContainer("jform_observation_dugong_mesures_v_field");
+              break;
+
+        // clonage des blocs
+        case 'new_observation' :
+              //while (cloneId < document.getElementById("jform_observation_number").value - 1) {
+              var clone = js("#div_observation_clone").clone(true);
+
+              // change l'id du bloc cloner
+              clone.attr("id", "div_observation_clone" + cloneId);
+
+              // change le nom des inputs (boutons radios) 
+              clone.find("input[name='jform[observation_spaces_identification]']").prop("name", "jform[observation_spaces_identification]" + cloneId);
+              clone.find("input[name='jform[observation_caudal]']").prop("name", "jform[observation_caudal]" + cloneId);
+              clone.find("input[name='jform[observation_tooth_or_baleen_or_defenses]']").prop("name", "jform[observation_tooth_or_baleen_or_defenses]" + cloneId);
+              clone.find("input[name='jform[observation_size_precision]']").prop("name", "jform[observation_size_precision]" + cloneId);
+              clone.find("input[name='jform[observation_sex]']").prop("name", "jform[observation_sex]" + cloneId);
+              clone.find("input[name='jform[observation_abnormalities]']").prop("name", "jform[observation_abnormalities]" + cloneId);
+              clone.find("input[name='jform[observation_capture_traces]']").prop("name", "jform[observation_capture_traces]" + cloneId);
+              clone.find("input[name='jform[levies]']").prop("name", "jform[levies]" + cloneId);
+              clone.find("input[name='jform[photos]']").prop("name", "jform[photos]" + cloneId);
+              clone.find("input[name='jform[observation_dead_or_alive]']").prop("name", "jform[observation_dead_or_alive]" + cloneId);
+              clone.find("input[name='jform[observation_death]']").prop("name", "jform[observation_death]" + cloneId);
+              clone.find("input[name='jform[observation_state_decomposition]']").prop("name", "jform[observation_state_decomposition]" + cloneId);
+              clone.find("input[name='jform[levies_protocole]']").prop("name", "jform[levies_protocole]" + cloneId);
+
+              // change l'id de balises a pour les boutons des dates et le nom
+              clone.find("a[id='jform_observation_datetime_death-btn']").prop("id", "jform_observation_datetime_death-btn" + cloneId);
+              clone.find("a[id='jform_observation_datetime_release-btn']").prop("id", "jform_observation_datetime_release-btn" + cloneId);
+
+              clone.find("input[name='jform[observation_datetime_death]']").prop("name", "jform[observation_datetime_death]" + cloneId);
+              clone.find("input[name='jform[observation_datetime_release]']").prop("name", "jform[observation_datetime_release]" + cloneId);
+              
+
+              // change l'id des inputs
+              clone.find("input[id='jform_observation_dead_or_alive0']").prop("id", "jform_observation_dead_or_alive0" + cloneId);
+              clone.find("input[id='jform_observation_dead_or_alive1']").prop("id", "jform_observation_dead_or_alive1" + cloneId);
+              clone.find("input[id='jform_observation_tooth_or_baleen_or_defenses0']").prop("id", "jform_observation_tooth_or_baleen_or_defenses0" + cloneId);
+              clone.find("input[id='jform_observation_tooth_or_baleen_or_defenses1']").prop("id", "jform_observation_tooth_or_baleen_or_defenses1" + cloneId);
+              clone.find("input[id='jform_observation_tooth_or_baleen_or_defenses2']").prop("id", "jform_observation_tooth_or_baleen_or_defenses2" + cloneId);
+              clone.find("input[id='jform_levies0']").prop("id", "jform_levies0" + cloneId);
+              clone.find("input[id='jform_levies1']").prop("id", "jform_levies1" + cloneId);
+
+              // change l'id des blocs div 
+              clone.find("div[id='dead_field']").prop("id", "dead_field" + cloneId);
+              clone.find("div[id='alive_field']").prop("id", "alive_field" + cloneId);
+              clone.find("div[id='tooth_field']").prop("id", "tooth_field" + cloneId);
+              clone.find("div[id='baleen_field']").prop("id", "baleen_field" + cloneId);
+              clone.find("div[id='stockage_location_field']").prop("id", "stockage_location_field" + cloneId);
+              clone.find("div[id='tail_fin_image']").prop("id", "tail_fin_image" + cloneId);
+              // blocs div des mesures
+              clone.find("div[id='div_show_cetace_measurements_field']").prop("id", "div_show_cetace_measurements_field" + cloneId);
+              clone.find("div[id='div_show_dugong_measurements_field']").prop("id", "div_show_dugong_measurements_field" + cloneId);
+              clone.find("div[id='cetace_measures']").prop("id", "cetace_measures" + cloneId);
+              clone.find("div[id='dugong_measures']").prop("id", "dugong_measures" + cloneId);
+              // blocs div mesures sur cétacé
+              clone.find("div[id='jform_observation_dolphin_mesures_a_field']").prop("id", "jform_observation_dolphin_mesures_a_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_b_field']").prop("id", "jform_observation_dolphin_mesures_b_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_c_field']").prop("id", "jform_observation_dolphin_mesures_c_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_d_field']").prop("id", "jform_observation_dolphin_mesures_d_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_e_field']").prop("id", "jform_observation_dolphin_mesures_e_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_f_field']").prop("id", "jform_observation_dolphin_mesures_f_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_g_field']").prop("id", "jform_observation_dolphin_mesures_g_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_h_field']").prop("id", "jform_observation_dolphin_mesures_h_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_i_field']").prop("id", "jform_observation_dolphin_mesures_i_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_j_field']").prop("id", "jform_observation_dolphin_mesures_j_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_k_field']").prop("id", "jform_observation_dolphin_mesures_k_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_l_field']").prop("id", "jform_observation_dolphin_mesures_l_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_m_field']").prop("id", "jform_observation_dolphin_mesures_m_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_n_field']").prop("id", "jform_observation_dolphin_mesures_n_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_o_field']").prop("id", "jform_observation_dolphin_mesures_o_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_p_field']").prop("id", "jform_observation_dolphin_mesures_p_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_q_field']").prop("id", "jform_observation_dolphin_mesures_q_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_r_field']").prop("id", "jform_observation_dolphin_mesures_r_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_s_field']").prop("id", "jform_observation_dolphin_mesures_s_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_t_field']").prop("id", "jform_observation_dolphin_mesures_t_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_u_field']").prop("id", "jform_observation_dolphin_mesures_u_field" + cloneId);
+              clone.find("div[id='jform_observation_dolphin_mesures_v_field']").prop("id", "jform_observation_dolphin_mesures_v_field" + cloneId);
+              // blocs div mesures sur dugong
+              clone.find("div[id='jform_observation_dugong_mesures_a_field']").prop("id", "jform_observation_dugong_mesures_a_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_b_field']").prop("id", "jform_observation_dugong_mesures_b_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_c_field']").prop("id", "jform_observation_dugong_mesures_c_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_d_field']").prop("id", "jform_observation_dugong_mesures_d_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_e_field']").prop("id", "jform_observation_dugong_mesures_e_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_f_field']").prop("id", "jform_observation_dugong_mesures_f_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_g_field']").prop("id", "jform_observation_dugong_mesures_g_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_h_field']").prop("id", "jform_observation_dugong_mesures_h_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_i_field']").prop("id", "jform_observation_dugong_mesures_i_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_j_field']").prop("id", "jform_observation_dugong_mesures_j_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_k_field']").prop("id", "jform_observation_dugong_mesures_k_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_l_field']").prop("id", "jform_observation_dugong_mesures_l_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_m_field']").prop("id", "jform_observation_dugong_mesures_m_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_n_field']").prop("id", "jform_observation_dugong_mesures_n_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_o_field']").prop("id", "jform_observation_dugong_mesures_o_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_p_field']").prop("id", "jform_observation_dugong_mesures_p_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_q_field']").prop("id", "jform_observation_dugong_mesures_q_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_r_field']").prop("id", "jform_observation_dugong_mesures_r_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_s_field']").prop("id", "jform_observation_dugong_mesures_s_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_t_field']").prop("id", "jform_observation_dugong_mesures_t_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_u_field']").prop("id", "jform_observation_dugong_mesures_u_field" + cloneId);
+              clone.find("div[id='jform_observation_dugong_mesures_v_field']").prop("id", "jform_observation_dugong_mesures_v_field" + cloneId);
+
+              // change l'id des boutons
+              clone.find("button[id='show_tail_fin_image']").prop("id", "show_tail_fin_image" + cloneId);
+              // boutons mesures sur cétacé
+              clone.find("button[id='jform_observation_dolphin_mesures_a_btn']").prop("id", "jform_observation_dolphin_mesures_a_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_b_btn']").prop("id", "jform_observation_dolphin_mesures_b_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_c_btn']").prop("id", "jform_observation_dolphin_mesures_c_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_d_btn']").prop("id", "jform_observation_dolphin_mesures_d_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_e_btn']").prop("id", "jform_observation_dolphin_mesures_e_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_f_btn']").prop("id", "jform_observation_dolphin_mesures_f_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_g_btn']").prop("id", "jform_observation_dolphin_mesures_g_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_h_btn']").prop("id", "jform_observation_dolphin_mesures_h_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_i_btn']").prop("id", "jform_observation_dolphin_mesures_i_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_j_btn']").prop("id", "jform_observation_dolphin_mesures_j_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_k_btn']").prop("id", "jform_observation_dolphin_mesures_k_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_l_btn']").prop("id", "jform_observation_dolphin_mesures_l_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_m_btn']").prop("id", "jform_observation_dolphin_mesures_m_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_n_btn']").prop("id", "jform_observation_dolphin_mesures_n_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_o_btn']").prop("id", "jform_observation_dolphin_mesures_o_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_p_btn']").prop("id", "jform_observation_dolphin_mesures_p_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_q_btn']").prop("id", "jform_observation_dolphin_mesures_q_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_r_btn']").prop("id", "jform_observation_dolphin_mesures_r_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_s_btn']").prop("id", "jform_observation_dolphin_mesures_s_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_t_btn']").prop("id", "jform_observation_dolphin_mesures_t_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_u_btn']").prop("id", "jform_observation_dolphin_mesures_u_btn" + cloneId);
+              clone.find("button[id='jform_observation_dolphin_mesures_v_btn']").prop("id", "jform_observation_dolphin_mesures_v_btn" + cloneId);
+              // boutons mesures sur dugong
+              clone.find("button[id='jform_observation_dugong_mesures_a_btn']").prop("id", "jform_observation_dugong_mesures_a_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_b_btn']").prop("id", "jform_observation_dugong_mesures_b_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_c_btn']").prop("id", "jform_observation_dugong_mesures_c_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_d_btn']").prop("id", "jform_observation_dugong_mesures_d_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_e_btn']").prop("id", "jform_observation_dugong_mesures_e_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_f_btn']").prop("id", "jform_observation_dugong_mesures_f_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_g_btn']").prop("id", "jform_observation_dugong_mesures_g_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_h_btn']").prop("id", "jform_observation_dugong_mesures_h_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_i_btn']").prop("id", "jform_observation_dugong_mesures_i_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_j_btn']").prop("id", "jform_observation_dugong_mesures_j_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_k_btn']").prop("id", "jform_observation_dugong_mesures_k_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_l_btn']").prop("id", "jform_observation_dugong_mesures_l_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_m_btn']").prop("id", "jform_observation_dugong_mesures_m_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_n_btn']").prop("id", "jform_observation_dugong_mesures_n_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_o_btn']").prop("id", "jform_observation_dugong_mesures_o_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_p_btn']").prop("id", "jform_observation_dugong_mesures_p_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_q_btn']").prop("id", "jform_observation_dugong_mesures_q_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_r_btn']").prop("id", "jform_observation_dugong_mesures_r_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_s_btn']").prop("id", "jform_observation_dugong_mesures_s_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_t_btn']").prop("id", "jform_observation_dugong_mesures_t_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_u_btn']").prop("id", "jform_observation_dugong_mesures_u_btn" + cloneId);
+              clone.find("button[id='jform_observation_dugong_mesures_v_btn']").prop("id", "jform_observation_dugong_mesures_v_btn" + cloneId);
+               
+               /* change les id des champs pour la bdd*/
+               // l'id des fieldser radios et checkboxes
+               clone.find("fieldset[id='jform_observation_tissue_removal_dead']").prop("id", "jform_observation_tissue_removal_dead" + cloneId);
+               clone.find("fieldset[id='jform_observation_tissue_removal_alive']").prop("id", "jform_observation_tissue_removal_alive" + cloneId);
+               clone.find("fieldset[id='jform_observation_spaces_identification']").prop("id", "jform_observation_spaces_identification" + cloneId);
+               clone.find("fieldset[id='jform_observation_size_precision']").prop("id", "jform_observation_size_precision" + cloneId);
+               clone.find("fieldset[id='jform_observation_sex']").prop("id", "jform_observation_sex" + cloneId);
+               clone.find("fieldset[id='jform_observation_caudal']").prop("id", "jform_observation_caudal" + cloneId);
+               clone.find("fieldset[id='jform_observation_beak_or_furrows']").prop("id", "jform_observation_beak_or_furrows" + cloneId);
+               clone.find("fieldset[id='jform_observation_tooth_or_baleen_or_defenses']").prop("id", "jform_observation_tooth_or_baleen_or_defenses" + cloneId);
+               clone.find("fieldset[id='jform_observation_abnormalities']").prop("id", "jform_observation_abnormalities" + cloneId);
+               clone.find("fieldset[id='jform_observation_capture_traces']").prop("id", "jform_observation_capture_traces" + cloneId);
+               clone.find("fieldset[id='jform_observation_dead_or_alive']").prop("id", "jform_observation_dead_or_alive" + cloneId);
+               clone.find("fieldset[id='jform_observation_death']").prop("id", "jform_observation_death" + cloneId);
+               clone.find("fieldset[id='jform_observation_state_decomposition']").prop("id", "jform_observation_state_decomposition" + cloneId);
+               clone.find("fieldset[id='jform_observation_alive']").prop("id", "jform_observation_alive" + cloneId);
+               clone.find("fieldset[id='jform_levies_protocole']").prop("id", "jform_levies_protocole" + cloneId);
+               clone.find("fieldset[id='jform_levies']").prop("id", "jform_levies" + cloneId);
+               clone.find("fieldset[id='jform_photos']").prop("id", "jform_photos" + cloneId);
+               // l'id des input des boutons radios et checkboxes
+               clone.find("input[name='jform[observation_tissue_removal_dead][]']").prop("name", "jform[observation_tissue_removal_dead][]" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead0']").prop("id", "jform_observation_tissue_removal_dead0" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead1']").prop("id", "jform_observation_tissue_removal_dead1" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead2']").prop("id", "jform_observation_tissue_removal_dead2" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead3']").prop("id", "jform_observation_tissue_removal_dead3" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead4']").prop("id", "jform_observation_tissue_removal_dead4" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead5']").prop("id", "jform_observation_tissue_removal_dead5" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead6']").prop("id", "jform_observation_tissue_removal_dead6" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_dead7']").prop("id", "jform_observation_tissue_removal_dead7" + cloneId);
+
+               clone.find("input[name='jform[observation_tissue_removal_alive]']").prop("name", "jform[observation_tissue_removal_alive]" + cloneId);
+               clone.find("input[id='jform_observation_tissue_removal_alive0']").prop("id", "jform_observation_tissue_removal_alive0" + cloneId);
+
+               clone.find("input[id='jform_observation_spaces_identification0']").prop("id", "jform_observation_spaces_identification0" + cloneId);
+               clone.find("input[id='jform_observation_spaces_identification1']").prop("id", "jform_observation_spaces_identification1" + cloneId);
+               clone.find("input[id='jform_observation_spaces_identification2']").prop("id", "jform_observation_spaces_identification2" + cloneId);
+
+               clone.find("input[id='jform_observation_size_precision0']").prop("id", "jform_observation_size_precision0" + cloneId);
+               clone.find("input[id='jform_observation_size_precision1']").prop("id", "jform_observation_size_precision1" + cloneId);
+
+               clone.find("input[id='jform_observation_sex0']").prop("id", "jform_observation_sex0" + cloneId);
+               clone.find("input[id='jform_observation_sex1']").prop("id", "jform_observation_sex1" + cloneId);
+               clone.find("input[id='jform_observation_sex2']").prop("id", "jform_observation_sex2" + cloneId);
+
+               clone.find("input[id='jform_observation_caudal0']").prop("id", "jform_observation_caudal0" + cloneId);
+               clone.find("input[id='jform_observation_caudal1']").prop("id", "jform_observation_caudal1" + cloneId);
+               clone.find("input[id='jform_observation_caudal2']").prop("id", "jform_observation_caudal2" + cloneId);
+
+               clone.find("input[name='jform[observation_beak_or_furrows][]']").prop("name", "jform[observation_beak_or_furrows][]" + cloneId);
+               clone.find("input[id='jform_observation_beak_or_furrows0']").prop("id", "jform_observation_beak_or_furrows0" + cloneId);
+               clone.find("input[id='jform_observation_beak_or_furrows1']").prop("id", "jform_observation_beak_or_furrows1" + cloneId);
+
+               clone.find("input[id='jform_observation_tooth_or_baleen_or_defenses0']").prop("id", "jform_observation_tooth_or_baleen_or_defenses0" + cloneId);
+               clone.find("input[id='jform_observation_tooth_or_baleen_or_defenses1']").prop("id", "jform_observation_tooth_or_baleen_or_defenses1" + cloneId);
+               clone.find("input[id='jform_observation_tooth_or_baleen_or_defenses2']").prop("id", "jform_observation_tooth_or_baleen_or_defenses2" + cloneId);
+
+               clone.find("input[id='jform_observation_abnormalities0']").prop("id", "jform_observation_abnormalities0" + cloneId);
+               clone.find("input[id='jform_observation_abnormalities1']").prop("id", "jform_observation_abnormalities1" + cloneId);
+               clone.find("input[id='jform_observation_abnormalities2']").prop("id", "jform_observation_abnormalities2" + cloneId);
+
+               clone.find("input[id='jform_observation_capture_traces0']").prop("id", "jform_observation_capture_traces0" + cloneId);
+               clone.find("input[id='jform_observation_capture_traces1']").prop("id", "jform_observation_capture_traces1" + cloneId);
+               clone.find("input[id='jform_observation_capture_traces2']").prop("id", "jform_observation_capture_traces2" + cloneId);
+
+               clone.find("input[id='jform_observation_dead_or_alive0']").prop("id", "jform_observation_dead_or_alive0" + cloneId);
+               clone.find("input[id='jform_observation_dead_or_alive1']").prop("id", "jform_observation_dead_or_alive1" + cloneId);
+
+               clone.find("input[id='jform_observation_death0']").prop("id", "jform_observation_death0" + cloneId);
+               clone.find("input[id='jform_observation_death1']").prop("id", "jform_observation_death1" + cloneId);
+               clone.find("input[id='jform_observation_death2']").prop("id", "jform_observation_death2" + cloneId);
+
+               clone.find("input[id='jform_observation_state_decomposition0']").prop("id", "jform_observation_state_decomposition0" + cloneId);
+               clone.find("input[id='jform_observation_state_decomposition1']").prop("id", "jform_observation_state_decomposition1" + cloneId);
+               clone.find("input[id='jform_observation_state_decomposition2']").prop("id", "jform_observation_state_decomposition2" + cloneId);
+               clone.find("input[id='jform_observation_state_decomposition3']").prop("id", "jform_observation_state_decomposition3" + cloneId);
+
+               clone.find("input[name='jform[observation_alive]']").prop("name", "jform[observation_alive]" + cloneId);
+               clone.find("input[id='jform_observation_alive0']").prop("id", "jform_observation_alive0" + cloneId);
+
+               clone.find("input[id='jform_levies_protocole0']").prop("id", "jform_levies_protocole0" + cloneId);
+               clone.find("input[id='jform_levies_protocole1']").prop("id", "jform_levies_protocole1" + cloneId);
+               clone.find("input[id='jform_levies_protocole2']").prop("id", "jform_levies_protocole2" + cloneId);
+
+               clone.find("input[id='jform_levies0']").prop("id", "jform_levies0" + cloneId);
+               clone.find("input[id='jform_levies1']").prop("id", "jform_levies1" + cloneId);
+
+               clone.find("input[id='jform_photos0']").prop("id", "jform_photos0" + cloneId);
+               clone.find("input[id='jform_photos1']").prop("id", "jform_photos1" + cloneId);
+
+               // les listes
+               clone.find("select[id='jform_observation_spaces']").prop("id", "jform_observation_spaces" + cloneId);
+               clone.find("select[id='jform_observation_hours']").prop("id", "jform_observation_hours" + cloneId);
+               clone.find("select[id='jform_observation_minutes']").prop("id", "jform_observation_minutes" + cloneId);
+               // les textes et nombre
+               clone.find("input[id='jform_observation_size']").prop("id", "jform_observation_size" + cloneId);
+               clone.find("input[id='jform_observation_color']").prop("id", "jform_observation_color" + cloneId);
+               clone.find("input[id='jform_nb_teeth_upper_right']").prop("id", "jform_nb_teeth_upper_right" + cloneId);
+               clone.find("input[id='jform_nb_teeth_upper_left']").prop("id", "jform_nb_teeth_upper_left" + cloneId);
+               clone.find("input[id='jform_nb_teeth_lower_right']").prop("id", "jform_nb_teeth_lower_right" + cloneId);
+               clone.find("input[id='jform_nb_teeth_lower_left']").prop("id", "jform_nb_teeth_lower_left" + cloneId);
+               clone.find("input[id='jform_observation_teeth_base_diametre']").prop("id", "jform_observation_teeth_base_diametre" + cloneId);
+               clone.find("input[id='jform_observation_baleen_color']").prop("id", "jform_observation_baleen_color" + cloneId);
+               clone.find("input[id='jform_observation_baleen_height']").prop("id", "jform_observation_baleen_height" + cloneId);
+               clone.find("input[id='jform_observation_baleen_base_height']").prop("id", "jform_observation_baleen_base_height" + cloneId);
+               clone.find("input[id='jform_catch_indices']").prop("id", "jform_catch_indices" + cloneId);                 
+               clone.find("input[id='jform_observation_datetime_death']").prop("id", "jform_observation_datetime_death" + cloneId);
+               clone.find("input[id='jform_observation_datetime_release']").prop("id", "jform_observation_datetime_release" + cloneId);
+               clone.find("input[id='jform_label_references']").prop("id", "jform_label_references" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_a']").prop("id", "jform_observation_dolphin_mesures_a" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_b']").prop("id", "jform_observation_dolphin_mesures_b" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_c']").prop("id", "jform_observation_dolphin_mesures_c" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_d']").prop("id", "jform_observation_dolphin_mesures_d" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_e']").prop("id", "jform_observation_dolphin_mesures_e" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_f']").prop("id", "jform_observation_dolphin_mesures_f" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_g']").prop("id", "jform_observation_dolphin_mesures_g" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_h']").prop("id", "jform_observation_dolphin_mesures_h" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_i']").prop("id", "jform_observation_dolphin_mesures_i" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_j']").prop("id", "jform_observation_dolphin_mesures_j" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_k']").prop("id", "jform_observation_dolphin_mesures_k" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_l']").prop("id", "jform_observation_dolphin_mesures_l" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_m']").prop("id", "jform_observation_dolphin_mesures_m" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_n']").prop("id", "jform_observation_dolphin_mesures_n" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_o']").prop("id", "jform_observation_dolphin_mesures_o" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_p']").prop("id", "jform_observation_dolphin_mesures_p" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_q']").prop("id", "jform_observation_dolphin_mesures_q" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_r']").prop("id", "jform_observation_dolphin_mesures_r" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_s']").prop("id", "jform_observation_dolphin_mesures_s" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_t']").prop("id", "jform_observation_dolphin_mesures_t" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_u']").prop("id", "jform_observation_dolphin_mesures_u" + cloneId);
+               clone.find("input[id='jform_observation_dolphin_mesures_v']").prop("id", "jform_observation_dolphin_mesures_v" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_a']").prop("id", "jform_observation_dugong_mesures_a" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_b']").prop("id", "jform_observation_dugong_mesures_b" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_c']").prop("id", "jform_observation_dugong_mesures_c" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_d']").prop("id", "jform_observation_dugong_mesures_d" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_e']").prop("id", "jform_observation_dugong_mesures_e" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_f']").prop("id", "jform_observation_dugong_mesures_f" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_g']").prop("id", "jform_observation_dugong_mesures_g" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_h']").prop("id", "jform_observation_dugong_mesures_h" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_i']").prop("id", "jform_observation_dugong_mesures_i" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_j']").prop("id", "jform_observation_dugong_mesures_j" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_k']").prop("id", "jform_observation_dugong_mesures_k" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_l']").prop("id", "jform_observation_dugong_mesures_l" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_m']").prop("id", "jform_observation_dugong_mesures_m" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_n']").prop("id", "jform_observation_dugong_mesures_n" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_o']").prop("id", "jform_observation_dugong_mesures_o" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_p']").prop("id", "jform_observation_dugong_mesures_p" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_q']").prop("id", "jform_observation_dugong_mesures_q" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_r']").prop("id", "jform_observation_dugong_mesures_r" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_s']").prop("id", "jform_observation_dugong_mesures_s" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_t']").prop("id", "jform_observation_dugong_mesures_t" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_u']").prop("id", "jform_observation_dugong_mesures_u" + cloneId);
+               clone.find("input[id='jform_observation_dugong_mesures_v']").prop("id", "jform_observation_dugong_mesures_v" + cloneId);
+               clone.find("input[id='jform_observation_location_stock']").prop("id", "jform_observation_location_stock" + cloneId);
+               clone.find("input[id='jform_remarks']").prop("id", "jform_remarks" + cloneId);
+
+              // affiche ou masque les mesures
+              clone.find("div").click(function() {
+                for(var i = 0; i <= cloneId; i++) {
+                  switch (this.id) {
+                    case 'div_show_cetace_measurements_field' + i:
+                          toggleContainer("cetace_measures" + i);
+                          break;
+                    case 'div_show_dugong_measurements_field' +i :
+                          toggleContainer("dugong_measures" + i);
+                          break;
+                  }
+                }
+              });
+
+              // affiche l'image représentative de l'encoche médiane
+              clone.find("button").click(function() {
+                for(var i = 0; i <= cloneId; i++) {
+                  switch (this.id) {
+                    case "show_tail_fin_image" + i :
+                          toggleContainer("tail_fin_image" + i);
+                    // bouton d'affichage, mesure sur cétacé
+                    case 'jform_observation_dolphin_mesures_a_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_a_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_b_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_b_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_c_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_c_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_d_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_d_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_e_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_e_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_f_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_f_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_g_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_g_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_h_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_h_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_i_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_i_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_j_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_j_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_k_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_k_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_l_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_l_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_m_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_m_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_n_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_n_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_o_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_o_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_p_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_p_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_q_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_q_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_r_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_r_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_s_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_s_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_t_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_t_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_u_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_u_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_v_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_v_field" + i);
+                          break;
+                    // bouton d'affichage, mesure sur dugong
+                    case 'jform_observation_dugong_mesures_a_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_a_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_b_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_b_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_c_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_c_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_d_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_d_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_e_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_e_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_f_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_f_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_g_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_g_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_h_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_h_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_i_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_i_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_j_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_j_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_k_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_k_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_l_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_l_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_m_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_m_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_n_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_n_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_o_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_o_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_p_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_p_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_q_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_q_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_r_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_r_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_s_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_s_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_t_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_t_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_u_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_u_field" + i);
+                          break;
+                    case 'jform_observation_dugong_mesures_v_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_v_field" + i);
+                          break;
+                  } 
+                }
+              });
+              // affiche ou pas le block en fonction du choix du user
+              clone.find("input[type='radio']").click(function() {
+                for(var i = 0; i <= cloneId; i++) {
+                  switch(this.id) {
+                    case 'jform_observation_dead_or_alive0' + i :
+                          displayBlock('dead_field' + i, true);
+                          displayBlock('alive_field' + i, false);
+                          break;
+                    case 'jform_observation_dead_or_alive1' + i :
+                          displayBlock('dead_field' + i, false);
+                          displayBlock('alive_field' + i, true);
+                          break;
+                    case 'jform_observation_tooth_or_baleen_or_defenses0' + i :
+                          displayBlock('tooth_field' + i, true); 
+                          displayBlock('baleen_field' + i, false);
+                          break;
+                    case 'jform_observation_tooth_or_baleen_or_defenses1' + i :
+                          displayBlock('tooth_field' + i, false); 
+                          displayBlock('baleen_field' + i, true);
+                          break;
+                    case 'jform_observation_tooth_or_baleen_or_defenses2' + i :
+                          displayBlock('tooth_field' + i, false); 
+                          displayBlock('baleen_field' + i, false);
+                          break;
+                    case 'jform_levies0' + i :
+                          displayBlock('stockage_location_field' + i, true);
+                          break;
+                    case 'jform_levies1' + i :
+                          displayBlock('stockage_location_field' + i, false);
+                          break;
+                  }
+                }
+              });
+              if(cloneId === document.getElementById("jform_observation_number").value-1){
+                break;
+              }
+              cloneId++;
+              clone.appendTo("#new_div_clone");
+            //}
+            break;
+
+        // supprimer les blocs cloner
+        case 'delete_observation' :
+              
+              //var cptr = nbr-2;
+              //for(var i = nbr-2; i >= 0; i--) {
+              var bloc = document.getElementById("new_div_clone");
+              var div = document.getElementById("div_observation_clone" + cptr);
+              /*if(cptr == -1) {
+                break;
+              }*/
+              bloc.removeChild(div);
+              cptr--;
+              
+              //}
+              break;
+      }
+    }); 
   });
 });
-
-// affiche ou pas le block en focntion du choix du user
-function choixUser(btn,champ1,champ2) { 
-  if (btn.id == "jform_observation_dead_or_alive0") { 
-    display(champ1,true); 
-    display(champ2,false);  
-  } 
-  else if (btn.id == "jform_observation_dead_or_alive1") { 
-    display(champ2,true); 
-    display(champ1,false); 
-  }
-  if(btn.id == "jform_observation_tooth_or_baleen_or_defenses0") {
-    display(champ1,true); 
-    display(champ2,false);
-  }
-  else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses1") {
-    display(champ2,true); 
-    display(champ1,false);
-  }
-  else if(btn.id == "jform_observation_tooth_or_baleen_or_defenses2") {
-    display(champ2,false); 
-    display(champ1,false);
-  }
-  if(btn.id == "jform_levies0") {
-    display(champ1,true); 
-    display(champ2,false);
-  }
-  else if(btn.id == "jform_levies1") {
-    display(champ1,false); 
-    display(champ2,false);
-  }
-}
-
-// si affiche=true alors on affiche le block choisi, sinon pas d'affichage
-function display(div, affiche) { 
-  if (affiche) 
-    document.getElementById(div).style.display="block"; 
-  else 
-    document.getElementById(div).style.display="none";  
+// si 'affiche' est vraie alors on affiche le block choisi, sinon pas d'affichage
+function displayBlock(div, affiche) { 
+  document.getElementById(div).style.display = affiche ? 'block' : 'none';
 }
 
 // affiche et masque le block au click
 function toggleContainer(name) {
-      var e = document.getElementById(name);// MooTools might not be available ;)
-      e.style.display = e.style.display === 'none' ? 'block' : 'none';
+  var e = document.getElementById(name);// MooTools might not be available ;)
+  e.style.display = e.style.display === 'none' ? 'block' : 'none';
 }
 
-function create_new_observation_btn(nbr) {
-  if(nbr > 1) {
-    document.getElementById("div_clone_btn").style.display="block";
-    for(var i=2; i<=nbr; i++){
-      //var btn =  document.createElement("BUTTON");
-      //var t = document.createTextNode("Observation" + " " + i);
-      //btn.appendChild(t);
-      //btn.id = "observation"+i;
-      //document.getElementById("div_observation_clone").appendChild(btn);
-      document.getElementById("jform_id_location").value = i;
-      
-    }
-  }
-  else if(nbr == 1) {
-    document.getElementById("jform_id_location").value = 1;
-  }
+// supprimer un bloc clonné
+function supr_bloc(div, i) { 
+  var Parent; 
+  var Obj = document.getElementById ( div+i); 
+
+  if(Obj)      
+    Parent = Obj.parentNode;      
+  if(Parent) 
+    Obj.removeChild(Obj.childNodes[0]); 
 }
-
-// cloner le bloc identification
-/*function add_new_block(nbr) {
-  if(nbr > 1) {
-    for(var i=2; i<=nbr; i++){
-      //var div = document.getElementById("div_observation_clone").innerHTML;
-      var div = document.createElement("DIV");
-      div.id = "new_div_clone"+i;
-      //div = document.getElementById("div_observation_clone").innerHTML;
-      //document.getElementById("form-stranding_admin").appendChild(div);
-
-      document.getElementById("new_div_clone").appendChild("new_div_clone"+i);
-      //document.getElementById("new_div_clone").innerHTML = div;
-      document.getElementById("jform_id_location").value = i;
-    }
-  }
-  else if(nbr == 1) {
-    document.getElementById("jform_id_location").value = 1;
-  }
-}*/
-
-function add_new_block() {
-    clone = document.getElementById("div_observation_clone").cloneNode(true);
-    document.getElementById("new_div_clone").appendChild(clone);
-}
-
-// ajoute des boutons en fonction du nombre d'animals échoués
-/*function add_new_btn(div, text, nbr) {
-    if(nbr > 1) {
-      // même nombre de boutons que d'animals échoués
-      for(var i=2; i<=nbr; i++) {
-        var btn = document.createElement("BUTTON");
-        var t = document.createTextNode(text+" "+i);
-        // incrémentation de l'id_location
-        document.getElementById("jform_id_location").value = i;
-        btn.appendChild(t);
-        document.getElementById(div).appendChild(btn);
-        btn.onclick = add_new_identification_field();
-      }
-    }
-    else if(nbr == 1) {
-      document.getElementById("jform_id_location").value = 1;
-    }
-}*/
-
-  /*function duplic(element) {
-    clone01 = document.getElementById("spaces_title").cloneNode(true);
-    clone01.id="spaces_title_1";
-    document.getElementById(element).appendChild (clone01);
-    clone1 = document.getElementById("spaces").cloneNode(true);
-    clone1.id="spaces1";
-    document.getElementById(element).appendChild (clone1);
-    clone02 = document.getElementById("spaces_identification_title").cloneNode(true);
-    clone02.id = "spaces_identification_title_1";
-    document.getElementById(element).appendChild (clone02);
-  }*/
-
-  /*Fonction ajout et suppression de champs version 2*/
-  function addDiv(name, field) {
-    var div = document.createElement("div");
-    div.name = name;
-    field.appendChild(div);
-  }
-
-  function addField(name, field) {
-    var div = document.getElementById('identification');
-    addDiv(name, field);
-  }
-
-  function supr_field(i) { 
-    var Parent; 
-    var Obj = document.getElementById ( 'input_'+i); 
-
-    if(Obj)      
-      Parent = Obj.parentNode;      
-    if(Parent) 
-      Obj.removeChild(Obj.childNodes[0]); 
-  }
-
-  function transpo(i) { 
-    document.getElementById('in_'+i).value = document.getElementById('out_'+(i-1)).value; 
-  }
-
 </script>
 
 <div class="stranding_admin-edit front-end-edit">
@@ -394,11 +976,9 @@ function add_new_block() {
 </div>
 
 <div id="div_observation_clone">
-  
-
 <!--Identification-->
-<div class="row" id="identification_title">
-  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
+<div class="row" id="div_identification_title">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4 id="identification_title"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3'); ?></h4></span></span></div>
 </div>
 <div class="row" id="identification">
   <!--Spaces-->
@@ -432,7 +1012,7 @@ function add_new_block() {
     <div class="col-lg-6 col-md-6 col-xs-12" name="tail[]">
       <div class="form-group">
         <?php echo $this->form->getLabel('observation_caudal'); ?>
-        <button type="button" name="Tail_Fin_Btn" class="btn btn-light" value="Tail-Fin"onclick="toggleContainer('tail_fin_image')"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_SEE_TF_IMAGE'); ?></label></button>
+        <button id="show_tail_fin_image" type="button" name="Tail_Fin_Btn" class="btn btn-light" value="Tail-Fin"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_SEE_TF_IMAGE'); ?></label></button>
         <div class="col-xs-offset-2 col-xs-10">
           <div class="radio">
             <label><?php echo $this->form->getInput('observation_caudal'); ?></label>
@@ -546,8 +1126,8 @@ function add_new_block() {
 </div>
 </div>
 <!--Animal-->
-<div class="row" id="animal_title">
-  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
+<div class="row" id="div_animal_title">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R4"><span class="stranding_admin-title_row"><span class="fa fa-shield fa-2x"><h4 id="animal_title"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW4'); ?></h4></span></span></div>
 </div>
 <div class="row" id="animal">
   <!--Size-->
@@ -773,8 +1353,8 @@ function add_new_block() {
 </div>
 </div>
 <!--Measurements-->
-<div class="row" id="measurements_title">
-  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R5"><span class="stranding_admin-title_row"><span class="fa fa-arrows-h fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW5'); ?></h4></span></span></div>
+<div class="row" id="div_measurements_title">
+  <div class="col-lg-12 col-md-12 col-xs-12" id="title_R5"><span class="stranding_admin-title_row"><span class="fa fa-arrows-h fa-2x"><h4 id="measurements_title"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW5'); ?></h4></span></span></div>
 </div>
 <div id="measurements">
   <div class="row" id="com_stranding_forms_measurements_info">
@@ -786,7 +1366,7 @@ function add_new_block() {
   </div>
 </div>
 <!--Cetaces measurements-->
-<div class="row cetaces_dugongs_measurements_title" onclick="toggleContainer('cetace_measures')">
+<div id="div_show_cetace_measurements_field" class="row cetaces_dugongs_measurements_title">
   <div class="col-lg-12 col-md-12 col-xs-12">
        <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DOLPHIN_MESURES_IMAGE'); ?></label>
   </div>
@@ -800,68 +1380,68 @@ function add_new_block() {
      </p>
    </div>
     <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_a_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('observation_dolphin_mesures_a_field')">
+     <button id="jform_observation_dolphin_mesures_a_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_a'); ?></button>
-     <div id="observation_dolphin_mesures_a_field"  style="display: none;">
+     <div id="jform_observation_dolphin_mesures_a_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_a'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_b_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('observation_dolphin_mesures_b_field')">
+     <button id="jform_observation_dolphin_mesures_b_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_b'); ?></button>
-     <div id="observation_dolphin_mesures_b_field"  style="display: none;">
+     <div id="jform_observation_dolphin_mesures_b_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_b'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_c_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('observation_dolphin_mesures_c_field')">
+     <button id="jform_observation_dolphin_mesures_c_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_c'); ?></button>
-     <div id="observation_dolphin_mesures_c_field"  style="display: none;">
+     <div id="jform_observation_dolphin_mesures_c_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_c'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_d_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_d_field')">
+     <button id="jform_observation_dolphin_mesures_d_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_d'); ?></button>
      <div id="jform_observation_dolphin_mesures_d_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_d'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_e_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_e_field')"><?php echo $this->form->getLabel('observation_dolphin_mesures_e'); ?></button>
+     <button id="jform_observation_dolphin_mesures_e_btn" type="button" class="btn btn-danger btn-lg btn-block"><?php echo $this->form->getLabel('observation_dolphin_mesures_e'); ?></button>
      <div id="jform_observation_dolphin_mesures_e_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_e'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_f_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_f_field')">
+     <button id="jform_observation_dolphin_mesures_f_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_f'); ?></button>
      <div id="jform_observation_dolphin_mesures_f_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_f'); ?>
     </div>&nbsp;
   </div>
 <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_g_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_g_field')">
+     <button id="jform_observation_dolphin_mesures_g_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_g'); ?></button>
      <div id="jform_observation_dolphin_mesures_g_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_g'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_h_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_h_field')">
+     <button id="jform_observation_dolphin_mesures_h_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_h'); ?></button>
      <div id="jform_observation_dolphin_mesures_h_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_h'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_a_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_i_field')">
+     <button id="jform_observation_dolphin_mesures_i_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_i'); ?></button>
      <div id="jform_observation_dolphin_mesures_i_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_i'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_j_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_j_field')">
+     <button id="jform_observation_dolphin_mesures_j_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_j'); ?></button>
      <div id="jform_observation_dolphin_mesures_j_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_j'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_k_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_k_field')">
+     <button id="jform_observation_dolphin_mesures_k_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_k'); ?></button>
      <div id="jform_observation_dolphin_mesures_k_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_k'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_l_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_l_field')">
+     <button id="jform_observation_dolphin_mesures_l_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_l'); ?></button>
      <div id="jform_observation_dolphin_mesures_l_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_l'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_m_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_m_field')">
+     <button id="jform_observation_dolphin_mesures_m_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_m'); ?></button>
      <div id="jform_observation_dolphin_mesures_m_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_m'); ?>
@@ -876,12 +1456,12 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_n_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_n_field')">
+     <button id="jform_observation_dolphin_mesures_n_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_n'); ?></button>
      <div id="jform_observation_dolphin_mesures_n_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_n'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_o_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_o_field')">
+     <button id="jform_observation_dolphin_mesures_o_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_o'); ?></button>
      <div id="jform_observation_dolphin_mesures_o_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_o'); ?>
@@ -894,12 +1474,12 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_p_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_p_field')">
+     <button id="jform_observation_dolphin_mesures_p_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_p'); ?></button>
      <div id="jform_observation_dolphin_mesures_p_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_p'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_q_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_q_field')">
+     <button id="jform_observation_dolphin_mesures_q_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_q'); ?></button>
      <div id="jform_observation_dolphin_mesures_q_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_q'); ?>
@@ -911,12 +1491,12 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_r_field')">
+     <button id="jform_observation_dolphin_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_r'); ?></button>
      <div id="jform_observation_dolphin_mesures_r_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_r'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_s_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_s_field')">
+     <button id="jform_observation_dolphin_mesures_s_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_s'); ?></button>
      <div id="jform_observation_dolphin_mesures_s_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_s'); ?>
@@ -928,15 +1508,15 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_t_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_t_field')"><?php echo $this->form->getLabel('observation_dolphin_mesures_t'); ?></button>
+     <button id="jform_observation_dolphin_mesures_t_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dolphin_mesures_t'); ?></button>
      <div id="jform_observation_dolphin_mesures_t_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_t'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_u_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_u_field')"><?php echo $this->form->getLabel('observation_dolphin_mesures_u'); ?></button>
+     <button id="jform_observation_dolphin_mesures_u_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dolphin_mesures_u'); ?></button>
      <div id="jform_observation_dolphin_mesures_u_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_u'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dolphin_mesures_v_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dolphin_mesures_v_field')"><?php echo $this->form->getLabel('observation_dolphin_mesures_v'); ?></button>
+     <button id="jform_observation_dolphin_mesures_v_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dolphin_mesures_v'); ?></button>
      <div id="jform_observation_dolphin_mesures_v_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_v'); ?>
     </div>&nbsp;
@@ -944,7 +1524,7 @@ function add_new_block() {
  </div>
 </div>
 <!--Dugongs measurements-->
-<div class="row cetaces_dugongs_measurements_title" onclick="toggleContainer('dugong_measures')">
+<div id="div_show_dugong_measurements_field" class="row cetaces_dugongs_measurements_title">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <label class="hasTooltip" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_IMAGE_DESC'); ?>"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DUGONG_MESURES_IMAGE'); ?></label>
   </div>
@@ -958,68 +1538,68 @@ function add_new_block() {
      </p>
    </div>
     <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_a_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('observation_dugong_mesures_a_field')">
+     <button id="jform_observation_dugong_mesures_a_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_a'); ?></button>
-     <div id="observation_dugong_mesures_a_field"  style="display: none;">
+     <div id="jform_observation_dugong_mesures_a_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_a'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_b_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('observation_dugong_mesures_b_field')">
+     <button id="jform_observation_dugong_mesures_b_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_b'); ?></button>
-     <div id="observation_dugong_mesures_b_field"  style="display: none;">
+     <div id="jform_observation_dugong_mesures_b_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_b'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_c_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('observation_dugong_mesures_c_field')">
+     <button id="jform_observation_dugong_mesures_c_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_c'); ?></button>
-     <div id="observation_dugong_mesures_c_field"  style="display: none;">
+     <div id="jform_observation_dugong_mesures_c_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_c'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_d_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_d_field')">
+     <button id="jform_observation_dugong_mesures_d_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_d'); ?></button>
      <div id="jform_observation_dugong_mesures_d_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_d'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_e_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_e_field')"><?php echo $this->form->getLabel('observation_dugong_mesures_e'); ?></button>
+     <button id="jform_observation_dugong_mesures_e_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dugong_mesures_e'); ?></button>
      <div id="jform_observation_dugong_mesures_e_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_e'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_f_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_f_field')">
+     <button id="jform_observation_dugong_mesures_f_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_f'); ?></button>
      <div id="jform_observation_dugong_mesures_f_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_f'); ?>
     </div>&nbsp;
   </div>
 <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_g_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_g_field')">
+     <button id="jform_observation_dugong_mesures_g_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_g'); ?></button>
      <div id="jform_observation_dugong_mesures_g_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_g'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_h_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_h_field')">
+     <button id="jform_observation_dugong_mesures_h_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_h'); ?></button>
      <div id="jform_observation_dugong_mesures_h_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_h'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_a_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_i_field')">
+     <button id="jform_observation_dugong_mesures_i_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_i'); ?></button>
      <div id="jform_observation_dugong_mesures_i_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_i'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_j_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_j_field')">
+     <button id="jform_observation_dugong_mesures_j_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_j'); ?></button>
      <div id="jform_observation_dugong_mesures_j_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_j'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_k_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_k_field')">
+     <button id="jform_observation_dugong_mesures_k_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_k'); ?></button>
      <div id="jform_observation_dugong_mesures_k_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_k'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_l_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_l_field')">
+     <button id="jform_observation_dugong_mesures_l_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_l'); ?></button>
      <div id="jform_observation_dugong_mesures_l_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_l'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_m_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_m_field')">
+     <button id="jform_observation_dugong_mesures_m_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_m'); ?></button>
      <div id="jform_observation_dugong_mesures_m_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_m'); ?>
@@ -1034,12 +1614,12 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_n_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_n_field')">
+     <button id="jform_observation_dugong_mesures_n_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_n'); ?></button>
      <div id="jform_observation_dugong_mesures_n_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_n'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_o_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_o_field')">
+     <button id="jform_observation_dugong_mesures_o_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_o'); ?></button>
      <div id="jform_observation_dugong_mesures_o_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_o'); ?>
@@ -1052,12 +1632,12 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_p_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_p_field')">
+     <button id="jform_observation_dugong_mesures_p_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_p'); ?></button>
      <div id="jform_observation_dugong_mesures_p_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_p'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_q_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_q_field')">
+     <button id="jform_observation_dugong_mesures_q_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_q'); ?></button>
      <div id="jform_observation_dugong_mesures_q_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_q'); ?>
@@ -1069,12 +1649,12 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_r_field')">
+     <button id="jform_observation_dugong_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_r'); ?></button>
      <div id="jform_observation_dugong_mesures_r_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_r'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_s_btn" type="button" class="btn btn-danger btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_s_field')">
+     <button id="jform_observation_dugong_mesures_s_btn" type="button" class="btn btn-danger btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_s'); ?></button>
      <div id="jform_observation_dugong_mesures_s_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_s'); ?>
@@ -1086,15 +1666,15 @@ function add_new_block() {
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_t_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_t_field')"><?php echo $this->form->getLabel('observation_dugong_mesures_t'); ?></button>
+     <button id="jform_observation_dugong_mesures_t_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dugong_mesures_t'); ?></button>
      <div id="jform_observation_dugong_mesures_t_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_t'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_u_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_u_field')"><?php echo $this->form->getLabel('observation_dugong_mesures_u'); ?></button>
+     <button id="jform_observation_dugong_mesures_u_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dugong_mesures_u'); ?></button>
      <div id="jform_observation_dugong_mesures_u_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_u'); ?>
     </div>&nbsp;
-     <button id="jform_observation_dugong_mesures_v_btn" type="button" class="btn btn-secondary btn-lg btn-block" onclick="toggleContainer('jform_observation_dugong_mesures_v_field')"><?php echo $this->form->getLabel('observation_dugong_mesures_v'); ?></button>
+     <button id="jform_observation_dugong_mesures_v_btn" type="button" class="btn btn-secondary btn-lg btn-block"><?php echo $this->form->getLabel('observation_dugong_mesures_v'); ?></button>
      <div id="jform_observation_dugong_mesures_v_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_v'); ?>
     </div>&nbsp;
@@ -1112,16 +1692,23 @@ function add_new_block() {
   </div>
 </div>
 </div>
-
 </div>
 <div id="new_div_clone">
-  
+  <!--Ce bloc contiendra les clones-->
 </div>
-<div id="div_clone_btn" class="row" style="display: none;">
+<div id="btns_clone" class="form-inline">
+  <div id="div_add_clone_btn" class="row" style="display: none;">
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <button type="button" id="new_observation" class="btn btn-primary" onclick="add_new_block()"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
+    <button type="button" id="new_observation" class="btn btn-primary"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ADD_FIELDS'); ?></label></button>
   </div>
 </div>
+<div id="div_delete_clone_btn" class="row" style="display: none;">
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <button type="button" id="delete_observation" class="btn btn-danger"><label><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_DELETE_FIELDS'); ?></label></button>
+  </div>
+</div>
+</div>
+
 <!--Admin validation-->
 <?php if($user->id != 0){ ?>
  <div class="row">

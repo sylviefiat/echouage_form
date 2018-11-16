@@ -322,7 +322,6 @@
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
 			type="number"
-			onchange="create_new_observation_btn(this.value)"
 			min="0"
 			max="1000"
 			required="true"/>
@@ -554,9 +553,9 @@
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
 			type="radio"
 			required="true">
-			<option value="Dents" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_TOOTH</option>
-			<option value="Fanons" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_BALEEN</option>
-			<option value="Défenses" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_DEFENSES</option>
+			<option value="Dents" >OBSERVATION_TOOTH</option>
+			<option value="Fanons" >OBSERVATION_BALEEN</option>
+			<option value="Défenses" >OBSERVATION_DEFENSES</option>
 	</field>
 
 	<!--Tooth-->
@@ -709,8 +708,8 @@
 			description="OBSERVATION_DEAD_OR_ALIVE_DESC"
 			type="radio"
 			required="true">
-			<option value="Mort" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_A</option>
-			<option value="Vivant" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_B</option>
+			<option value="Mort" >OBSERVATION_DEAD_OR_ALIVE_A</option>
+			<option value="Vivant" >OBSERVATION_DEAD_OR_ALIVE_B</option>
 	</field>
 
 	<!--Death-->
@@ -799,8 +798,8 @@
 			label="LEVIES"
 			description="LEVIES_DESC"
 			type="radio">
-			<option value="Oui" onclick="choixUser(this, 'stockage_location_field', '')">JYES</option>
-			<option value="Non" onclick="choixUser(this, 'stockage_location_field', '')">JNO</option>
+			<option value="Oui" >JYES</option>
+			<option value="Non" >JNO</option>
 	</field>
 
 	<!--Photos-->

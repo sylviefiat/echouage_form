@@ -124,13 +124,15 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	{
 		// Get the id.
 		$id = (!empty($id)) ? $id : (int)$this->getState('stranding_admin.id');
+		// Gte the observation 
+		//$id_location = (!empty($id_location)) ? $id_location : (int)$this->getState('stranding_admin.id_location'); && $id_location
 
 		if ($id) {
             
 			// Initialise the table
 			$table = $this->getTable();
 
-			// Attempt to check the row in.
+			// Attempt to check the row in. && !$table->checkin($id_location)
             if (method_exists($table, 'checkin')) {
                 if (!$table->checkin($id)) {
                     $this->setError($table->getError());
@@ -153,13 +155,14 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	{
 		// Get the user id.
 		$id = (!empty($id)) ? $id : (int)$this->getState('stranding_admin.id');
-
+		// Get the observation 
+		//$id_location = (!empty($id_location)) ? $id_location : (int)$this->getState('stranding_admin.id_location'); && $id_location
 		if ($id) {
             
 			// Initialise the table
 			$table = $this->getTable();
 
-			// Get the current user object.
+			// Get the current user object.  && !$table->checkout($user->get('id_location'), $id_location)
 			$user = JFactory::getUser();
 
 			// Attempt to check the row out.
