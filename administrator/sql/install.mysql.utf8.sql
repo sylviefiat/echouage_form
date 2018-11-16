@@ -116,7 +116,7 @@ CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_a
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
 
 DELIMITER $$
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation` AFTER INSERT ON `#__extensions`
+CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_insert` AFTER INSERT ON `#__extensions`
 FOR EACH ROW
 BEGIN
 	DECLARE x INT;
@@ -133,7 +133,7 @@ END $$
 DELIMITER;
 
 DELIMITER $$
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation` AFTER UPDATE ON `#__extensions`
+CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_update` AFTER UPDATE ON `#__extensions`
 FOR EACH ROW
 BEGIN
 	DECLARE x INT;
