@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`id_location` INT(12) NOT NULL,
+	`id_observation` INT(12) NOT NULL,
 	`observer_name` VARCHAR(100)  NOT NULL,
 	`observer_address` VARCHAR(250) NOT NULL,
 	`observer_tel` VARCHAR(100)  NOT NULL,
@@ -52,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`levies_protocole` VARCHAR(100) NOT NULL,
 	`levies` VARCHAR(100) NOT NULL,
 	`photos` VARCHAR(100) NOT NULL,
+	`upload_photos` TEXT NOT NULL,
 	`label_references` VARCHAR(250) NOT NULL,
 	`observation_tissue_removal_dead` VARCHAR(200) NOT NULL,
 	`observation_tissue_removal_alive` VARCHAR(100) NOT NULL,
@@ -115,28 +117,16 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
 
-DELIMITER $$
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_insert` AFTER INSERT ON `#__extensions`
-FOR EACH ROW
-BEGIN
-	DECLARE x INT;
-	IF (NEW.observation_number > 1) THEN
-		SET x = 1;
-		WHILE x <= NEW.observation_number DO
-			UPDATE `#__stranding_admin`
-			SET id_location = NEW.id_location + x
-			SET x = x+1;
-		END WHILE;
-		WHERE id = NEW.id;
-	END IF;
-END $$
-DELIMITER;
+CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_location_insert` AFTER INSERT ON `#__stranding_admin`
+FOR EACH ROW SET NEW.id_location = NEW.id_location + 1;
 
-DELIMITER $$
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_update` AFTER UPDATE ON `#__extensions`
+CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_location_update` AFTER UPDATE ON `#__stranding_admin`
+FOR EACH ROW SET NEW.id_location = NEW.id_location + 1;
+
+/*CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_insert` AFTER INSERT ON `#__users`
 FOR EACH ROW
 BEGIN
-	DECLARE x INT;
+	DECLARE x INTEGER;
 	IF (NEW.observation_number > 1) THEN
 		SET x = 1;
 		WHILE x <= NEW.observation_number DO
@@ -146,8 +136,22 @@ BEGIN
 		END WHILE;
 		WHERE id = NEW.id;
 	END IF;
-END $$
-DELIMITER;
+END;
+
+CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_update` AFTER UPDATE ON `#__users`
+FOR EACH ROW
+BEGIN
+	DECLARE x INTEGER;
+	IF (NEW.observation_number > 1) THEN
+		SET x = 1;
+		WHILE x <= NEW.observation_number DO
+			UPDATE `#__stranding_admin`
+			SET id_location = NEW.id_location + x
+			SET x = x+1;
+		END WHILE;
+		WHERE id = NEW.id;
+	END IF;
+END;*/
 	 
 
 

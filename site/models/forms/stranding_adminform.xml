@@ -27,6 +27,16 @@
 			readonly="true"
 			type="cktext"/>
 
+	<!--Observation_ID-->
+	<field name="id_observation"
+			alias="id_observation"
+			class="form-control"
+			label="ID_OBSERVATION"
+			filter="INT"
+			description="ID_OBSERVATION_DESC"
+			readonly="true"
+			type="cktext"/>
+
 	<!--Observer contacts-->
 	<field name="observer_name"
 			alias="observer_name"
@@ -797,7 +807,8 @@
 			class="btn-group"
 			label="LEVIES"
 			description="LEVIES_DESC"
-			type="radio">
+			type="radio"
+			required="true">
 			<option value="Oui" >JYES</option>
 			<option value="Non" >JNO</option>
 	</field>
@@ -813,6 +824,16 @@
 			<option value="Oui">JYES</option>
 			<option value="Non">JNO</option>
 	</field>
+
+	<!--Upload photos-->
+	<field name="upload_photos"
+		  	alias="upload_photos"
+		  	class="form-control"
+		  	labelclass="control-label"
+		  	label="UPLOAD_PHOTOS"
+		  	description="UPLOAD_PHOTOS_DESC"
+		  	type="file"
+		  	accept="image/*"/>
 
 	<!--Tissue removal alive-->
 	<field name="observation_tissue_removal_alive"
