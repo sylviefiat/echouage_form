@@ -53,28 +53,22 @@ class Stranding_formsTableStranding_Admin extends JTable {
             }
             $array['rules'] = $this->JAccessRulestoArray($array_jaccess);
         }
-        /*if (!JFactory::getUser()->authorise('core.admin', 'com_stranding_forms.stranding_admin.' . $array['id_location'])) {
-            $actions = JFactory::getACL()->getActions('com_stranding_forms', 'stranding_admin');
-            $default_actions = JFactory::getACL()->getAssetRules('com_stranding_forms.stranding_admin.' . $array['id_location'])->getData();
-            $array_jaccess = array();
-            foreach ($actions as $action) {
-                $array_jaccess[$action->name] = $default_actions[$action->name];
-            }
-            $array['rules'] = $this->JAccessRulestoArray($array_jaccess);
-        }*/
+
         //Bind the rules for ACL where supported.
         if (isset($array['rules']) && is_array($array['rules'])) {
             $this->setRules($array['rules']);
         }
 
-    	// Set up for specific checkboxes component for observation tissue removal
+    	// Set up for specific checkboxes component 
     	if (array_key_exists( 'observation_tissue_removal_dead', $array ) && is_array( $array['observation_tissue_removal_dead'] )) {
     		$array['observation_tissue_removal_dead'] = implode( ',', $array['observation_tissue_removal_dead'] );
     	}
         if (array_key_exists( 'observation_beak_or_furrows', $array ) && is_array( $array['observation_beak_or_furrows'] )) {
             $array['observation_beak_or_furrows'] = implode( ' & ', $array['observation_beak_or_furrows'] );
         }
-    
+        /*if (array_key_exists( 'observation_spaces', $array ) && is_array( $array['observation_spaces'] )) {
+            $array['observation_spaces'] = implode( ', ', $array['observation_spaces'] );
+        }*/
 
         return parent::bind($array, $ignore);
     }

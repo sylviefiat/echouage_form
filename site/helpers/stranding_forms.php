@@ -62,8 +62,8 @@ abstract class Stranding_formsHelper
 		."<div>Observation validation: ".$valid." </div>";
 
 
-		$subject = "Operation_Cetaces NC: nouveau report d'échouage en Nouvelle-Calédonie";
-		$mailer->setSubject("Operation_Cetaces NC: nouveau report d'échouage en Nouvelle-Calédonie");
+		$subject = "Echouage NC: nouveau report d'échouage en Nouvelle-Calédonie";
+		$mailer->setSubject("Echouage NC: nouveau report d'échouage en Nouvelle-Calédonie");
 		$mailer->setBody($body);
 		$mailer->AltBody =JMailHelper::cleanText( strip_tags( $body));
 

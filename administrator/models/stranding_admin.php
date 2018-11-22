@@ -94,7 +94,7 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 		if ($item = parent::getItem($pk)) {
 
 			//Do any procesing on fields here if needed
-
+			
 		}
 
 		return $item;

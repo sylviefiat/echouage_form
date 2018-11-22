@@ -124,8 +124,6 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	{
 		// Get the id.
 		$id = (!empty($id)) ? $id : (int)$this->getState('stranding_admin.id');
-		// Gte the observation 
-		//$id_location = (!empty($id_location)) ? $id_location : (int)$this->getState('stranding_admin.id_location'); && $id_location
 
 		if ($id) {
             
@@ -155,8 +153,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	{
 		// Get the user id.
 		$id = (!empty($id)) ? $id : (int)$this->getState('stranding_admin.id');
-		// Get the observation 
-		//$id_location = (!empty($id_location)) ? $id_location : (int)$this->getState('stranding_admin.id_location'); && $id_location
+		
 		if ($id) {
             
 			// Initialise the table

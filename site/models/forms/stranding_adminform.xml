@@ -388,36 +388,45 @@
 			 labelclass="control-label"
 			 type="list">
 			 <option value="">SPACES_COMMON_NAME_0</option>
-			 <option value="Cachalot">SPACES_COMMON_NAME_1</option>
-			 <option value="Cachalot pygmée">SPACES_COMMON_NAME_2</option>
-			 <option value="Cachalot nain">SPACES_COMMON_NAME_3</option>
-			 <option value="Baleine à bec de Blainville">SPACES_COMMON_NAME_4</option>
-			 <option value="Baleine à bec de longman">SPACES_COMMON_NAME_5</option>
-			 <option value="Baleine à bec de Cuvier">SPACES_COMMON_NAME_6</option>
-			 <option value="Orque">SPACES_COMMON_NAME_7</option>
-			 <option value="Fausse orque">SPACES_COMMON_NAME_8</option>
-			 <option value="Globicéphale tropical">SPACES_COMMON_NAME_9</option>
-			 <option value="Dauphin de Risso">SPACES_COMMON_NAME_10</option>
-			 <option value="Orque Pygmée">SPACES_COMMON_NAME_11</option>
-			 <option value="Péponocéphale ou dauphin d’Electre">SPACES_COMMON_NAME_12</option>
-			 <option value="Sténo ou dauphin à bec étroit">SPACES_COMMON_NAME_13</option>
-			 <option value="Grand dauphin commun">SPACES_COMMON_NAME_14</option>
-			 <option value="Grand dauphin de l’Indo-Pacifique">SPACES_COMMON_NAME_15</option>
-			 <option value="Dauphin commun">SPACES_COMMON_NAME_16</option>
-			 <option value="Dauphin à long bec">SPACES_COMMON_NAME_17</option>
-			 <option value=" Dauphin tacheté pantropical">SPACES_COMMON_NAME_18</option>
-			 <option value="Dauphin de Fraser">SPACES_COMMON_NAME_19</option>
-			 <option value="Baleine bleue pygmée">SPACES_COMMON_NAME_20</option>
-			 <option value="Rorqual commun">SPACES_COMMON_NAME_21</option>
-			 <option value="Rorqual boréal ou rorqual de Rudolphi">SPACES_COMMON_NAME_22</option>
-			 <option value="Rorqual tropical ou rorqual de Bryde">SPACES_COMMON_NAME_23</option>
-			 <option value="Rorqual de Omura">SPACES_COMMON_NAME_24</option>
-			 <option value="Petit rorqual antarctique">SPACES_COMMON_NAME_25</option>
-			 <option value="Petit rorqual pygmée">SPACES_COMMON_NAME_26</option>
-			 <option value="Baleine à bosse">SPACES_COMMON_NAME_27</option>
+			 <optgroup label="SPACES_COMMON_NAME_1">
+				 <option value="Cachalot">SPACES_COMMON_NAME_1</option>
+				 <option value="Cachalot pygmée">SPACES_COMMON_NAME_2</option>
+				 <option value="Cachalot nain">SPACES_COMMON_NAME_3</option>
+			 </optgroup>
+			 <optgroup label="SPACES_COMMON_NAME_BEAKED_WHALE">
+				 <option value="Baleine à bec de Blainville">SPACES_COMMON_NAME_4</option>
+				 <option value="Baleine à bec de longman">SPACES_COMMON_NAME_5</option>
+				 <option value="Baleine à bec de Cuvier">SPACES_COMMON_NAME_6</option>
+			 </optgroup>
+			 <optgroup label="SPACES_COMMON_NAME_7">
+				 <option value="Orque">SPACES_COMMON_NAME_7</option>
+				 <option value="Fausse orque">SPACES_COMMON_NAME_8</option>
+				 <option value="Globicéphale tropical">SPACES_COMMON_NAME_9</option>
+				 <option value="Dauphin de Risso">SPACES_COMMON_NAME_10</option>
+				 <option value="Orque Pygmée">SPACES_COMMON_NAME_11</option>
+				 <option value="Péponocéphale ou dauphin d’Electre">SPACES_COMMON_NAME_12</option>
+		     </optgroup>
+			 <optgroup label="SPACES_COMMON_NAME_DOLPHIN">
+				 <option value="Sténo ou dauphin à bec étroit">SPACES_COMMON_NAME_13</option>
+				 <option value="Grand dauphin commun">SPACES_COMMON_NAME_14</option>
+				 <option value="Grand dauphin de l’Indo-Pacifique">SPACES_COMMON_NAME_15</option>
+				 <option value="Dauphin commun">SPACES_COMMON_NAME_16</option>
+				 <option value="Dauphin à long bec">SPACES_COMMON_NAME_17</option>
+				 <option value="Dauphin tacheté pantropical">SPACES_COMMON_NAME_18</option>
+				 <option value="Dauphin de Fraser">SPACES_COMMON_NAME_19</option>
+			 </optgroup>
+			 <optgroup label="SPACES_COMMON_NAME_BALEEN_WHALE">
+				 <option value="Baleine bleue pygmée">SPACES_COMMON_NAME_20</option>
+				 <option value="Rorqual commun">SPACES_COMMON_NAME_21</option>
+				 <option value="Rorqual boréal ou rorqual de Rudolphi">SPACES_COMMON_NAME_22</option>
+				 <option value="Rorqual tropical ou rorqual de Bryde">SPACES_COMMON_NAME_23</option>
+				 <option value="Rorqual de Omura">SPACES_COMMON_NAME_24</option>
+				 <option value="Petit rorqual antarctique">SPACES_COMMON_NAME_25</option>
+				 <option value="Petit rorqual pygmée">SPACES_COMMON_NAME_26</option>
+				 <option value="Baleine à bosse">SPACES_COMMON_NAME_27</option>
+			 </optgroup>
 			 <option value="Dugong ou vache marine">SPACES_COMMON_NAME_28</option>
-			 <option value="Otarie à fourrure de Nouvelle-Zélande">SPACES_COMMON_NAME_29</option>
-			
+			 <option value="Otarie à fourrure de Nouvelle-Zélande">SPACES_COMMON_NAME_29</option>		
 	</field>
 
 	<!--Spaces kind-->

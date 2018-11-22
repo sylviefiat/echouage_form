@@ -391,6 +391,9 @@ if (!empty($this->extra_sidebar)) {
 											<td>
 												<?php echo (int) $item->id_location; ?>
 											</td>
+											<td>
+												<?php echo (int) $item->id_observation; ?>
+											</td>
 											<?php if (isset($this->items[0]->id)): ?>
 												<td class="center hidden-phone">
 													<?php echo (int) $item->id; ?>
