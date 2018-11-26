@@ -66,9 +66,9 @@ class Stranding_formsTableStranding_Admin extends JTable {
         if (array_key_exists( 'observation_beak_or_furrows', $array ) && is_array( $array['observation_beak_or_furrows'] )) {
             $array['observation_beak_or_furrows'] = implode( ' & ', $array['observation_beak_or_furrows'] );
         }
-        /*if (array_key_exists( 'observation_spaces', $array ) && is_array( $array['observation_spaces'] )) {
-            $array['observation_spaces'] = implode( ', ', $array['observation_spaces'] );
-        }*/
+        if (array_key_exists( 'observation_spaces', $array ) && is_array( $array['observation_spaces'] )) {
+            $array['observation_spaces'] = implode( ',', $array['observation_spaces'] );
+        }
 
         return parent::bind($array, $ignore);
     }

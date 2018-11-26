@@ -243,8 +243,8 @@ class Stranding_formsModelStranding_admins extends JModelList {
 
       // Delete all the columns header
       for($cptr=0; $cptr<$nb_columns; $cptr++){ array_pop($cols); }
-        $delimiter = ';';
-        $enclosure = '"';
+        //$delimiter = ';';
+        //$enclosure = '"';
 
         if($var == 0) {
           array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
@@ -261,13 +261,13 @@ class Stranding_formsModelStranding_admins extends JModelList {
             array_pop($in);
             array_pop($in);
             // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
-            $keys_in = array_keys($in);
+            /*$keys_in = array_keys($in);
             $i = 0;
             while($i < count($keys_in)){
             $data = $keys_in_1[$i];
             $in[$data] = utf8_decode ($in[$data]);
             $i++;
-            }
+            }*/
             // Fin : Convertion d'une chaîne UTF-8 en ISO-8859-1
             //fputcsv($csv, (array) $in, $delimiter, $enclosure);
             fputcsv($csv, (array) $in);
@@ -291,13 +291,13 @@ class Stranding_formsModelStranding_admins extends JModelList {
             array_pop($in);
             array_pop($in);
             // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
-            $keys_in = array_keys($in);
+            /*$keys_in = array_keys($in);
             $i = 0;
             while($i < count($keys_in)){
             $data = $keys_in_1[$i];
             $in[$data] = utf8_decode ($in[$data]);
             $i++;
-            }
+            }*/
             // Fin : Convertion d'une chaîne UTF-8 en ISO-8859-1
             //fputcsv($csv, (array) $in, $delimiter, $enclosure);
             fputcsv($csv, (array) $in);

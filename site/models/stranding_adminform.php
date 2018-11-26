@@ -159,7 +159,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 			// Initialise the table
 			$table = $this->getTable();
 
-			// Get the current user object.  && !$table->checkout($user->get('id_location'), $id_location)
+			// Get the current user object.
 			$user = JFactory::getUser();
 
 			// Attempt to check the row out.
