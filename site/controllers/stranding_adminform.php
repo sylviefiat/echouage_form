@@ -71,9 +71,6 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 		echo "<script>console.log( 'Debug Objects: sav3' );</script>";
 		// Get the user data.
 		$data = JFactory::getApplication()->input->get('jform', array(), 'array');
-		/*foreach ($data as $key) {
-			$key[$num] = explode(delimiter, string);
-		}*/
 		echo "<script>console.log( 'Debug Objects: sav4' );</script>";
 		// Validate the posted data.
 		$form = $model->getForm();
@@ -82,7 +79,7 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 			return false;
 		}
 		echo "<script>console.log( 'Debug Objects: sav5' );</script>";
-		var_dump($data);
+		//var_dump($data);
 		// Validate the posted data.
 		$data = $model->validate($form, $data);
 		echo "<script>console.log( 'Debug Objects: sav6' );</script>";

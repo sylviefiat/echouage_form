@@ -60,15 +60,24 @@ class Stranding_formsTableStranding_Admin extends JTable {
         }
 
     	// Set up for specific checkboxes component 
-    	if (array_key_exists( 'observation_tissue_removal_dead', $array ) && is_array( $array['observation_tissue_removal_dead'] )) {
+    	/*if (array_key_exists( 'observation_tissue_removal_dead', $array ) && is_array( $array['observation_tissue_removal_dead'] )) {
     		$array['observation_tissue_removal_dead'] = implode( ',', $array['observation_tissue_removal_dead'] );
     	}
         if (array_key_exists( 'observation_beak_or_furrows', $array ) && is_array( $array['observation_beak_or_furrows'] )) {
             $array['observation_beak_or_furrows'] = implode( ' & ', $array['observation_beak_or_furrows'] );
+        }*/
+
+        $keys_tab = array_keys($array);
+
+        foreach ($keys_tab as $tab) {
+            if (array_key_exists( $tab, $array ) && is_array( $array[ $tab] )) {
+            $array[ $tab] = implode( ',', $array[ $tab] );
+         }
         }
-        if (array_key_exists( 'observation_spaces', $array ) && is_array( $array['observation_spaces'] )) {
+
+        /*if (array_key_exists( 'observation_spaces', $array ) && is_array( $array['observation_spaces'] )) {
             $array['observation_spaces'] = implode( ',', $array['observation_spaces'] );
-        }
+        }*/
 
         return parent::bind($array, $ignore);
     }

@@ -158,9 +158,9 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.catch_indices,
           CONCAT(observation_state_decomposition,observation_alive),
           a.observation_datetime_death, 
-          CONCAT(observation_hours, " ", observation_minutes),
+          CONCAT(a.observation_hours, " ", a.observation_minutes),
           a.observation_datetime_release, 
-          CONCAT(observation_hours, " ", observation_minutes),
+          CONCAT(a.observation_hours, " ", a.observation_minutes),
           a.levies_protocole,
           a.label_references,
           CONCAT(observation_tissue_removal_dead, observation_tissue_removal_alive),
@@ -275,7 +275,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           return fclose($csv);
 
         }else if($var == 1) {
-          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur',"Nom de l'observateur", "Contact de l'observateur", "Nom de l'informateur","Origine de l'information", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort','Heure de la mort', "Date de la remise à l'eau", "Heure de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Longueur total', 'Ctc longueur mâchoire sup', 'Ctc longueur mâchoire inf', 'Ctc longueur mâchoire à aileron dorsal', 'Ctc longueur mâchoire à oeil', 'Ctc longueur mâchoire à event', 'Ctc longueur mâchoire à pectoral', 'Ctc longueur mâchoire à nombril', 'Ctc longueur mâchoire à fente génitale', 'Ctc longueur mâchoire à anus', 'Ctc circonférence niveau anus', 'Ctc circonférence niveau dorsal', 'Ctc circonférence niveau pectorale','Ctc largeur aileron dorsal', 'Ctc hauteur aileron dorsal', 'Dgg longueur museau à oreille', 'Dgg longeur museau à oeil', 'Dgg longueur museau à narine', 'Dgg longueur disque facial', 'Dgg longueur museau à pectorale', 'Dgg longueur museau à nombril', 'Dgg longueur museau à fente génitale', 'Dgg longueur museau à anus', 'Dgg circonférence niveau queue', 'Dgg circonférence niveau anus', 'Dgg circonférence niveau nombrile', 'Dgg circonférence niveau pectorale', 'Dgg largeur disque facial', 'Dgg longueur disque facial pointe à la bouche', 'Longueur nageoire pectorale', 'Largeur nageoire pectorale', 'Largeur nageoire caudale', 'Hauteur nageoire caudale', 'Epaisseur du lard au dos', 'Epaisseur du lard au  flanc', 'Epaisseur du lard au ventre', 'Lieu de stockage', 'Remarques');
+          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur',"Nom de l'observateur", "Contact de l'observateur", "Nom de l'informateur","Contact de l'informateur", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort','Heure de la mort', "Date de la remise à l'eau", "Heure de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Longueur total', 'Ctc longueur mâchoire sup', 'Ctc longueur mâchoire inf', 'Ctc longueur mâchoire à aileron dorsal', 'Ctc longueur mâchoire à oeil', 'Ctc longueur mâchoire à event', 'Ctc longueur mâchoire à pectoral', 'Ctc longueur mâchoire à nombril', 'Ctc longueur mâchoire à fente génitale', 'Ctc longueur mâchoire à anus', 'Ctc circonférence niveau anus', 'Ctc circonférence niveau dorsal', 'Ctc circonférence niveau pectorale','Ctc largeur aileron dorsal', 'Ctc hauteur aileron dorsal', 'Dgg longueur museau à oreille', 'Dgg longeur museau à oeil', 'Dgg longueur museau à narine', 'Dgg longueur disque facial', 'Dgg longueur museau à pectorale', 'Dgg longueur museau à nombril', 'Dgg longueur museau à fente génitale', 'Dgg longueur museau à anus', 'Dgg circonférence niveau queue', 'Dgg circonférence niveau anus', 'Dgg circonférence niveau nombrile', 'Dgg circonférence niveau pectorale', 'Dgg largeur disque facial', 'Dgg longueur disque facial pointe à la bouche', 'Longueur nageoire pectorale', 'Largeur nageoire pectorale', 'Largeur nageoire caudale', 'Hauteur nageoire caudale', 'Epaisseur du lard au dos', 'Epaisseur du lard au  flanc', 'Epaisseur du lard au ventre', 'Lieu de stockage', 'Remarques');
           
           $csv =  fopen('php://output', 'w');
           // encodage pour excel windows
@@ -286,10 +286,11 @@ class Stranding_formsModelStranding_admins extends JModelList {
           $items = $db->setQuery($this->getListQuery())->loadObjectList();
           foreach($items as $line){
             $in = (array) $line;
+
             array_pop($in);
             array_pop($in);
             array_pop($in);
-            array_pop($in);
+
             // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
             /*$keys_in = array_keys($in);
             $i = 0;

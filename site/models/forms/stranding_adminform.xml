@@ -302,6 +302,14 @@
 			class="latitude form-control"
 			hint="OBSERVATION_LATITUDE"
 			type="text"/>
+	<field name="observation_latitude_dmd"
+			alias="latitude_dmd"
+			label="OBSERVATION_LATITUDE_DMD"
+			description="OBSERVATION_LATITUDE_DMD_DESC"
+			filter="FLOAT"
+			class="latitude_dmd form-control"
+			hint="OBSERVATION_LATITUDE_DMD"
+			type="text"/>
 	<field name="observation_longitude"
 			alias="longitude"
 			label="OBSERVATION_LONGITUDE"
@@ -309,6 +317,14 @@
 			hint="OBSERVATION_LONGITUDE"
 			filter="FLOAT"
 			class="longitude form-control"
+			type="text"/>
+	<field name="observation_longitude_dmd"
+			alias="longitude_dmd"
+			label="OBSERVATION_LONGITUDE_DMD"
+			description="OBSERVATION_LONGITUDE_DMD_DESC"
+			hint="OBSERVATION_LONGITUDE_DMD"
+			filter="FLOAT"
+			class="longitude_dmd form-control"
 			type="text"/>
 
 	<!--Stranding type-->
@@ -337,7 +353,7 @@
 			required="true"/>
 
 	<!--Spaces general-->
-	 <field name="observation_spaces"
+	 <!--<field name="observation_spaces"
 			 alias="observation_spaces"
 			 class="form-control"
 			 label="OBSERVATION_SPACES_LABEL"
@@ -376,7 +392,7 @@
 			 <option value="Dugong ou vache marine (Dugong dugon)">SPACES_28</option>
 			 <option value="Otarie à fourrure de Nouvelle-Zélande (Arctophoca australis forsteri)">SPACES_29</option>
 			
-	</field>
+	</field>-->
 
 	<!--Spaces common name-->
 	 <field name="observation_spaces_common_name"
@@ -386,27 +402,25 @@
 			 description="OBSERVATION_SPACES_COMMON_NAME_DESC"
 			 hint="OBSERVATION_SPACES_COMMON_NAME"
 			 labelclass="control-label"
-			 type="list">
+			 trigger="true"
+			 content-type="choices"
+			 type="groupedlist"
+			 target="observation_spaces_kind">
 			 <option value="">SPACES_COMMON_NAME_0</option>
-			 <optgroup label="SPACES_COMMON_NAME_1">
+			 <option value="inconnu">SPACES_UNKNOWN</option>
+			 <group label="SPACES_COMMON_NAME_CETACES_ODONTOCETES">
 				 <option value="Cachalot">SPACES_COMMON_NAME_1</option>
 				 <option value="Cachalot pygmée">SPACES_COMMON_NAME_2</option>
 				 <option value="Cachalot nain">SPACES_COMMON_NAME_3</option>
-			 </optgroup>
-			 <optgroup label="SPACES_COMMON_NAME_BEAKED_WHALE">
 				 <option value="Baleine à bec de Blainville">SPACES_COMMON_NAME_4</option>
 				 <option value="Baleine à bec de longman">SPACES_COMMON_NAME_5</option>
 				 <option value="Baleine à bec de Cuvier">SPACES_COMMON_NAME_6</option>
-			 </optgroup>
-			 <optgroup label="SPACES_COMMON_NAME_7">
-				 <option value="Orque">SPACES_COMMON_NAME_7</option>
+			 	 <option value="Orque">SPACES_COMMON_NAME_7</option>
 				 <option value="Fausse orque">SPACES_COMMON_NAME_8</option>
 				 <option value="Globicéphale tropical">SPACES_COMMON_NAME_9</option>
 				 <option value="Dauphin de Risso">SPACES_COMMON_NAME_10</option>
 				 <option value="Orque Pygmée">SPACES_COMMON_NAME_11</option>
 				 <option value="Péponocéphale ou dauphin d’Electre">SPACES_COMMON_NAME_12</option>
-		     </optgroup>
-			 <optgroup label="SPACES_COMMON_NAME_DOLPHIN">
 				 <option value="Sténo ou dauphin à bec étroit">SPACES_COMMON_NAME_13</option>
 				 <option value="Grand dauphin commun">SPACES_COMMON_NAME_14</option>
 				 <option value="Grand dauphin de l’Indo-Pacifique">SPACES_COMMON_NAME_15</option>
@@ -414,8 +428,8 @@
 				 <option value="Dauphin à long bec">SPACES_COMMON_NAME_17</option>
 				 <option value="Dauphin tacheté pantropical">SPACES_COMMON_NAME_18</option>
 				 <option value="Dauphin de Fraser">SPACES_COMMON_NAME_19</option>
-			 </optgroup>
-			 <optgroup label="SPACES_COMMON_NAME_BALEEN_WHALE">
+			 </group>
+			 <group label="SPACES_COMMON_NAME_CETACE_MYSTICETES">
 				 <option value="Baleine bleue pygmée">SPACES_COMMON_NAME_20</option>
 				 <option value="Rorqual commun">SPACES_COMMON_NAME_21</option>
 				 <option value="Rorqual boréal ou rorqual de Rudolphi">SPACES_COMMON_NAME_22</option>
@@ -424,9 +438,13 @@
 				 <option value="Petit rorqual antarctique">SPACES_COMMON_NAME_25</option>
 				 <option value="Petit rorqual pygmée">SPACES_COMMON_NAME_26</option>
 				 <option value="Baleine à bosse">SPACES_COMMON_NAME_27</option>
-			 </optgroup>
-			 <option value="Dugong ou vache marine">SPACES_COMMON_NAME_28</option>
-			 <option value="Otarie à fourrure de Nouvelle-Zélande">SPACES_COMMON_NAME_29</option>		
+			</group>
+			<group label="SPACES_COMMON_NAME_DUGONG">
+			 	 <option value="Dugong ou vache marine">SPACES_COMMON_NAME_28</option>
+			</group>
+			<group label="SPACES_COMMON_NAME_SEA_LION">
+				<option value="Otarie à fourrure de Nouvelle-Zélande">SPACES_COMMON_NAME_29</option>
+			</group>	
 	</field>
 
 	<!--Spaces kind-->
@@ -439,7 +457,8 @@
 			 labelclass="control-label"
 			 type="list">
 			 <option value="">SPACES_KIND_0</option>
-			 <option value="Physeter">SPACES_KIND_1</option>
+			 <option value="inconnu">SPACES_UNKNOWN</option>
+			 <option value="Physeter" references="Cachalot">SPACES_KIND_1</option>
 			 <option value="Kogia">SPACES_KIND_2</option>
 			 <option value="Mesoplodon">SPACES_KIND_3</option>
 			 <option value="Indopacetus">SPACES_KIND_4</option>
@@ -459,10 +478,9 @@
 			 <option value="Megaptera">SPACES_KIND_18</option>
 			 <option value="Dugong">SPACES_KIND_19</option>
 			 <option value="Arctophoca">SPACES_KIND_20</option>
-			
 	</field>
 
-	<!--Spaces spaces
+	<!--Spaces spaces-->
 	 <field name="observation_spaces"
 			 alias="observation_spaces"
 			 class="form-control"
@@ -472,6 +490,7 @@
 			 labelclass="control-label"
 			 type="list">
 			 <option value="">SPACES_0</option>
+			 <option value="inconnu">SPACES_UNKNOWN</option>
 			 <option value="macrocephalus">SPACES_1</option>
 			 <option value="breviceps">SPACES_2</option>
 			 <option value="sima">SPACES_3</option>
@@ -500,9 +519,8 @@
 			 <option value="acutorostrata subspecies">SPACES_26</option>
 			 <option value="novaeangliae">SPACES_27</option>
 			 <option value="dugon">SPACES_28</option>
-			 <option value="australis forsteri)">SPACES_29</option>
-			
-	</field>-->
+			 <option value="australis forsteri">SPACES_29</option>
+	</field>
 
 	<!--Spaces identification-->
 	<field name="observation_spaces_identification"
