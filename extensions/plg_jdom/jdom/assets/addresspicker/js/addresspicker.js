@@ -261,7 +261,25 @@ if(!bg){
                     that.updater(json,query);
                 }
             })
-        }       
+        },
+        convertLatDMS: function ( lat ) {
+          var lat_dir, lat_deg, lat_min;
+          lat_dir = lat >= 0 ? 'N' : 'S';
+          // Garde la partie entière
+          lat_deg = ( Math.abs( parseInt( lat ) ) );
+          lat_min = ( Math.abs( ( Math.abs( lat ) - lat_deg ) * 60 ) );
+          //    176 code ascci du degré. Ne garde que 3 décimales
+          return lat_deg +  '°' + lat_min.toFixed(3) + "'" + lat_dir;
+        },
+        convertLngDMS: function ( lng ) {
+           var long_dir, long_deg, long_min;
+            long_dir = lng >= 0 ? 'E' : 'W';
+            // Garde la partie entière
+            long_deg = ( Math.abs( parseInt( lng ) ) );
+            long_min = ( Math.abs( ( Math.abs( lng ) - long_deg ) * 60 ) );
+            //    176 code ascci du degré. Ne garde que 3 décimales
+            return long_deg + '°' + long_min.toFixed(3) +  "'" + long_dir;
+        }        
     };
 
     var main = function (method) {
