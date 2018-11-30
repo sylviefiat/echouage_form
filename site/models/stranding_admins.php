@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     0.0.0
+ * @version     1.0.0
  * @package     com_stranding_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -131,6 +131,8 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.observation_longitude,
           a.observation_stranding_type,
           a.observation_number,
+          a.observation_spaces_common_name,
+          a.observation_spaces_kind,
           a.observation_spaces,
           a.observation_spaces_identification,
           a.observation_sex,
@@ -158,45 +160,30 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.catch_indices,
           CONCAT(observation_state_decomposition,observation_alive),
           a.observation_datetime_death, 
-          CONCAT(a.observation_hours, " ", a.observation_minutes),
-          a.observation_datetime_release, 
+           a.observation_datetime_release, 
           CONCAT(a.observation_hours, " ", a.observation_minutes),
           a.levies_protocole,
           a.label_references,
           CONCAT(observation_tissue_removal_dead, observation_tissue_removal_alive),
           CONCAT(observation_dolphin_mesures_a,observation_dugong_mesures_a),
-          a.observation_dolphin_mesures_e,
-          a.observation_dolphin_mesures_h,
-          a.observation_dolphin_mesures_b,
-          a.observation_dolphin_mesures_c,
-          a.observation_dolphin_mesures_d,
-          a.observation_dolphin_mesures_j,
-          a.observation_dolphin_mesures_k,
-          a.observation_dolphin_mesures_l,
-          a.observation_dolphin_mesures_m,
-          a.observation_dolphin_mesures_g,
-          a.observation_dolphin_mesures_i,
-          a.observation_dolphin_mesures_f,
-          a.observation_dolphin_mesures_p,
-          a.observation_dolphin_mesures_q,
-          a.observation_dugong_mesures_b,
-          a.observation_dugong_mesures_c,
-          a.observation_dugong_mesures_d,
-          a.observation_dugong_mesures_i,
-          a.observation_dugong_mesures_j,
-          a.observation_dugong_mesures_k,
-          a.observation_dugong_mesures_l,
-          a.observation_dugong_mesures_m,
-          a.observation_dugong_mesures_h,
-          a.observation_dugong_mesures_g,
-          a.observation_dugong_mesures_f,
-          a.observation_dugong_mesures_e,
-          a.observation_dugong_mesures_o,
-          a.observation_dugong_mesures_n,
-          CONCAT(observation_dolphin_mesures_n,observation_dugong_mesures_p),
-          CONCAT(observation_dolphin_mesures_o,observation_dugong_mesures_q),
-          CONCAT(observation_dolphin_mesures_s,observation_dugong_mesures_s),
+          CONCAT(observation_dolphin_mesures_b,observation_dugong_mesures_b),
+          CONCAT(observation_dolphin_mesures_c,observation_dugong_mesures_c),
+          CONCAT(observation_dolphin_mesures_d,observation_dugong_mesures_d),
+          CONCAT(observation_dolphin_mesures_e,observation_dugong_mesures_e),
+          CONCAT(observation_dolphin_mesures_f,observation_dugong_mesures_f),
+          CONCAT(observation_dolphin_mesures_g,observation_dugong_mesures_g),
+          CONCAT(observation_dolphin_mesures_h,observation_dugong_mesures_h),
+          CONCAT(observation_dolphin_mesures_i,observation_dugong_mesures_i),
+          CONCAT(observation_dolphin_mesures_j,observation_dugong_mesures_j),
+          CONCAT(observation_dolphin_mesures_k,observation_dugong_mesures_k),
+          CONCAT(observation_dolphin_mesures_l,observation_dugong_mesures_l),
+          CONCAT(observation_dolphin_mesures_m,observation_dugong_mesures_m),
+          CONCAT(observation_dolphin_mesures_n,observation_dugong_mesures_n),
+          CONCAT(observation_dolphin_mesures_o,observation_dugong_mesures_o),
+          CONCAT(observation_dolphin_mesures_p,observation_dugong_mesures_p),
+          CONCAT(observation_dolphin_mesures_q,observation_dugong_mesures_q),
           CONCAT(observation_dolphin_mesures_r,observation_dugong_mesures_r),
+          CONCAT(observation_dolphin_mesures_s,observation_dugong_mesures_s),
           CONCAT(observation_dolphin_mesures_t,observation_dugong_mesures_t),
           CONCAT(observation_dolphin_mesures_u,observation_dugong_mesures_u),
           CONCAT(observation_dolphin_mesures_v,observation_dugong_mesures_v),
@@ -275,7 +262,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           return fclose($csv);
 
         }else if($var == 1) {
-          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus",'Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur',"Nom de l'observateur", "Contact de l'observateur", "Nom de l'informateur","Contact de l'informateur", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort','Heure de la mort', "Date de la remise à l'eau", "Heure de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Longueur total', 'Ctc longueur mâchoire sup', 'Ctc longueur mâchoire inf', 'Ctc longueur mâchoire à aileron dorsal', 'Ctc longueur mâchoire à oeil', 'Ctc longueur mâchoire à event', 'Ctc longueur mâchoire à pectoral', 'Ctc longueur mâchoire à nombril', 'Ctc longueur mâchoire à fente génitale', 'Ctc longueur mâchoire à anus', 'Ctc circonférence niveau anus', 'Ctc circonférence niveau dorsal', 'Ctc circonférence niveau pectorale','Ctc largeur aileron dorsal', 'Ctc hauteur aileron dorsal', 'Dgg longueur museau à oreille', 'Dgg longeur museau à oeil', 'Dgg longueur museau à narine', 'Dgg longueur disque facial', 'Dgg longueur museau à pectorale', 'Dgg longueur museau à nombril', 'Dgg longueur museau à fente génitale', 'Dgg longueur museau à anus', 'Dgg circonférence niveau queue', 'Dgg circonférence niveau anus', 'Dgg circonférence niveau nombrile', 'Dgg circonférence niveau pectorale', 'Dgg largeur disque facial', 'Dgg longueur disque facial pointe à la bouche', 'Longueur nageoire pectorale', 'Largeur nageoire pectorale', 'Largeur nageoire caudale', 'Hauteur nageoire caudale', 'Epaisseur du lard au dos', 'Epaisseur du lard au  flanc', 'Epaisseur du lard au ventre', 'Lieu de stockage', 'Remarques');
+          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus", 'Nom commun','Genre','Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur',"Nom de l'observateur", "Contact de l'observateur", "Nom de l'informateur","Contact de l'informateur", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort', "Date de la remise à l'eau", 'Heure',  'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Mesure A', 'Mesure B', 'Mesure C', 'Mesure D', 'Mesure E', 'Mesure F', 'Mesure G', 'Mesure H', 'Mesure I', 'Mesure J', 'Mesure K', 'Mesure L', 'Mesure M','Mesure N', 'Mesure O', 'Mesure P', 'Mesure Q', 'Mesure R', 'Mesure S', 'Mesure T', 'Mesure U', 'Mersure V', 'Lieu de stockage', 'Remarques');
           
           $csv =  fopen('php://output', 'w');
           // encodage pour excel windows

@@ -112,25 +112,7 @@
 			type="ckcalendar"
             default="NOW"
             format="Y-m-d"/>
-<!--
-	<field name="observation_date"
-			alias="observation_date"
-			class="form-control"
-			label="OBSERVATION_DATE"
-			description="OBSERVATION_DATE_DESC"
-			hint="OBSERVATION_DATE"
-			type="text"/>
 
-
-	<field name="observation_day"
-			alias="observation_day"
-			class="form-control"
-			label="OBSERVATION_DAY"
-			description="OBSERVATION_DAY_DESC"
-			hint="OBSERVATION_DAY"
-			type="text"/>
-	
--->
 	<!--Hours-->
 	<field name="observation_hours"
 			alias="observation_hours"
@@ -236,23 +218,7 @@
 			<option value="58">M58</option>
 			<option value="59">M59</option>
 	</field>
-<!--
-	<field name="observation_month"
-			alias="observation_month"
-			class="form-control"
-			label="OBSERVATION_MONTH"
-			description="OBSERVATION_MONTH_DESC"
-			hint="OBSERVATION_MONTH"
-			type="text"/>
 
-	<field name="observation_year"
-			alias="observation_year"
-			class="form-control"
-			label="OBSERVATION_YEAR"
-			description="OBSERVATION_CULLED_DESC"
-			hint="OBSERVATION_YEAR"
-			type="text"/>
--->
 	<!--Position-->
 	<field name="observation_location"
 			alias="observation_location"
@@ -352,48 +318,6 @@
 			max="1000"
 			required="true"/>
 
-	<!--Spaces general-->
-	 <!--<field name="observation_spaces"
-			 alias="observation_spaces"
-			 class="form-control"
-			 label="OBSERVATION_SPACES_LABEL"
-			 description="OBSERVATION_SPACES_DESC"
-			 hint="OBSERVATION_SPACES"
-			 labelclass="control-label"
-			 type="list">
-			 <option value="">SPACES_0</option>
-			 <option value="Cachalot (Physeter macrocephalus)">SPACES_1</option>
-			 <option value="Cachalot pygmée (Kogia breviceps)">SPACES_2</option>
-			 <option value="Cachalot nain (Kogia sima)">SPACES_3</option>
-			 <option value="Baleine à bec de Blainville (Mesoplodon densirostris)">SPACES_4</option>
-			 <option value="Baleine à bec de longman (Indopacetus pacificus)">SPACES_5</option>
-			 <option value="Baleine à bec de Cuvier (Ziphius cavirostris)">SPACES_6</option>
-			 <option value="Orque (Orcinus orca)">SPACES_7</option>
-			 <option value="Fausse orque (Pseudorca crassidens)">SPACES_8</option>
-			 <option value="Globicéphale tropical (Globicephala macrorhynchus)">SPACES_9</option>
-			 <option value="Dauphin de Risso (Grampus griseus)">SPACES_10</option>
-			 <option value="Orque Pygmée (Feresa attenuata)">SPACES_11</option>
-			 <option value="Péponocéphale ou dauphin d’Electre (Peponocephala electra)">SPACES_12</option>
-			 <option value="Sténo ou dauphin à bec étroit (Steno bredanensis)">SPACES_13</option>
-			 <option value="Grand dauphin commun (Tursiops truncatus)">SPACES_14</option>
-			 <option value="Grand dauphin de l’Indo-Pacifique (Tursiops aduncus)">SPACES_15</option>
-			 <option value="Dauphin commun (Delphinus delphis)">SPACES_16</option>
-			 <option value="Dauphin à long bec (Stenella longirostris)">SPACES_17</option>
-			 <option value=" Dauphin tacheté pantropical (Stenella attenuata)">SPACES_18</option>
-			 <option value="Dauphin de Fraser (Lagenodelphis hosei)">SPACES_19</option>
-			 <option value="Baleine bleue pygmée (Balaenoptera musculus brevicauda)">SPACES_20</option>
-			 <option value="Rorqual commun (Balaenoptera physalus)">SPACES_21</option>
-			 <option value="Rorqual boréal ou rorqual de Rudolphi (Balaenoptera borealis)">SPACES_22</option>
-			 <option value="Rorqual tropical ou rorqual de Bryde (Balaenoptera edeni)">SPACES_23</option>
-			 <option value="Rorqual de Omura (Balaenoptera omurai)">SPACES_24</option>
-			 <option value="Petit rorqual antarctique (Balaenoptera bonaerensis)">SPACES_25</option>
-			 <option value="Petit rorqual pygmée (Balaenoptera acutorostrata subspecies)">SPACES_26</option>
-			 <option value="Baleine à bosse (Megaptera novaeangliae)">SPACES_27</option>
-			 <option value="Dugong ou vache marine (Dugong dugon)">SPACES_28</option>
-			 <option value="Otarie à fourrure de Nouvelle-Zélande (Arctophoca australis forsteri)">SPACES_29</option>
-			
-	</field>-->
-
 	<!--Spaces common name-->
 	 <field name="observation_spaces_common_name"
 			 alias="observation_spaces_common_name"
@@ -448,79 +372,26 @@
 	</field>
 
 	<!--Spaces kind-->
-	 <field name="observation_spaces_kind"
-			 alias="observation_spaces_kind"
-			 class="form-control"
-			 label="OBSERVATION_SPACES_KIND_LABEL"
-			 description="OBSERVATION_SPACES_KIND_DESC"
-			 hint="OBSERVATION_SPACES_KIND"
-			 labelclass="control-label"
-			 type="list">
-			 <option value="">SPACES_KIND_0</option>
-			 <option value="inconnu">SPACES_UNKNOWN</option>
-			 <option value="Physeter" references="Cachalot">SPACES_KIND_1</option>
-			 <option value="Kogia">SPACES_KIND_2</option>
-			 <option value="Mesoplodon">SPACES_KIND_3</option>
-			 <option value="Indopacetus">SPACES_KIND_4</option>
-			 <option value="Ziphius">SPACES_KIND_5</option>
-			 <option value="Orcinus">SPACES_KIND_6</option>
-			 <option value="Pseudorca">SPACES_KIND_7</option>
-			 <option value="Globicephala">SPACES_KIND_8</option>
-			 <option value="Grampus">SPACES_KIND_9</option>
-			 <option value="Feresa">SPACES_KIND_10</option>
-			 <option value="Peponocephala">SPACES_KIND_11</option>
-			 <option value="Steno">SPACES_KIND_12</option>
-			 <option value="Tursiops">SPACES_KIND_13</option>
-			 <option value="Delphinus">SPACES_KIND_14</option>
-			 <option value="Stenella">SPACES_KIND_15</option>
-			 <option value="Lagenodelphis">SPACES_KIND_16</option>
-			 <option value="Balaenoptera">SPACES_KIND_17</option>
-			 <option value="Megaptera">SPACES_KIND_18</option>
-			 <option value="Dugong">SPACES_KIND_19</option>
-			 <option value="Arctophoca">SPACES_KIND_20</option>
-	</field>
+	<field name="observation_spaces_kind"
+			alias="observation_spaces_kind"
+			class="form-control"
+			label="OBSERVATION_SPACES_KIND_LABEL"
+			filter="STRING"
+			description="OBSERVATION_SPACES_KIND_DESC"
+			hint="OBSERVATION_SPACES_KIND"
+			readonly="true"
+			type="text"/>
 
 	<!--Spaces spaces-->
-	 <field name="observation_spaces"
-			 alias="observation_spaces"
-			 class="form-control"
-			 label="OBSERVATION_SPACES_LABEL"
-			 description="OBSERVATION_SPACES_DESC"
-			 hint="OBSERVATION_SPACES"
-			 labelclass="control-label"
-			 type="list">
-			 <option value="">SPACES_0</option>
-			 <option value="inconnu">SPACES_UNKNOWN</option>
-			 <option value="macrocephalus">SPACES_1</option>
-			 <option value="breviceps">SPACES_2</option>
-			 <option value="sima">SPACES_3</option>
-			 <option value="densirostris">SPACES_4</option>
-			 <option value="pacificus">SPACES_5</option>
-			 <option value="cavirostris">SPACES_6</option>
-			 <option value="orca">SPACES_7</option>
-			 <option value="crassidens">SPACES_8</option>
-			 <option value="macrorhynchus">SPACES_9</option>
-			 <option value="griseus">SPACES_10</option>
-			 <option value="attenuata">SPACES_11</option>
-			 <option value="electra">SPACES_12</option>
-			 <option value="bredanensis">SPACES_13</option>
-			 <option value="truncatus">SPACES_14</option>
-			 <option value="aduncus">SPACES_15</option>
-			 <option value="delphis">SPACES_16</option>
-			 <option value="longirostris">SPACES_17</option>
-			 <option value="attenuata">SPACES_18</option>
-			 <option value="hosei">SPACES_19</option>
-			 <option value="musculus brevicauda">SPACES_20</option>
-			 <option value="physalus">SPACES_21</option>
-			 <option value="borealis">SPACES_22</option>
-			 <option value="edeni">SPACES_23</option>
-			 <option value="omurai">SPACES_24</option>
-			 <option value="bonaerensis">SPACES_25</option>
-			 <option value="acutorostrata subspecies">SPACES_26</option>
-			 <option value="novaeangliae">SPACES_27</option>
-			 <option value="dugon">SPACES_28</option>
-			 <option value="australis forsteri">SPACES_29</option>
-	</field>
+	<field name="observation_spaces"
+			alias="observation_spaces"
+			class="form-control"
+			label="OBSERVATION_SPACES_LABEL"
+			filter="STRING"
+			description="OBSERVATION_SPACES_DESC"
+			hint="OBSERVATION_SPACES"
+			readonly="true"
+			type="text"/>
 
 	<!--Spaces identification-->
 	<field name="observation_spaces_identification"

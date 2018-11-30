@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     0.0.0
+ * @version     1.0.0
  * @package     com_stranding_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -79,7 +79,6 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
       //lat_dmd = convert_Lat_DMD(lat);
 
       //document.getElementById('jform_observation_latitude_dmd').value = this.value;
-
       //document.getElementById('jform_observation_latitude_dmd').text() = this.text();
 
     });
@@ -191,6 +190,7 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
       }
     }); 
 
+    // Affiche en fonction de l'espèce choisie
     js('#jform_observation_spaces_common_name').on('change', function() {
 
         //
@@ -219,6 +219,174 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                 displayBlock('div_show_cetace_measurements_field', false);
                 displayBlock('div_show_dugong_measurements_field', true);
         }
+        // Array du genre Kogia
+        var kogia_kind = ['Cachalot pygmée','Cachalot nain'];
+
+        // Array du genre Tursiops
+        var tursiops_kind = ['Grand dauphin commun','Grand dauphin de l’Indo-Pacifique'];
+
+        // Array du genre Stenella
+        var stenella_kind = ['Dauphin à long bec','Dauphin tacheté pantropical'];
+
+        // Array du genre Balaenoptera
+        var balaenoptera_kind = ['Baleine bleue pygmée','Rorqual commun','Rorqual boréal ou rorqual de Rudolphi','Rorqual tropical ou rorqual de Bryde','Rorqual de Omura','Petit rorqual antarctique','Petit rorqual pygmée'];
+
+        if( kogia_kind.includes(this.value) ) {
+          document.getElementById('jform_observation_spaces_kind').value = 'Kogia';
+          switch (this.value) {
+
+            case 'Cachalot pygmée' :
+                  document.getElementById('jform_observation_spaces').value = 'Breviceps';
+                  break;
+
+            case 'Cachalot nain' :
+                  document.getElementById('jform_observation_spaces').value = 'Sima';
+                  break;
+          }
+        }
+        else if( tursiops_kind.includes(this.value) ) {
+          document.getElementById('jform_observation_spaces_kind').value = 'Tursiops';
+          switch (this.value) {
+
+            case 'Grand dauphin commun' :
+                  document.getElementById('jform_observation_spaces').value = 'Truncatus';
+                  break;
+
+            case 'Grand dauphin de l’Indo-Pacifique' :
+                  document.getElementById('jform_observation_spaces').value = 'Aduncus';
+                  break;
+          }
+        }
+        else if( stenella_kind.includes(this.value) ) {
+          document.getElementById('jform_observation_spaces_kind').value = 'Stenella';
+          switch (this.value) {
+
+            case 'Dauphin à long bec' :
+                  document.getElementById('jform_observation_spaces').value = 'Longirostris';
+                  break;
+
+            case 'Dauphin tacheté pantropical' :
+                  document.getElementById('jform_observation_spaces').value = 'Attenuata';
+                  break;
+          }
+        }
+        else if( balaenoptera_kind.includes(this.value) ) {
+          document.getElementById('jform_observation_spaces_kind').value = 'Balaenoptera';
+
+          switch( this.value ) {
+
+            case 'Baleine bleue pygmée' :
+                 document.getElementById('jform_observation_spaces').value = 'Musculus brevicauda';
+                 break;
+
+            case 'Rorqual commun' :
+                 document.getElementById('jform_observation_spaces').value = 'Physalus';
+                 break;
+
+            case 'Rorqual boréal ou rorqual de Rudolphi' :
+                 document.getElementById('jform_observation_spaces').value = 'Borealis';
+                 break;
+
+            case 'Rorqual tropical ou rorqual de Bryde' :
+                 document.getElementById('jform_observation_spaces').value = 'Edeni';
+                 break;
+
+            case 'Rorqual de Omura' :
+                 document.getElementById('jform_observation_spaces').value = 'Omurai';
+                 break;
+
+            case 'Petit rorqual antarctique' :
+                 document.getElementById('jform_observation_spaces').value = 'Bonaerensis';
+                 break;
+
+            case 'Petit rorqual pygmée' :
+                 document.getElementById('jform_observation_spaces').value = 'Acutorostrata subspecies';
+                 break;
+
+          }
+        }
+
+        switch (this.value) {
+          case 'Cachalot' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Physeter';
+                document.getElementById('jform_observation_spaces').value = 'Macrocephalus';
+                break;
+
+          case 'Baleine à bec de Blainville' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Mesoplodon';
+                document.getElementById('jform_observation_spaces').value = 'Densirostris';
+                break;
+
+          case 'Baleine à bec de longman' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Indopacetus';
+                document.getElementById('jform_observation_spaces').value = 'Pacificus';
+                break;
+
+          case 'Baleine à bec de Cuvier' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Ziphius';
+                document.getElementById('jform_observation_spaces').value = 'Cavirostris';
+                break;
+
+          case 'Orque' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Orcinus';
+                document.getElementById('jform_observation_spaces').value = 'Orca';
+                break;
+
+          case 'Fausse orque' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Pseudorca';
+                document.getElementById('jform_observation_spaces').value = 'Crassidens';
+                break;
+
+          case 'Globicéphale tropical' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Globicephala';
+                document.getElementById('jform_observation_spaces').value = 'Macrorhynchus';
+                break;
+
+          case 'Dauphin de Risso' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Grampus';
+                document.getElementById('jform_observation_spaces').value = 'Griseus';
+                break;
+
+          case 'Orque Pygmée' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Feresa';
+                document.getElementById('jform_observation_spaces').value = 'Attenuata';
+                break;
+
+          case 'Péponocéphale ou dauphin d’Electre' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Peponocephala';
+                document.getElementById('jform_observation_spaces').value = 'Electra';
+                break;
+
+          case 'Sténo ou dauphin à bec étroit' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Steno';
+                document.getElementById('jform_observation_spaces').value = 'Bredanensis';
+                break;
+
+          case 'Dauphin commun' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Delphinus';
+                document.getElementById('jform_observation_spaces').value = 'Delphis';
+                break;
+
+          case 'Dauphin de Fraser' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Lagenodelphis';
+                document.getElementById('jform_observation_spaces').value = 'Hosei';
+                break;
+
+          case 'Baleine à bosse' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Megaptera';
+                document.getElementById('jform_observation_spaces').value = 'Novaeangliae';
+                break;
+
+          case 'Dugong ou vache marine' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Dugong';
+                document.getElementById('jform_observation_spaces').value = 'Dugong';
+                break;
+
+          case 'Otarie à fourrure de Nouvelle-Zélande' : 
+                document.getElementById('jform_observation_spaces_kind').value = 'Arctophoca';
+                document.getElementById('jform_observation_spaces').value = 'Australis forsteri';
+                break;
+        }
 
     });
 
@@ -244,23 +412,26 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
         case 'jform_observation_dolphin_mesures_f_btn' :
               toggleContainer("jform_observation_dolphin_mesures_f_field");
               break;
-        case 'jform_observation_dolphin_mesures_g_btn' :
-              toggleContainer("jform_observation_dolphin_mesures_g_field");
-              break;
         case 'jform_observation_dolphin_mesures_h_btn' :
               toggleContainer("jform_observation_dolphin_mesures_h_field");
               break;
-        case 'jform_observation_dolphin_mesures_i_btn' :
-              toggleContainer("jform_observation_dolphin_mesures_i_field");
-              break;
         case 'jform_observation_dolphin_mesures_k_btn' :
               toggleContainer("jform_observation_dolphin_mesures_k_field");
+              break;
+         case 'jform_observation_dolphin_mesures_l_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_l_field");
+              break;
+         case 'jform_observation_dolphin_mesures_m_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_m_field");
               break;
         case 'jform_observation_dolphin_mesures_o_btn' :
               toggleContainer("jform_observation_dolphin_mesures_o_field");
               break;
         case 'jform_observation_dolphin_mesures_r_btn' :
               toggleContainer("jform_observation_dolphin_mesures_r_field");
+              break;
+        case 'jform_observation_dolphin_mesures_s_btn' :
+              toggleContainer("jform_observation_dolphin_mesures_s_field");
               break;
         case 'jform_observation_dolphin_mesures_t_btn' :
               toggleContainer("jform_observation_dolphin_mesures_t_field");
@@ -285,20 +456,20 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
         case 'jform_observation_dugong_mesures_e_btn' :
               toggleContainer("jform_observation_dugong_mesures_e_field");
               break;
+        case 'jform_observation_dugong_mesures_f_btn' :
+              toggleContainer("jform_observation_dugong_mesures_f_field");
+              break;
         case 'jform_observation_dugong_mesures_g_btn' :
               toggleContainer("jform_observation_dugong_mesures_g_field");
-              break;
-        case 'jform_observation_dugong_mesures_h_btn' :
-              toggleContainer("jform_observation_dugong_mesures_h_field");
-              break;
-        case 'jform_observation_dugong_mesures_i_btn' :
-              toggleContainer("jform_observation_dugong_mesures_i_field");
               break;
         case 'jform_observation_dugong_mesures_j_btn' :
               toggleContainer("jform_observation_dugong_mesures_j_field");
               break;
-        case 'jform_observation_dugong_mesures_k_btn' :
-              toggleContainer("jform_observation_dugong_mesures_k_field");
+        case 'jform_observation_dugong_mesures_l_btn' :
+              toggleContainer("jform_observation_dugong_mesures_l_field");
+              break;
+        case 'jform_observation_dugong_mesures_m_btn' :
+              toggleContainer("jform_observation_dugong_mesures_m_field");
               break;
         case 'jform_observation_dugong_mesures_n_btn' :
               toggleContainer("jform_observation_dugong_mesures_n_field");
@@ -309,8 +480,8 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
         case 'jform_observation_dugong_mesures_p_btn' :
               toggleContainer("jform_observation_dugong_mesures_p_field");
               break;
-        case 'jform_observation_dugong_mesures_q_btn' :
-              toggleContainer("jform_observation_dugong_mesures_q_field");
+        case 'jform_observation_dugong_mesures_s_btn' :
+              toggleContainer("jform_observation_dugong_mesures_s_field");
               break;
         case 'jform_observation_dugong_mesures_r_btn' :
               toggleContainer("jform_observation_dugong_mesures_r_field");
@@ -451,23 +622,23 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                     case 'jform_observation_dolphin_mesures_f_btn' + i :
                           toggleContainer("jform_observation_dolphin_mesures_f_field" + i);
                           break;
-                    case 'jform_observation_dolphin_mesures_g_btn' + i :
-                          toggleContainer("jform_observation_dolphin_mesures_g_field" + i);
-                          break;
                     case 'jform_observation_dolphin_mesures_h_btn' + i :
                           toggleContainer("jform_observation_dolphin_mesures_h_field" + i);
-                          break;
-                    case 'jform_observation_dolphin_mesures_i_btn' + i :
-                          toggleContainer("jform_observation_dolphin_mesures_i_field" + i);
                           break;
                     case 'jform_observation_dolphin_mesures_k_btn' + i :
                           toggleContainer("jform_observation_dolphin_mesures_k_field" + i);
                           break;
+                    case 'jform_observation_dolphin_mesures_l_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_l_field" + i);
+                          break;
+                    case 'jform_observation_dolphin_mesures_m_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_m_field" + i);
+                          break;
                     case 'jform_observation_dolphin_mesures_o_btn' + i :
                           toggleContainer("jform_observation_dolphin_mesures_o_field" + i);
                           break;
-                    case 'jform_observation_dolphin_mesures_r_btn' + i :
-                          toggleContainer("jform_observation_dolphin_mesures_r_field" + i);
+                    case 'jform_observation_dolphin_mesures_s_btn' + i :
+                          toggleContainer("jform_observation_dolphin_mesures_s_field" + i);
                           break;
                     case 'jform_observation_dolphin_mesures_t_btn' + i :
                           toggleContainer("jform_observation_dolphin_mesures_t_field" + i);
@@ -492,21 +663,21 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                     case 'jform_observation_dugong_mesures_e_btn' + i :
                           toggleContainer("jform_observation_dugong_mesures_e_field" + i);
                           break;
+                    case 'jform_observation_dugong_mesures_f_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_f_field" + i);
+                          break;
                     case 'jform_observation_dugong_mesures_g_btn' + i :
                           toggleContainer("jform_observation_dugong_mesures_g_field" + i);
                           break;
-                    case 'jform_observation_dugong_mesures_h_btn' + i :
-                          toggleContainer("jform_observation_dugong_mesures_h_field" + i);
-                          break;
-                    case 'jform_observation_dugong_mesures_i_btn' + i :
-                          toggleContainer("jform_observation_dugong_mesures_i_field" + i);
                           break;
                     case 'jform_observation_dugong_mesures_j_btn' + i :
                           toggleContainer("jform_observation_dugong_mesures_j_field" + i);
                           break;
-                    case 'jform_observation_dugong_mesures_k_btn' + i :
-                          toggleContainer("jform_observation_dugong_mesures_k_field" + i);
+                    case 'jform_observation_dugong_mesures_l_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_l_field" + i);
                           break;
+                    case 'jform_observation_dugong_mesures_m_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_m_field" + i);
                     case 'jform_observation_dugong_mesures_n_btn' + i :
                           toggleContainer("jform_observation_dugong_mesures_n_field" + i);
                           break;
@@ -516,8 +687,8 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                     case 'jform_observation_dugong_mesures_p_btn' + i :
                           toggleContainer("jform_observation_dugong_mesures_p_field" + i);
                           break;
-                    case 'jform_observation_dugong_mesures_q_btn' + i :
-                          toggleContainer("jform_observation_dugong_mesures_q_field" + i);
+                    case 'jform_observation_dugong_mesures_s_btn' + i :
+                          toggleContainer("jform_observation_dugong_mesures_s_field" + i);
                           break;
                     case 'jform_observation_dugong_mesures_r_btn' + i :
                           toggleContainer("jform_observation_dugong_mesures_r_field" + i);
@@ -577,6 +748,211 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                 }
               });
 
+              clone.find('select').on('change', function() {
+
+                for(var i = 1; i <= cloneId; i++) {
+
+                  if( this.id == 'jform_observation_spaces_common_name' + i) {
+
+                    //
+                    var unknow = ['','inconnu'];
+
+                    // Array pour les cétacés
+                    var cetace = ['Cachalot','Cachalot pygmée','Cachalot nain','Baleine à bec de Blainville','Baleine à bec de longman','Baleine à bec de Cuvier','Orque', 'Fausse orque','Globicéphale tropical','Dauphin de Risso' , 'Orque Pygmée', 'Péponocéphale ou dauphin d’Electre' , 'Sténo ou dauphin à bec étroit','Grand dauphin commun','Grand dauphin de l’Indo-Pacifique','Dauphin commun', 'Dauphin à long bec','Dauphin tacheté pantropical','Dauphin de Fraser','Baleine bleue pygmée','Rorqual commun','Rorqual boréal ou rorqual de Rudolphi','Rorqual tropical ou rorqual de Bryde','Rorqual de Omura','Petit rorqual antarctique','Petit rorqual pygmée','Baleine à bosse'];
+
+                    // Array pour les dugongs et otaries
+                    var dugong = ['Dugong ou vache marine','Otarie à fourrure de Nouvelle-Zélande'];
+
+                    // Vérifie si la valeur courante du champs est dans l'un des array
+                    if( unknow.includes(this.value) ) {
+                      return;
+                    }
+                    else if( cetace.includes(this.value) ) {
+                            displayBlock('cetace_measures' + i, true);
+                            displayBlock('dugong_measures'+ i, false);
+                            displayBlock('div_show_cetace_measurements_field' + i, true);
+                            displayBlock('div_show_dugong_measurements_field' + i, false);
+                            
+                    }
+                    else if( dugong.includes(this.value) ) {
+                            displayBlock('cetace_measures' + i, false);
+                            displayBlock('dugong_measures' + i, true);
+                            displayBlock('div_show_cetace_measurements_field' + i, false);
+                            displayBlock('div_show_dugong_measurements_field' + i, true);
+                    }
+                    // Array du genre Kogia
+                    var kogia_kind = ['Cachalot pygmée','Cachalot nain'];
+
+                    // Array du genre Tursiops
+                    var tursiops_kind = ['Grand dauphin commun','Grand dauphin de l’Indo-Pacifique '];
+
+                    // Array du genre Stenella
+                    var stenella_kind = ['Dauphin à long bec','Dauphin tacheté pantropical'];
+
+                    // Array du genre Balaenoptera
+                    var balaenoptera_kind = ['Baleine bleue pygmée','Rorqual commun','Rorqual boréal ou rorqual de Rudolphi','Rorqual tropical ou rorqual de Bryde','Rorqual de Omura','Petit rorqual antarctique','Petit rorqual pygmée'];
+
+                    if( kogia_kind.includes(this.value) ) {
+                      document.getElementById('jform_observation_spaces_kind' + i).value = 'Kogia';
+                      switch (this.value) {
+
+                        case 'Cachalot pygmée' :
+                              document.getElementById('jform_observation_spaces' + i).value = 'Breviceps';
+                              break;
+
+                        case 'Cachalot nain' :
+                              document.getElementById('jform_observation_spaces' + i).value = 'Sima';
+                              break;
+                      }
+                    }
+                    else if( tursiops_kind.includes(this.value) ) {
+                      document.getElementById('jform_observation_spaces_kind' + i).value = 'Tursiops';
+                      switch (this.value) {
+
+                        case 'Grand dauphin commun' :
+                              document.getElementById('jform_observation_spaces' + i).value = 'Truncatus';
+                              break;
+
+                        case 'Grand dauphin de l’Indo-Pacifique' :
+                              document.getElementById('jform_observation_spaces' + i).value = 'Aduncus';
+                              break;
+                      }
+                    }
+                    else if( stenella_kind.includes(this.value) ) {
+                      document.getElementById('jform_observation_spaces_kind' + i).value = 'Stenella';
+                      switch (this.value) {
+
+                        case 'Dauphin à long bec' :
+                              document.getElementById('jform_observation_spaces' + i).value = 'Longirostris';
+                              break;
+
+                        case 'Dauphin tacheté pantropical' :
+                              document.getElementById('jform_observation_spaces' + i).value = 'Attenuata';
+                              break;
+                      }
+                    }
+                    else if( balaenoptera_kind.includes(this.value) ) {
+                      document.getElementById('jform_observation_spaces_kind' + i).value = 'Balaenoptera';
+
+                      switch( this.value ) {
+
+                        case 'Baleine bleue pygmée' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Musculus brevicauda';
+                             break;
+
+                        case 'Rorqual commun' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Physalus';
+                             break;
+
+                        case 'Rorqual boréal ou rorqual de Rudolphi' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Borealis';
+                             break;
+
+                        case 'Rorqual tropical ou rorqual de Bryde' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Edeni';
+                             break;
+
+                        case 'Rorqual de Omura' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Omurai';
+                             break;
+
+                        case 'Petit rorqual antarctique' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Bonaerensis';
+                             break;
+
+                        case 'Petit rorqual pygmée' :
+                             document.getElementById('jform_observation_spaces' + i).value = 'Acutorostrata subspecies';
+                             break;
+
+                      }
+                    }
+
+                    switch (this.value) {
+                      case 'Cachalot' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Physeter';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Macrocephalus';
+                            break;
+
+                      case 'Baleine à bec de Blainville' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Mesoplodon';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Densirostris';
+                            break;
+
+                      case 'Baleine à bec de longman' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Indopacetus';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Pacificus';
+                            break;
+
+                      case 'Baleine à bec de Cuvier' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Ziphius';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Cavirostris';
+                            break;
+
+                      case 'Orque' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Orcinus';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Orca';
+                            break;
+
+                      case 'Fausse orque' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Pseudorca';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Crassidens';
+                            break;
+
+                      case 'Globicéphale tropical' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Globicephala';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Macrorhynchus';
+                            break;
+
+                      case 'Dauphin de Risso' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Grampus';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Griseus';
+                            break;
+
+                      case 'Orque Pygmée' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Feresa'; 
+                            document.getElementById('jform_observation_spaces' + i).value = 'Attenuata';
+                            break;
+
+                      case 'Péponocéphale ou dauphin d’Electre' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Peponocephala';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Electra';
+                            break;
+
+                      case 'Sténo ou dauphin à bec étroit' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Steno';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Bredanensis';
+                            break;
+
+                      case 'Dauphin commun' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Delphinus';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Delphis';
+                            break;
+
+                      case 'Dauphin de Fraser' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Lagenodelphis';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Hosei';
+                            break;
+
+                      case 'Baleine à bosse' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Megaptera';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Novaeangliae';
+                            break;
+
+                      case 'Dugong ou vache marine' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Dugong';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Dugong';
+                            break;
+
+                      case 'Otarie à fourrure de Nouvelle-Zélande' : 
+                            document.getElementById('jform_observation_spaces_kind' + i).value = 'Arctophoca';
+                            document.getElementById('jform_observation_spaces' + i).value = 'Australis forsteri';
+                            break;
+                    }
+                }
+              }
+
+              });
+                
               js('#add_animal').before(clone);
 
               // Création du lien de suppression
@@ -776,7 +1152,7 @@ function convert_Long_DMD(long){
       <?php echo $this->form->getInput('observation_latitude'); ?>
     </div>
   </div>
-  <div id="lat_dmd" class="col-md-6 col-md-6 col-xs-12">
+  <div id="lat_dmd" class="col-md-6 col-md-6 col-xs-12" style="display: none;">
     <div class="input-group">
       <span class="input-group-addon"></span>
       <?php echo $this->form->getInput('observation_latitude_dmd'); ?>
@@ -796,7 +1172,7 @@ function convert_Long_DMD(long){
     <?php echo $this->form->getInput('observation_longitude'); ?>
   </div>
 </div>
-<div id="lng_dmd" class="col-md-6 col-md-6 col-xs-12">
+<div id="lng_dmd" class="col-md-6 col-md-6 col-xs-12" style="display: none;">
   <div class="input-group">
     <span class="input-group-addon"></span>
     <?php echo $this->form->getInput('observation_longitude_dmd'); ?>
@@ -828,18 +1204,34 @@ function convert_Long_DMD(long){
 <!--New observation clone-->
 <div id="div_observation_clone0">
 <!--<span style="display:none;" ><?php //echo $this->form->getInput('id'); ?></span>-->
-<span><?php echo $this->form->getInput('id_observation'); ?></span>
+<span style="display: none;"><?php echo $this->form->getInput('id_observation'); ?></span>
 <!--Identification-->
 <div class="row" id="div_identification_title">
   <div class="col-lg-12 col-md-12 col-xs-12" id="title_R3"><span class="stranding_admin-title_row"><span class="fa fa-eye fa-2x"><h4 id="identification_title"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW3');?> </h4></span></span></div>
 </div>
 <div class="row" id="identification">
   <!-- Spaces common name-->
-  <div class="col-lg-6 col-md-6 col-xs-12">
+  <div class="col-lg-12 col-md-12 col-xs-12">
     <?php echo $this->form->getLabel('observation_spaces_common_name'); ?>
+  </div>
+  <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-eye"></span></span>
       <?php echo $this->form->getInput('observation_spaces_common_name'); ?>
+    </div>
+  </div>
+  <!--Spaces kind-->
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-eye"></span></span>
+      <?php echo $this->form->getInput('observation_spaces_kind'); ?>
+    </div>
+  </div>
+  <!--Spaces spaces-->
+  <div class="col-lg-3 col-md-3 col-xs-3" >
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-eye"></span></span>
+      <?php echo $this->form->getInput('observation_spaces'); ?>
     </div>
   </div>
   <!--Spaces identification-->
@@ -853,21 +1245,6 @@ function convert_Long_DMD(long){
       </div>
     </div>
   </div>
-  <!--Spaces kind & Spaces spaces
-  <div class="col-lg-6 col-md-6 col-xs-12">
-    <?php echo $this->form->getLabel('observation_spaces_kind'); ?>
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-eye"></span></span>
-      <?php echo $this->form->getInput('observation_spaces_kind'); ?>
-    </div>
-  </div>
-  <div class="col-lg-6 col-md-6 col-xs-12" >
-    <?php echo $this->form->getLabel('observation_spaces'); ?>
-    <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-eye"></span></span>
-      <?php echo $this->form->getInput('observation_spaces'); ?>
-    </div>
-  </div>-->
   <!--Color-->
   <div class="col-lg-6 col-md-6 col-xs-12">
     <?php echo $this->form->getLabel('observation_color'); ?>
@@ -1274,25 +1651,24 @@ function convert_Long_DMD(long){
           <?php echo $this->form->getInput('observation_dolphin_mesures_e'); ?>
         </div>
       </div>&nbsp;
+      <div id="jform_observation_dolphin_mesures_g_field" class="important_measurements">
+        <div class="input-group">
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_g'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dolphin_mesures_g'); ?>
+        </div>
+      </div>&nbsp;
+      <div id="jform_observation_dolphin_mesures_i_field" class="important_measurements">
+        <div class="input-group">
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_i'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dolphin_mesures_i'); ?>
+        </div>
+      </div>&nbsp;
       <div id="jform_observation_dolphin_mesures_j_field" class="important_measurements">
         <div class="input-group">
           <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_j'); ?></span></span>
           <?php echo $this->form->getInput('observation_dolphin_mesures_j'); ?>
         </div>
       </div>&nbsp;
-      <div id="jform_observation_dolphin_mesures_l_field" class="important_measurements">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_l'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dolphin_mesures_l'); ?>
-        </div>
-      </div>&nbsp;
-      <div id="jform_observation_dolphin_mesures_m_field" class="important_measurements">
-        <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_m'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dolphin_mesures_m'); ?>
-        </div>
-      </div>&nbsp;
-     
   </div>
 <div class="col-lg-3 col-md-3 col-xs-3">
     <button id="jform_observation_dolphin_mesures_c_btn" type="button" class="btn btn-secondary btn-lg btn-block">
@@ -1311,25 +1687,26 @@ function convert_Long_DMD(long){
      <div id="jform_observation_dolphin_mesures_f_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_f'); ?>
     </div>
-     <button id="jform_observation_dolphin_mesures_g_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dolphin_mesures_g'); ?></button>
-     <div id="jform_observation_dolphin_mesures_g_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dolphin_mesures_g'); ?>
-    </div>
+     
      <button id="jform_observation_dolphin_mesures_h_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_h'); ?></button>
      <div id="jform_observation_dolphin_mesures_h_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_h'); ?>
     </div>
-     <button id="jform_observation_dolphin_mesures_i_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dolphin_mesures_i'); ?></button>
-     <div id="jform_observation_dolphin_mesures_i_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dolphin_mesures_i'); ?>
-    </div>
      <button id="jform_observation_dolphin_mesures_k_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dolphin_mesures_k'); ?></button>
      <div id="jform_observation_dolphin_mesures_k_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dolphin_mesures_k'); ?>
+    </div>
+    <button id="jform_observation_dolphin_mesures_l_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dolphin_mesures_l'); ?></button>
+     <div id="jform_observation_dolphin_mesures_l_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dolphin_mesures_l'); ?>
+    </div>
+    <button id="jform_observation_dolphin_mesures_m_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dolphin_mesures_m'); ?></button>
+     <div id="jform_observation_dolphin_mesures_m_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dolphin_mesures_m'); ?>
     </div>
    </div>
  </div>
@@ -1365,10 +1742,10 @@ function convert_Long_DMD(long){
           <?php echo $this->form->getInput('observation_dolphin_mesures_p'); ?>
         </div>
     </div>&nbsp;
-    <div id="jform_observation_dolphin_mesures_q_field" class="important_measurements">
+    <div id="jform_observation_dolphin_mesures_r_field" class="important_measurements">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_q'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dolphin_mesures_q'); ?>
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_r'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dolphin_mesures_r'); ?>
         </div>
     </div>
    </div>
@@ -1378,17 +1755,18 @@ function convert_Long_DMD(long){
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dolphin_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dolphin_mesures_r'); ?></button>
-     <div id="jform_observation_dolphin_mesures_r_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dolphin_mesures_r'); ?>
-    </div>
-    <div id="jform_observation_dolphin_mesures_s_field" class="important_measurements">
+    <div id="jform_observation_dolphin_mesures_q_field" class="important_measurements">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_s'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dolphin_mesures_s'); ?>
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dolphin_mesures_q'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dolphin_mesures_q'); ?>
         </div>
     </div>
+     <button id="jform_observation_dolphin_mesures_s_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dolphin_mesures_s'); ?></button>
+     <div id="jform_observation_dolphin_mesures_s_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dolphin_mesures_s'); ?>
+    </div>
+    
    </div>
    <div class="col-lg-3 col-md-3 col-xs-12" id="cetace_measures_position4">
       <p>
@@ -1432,24 +1810,24 @@ function convert_Long_DMD(long){
           <?php echo $this->form->getInput('observation_dugong_mesures_a'); ?>
         </div>
     </div>&nbsp;
-    <div id="jform_observation_dugong_mesures_f_field" class="important_measurements">
+    <div id="jform_observation_dugong_mesures_h_field" class="important_measurements">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_f'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_f'); ?>
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_h'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dugong_mesures_h'); ?>
         </div>
     </div>&nbsp;
-    <div id="jform_observation_dugong_mesures_l_field" class="important_measurements">
+    <div id="jform_observation_dugong_mesures_i_field" class="important_measurements">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_l'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_l'); ?>
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_i'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dugong_mesures_i'); ?>
         </div>
     </div>&nbsp;
-    <div id="jform_observation_dugong_mesures_m_field" class="important_measurements">
+    <div id="jform_observation_dugong_mesures_k_field" class="important_measurements">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_m'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_m'); ?>
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_k'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dugong_mesures_k'); ?>
         </div>
-    </div>
+    </div>&nbsp;
      <button id="jform_observation_dugong_mesures_b_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_b'); ?></button>
      <div id="jform_observation_dugong_mesures_b_field"  style="display: none;">
@@ -1471,30 +1849,30 @@ function convert_Long_DMD(long){
      <div id="jform_observation_dugong_mesures_e_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_e'); ?>
     </div>
+    <button id="jform_observation_dugong_mesures_f_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dugong_mesures_f'); ?></button>
+     <div id="jform_observation_dugong_mesures_f_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dugong_mesures_f'); ?>
+    </div>
      <button id="jform_observation_dugong_mesures_g_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_g'); ?></button>
      <div id="jform_observation_dugong_mesures_g_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_g'); ?>
-    </div>
-     <button id="jform_observation_dugong_mesures_h_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dugong_mesures_h'); ?></button>
-     <div id="jform_observation_dugong_mesures_h_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dugong_mesures_h'); ?>
-    </div>
-     <button id="jform_observation_dugong_mesures_i_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dugong_mesures_i'); ?></button>
-     <div id="jform_observation_dugong_mesures_i_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dugong_mesures_i'); ?>
     </div>
      <button id="jform_observation_dugong_mesures_j_btn" type="button" class="btn btn-secondary btn-lg btn-block">
           <?php echo $this->form->getLabel('observation_dugong_mesures_j'); ?></button>
      <div id="jform_observation_dugong_mesures_j_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_j'); ?>
     </div>
-     <button id="jform_observation_dugong_mesures_k_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dugong_mesures_k'); ?></button>
-     <div id="jform_observation_dugong_mesures_k_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dugong_mesures_k'); ?>
+     <button id="jform_observation_dugong_mesures_l_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dugong_mesures_l'); ?></button>
+     <div id="jform_observation_dugong_mesures_l_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dugong_mesures_l'); ?>
+    </div>
+    <button id="jform_observation_dugong_mesures_m_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dugong_mesures_m'); ?></button>
+     <div id="jform_observation_dugong_mesures_m_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dugong_mesures_m'); ?>
     </div>
    </div>
  </div>
@@ -1529,11 +1907,13 @@ function convert_Long_DMD(long){
      <div id="jform_observation_dugong_mesures_p_field"  style="display: none;">
           <?php echo $this->form->getInput('observation_dugong_mesures_p'); ?>
     </div>
-     <button id="jform_observation_dugong_mesures_q_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dugong_mesures_q'); ?></button>
-     <div id="jform_observation_dugong_mesures_q_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dugong_mesures_q'); ?>
+    <button id="jform_observation_dugong_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dugong_mesures_r'); ?></button>
+     <div id="jform_observation_dugong_mesures_r_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dugong_mesures_r'); ?>
     </div>
+
+     
    </div>
    <div class="col-lg-3 col-md-3 col-xs-12" id="dugong_measures_position3">
       <p>
@@ -1541,16 +1921,16 @@ function convert_Long_DMD(long){
      </p>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-3">
-     <button id="jform_observation_dugong_mesures_r_btn" type="button" class="btn btn-secondary btn-lg btn-block">
-          <?php echo $this->form->getLabel('observation_dugong_mesures_r'); ?></button>
-     <div id="jform_observation_dugong_mesures_r_field"  style="display: none;">
-          <?php echo $this->form->getInput('observation_dugong_mesures_r'); ?>
-    </div>
-    <div id="jform_observation_dugong_mesures_s_field" class="important_measurements">
+    <div id="jform_observation_dugong_mesures_q_field" class="important_measurements">
         <div class="input-group">
-          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_s'); ?></span></span>
-          <?php echo $this->form->getInput('observation_dugong_mesures_s'); ?>
+          <span class="input-group-addon exergue"><span><?php echo $this->form->getLabel('observation_dugong_mesures_q'); ?></span></span>
+          <?php echo $this->form->getInput('observation_dugong_mesures_q'); ?>
         </div>
+    </div>
+    <button id="jform_observation_dugong_mesures_s_btn" type="button" class="btn btn-secondary btn-lg btn-block">
+          <?php echo $this->form->getLabel('observation_dugong_mesures_s'); ?></button>
+     <div id="jform_observation_dugong_mesures_s_field"  style="display: none;">
+          <?php echo $this->form->getInput('observation_dugong_mesures_s'); ?>
     </div>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-12" id="dugong_measures_position4">
