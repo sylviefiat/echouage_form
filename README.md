@@ -4,8 +4,8 @@ Formulaires EchouageNC pour le report d'échouges de cétacés et de dugongs en 
 © IRD, 2018
 
 # Stockage des données : administrator/model/tables/stranding_admin.php
-- code :  $keys_tab = array_keys($array);
-
+- code :  
+		$keys_tab = array_keys($array);
         foreach ($keys_tab as $tab) {
             if (array_key_exists( $tab, $array ) && is_array( $array[ $tab] )) {
             $array[ $tab] = implode( ',', $array[ $tab] );
