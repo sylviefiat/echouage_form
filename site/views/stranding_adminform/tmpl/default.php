@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     1.0.0
+ * @version     0.0.0
  * @package     com_stranding_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -138,13 +138,15 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
 
            // Affiche le bouton de clonage 
            document.getElementById("add_animal").style.display="block";
-        
+          
+           // Créer un une balise span pour l'affichage du numéro de l'animal 
            create_element("SPAN", "identification_title");
            create_element("SPAN", "animal_title");
            create_element("SPAN", "measurements_title");
-
+           // Dans ce bloc span on met 1
            js('.block_indices').text('1');
 
+           // Le bloc de l'animal
            var parentClone = js("#div_observation_clone0");
 
            // Passage de type String a Array pour avoir un tableau de name
@@ -219,16 +221,17 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                 displayBlock('div_show_cetace_measurements_field', false);
                 displayBlock('div_show_dugong_measurements_field', true);
         }
-        // Array du genre Kogia
+        
+        // Array des espèces appartenant au genre Kogia
         var kogia_kind = ['Cachalot pygmée','Cachalot nain'];
 
-        // Array du genre Tursiops
+        // Array des espèces appartenant au genree Tursiops
         var tursiops_kind = ['Grand dauphin commun','Grand dauphin de l’Indo-Pacifique'];
 
-        // Array du genre Stenella
+        // Array des espèces appartenant au genre Stenella
         var stenella_kind = ['Dauphin à long bec','Dauphin tacheté pantropical'];
 
-        // Array du genre Balaenoptera
+        // Array des espèces appartenant au genre Balaenoptera
         var balaenoptera_kind = ['Baleine bleue pygmée','Rorqual commun','Rorqual boréal ou rorqual de Rudolphi','Rorqual tropical ou rorqual de Bryde','Rorqual de Omura','Petit rorqual antarctique','Petit rorqual pygmée'];
 
         if( kogia_kind.includes(this.value) ) {
@@ -305,7 +308,7 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
 
           }
         }
-
+        
         switch (this.value) {
           case 'Cachalot' : 
                 document.getElementById('jform_observation_spaces_kind').value = 'Physeter';
