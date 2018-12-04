@@ -11,18 +11,18 @@ Formulaires EchouageNC pour le report d'échouges de cétacés et de dugongs en 
             $array[ $tab] = implode( ',', $array[ $tab] );
          }
         } 
-- Les données de chaque animal sont stockées dans la colonne correspondant à cette caractéristiques et sont séparées par des virgules.
-- Exemple: Si il y a trois animaux genre Dauphin, dans la colonne Espèce on aura Dauphin,Dauphin,Dauphin
+- Les données de chaque animal sont stockées dans la colonne correspondante à cette caractéristique avec une virgules comme séparateur.
+- Exemple: Si il y a trois animaux genre Dauphin, dans la colonne "Espèce" on aura Dauphin,Dauphin,Dauphin
 
 # Base de données : administrator/sql/install.mysql.utf8.sql
-- Le champ id_observation est l'id de l'animal.
-- Le champ id_location sert a identifié les animaux qui sont échoués sur le même lieu, c'est à dire que chacun de ces animaux aurons le même id_location. Il doit être incrémenter en fonction de id_observation, l'idée et que id_location puisse être incrémenter en tenant compte de son ancienne valeure. (J'ai essayé de créé un trigger sans succès).
-- L'idée: Si NEW.id_location = OLD.id_location; Donc si id_location vaut déjà 1 alors le nouveau va valoire 2.  
+- Le champ id_observation représente l'id de l'animal.
+- Le champ id_location sert a identifié le lieu de l'échouage, c'est à dire que pour chaque animal échoué au même endroit leur id_location sera le même. L'idée et que id_location puisse être incrémenter en tenant compte de son ancienne valeure. (J'ai essayé de créé un trigger sans succès).
+- L'idée: Si NEW.id_location <= OLD.id_location alors NEW.id_location = OLD.id_location+1; Donc si id_location vaut déjà 1 alors le nouveau va valoire 2.  
 
 # Le front-end (Formulaire) : /site/views/stranding_adminform/tmpl/default.php
-- Pour les espèces j'ai séparer le "nom commun" du "genre" et de "l'espèce", à la demande de Claire. Le code JS qui permet de remplire automatiquement les champs "Genre" et "Espèce(s)" en renseignant le "Nom commun", va de la ligne 194 à la ligne 391.
-- Le clonage de l'animal commence de la ligne 500 et se termine à la ligne 974, les differentes fonctions notament pour afficher et/ou masquer des champs ou encore la fonction pour les espèces sont reprisent dans la partie de clonage en y ajoutant l'indice de clonage 'cloneId' pour permettre de différencier les id et la name de chaque champs. 
-- Pour les latitudes et longitudes en format DMD, j'ai ajouté deux nouveaux champs pour contenir ces deux informations. L'idée que j'ai trouvé et de cacher les anciens champs latitude et longitude ensuite de faire appraître les nouveaux et de créer une fonction jQuery pour convertir de les valeurs contenu dans les deux anciens champs pour les mettre dans les nouveaux. (Sans succès).
+- Pour les espèces j'ai séparer le "nom commun" du "genre" et de "l'espèce", à la demande de Claire. J'ai fait en sorte que lorsqu'on renseigne le "nom commun" les champs "genre" et "espèce(s)" se remplissent automatiquement.
+- Pour le clonage de l'animal il fallait changer les "id" des champs (naturellement), et aussi mettre la fin des "name" [] pour les convertir en "array" affin de stocké chaques données. 
+- Pour les latitudes et longitudes en format DMD, j'ai ajouté deux nouveaux champs pour contenir ces deux informations. L'idée est de cacher les anciens champs latitude et longitude, de faire appraître les nouveaux et de créer une fonction jQuery pour convertir les valeurs contenu dans les deux anciens champs pour les mettre dans les nouveaux. (Sans succès).
 
 # Pour les langues revoir l'anglais.
 
