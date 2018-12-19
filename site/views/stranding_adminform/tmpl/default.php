@@ -92,63 +92,49 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
       lng_dmd = convert_Long_DMD(lng);
     });
 
-    // Affiche ou pas le block en fonction du choix du user
+    // Affiche ou pas le block en fonction du choix du user // Affiche ou masque les mesures
     js("input[type='radio']").on('click', function() {
       switch(this.id) {
-        case 'jform_observation_dead_or_alive0' :
-              displayBlock('dead_field', true);
-              displayBlock('alive_field', false);
+        case 'jform_observation_dead_or_alive0' : displayBlock('dead_field', true); displayBlock('alive_field', false);
               break;
-        case 'jform_observation_dead_or_alive1' :
-              displayBlock('dead_field', false);
-              displayBlock('alive_field', true);
+        case 'jform_observation_dead_or_alive1' : displayBlock('dead_field', false); displayBlock('alive_field', true);
               break;
-        case 'jform_observation_tooth_or_baleen_or_defenses0' :
-              displayBlock('tooth_field',true); 
-              displayBlock('baleen_field',false);
+        case 'jform_observation_tooth_or_baleen_or_defenses0' : displayBlock('tooth_field',true); displayBlock('baleen_field',false);
               break;
-        case 'jform_observation_tooth_or_baleen_or_defenses1' :
-              displayBlock('tooth_field',false); 
-              displayBlock('baleen_field',true);
+        case 'jform_observation_tooth_or_baleen_or_defenses1' : displayBlock('tooth_field',false); displayBlock('baleen_field',true);
               break;
-        case 'jform_observation_tooth_or_baleen_or_defenses2' :
-              displayBlock('tooth_field',false); 
-              displayBlock('baleen_field',false);
+        case 'jform_observation_tooth_or_baleen_or_defenses2' : displayBlock('tooth_field',false); displayBlock('baleen_field',false);
               break;
-        case 'jform_levies0' :
-              displayBlock('stockage_location_field',true);
-              displayBlock('label_references_field',true);
+        case 'jform_levies0' :displayBlock('stockage_location_field',true); displayBlock('label_references_field',true);
               break;
-        case 'jform_levies1' :
-              displayBlock('stockage_location_field',false);
-              displayBlock('label_references_field',false);
+        case 'jform_levies1' :displayBlock('stockage_location_field',false); displayBlock('label_references_field',false);
               break;
-        case 'jform_photos0':
-              displayBlock('upload_photos_field',true);
+        case 'jform_photos0': displayBlock('upload_photos_field',true);
               break;
-        case 'jform_photos1':
-              displayBlock('upload_photos_field',false);
+        case 'jform_photos1': displayBlock('upload_photos_field',false);
               break;
       }       
     });
+    js('div').on('click',function(){
+      switch (this.id) {
+        case 'div_show_cetace_measurements_field' : toggleContainer("cetace_measures");
+              break;
+        case 'div_show_dugong_measurements_field' : toggleContainer("dugong_measures");
+              break;
+      }
+    }); 
 
     // Démasque le bouton pour le clonage si nombre > 1
     js('#jform_observation_number').on('change',function() {
         if(this.value > 1) {
-
            // Affiche le bouton de clonage 
            document.getElementById("add_animal").style.display="block";
-          
            // Créer un une balise span pour l'affichage du numéro de l'animal 
-           create_element("SPAN", "identification_title");
-           create_element("SPAN", "animal_title");
-           create_element("SPAN", "measurements_title");
+           create_element("SPAN", "identification_title");create_element("SPAN", "animal_title");create_element("SPAN", "measurements_title");
            // Dans ce bloc span on met 1
            js('.block_indices').text('1');
-
            // Le bloc de l'animal
            var parentClone = js("#div_observation_clone0");
-
            // Passage de type String a Array pour avoir un tableau de name
            parentClone.find("input[type='radio']").each(function() {
               this.name = this.name + '[0]';
@@ -165,7 +151,6 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
            parentClone.find("textarea").each(function() {
               this.name = this.name + '[0]';
            });
-
            parentClone.find("input[type='checkbox']").each(function(index, elem) {
               var $elem = js(elem);
               //$elem.attr('id', $elem.attr('id') + cloneId);
@@ -180,30 +165,11 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
         }
     });
 
-    // Affiche ou masque les mesures
-    js('div').on('click',function(){
-      switch (this.id) {
-        case 'div_show_cetace_measurements_field' :
-              toggleContainer("cetace_measures");
-              break;
-        case 'div_show_dugong_measurements_field' :
-              toggleContainer("dugong_measures");
-              break;
-      }
-    }); 
-
-    // Affiche en fonction de l'espèce choisie
-    js('#jform_observation_spaces_common_name').on('change', function() {
-
-        //
-        var unknow = ['','inconnu'];
-
+    var unknow = ['','inconnu'];
         // Array pour les cétacés
         var cetace = ['Cachalot','Cachalot pygmée','Cachalot nain','Baleine à bec de Blainville','Baleine à bec de longman','Baleine à bec de Cuvier','Orque', 'Fausse orque','Globicéphale tropical','Dauphin de Risso' , 'Orque Pygmée', 'Péponocéphale ou dauphin d’Electre' , 'Sténo ou dauphin à bec étroit','Grand dauphin commun','Grand dauphin de l’Indo-Pacifique','Dauphin commun', 'Dauphin à long bec','Dauphin tacheté pantropical','Dauphin de Fraser','Baleine bleue pygmée','Rorqual commun','Rorqual boréal ou rorqual de Rudolphi','Rorqual tropical ou rorqual de Bryde','Rorqual de Omura','Petit rorqual antarctique','Petit rorqual pygmée','Baleine à bosse'];
-
         // Array pour les dugongs et otaries
         var dugong = ['Dugong ou vache marine','Otarie à fourrure de Nouvelle-Zélande'];
-
         // Vérifie si la valeur courante du champs est dans l'un des array
         if( unknow.includes(this.value) ) {
           return;
@@ -221,176 +187,85 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
                 displayBlock('div_show_cetace_measurements_field', false);
                 displayBlock('div_show_dugong_measurements_field', true);
         }
-        
+
+    js('#jform_observation_spaces_common_name').on('change', function() {
         // Array des espèces appartenant au genre Kogia
         var kogia_kind = ['Cachalot pygmée','Cachalot nain'];
-
         // Array des espèces appartenant au genree Tursiops
         var tursiops_kind = ['Grand dauphin commun','Grand dauphin de l’Indo-Pacifique'];
-
         // Array des espèces appartenant au genre Stenella
         var stenella_kind = ['Dauphin à long bec','Dauphin tacheté pantropical'];
-
         // Array des espèces appartenant au genre Balaenoptera
         var balaenoptera_kind = ['Baleine bleue pygmée','Rorqual commun','Rorqual boréal ou rorqual de Rudolphi','Rorqual tropical ou rorqual de Bryde','Rorqual de Omura','Petit rorqual antarctique','Petit rorqual pygmée'];
-
         if( kogia_kind.includes(this.value) ) {
           document.getElementById('jform_observation_spaces_kind').value = 'Kogia';
           switch (this.value) {
-
-            case 'Cachalot pygmée' :
-                  document.getElementById('jform_observation_spaces').value = 'Breviceps';
-                  break;
-
-            case 'Cachalot nain' :
-                  document.getElementById('jform_observation_spaces').value = 'Sima';
-                  break;
+            case 'Cachalot pygmée' :document.getElementById('jform_observation_spaces').value = 'Breviceps';break;
+            case 'Cachalot nain' :document.getElementById('jform_observation_spaces').value = 'Sima';break;
           }
         }
         else if( tursiops_kind.includes(this.value) ) {
           document.getElementById('jform_observation_spaces_kind').value = 'Tursiops';
           switch (this.value) {
-
-            case 'Grand dauphin commun' :
-                  document.getElementById('jform_observation_spaces').value = 'Truncatus';
-                  break;
-
-            case 'Grand dauphin de l’Indo-Pacifique' :
-                  document.getElementById('jform_observation_spaces').value = 'Aduncus';
+            case 'Grand dauphin commun' :document.getElementById('jform_observation_spaces').value = 'Truncatus';break;
+            case 'Grand dauphin de l’Indo-Pacifique' :document.getElementById('jform_observation_spaces').value = 'Aduncus';
                   break;
           }
         }
         else if( stenella_kind.includes(this.value) ) {
           document.getElementById('jform_observation_spaces_kind').value = 'Stenella';
           switch (this.value) {
-
-            case 'Dauphin à long bec' :
-                  document.getElementById('jform_observation_spaces').value = 'Longirostris';
-                  break;
-
-            case 'Dauphin tacheté pantropical' :
-                  document.getElementById('jform_observation_spaces').value = 'Attenuata';
-                  break;
+            case 'Dauphin à long bec' :document.getElementById('jform_observation_spaces').value = 'Longirostris';break;
+            case 'Dauphin tacheté pantropical' :document.getElementById('jform_observation_spaces').value = 'Attenuata';break;
           }
         }
         else if( balaenoptera_kind.includes(this.value) ) {
           document.getElementById('jform_observation_spaces_kind').value = 'Balaenoptera';
-
           switch( this.value ) {
-
-            case 'Baleine bleue pygmée' :
-                 document.getElementById('jform_observation_spaces').value = 'Musculus brevicauda';
+            case 'Baleine bleue pygmée' :document.getElementById('jform_observation_spaces').value = 'Musculus brevicauda';
                  break;
-
-            case 'Rorqual commun' :
-                 document.getElementById('jform_observation_spaces').value = 'Physalus';
+            case 'Rorqual commun' :document.getElementById('jform_observation_spaces').value = 'Physalus';break;
+            case 'Rorqual boréal ou rorqual de Rudolphi' :document.getElementById('jform_observation_spaces').value = 'Borealis';break;
+            case 'Rorqual tropical ou rorqual de Bryde' :document.getElementById('jform_observation_spaces').value = 'Edeni';
                  break;
-
-            case 'Rorqual boréal ou rorqual de Rudolphi' :
-                 document.getElementById('jform_observation_spaces').value = 'Borealis';
+            case 'Rorqual de Omura' :document.getElementById('jform_observation_spaces').value = 'Omurai';break;
+            case 'Petit rorqual antarctique' :document.getElementById('jform_observation_spaces').value = 'Bonaerensis';
                  break;
-
-            case 'Rorqual tropical ou rorqual de Bryde' :
-                 document.getElementById('jform_observation_spaces').value = 'Edeni';
-                 break;
-
-            case 'Rorqual de Omura' :
-                 document.getElementById('jform_observation_spaces').value = 'Omurai';
-                 break;
-
-            case 'Petit rorqual antarctique' :
-                 document.getElementById('jform_observation_spaces').value = 'Bonaerensis';
-                 break;
-
-            case 'Petit rorqual pygmée' :
-                 document.getElementById('jform_observation_spaces').value = 'Acutorostrata subspecies';
-                 break;
-
+            case 'Petit rorqual pygmée' :document.getElementById('jform_observation_spaces').value = 'Acutorostrata subspecies';break;
           }
         }
-        
         switch (this.value) {
-          case 'Cachalot' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Physeter';
-                document.getElementById('jform_observation_spaces').value = 'Macrocephalus';
-                break;
-
-          case 'Baleine à bec de Blainville' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Mesoplodon';
-                document.getElementById('jform_observation_spaces').value = 'Densirostris';
-                break;
-
-          case 'Baleine à bec de longman' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Indopacetus';
-                document.getElementById('jform_observation_spaces').value = 'Pacificus';
-                break;
-
-          case 'Baleine à bec de Cuvier' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Ziphius';
-                document.getElementById('jform_observation_spaces').value = 'Cavirostris';
-                break;
-
-          case 'Orque' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Orcinus';
-                document.getElementById('jform_observation_spaces').value = 'Orca';
-                break;
-
-          case 'Fausse orque' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Pseudorca';
-                document.getElementById('jform_observation_spaces').value = 'Crassidens';
-                break;
-
-          case 'Globicéphale tropical' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Globicephala';
-                document.getElementById('jform_observation_spaces').value = 'Macrorhynchus';
-                break;
-
-          case 'Dauphin de Risso' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Grampus';
-                document.getElementById('jform_observation_spaces').value = 'Griseus';
-                break;
-
-          case 'Orque Pygmée' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Feresa';
-                document.getElementById('jform_observation_spaces').value = 'Attenuata';
-                break;
-
-          case 'Péponocéphale ou dauphin d’Electre' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Peponocephala';
-                document.getElementById('jform_observation_spaces').value = 'Electra';
-                break;
-
-          case 'Sténo ou dauphin à bec étroit' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Steno';
-                document.getElementById('jform_observation_spaces').value = 'Bredanensis';
-                break;
-
-          case 'Dauphin commun' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Delphinus';
-                document.getElementById('jform_observation_spaces').value = 'Delphis';
-                break;
-
-          case 'Dauphin de Fraser' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Lagenodelphis';
-                document.getElementById('jform_observation_spaces').value = 'Hosei';
-                break;
-
-          case 'Baleine à bosse' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Megaptera';
-                document.getElementById('jform_observation_spaces').value = 'Novaeangliae';
-                break;
-
-          case 'Dugong ou vache marine' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Dugong';
-                document.getElementById('jform_observation_spaces').value = 'Dugong';
-                break;
-
-          case 'Otarie à fourrure de Nouvelle-Zélande' : 
-                document.getElementById('jform_observation_spaces_kind').value = 'Arctophoca';
-                document.getElementById('jform_observation_spaces').value = 'Australis forsteri';
-                break;
+          case 'Cachalot' : document.getElementById('jform_observation_spaces_kind').value = 'Physeter';
+                document.getElementById('jform_observation_spaces').value = 'Macrocephalus';break;
+          case 'Baleine à bec de Blainville' : document.getElementById('jform_observation_spaces_kind').value = 'Mesoplodon';
+                document.getElementById('jform_observation_spaces').value = 'Densirostris';break;
+          case 'Baleine à bec de longman' : document.getElementById('jform_observation_spaces_kind').value = 'Indopacetus';
+                document.getElementById('jform_observation_spaces').value = 'Pacificus';break;
+          case 'Baleine à bec de Cuvier' : document.getElementById('jform_observation_spaces_kind').value = 'Ziphius';
+                document.getElementById('jform_observation_spaces').value = 'Cavirostris';break;
+          case 'Orque' : document.getElementById('jform_observation_spaces_kind').value = 'Orcinus';
+                document.getElementById('jform_observation_spaces').value = 'Orca';break;
+          case 'Fausse orque' : document.getElementById('jform_observation_spaces_kind').value = 'Pseudorca';
+                document.getElementById('jform_observation_spaces').value = 'Crassidens';break;
+          case 'Globicéphale tropical' : document.getElementById('jform_observation_spaces_kind').value = 'Globicephala';
+                document.getElementById('jform_observation_spaces').value = 'Macrorhynchus';break;
+          case 'Dauphin de Risso' : document.getElementById('jform_observation_spaces_kind').value = 'Grampus';
+                document.getElementById('jform_observation_spaces').value = 'Griseus';break;
+          case 'Orque Pygmée' : document.getElementById('jform_observation_spaces_kind').value = 'Feresa';
+                document.getElementById('jform_observation_spaces').value = 'Attenuata';break;
+          case 'Péponocéphale ou dauphin d’Electre' : document.getElementById('jform_observation_spaces_kind').value = 'Peponocephala';document.getElementById('jform_observation_spaces').value = 'Electra';break;
+          case 'Sténo ou dauphin à bec étroit' : document.getElementById('jform_observation_spaces_kind').value = 'Steno';
+                document.getElementById('jform_observation_spaces').value = 'Bredanensis';break;
+          case 'Dauphin commun' : document.getElementById('jform_observation_spaces_kind').value = 'Delphinus';
+                document.getElementById('jform_observation_spaces').value = 'Delphis';break;
+          case 'Dauphin de Fraser' : document.getElementById('jform_observation_spaces_kind').value = 'Lagenodelphis';
+                document.getElementById('jform_observation_spaces').value = 'Hosei';break;
+          case 'Baleine à bosse' : document.getElementById('jform_observation_spaces_kind').value = 'Megaptera';
+                document.getElementById('jform_observation_spaces').value = 'Novaeangliae';break;
+          case 'Dugong ou vache marine' : document.getElementById('jform_observation_spaces_kind').value = 'Dugong';
+                document.getElementById('jform_observation_spaces').value = 'Dugong';break;
+          case 'Otarie à fourrure de Nouvelle-Zélande' : document.getElementById('jform_observation_spaces_kind').value = 'Arctophoca';document.getElementById('jform_observation_spaces').value = 'Australis forsteri';break;
         }
-
     });
 
    
@@ -985,12 +860,12 @@ getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',fun
   });
 });
 
-// Si 'affiche' est vraie alors on affiche le block choisi, sinon on le masque
+// Si 'affiche' est vraie alors on affiche le block choisi, sinon on le masque // Affiche et masque le block au click
+
 function displayBlock(div, affiche) { 
   document.getElementById(div).style.display = affiche ? 'block' : 'none';
 }
 
-// Affiche et masque le block au click
 function toggleContainer(name) {
   var e = document.getElementById(name);// MooTools might not be available ;)
   e.style.display = e.style.display === 'none' ? 'block' : 'none';
@@ -1044,6 +919,7 @@ function convert_Long_DMD(long){
     <?php endif; ?>
 
     <form id="form-stranding_admin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+
       <!--Contacts-->
       <div class="row">
         <div class="col-lg-12 col-md-12 col-xs-12"><span class="stranding_admin-title_row"><span class="fa fa-user fa-2x"><h4><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></h4></span></span></div>

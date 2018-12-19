@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <form>
-<fieldset name="stranding_admin.details"
-		label="OBSERVATION_ADMIN_REPORT"
-		printable="true"
-		addfieldpath="/libraries/jdom/jform/fields">
-
+	<fieldset name="stranding_admin.details"
+			label="OBSERVATION_ADMIN_REPORT"
+			printable="true"
+			addfieldpath="/libraries/jdom/jform/fields">
 	<!--Id-->
 	<field name="id"
 			alias="id"
@@ -319,17 +316,10 @@
 			required="true"/>
 
 	<!--Spaces common name-->
-	 <field name="observation_spaces_common_name"
-			 alias="observation_spaces_common_name"
-			 class="form-control"
-			 label="OBSERVATION_SPACES_COMMON_NAME_LABEL"
-			 description="OBSERVATION_SPACES_COMMON_NAME_DESC"
-			 hint="OBSERVATION_SPACES_COMMON_NAME"
-			 labelclass="control-label"
-			 trigger="true"
-			 content-type="choices"
-			 type="groupedlist"
-			 target="observation_spaces_kind">
+	 <field name="observation_spaces_common_name" alias="observation_spaces_common_name" class="form-control"
+			 label="OBSERVATION_SPACES_COMMON_NAME_LABEL" description="OBSERVATION_SPACES_COMMON_NAME_DESC"
+			 hint="OBSERVATION_SPACES_COMMON_NAME" labelclass="control-label" trigger="true" content-type="choices"
+			 type="groupedlist" target="observation_spaces_kind">
 			 <option value="">SPACES_COMMON_NAME_0</option>
 			 <option value="inconnu">SPACES_UNKNOWN</option>
 			 <group label="SPACES_COMMON_NAME_CETACES_ODONTOCETES">
