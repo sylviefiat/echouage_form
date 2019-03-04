@@ -1,7 +1,3 @@
-# Extension JOOMLA (>3.5) cot_form 
-Formulaires Oreanet pour le report d'acanthasters
-3 branches pour les 3 sous réseaux:
-  - Nouvelle-calédonie
-  - Fidji
-  - Vanuatu
-© IRD, 2016
+# Extension JOOMLA (>3.5) echouage_form 
+Formulaire pour le report d'Echouages de cétacés en Nouvelle-Calédonie
+© IRD, 2019
