@@ -75,8 +75,8 @@ class Stranding_formsTableStranding_Admin extends JTable {
          }
         }
 
-        /*if (array_key_exists( 'observation_spaces', $array ) && is_array( $array['observation_spaces'] )) {
-            $array['observation_spaces'] = implode( ',', $array['observation_spaces'] );
+        /*if (array_key_exists( 'observation_species', $array ) && is_array( $array['observation_species'] )) {
+            $array['observation_species'] = implode( ',', $array['observation_species'] );
         }*/
 
         return parent::bind($array, $ignore);

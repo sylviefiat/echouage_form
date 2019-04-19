@@ -47,7 +47,7 @@ abstract class Stranding_formsHelper
 		.($data['observation_country']!== ''?"<div>Pays: ".$data['observation_country']."</div>":"")
 		."<div>Type d’échouage: ".$data['observation_stranding_type']."</div>"
 		."<div>Nombre: ".$data['observation_number']."</div>"
-		."<div>Espèces: ".$data['observation_spaces']."</div>"
+		."<div>Espèces: ".$data['observation_species']."</div>"
 		."<div>Taille:".$data['observation_size']."</div>"
 		."<div>Sex:".$data['observation_sex']."</div>"
 		."<div>Présence de bléssures, morssures:".$data['observation_abnormalities']."</div>"

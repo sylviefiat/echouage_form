@@ -310,84 +310,84 @@
 			max="500"
 			required="true"/>
 
-	<!--Spaces common name-->
-	 <field name="observation_spaces_common_name"
-			 alias="observation_spaces_common_name"
-			 label="OBSERVATION_SPACES_COMMON_NAME_LABEL"
-			 description="OBSERVATION_SPACES_COMMON_NAME_DESC"
+	<!--Species common name-->
+	 <field name="observation_species_common_name"
+			 alias="observation_species_common_name"
+			 label="OBSERVATION_SPECIES_COMMON_NAME_LABEL"
+			 description="OBSERVATION_SPECIES_COMMON_NAME_DESC"
 			 labelclass="control-label"
 			 type="groupedlist">
-			  <option value="">SPACES_COMMON_NAME_0</option>
-			 <option value="inconnu">SPACES_UNKNOWN</option>
-			 <group label="SPACES_COMMON_NAME_CETACES_ODONTOCETES">
-				 <option value="Cachalot">SPACES_COMMON_NAME_1</option>
-				 <option value="Cachalot pygmée">SPACES_COMMON_NAME_2</option>
-				 <option value="Cachalot nain">SPACES_COMMON_NAME_3</option>
-				 <option value="Baleine à bec de Blainville">SPACES_COMMON_NAME_4</option>
-				 <option value="Baleine à bec de longman">SPACES_COMMON_NAME_5</option>
-				 <option value="Baleine à bec de Cuvier">SPACES_COMMON_NAME_6</option>
-			 	 <option value="Orque">SPACES_COMMON_NAME_7</option>
-				 <option value="Fausse orque">SPACES_COMMON_NAME_8</option>
-				 <option value="Globicéphale tropical">SPACES_COMMON_NAME_9</option>
-				 <option value="Dauphin de Risso">SPACES_COMMON_NAME_10</option>
-				 <option value="Orque Pygmée">SPACES_COMMON_NAME_11</option>
-				 <option value="Péponocéphale ou dauphin d’Electre">SPACES_COMMON_NAME_12</option>
-				 <option value="Sténo ou dauphin à bec étroit">SPACES_COMMON_NAME_13</option>
-				 <option value="Grand dauphin commun">SPACES_COMMON_NAME_14</option>
-				 <option value="Grand dauphin de l’Indo-Pacifique">SPACES_COMMON_NAME_15</option>
-				 <option value="Dauphin commun">SPACES_COMMON_NAME_16</option>
-				 <option value="Dauphin à long bec">SPACES_COMMON_NAME_17</option>
-				 <option value="Dauphin tacheté pantropical">SPACES_COMMON_NAME_18</option>
-				 <option value="Dauphin de Fraser">SPACES_COMMON_NAME_19</option>
+			  <option value="">SPECIES_COMMON_NAME_0</option>
+			 <option value="inconnu">SPECIES_UNKNOWN</option>
+			 <group label="SPECIES_COMMON_NAME_CETACES_ODONTOCETES">
+				 <option value="Cachalot">SPECIES_COMMON_NAME_1</option>
+				 <option value="Cachalot pygmée">SPECIES_COMMON_NAME_2</option>
+				 <option value="Cachalot nain">SPECIES_COMMON_NAME_3</option>
+				 <option value="Baleine à bec de Blainville">SPECIES_COMMON_NAME_4</option>
+				 <option value="Baleine à bec de longman">SPECIES_COMMON_NAME_5</option>
+				 <option value="Baleine à bec de Cuvier">SPECIES_COMMON_NAME_6</option>
+			 	 <option value="Orque">SPECIES_COMMON_NAME_7</option>
+				 <option value="Fausse orque">SPECIES_COMMON_NAME_8</option>
+				 <option value="Globicéphale tropical">SPECIES_COMMON_NAME_9</option>
+				 <option value="Dauphin de Risso">SPECIES_COMMON_NAME_10</option>
+				 <option value="Orque Pygmée">SPECIES_COMMON_NAME_11</option>
+				 <option value="Péponocéphale ou dauphin d’Electre">SPECIES_COMMON_NAME_12</option>
+				 <option value="Sténo ou dauphin à bec étroit">SPECIES_COMMON_NAME_13</option>
+				 <option value="Grand dauphin commun">SPECIES_COMMON_NAME_14</option>
+				 <option value="Grand dauphin de l’Indo-Pacifique">SPECIES_COMMON_NAME_15</option>
+				 <option value="Dauphin commun">SPECIES_COMMON_NAME_16</option>
+				 <option value="Dauphin à long bec">SPECIES_COMMON_NAME_17</option>
+				 <option value="Dauphin tacheté pantropical">SPECIES_COMMON_NAME_18</option>
+				 <option value="Dauphin de Fraser">SPECIES_COMMON_NAME_19</option>
 			 </group>
-			 <group label="SPACES_COMMON_NAME_CETACE_MYSTICETES">
-				 <option value="Baleine bleue pygmée">SPACES_COMMON_NAME_20</option>
-				 <option value="Rorqual commun">SPACES_COMMON_NAME_21</option>
-				 <option value="Rorqual boréal ou rorqual de Rudolphi">SPACES_COMMON_NAME_22</option>
-				 <option value="Rorqual tropical ou rorqual de Bryde">SPACES_COMMON_NAME_23</option>
-				 <option value="Rorqual de Omura">SPACES_COMMON_NAME_24</option>
-				 <option value="Petit rorqual antarctique">SPACES_COMMON_NAME_25</option>
-				 <option value="Petit rorqual pygmée">SPACES_COMMON_NAME_26</option>
-				 <option value="Baleine à bosse">SPACES_COMMON_NAME_27</option>
+			 <group label="SPECIES_COMMON_NAME_CETACE_MYSTICETES">
+				 <option value="Baleine bleue pygmée">SPECIES_COMMON_NAME_20</option>
+				 <option value="Rorqual commun">SPECIES_COMMON_NAME_21</option>
+				 <option value="Rorqual boréal ou rorqual de Rudolphi">SPECIES_COMMON_NAME_22</option>
+				 <option value="Rorqual tropical ou rorqual de Bryde">SPECIES_COMMON_NAME_23</option>
+				 <option value="Rorqual de Omura">SPECIES_COMMON_NAME_24</option>
+				 <option value="Petit rorqual antarctique">SPECIES_COMMON_NAME_25</option>
+				 <option value="Petit rorqual pygmée">SPECIES_COMMON_NAME_26</option>
+				 <option value="Baleine à bosse">SPECIES_COMMON_NAME_27</option>
 			</group>
-			<group label="SPACES_COMMON_NAME_DUGONG">
-			 	 <option value="Dugong ou vache marine">SPACES_COMMON_NAME_28</option>
+			<group label="SPECIES_COMMON_NAME_DUGONG">
+			 	 <option value="Dugong ou vache marine">SPECIES_COMMON_NAME_28</option>
 			</group>
-			<group label="SPACES_COMMON_NAME_SEA_LION">
-				<option value="Otarie à fourrure de Nouvelle-Zélande">SPACES_COMMON_NAME_29</option>
+			<group label="SPECIES_COMMON_NAME_SEA_LION">
+				<option value="Otarie à fourrure de Nouvelle-Zélande">SPECIES_COMMON_NAME_29</option>
 			</group>		
 	</field>
 
-	<!--Spaces kind-->
-	<field name="observation_spaces_kind"
-			alias="observation_spaces_kind"
+	<!--Species genus-->
+	<field name="observation_species_genus"
+			alias="observation_species_genus"
 			class="form-control"
-			label="OBSERVATION_SPACES_KIND_LABEL"
+			label="OBSERVATION_SPECIES_GENUS_LABEL"
 			filter="STRING"
-			description="OBSERVATION_SPACES_KIND_DESC"
+			description="OBSERVATION_SPECIES_GENUS_DESC"
 			readonly="true"
 			type="text"/>
 
-	<!--Spaces spaces-->
-	<field name="observation_spaces"
-			alias="observation_spaces"
+	<!--Species species-->
+	<field name="observation_species"
+			alias="observation_species"
 			class="form-control"
-			label="OBSERVATION_SPACES_LABEL"
+			label="OBSERVATION_SPECIES_LABEL"
 			filter="STRING"
-			description="OBSERVATION_SPACES_DESC"
+			description="OBSERVATION_SPECIES_DESC"
 			readonly="true"
 			type="text"/>
 
 
- 	<!--Spaces identification-->
-	<field 	name="observation_spaces_identification"
-			alias="observation_spaces_identification"
-			label="OBSERVATION_SPACES_IDENTIFICATION"
-			description="OBSERVATION_SPACES_IDENTIFICATION_DESC"
+ 	<!--Species identification-->
+	<field 	name="observation_species_identification"
+			alias="observation_species_identification"
+			label="OBSERVATION_SPECIES_IDENTIFICATION"
+			description="OBSERVATION_SPECIES_IDENTIFICATION_DESC"
 			type="radio">
-			<option value="probable">OBSERVATION_SPACES_IDENTIFICATION_A</option>
-			<option value="certain">OBSERVATION_SPACES_IDENTIFICATION_B</option>
-			<option value="inconnu">OBSERVATION_SPACES_IDENTIFICATION_C</option>
+			<option value="probable">OBSERVATION_SPECIES_IDENTIFICATION_A</option>
+			<option value="certain">OBSERVATION_SPECIES_IDENTIFICATION_B</option>
+			<option value="inconnu">OBSERVATION_SPECIES_IDENTIFICATION_C</option>
 	</field>
 
 	<!--Sex-->
@@ -629,15 +629,15 @@
 			type="ckcalendar"
 			format="Y-m-d"/>
 
-	<!--Levies protocole-->
-	<field 	name="levies_protocole"
-			alias="levies_protocole"
-			label="LEVIES_PROTOCOL"
-			description="LEVIES_PROTOCOL"
+	<!--Sampling protocole-->
+	<field 	name="sampling_protocole"
+			alias="sampling_protocole"
+			label="SAMPLING_PROTOCOL"
+			description="SAMPLING_PROTOCOL"
 			type="radio">
-			<option value="standard">LEVIES_PROTOCOL_A</option>
-			<option value="intermédiaire">LEVIES_PROTOCOL_B</option>
-			<option value="complet">LEVIES_PROTOCOL_C</option>
+			<option value="standard">SAMPLING_PROTOCOL_A</option>
+			<option value="intermédiaire">SAMPLING_PROTOCOL_B</option>
+			<option value="complet">SAMPLING_PROTOCOL_C</option>
 	</field>
 
 	<!--Label references-->
@@ -648,15 +648,15 @@
 			 labelclass="control-label"
 			 type="text"/>
 
-	<!--Levies-->
-	<field name="levies"
-			alias="levies"
-			label="LEVIES"
-			description="LEVIES_DESC"
+	<!--Sampling-->
+	<field name="sampling"
+			alias="sampling"
+			label="SAMPLING"
+			description="SAMPLING_DESC"
 			type="radio"
 			required="true">
-			<option value="Oui" onclick="choixUser('stockage_location_field', '')">LEVIES_A</option>
-			<option value="Non" onclick="choixUser('stockage_location_field', '')">LEVIES_B</option>
+			<option value="Oui" onclick="choixUser('stockage_location_field', '')">SAMPLING_A</option>
+			<option value="Non" onclick="choixUser('stockage_location_field', '')">SAMPLING_B</option>
 	</field>
 
 	<!--Photos-->

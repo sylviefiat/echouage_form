@@ -209,16 +209,16 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_NUMBER'); ?>: </td>
 									<td><?php echo $this->item->observation_number; ?></td>
 								</tr>
-								<!--Spaces-->
+								<!--Species-->
 								<tr>
-									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_SPACES'); ?>: </td>
-									<td><?php echo $this->item->observation_spaces; ?></td>
+									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_SPECIES'); ?>: </td>
+									<td><?php echo $this->item->observation_species; ?></td>
 								</tr>
 									<tr>
-								<!--Spaces identification-->
+								<!--Species identification-->
 								<tr>
-									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_SPACES_IDENTIFICATION'); ?>: </td>
-									<td><?php echo $this->item->observation_spaces_identification; ?></td>
+									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_SPECIES_IDENTIFICATION'); ?>: </td>
+									<td><?php echo $this->item->observation_species_identification; ?></td>
 								</tr>
 								<tr>
 								<!--Sexe-->
@@ -271,10 +271,10 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
 									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_STATE_DECOMPOSITION'); ?>: </td>
 									<td><?php echo $this->item->observation_state_decomposition; ?></td>
 								</tr>
-								<!--Levies protocol-->
+								<!--Sampling protocol-->
 								<tr>
-									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_LEVIES_PROTOCOL'); ?>: </td>
-									<td><?php echo $this->item->levies_protocole; ?></td>
+									<td><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_SAMPLING_PROTOCOL'); ?>: </td>
+									<td><?php echo $this->item->sampling_protocole; ?></td>
 								</tr>
 								<!--Alive-->
 								<tr>

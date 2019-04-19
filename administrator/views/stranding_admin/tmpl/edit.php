@@ -179,15 +179,15 @@ $document->addStyleSheet('components/com_stranding_forms/assets/css/stranding_fo
 						<div class="control-label"><?php echo $this->form->getLabel('observation_number'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('observation_number'); ?></div>
 					</div>
-					<!--Spaces-->
+					<!--Species-->
 					<div class="control-group">
-						<div class="control-label"><?php echo $this->form->getLabel('observation_spaces'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('observation_spaces'); ?></div>
+						<div class="control-label"><?php echo $this->form->getLabel('observation_species'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('observation_species'); ?></div>
 					</div>
-					<!--Identification spaces-->
+					<!--Identification species-->
 					<div class="control-group">
-						<div class="control-label"><?php echo $this->form->getLabel('observation_spaces_identification'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('observation_spaces_identification'); ?></div>
+						<div class="control-label"><?php echo $this->form->getLabel('observation_species_identification'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('observation_species_identification'); ?></div>
 					</div>
 					<!--Sex-->
 					<div class="control-group">

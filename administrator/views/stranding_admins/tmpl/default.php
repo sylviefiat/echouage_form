@@ -152,13 +152,13 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_NUMBER', 'a.observation_number', $listDirn, $listOrder); ?>
 							</th>
-							<!--Spaces-->
+							<!--Species-->
 							<th class='left'>
-								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_SPACES', 'a.observation_spaces', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_SPECIES', 'a.observation_species', $listDirn, $listOrder); ?>
 							</th>
-							<!--Spaces identification-->
+							<!--Species identification-->
 							<th class='left'>
-								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_SPACES_IDENTIFICATION', 'a.observation_spaces_identification', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_SPECIES_IDENTIFICATION', 'a.observation_species_identification', $listDirn, $listOrder); ?>
 							</th>
 							<!--Sex-->
 							<th class='left'>
@@ -196,9 +196,9 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_CATCH_INDICIES', 'a.catch_indices', $listDirn, $listOrder); ?>
 							</th>
-							<!--Levies protocol-->
+							<!--Samplong protocol-->
 							<th class='left'>
-								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_CATCH_LEVIES_PROTOCOL', 'a.levies_protocole', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_OBSERVATION_CATCH_SAMPLING_PROTOCOL', 'a.sampling_protocole', $listDirn, $listOrder); ?>
 							</th>
 							<!--Tissue removal-->
 							<th class='left' rowspan="2">
@@ -332,11 +332,11 @@ if (!empty($this->extra_sidebar)) {
 											</td>
 											<td>
 
-												<?php echo $item->observation_spaces; ?>
+												<?php echo $item->observation_species; ?>
 											</td>
 											<td>
 
-												<?php echo $item->observation_spaces_identification; ?>
+												<?php echo $item->observation_species_identification; ?>
 											</td>
 											<td>
 
@@ -376,7 +376,7 @@ if (!empty($this->extra_sidebar)) {
 											</td>
 											<td>
 
-												<?php echo $item->levies_protocole;?>
+												<?php echo $item->sampling_protocole;?>
 											</td>
 											<td>
 

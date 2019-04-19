@@ -28,7 +28,7 @@ if(!bg){
         timer[type] = setTimeout(callback, ms);
     }
     
-    function updateElements(data){   
+    function updateElements(data,query){   
         var that = this;
         if(!data) return;
         for ( var i in this.settings.boundElements) {
@@ -39,9 +39,12 @@ if(!bg){
             var newValue = '';
             if(typeof dataProp == 'function'){
                 newValue = dataProp.call(that,data);
-            } else if(data[dataProp]) {
-                newValue = data[dataProp];
-            }
+            } else if(typeof dataProp == 'string') {
+                newValue = dataProp.split('.').reduce((a,v) => a[v], data);
+        if(!newValue){
+            newValue=query[dataProp];
+        }
+        } 
             
             var listCount = $sel.length;
             for ( var i = 0; i < listCount; i ++){
@@ -102,11 +105,11 @@ if(!bg){
                     matcher: function(){return true;}
                 },
                 boundElements: {
-                    '.country': 'prov',
-                    '.region': 'city',
-                    '.latitude': 'latt',
-                    '.longitude': 'longt',
-                    '.formatted_address': 'city'
+                    '.country': 'components.state',
+                    '.region': 'components.county',
+                    '.latitude': '0',
+                    '.longitude': '1',
+                    '.formatted_address': 'formatted'
                 },
                 
                 // internationalization
@@ -124,17 +127,13 @@ if(!bg){
             }
             // hash to store geocoder results keyed by address
             that.addressMapping = {};
-            that.currentItem = '';            
-            that.exist = that.$element.val() != '';
-            // load current address if any - using latLng
-            if(that.exist){
-                $lat = $(".latitude");
-                $lng = $(".longitude");
-                if($lat != null && $lng != null){
-                    that.geocodeLookup($lat.val()+","+$lng.val(), false, 'latLng', true);
-                } else {
-                    that.geocodeLookup(that.$element.val(), false, '', true);
-                }
+            that.currentItem = ''; 
+            $lat = $(".latitude");
+            $lng = $(".longitude");
+            if($lat != null && $lat.val() !== '' && $lng != null && $lng.val() !== ''){
+               that.geocodeLookup($lat.val()+","+$lng.val(), false, 'latLng', true);
+            } else {
+                that.geocodeLookup(that.$element.val(), false, '', true);
             }
             that.initMap.apply(that);
         },
@@ -191,16 +190,13 @@ if(!bg){
               that.geocodeLookup(coord[1]+","+coord[0], false, 'latLng', true);
             });
 
-            if(that.exist){
-                var $lat = $(".latitude");
-                var $lng = $(".longitude");
-                if($lat != null && $lng != null){
-                    var coord = ol.proj.fromLonLat([Number($lng.val()),Number($lat.val())]).map(value => {
-                        return value;
-                    });
-                    createMarker.call(that, coord);
-                }
-                
+            var $lat = $(".latitude");
+            var $lng = $(".longitude");
+            if($lat != null && $lat.val() !== '' && $lng != null && $lng.val() !== ''){
+                var coord = ol.proj.fromLonLat([Number($lng.val()),Number($lat.val())]).map(value => {
+                    return value;
+                });
+                createMarker.call(that, coord);
             }
             that.map_rendered = true;
         },
@@ -232,7 +228,7 @@ if(!bg){
         updater: function (item,query) {
             var that = this, item = item || that.$element.val();
             var data = this.addressMapping[item] || {};
-            updateElements.call(that,item);
+            updateElements.call(that,item,query);
 
             return item;
         },
@@ -251,9 +247,10 @@ if(!bg){
             } else {
                 request.address = query + that.settings.appendToAddressString;
             }
-            fetch('https://geocode.xyz/' + query[0] + ',' + query[1] + '?json=1').then(function(response) {
+            fetch('https://api.opencagedata.com/geocode/v1/json?q=' + query[0] + '+,' + query[1] + '&key=10cc98da95554cf59db6f0a7cce95e99').then(function(response) {
                 return response.json();
             }).then(function(json) {
+        json = json.results[0];
                 if (typeof callback == 'function') {
                     callback.call(that, json);
                 }
@@ -261,25 +258,7 @@ if(!bg){
                     that.updater(json,query);
                 }
             })
-        },
-        convertLatDMS: function ( lat ) {
-          var lat_dir, lat_deg, lat_min;
-          lat_dir = lat >= 0 ? 'N' : 'S';
-          // Garde la partie entière
-          lat_deg = ( Math.abs( parseInt( lat ) ) );
-          lat_min = ( Math.abs( ( Math.abs( lat ) - lat_deg ) * 60 ) );
-          //    176 code ascci du degré. Ne garde que 3 décimales
-          return lat_deg +  '°' + lat_min.toFixed(3) + "'" + lat_dir;
-        },
-        convertLngDMS: function ( lng ) {
-           var long_dir, long_deg, long_min;
-            long_dir = lng >= 0 ? 'E' : 'W';
-            // Garde la partie entière
-            long_deg = ( Math.abs( parseInt( lng ) ) );
-            long_min = ( Math.abs( ( Math.abs( lng ) - long_deg ) * 60 ) );
-            //    176 code ascci du degré. Ne garde que 3 décimales
-            return long_deg + '°' + long_min.toFixed(3) +  "'" + long_dir;
-        }        
+        }       
     };
 
     var main = function (method) {
