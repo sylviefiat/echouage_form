@@ -297,6 +297,7 @@
 			label="OBSERVATION_STRANDING_TYPE"
 			description="OBSERVATION_STRANDING_TYPE_DESC"
 			type="radio"
+			default="isolé"
 			required="true" >
 			<option value="isolé">OBSERVATION_STRANDING_TYPE_A</option>
 			<option value="en groupe">OBSERVATION_STRANDING_TYPE_B</option>
@@ -311,9 +312,9 @@
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
 			type="number"
-			min="0"
+			min="1"
 			max="1000"
-			required="true"/>
+			disabled="true"/>
 
 	<!--Species common name-->
 	 <field name="observation_species_common_name" alias="observation_species_common_name" class="form-control"
@@ -629,8 +630,11 @@
 			label="OBSERVATION_DATE_DEATH"
 			description="OBSERVATION_DATE_DEATH_DESC"
 			hint="OBSERVATION_DATE_DEATH"
-			type="ckcalendar"
-			format="Y-m-d"/>
+			type="ckdatetimepicker"
+			autoclose="true"
+			startDate="today"
+			format="Y-m-d H:i"
+			uiFormat="d/m/Y H:i"/>
 
 	<!--State decomposition-->
 	<field name="observation_state_decomposition"
@@ -664,8 +668,11 @@
 			label="OBSERVATION_DATE_RELEASE"
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			hint="OBSERVATION_DATE_RELEASE"
-			type="ckcalendar"
-			format="Y-m-d"/>
+			type="ckdatetimepicker"
+			autoclose="true"
+			startDate="today"
+			format="Y-m-d H:i"
+			uiFormat="d/m/Y H:i"/>
 
 	<!--Sampling protocole-->
 	<field name="sampling_protocole"

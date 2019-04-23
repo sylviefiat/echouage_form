@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <form>
-<fieldset 	name="stranding_admin.details"
+	<fieldset name="stranding_admin.details"
 			label="OBSERVATION_ADMIN_REPORT"
 			printable="true"
 			addfieldpath="/libraries/jdom/jform/fields">
-
 	<!--Id-->
-	<field 	name="id"
-		   	alias="id"
-		   	label="ID"
+	<field name="id"
+			alias="id"
+			class="form-control"
+			label="ID"
 			filter="INT"
 			description="ID_DESC"
 			readonly="true"
 			type="cktext"/>
 
 	<!--Location_ID-->
-	<field 	name="id_location"
+	<field name="id_location"
 			alias="id_location"
+			class="form-control"
 			label="ID_LOCATION"
 			filter="INT"
 			description="ID_LOCATION_DESC"
@@ -36,56 +35,72 @@
 			type="cktext"/>
 
 	<!--Observer contacts-->
-	<field 	name="observer_name"
+	<field name="observer_name"
 			alias="observer_name"
+			class="form-control"
 			label="OBSERVER_NAME"
 			filter="STRING"
 			description="OBSERVER_NAME_DESC"
 			required="true"
-			type="cktext"/>
+			hint="OBSERVER_NAME_PL"
+			type="text"/>
 	<field name="observer_address"
 			alias="observer_address"
+			class="form-control"
 			label="OBSERVER_ADDRESS"
 			filter="STRING"
 			description="OBSERVER_ADDRESS_DESC"
+			hint="OBSERVER_ADDRESS_PL"
 			type="text"/>
-	<field 	name="observer_tel"
+	<field name="observer_tel"
 			alias="observer_tel"
+			class="form-control"
 			label="OBSERVER_TEL"
 			description="OBSERVER_TEL_DESC"
+			hint="OBSERVER_TEL"
 			type="tel"/>
-	<field 	name="observer_email"
+	<field name="observer_email"
 			alias="observer_email"
+			class="form-control"
 			label="OBSERVER_EMAIL"
 			description="OBSERVER_EMAIL_DESC"
+			hint="OBSERVER_EMAIL"
 			type="email"/>
 
 	<!--Informant contacts-->
-	<field 	name="informant_name"
+	<field name="informant_name"
 			alias="informant_name"
+			class="form-control"
 			label="INFORMANT_NAME"
 			filter="STRING"
 			description="INFORMANT_NAME_DESC"
+			hint="INFORMANT_NAME_PL"
 			type="text"/>
 	<field name="informant_address"
 			alias="informant_address"
+			class="form-control"
 			label="INFORMANT_ADDRESS"
 			filter="STRING"
 			description="INFORMANT_ADDRESS_DESC"
+			hint="INFORMANT_ADDRESS_PL"
 			type="text"/>
-	<field 	name="informant_tel"
+	<field name="informant_tel"
 			alias="informant_tel"
+			class="form-control"
 			label="INFORMANT_TEL"
 			description="INFORMANT_TEL_DESC"
+			hint="INFORMANT_TEL"
 			type="tel"/>
-	<field 	name="informant_email"
+	<field name="informant_email"
 			alias="informant_email"
+			class="form-control"
 			label="INFORMANT_EMAIL"
 			description="INFORMANT_EMAIL_DESC"
+			hint="INFORMANT_EMAIL"
 			type="email"/>
 
 	<!--Date-->
-	<field 	name="observation_datetime"
+	<field name="observation_datetime"
 			alias="observation_datetime"
 			class="form-control form-calendar"
 			label="OBSERVATION_DATE"
@@ -95,14 +110,15 @@
             default="NOW"
             format="Y-m-d"/>
 
-
-    <!--Hours-->
+	<!--Hours-->
 	<field name="observation_hours"
 			alias="observation_hours"
+			class="form-control"
 			label="OBSERVTION_HOURS"
 			labelclass="control-label"
 			description="OBSERVTION_HOURS_DESC"
 			type="list">
+			<option value="">--</option>
 			<option value="00">H0</option>
 			<option value="01">H1</option>
 			<option value="02">H2</option>
@@ -132,10 +148,12 @@
 	<!--Minutes-->
 	<field name="observation_minutes"
 			alias="observation_minutes"
+			class="form-control"
 			label="OBSERVTION_MINUTES"
 			labelclass="control-label"
 			description="OBSERVTION_MINUTES_DESC"
 			type="list">
+			<option value="">--</option>
 			<option value="00">M0</option>
 			<option value="01">M1</option>
 			<option value="02">M2</option>
@@ -197,92 +215,77 @@
 			<option value="58">M58</option>
 			<option value="59">M59</option>
 	</field>
-<!--
-	<field name="observation_date"
-			alias="observation_date"
-			label="OBSERVATION_DATE"
-			description="OBSERVATION_DATE_DESC"
-			type="cktext"/>
 
-	<field name="observation_day"
-			alias="observation_day"
-			label="OBSERVATION_DAY"
-			description="OBSERVATION_DAY_DESC"
-			type="cktext"/>
-
-	<field name="observation_month"
-			alias="observation_month"
-			label="OBSERVATION_MONTH"
-			description="OBSERVATION_MONTH_DESC"
-			type="cktext"/>
-
-	<field name="observation_year"
-			alias="observation_year"
-			label="OBSERVATION_YEAR"
-			description="OBSERVATION_YEAR_DESC"
-			type="cktext"/>
--->
 	<!--Position-->
-	<field 	name="observation_location"
+	<field name="observation_location"
 			alias="observation_location"
+			class="form-control"
 			label="OBSERVATION_LOCATION"
 			filter="STRING"
 			description="OBSERVATION_LOCATION_DESC"
-			type="cktextarea"/>
-	<field 	name="observation_localisation"
+			hint="OBSERVATION_LOCATION"
+			type="textarea"/>
+	<field name="observation_localisation"
 			alias="observation_localisation"
 			label="OBSERVATION_PICK"
 			description="OBSERVATION_PICK_DESC"
 			filter="STRING"
-			mode="modal"
-			class="formatted_address"
+			class="formatted_address form-control"
 			type="ckaddresspicker"/>
-	<field 	name="observation_region"
+	<field name="observation_region"
 			alias="region"
 			label="OBSERVATION_REGION"
 			description="OBSERVATION_REGION_DESC"
 			filter="STRING"
-			class="region"
-			type="cktext"/>
-	<field 	name="observation_country"
+			class="region form-control"
+			hint="OBSERVATION_REGION"
+			type="text"/>
+	<field name="observation_country"
 			alias="country"
 			label="OBSERVATION_COUNTRY"
 			description="OBSERVATION_COUNTRY_DESC"
 			filter="STRING"
-			class="country"
-			type="cktext"/>
-	<field 	name="observation_country_code"
+			class="country form-control"
+			hint="OBSERVATION_COUNTRY"
+			type="text"/>
+	<field name="observation_country_code"
+			readonly="true"
 			alias="country_code"
 			label="OBSERVATION_COUNTRY_CODE"
 			description="OBSERVATION_COUNTRY_CODE_DESC"
 			filter="STRING"
-			class="country_code"
-			type="cktext"/>
-	<field 	name="observation_latitude"
+			class="country_code form-control"
+			hint="OBSERVATION_COUNTRY_CODE"
+			type="text"/>
+	<field name="observation_latitude"
 			alias="latitude"
 			label="OBSERVATION_LATITUDE"
 			description="OBSERVATION_LATITUDE_DESC"
 			filter="FLOAT"
-			class="latitude"
-			type="cktext"/>
+			class="latitude form-control"
+			hint="OBSERVATION_LATITUDE"
+			type="text"/>
 	<field name="observation_latitude_dmd"
 			alias="latitude_dmd"
 			label="OBSERVATION_LATITUDE_DMD"
 			description="OBSERVATION_LATITUDE_DMD_DESC"
 			filter="FLOAT"
 			class="latitude_dmd form-control"
+			hint="OBSERVATION_LATITUDE_DMD"
 			type="text"/>
-	<field 	name="observation_longitude"
+	<field name="observation_longitude"
 			alias="longitude"
 			label="OBSERVATION_LONGITUDE"
 			description="OBSERVATION_LONGITUDE_DESC"
+			hint="OBSERVATION_LONGITUDE"
 			filter="FLOAT"
-			class="longitude"
-			type="cktext"/>
+			class="longitude form-control"
+			type="text"/>
 	<field name="observation_longitude_dmd"
 			alias="longitude_dmd"
 			label="OBSERVATION_LONGITUDE_DMD"
 			description="OBSERVATION_LONGITUDE_DMD_DESC"
+			hint="OBSERVATION_LONGITUDE_DMD"
 			filter="FLOAT"
 			class="longitude_dmd form-control"
 			type="text"/>
@@ -290,34 +293,35 @@
 	<!--Stranding type-->
 	<field 	name="observation_stranding_type"
 			alias="observation_stranding_type"
+			class="custom-control custom-radio custom-control-inline"
 			label="OBSERVATION_STRANDING_TYPE"
 			description="OBSERVATION_STRANDING_TYPE_DESC"
 			type="radio"
+			default="isolé"
 			required="true" >
 			<option value="isolé">OBSERVATION_STRANDING_TYPE_A</option>
 			<option value="en groupe">OBSERVATION_STRANDING_TYPE_B</option>
 	</field>
 
 	<!--Number-->
-	<field 	name="observation_number"
+	<field name="observation_number"
 			alias="observation_number"
+			class="form-control"
 			label="OBSERVATION_NUMBER"
 			description="OBSERVATION_NUMBER_DESC"
+			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
 			type="number"
-			onchange="add_new_btn('news_clone_btns', 'Identification', this.value)"
-			min="0"
-			max="500"
-			required="true"/>
+			min="1"
+			max="1000"
+			disabled="true"/>
 
 	<!--Species common name-->
-	 <field name="observation_species_common_name"
-			 alias="observation_species_common_name"
-			 label="OBSERVATION_SPECIES_COMMON_NAME_LABEL"
-			 description="OBSERVATION_SPECIES_COMMON_NAME_DESC"
-			 labelclass="control-label"
-			 type="groupedlist">
-			  <option value="">SPECIES_COMMON_NAME_0</option>
+	 <field name="observation_species_common_name" alias="observation_species_common_name" class="form-control"
+			 label="OBSERVATION_SPECIES_COMMON_NAME_LABEL" description="OBSERVATION_SPECIES_COMMON_NAME_DESC"
+			 hint="OBSERVATION_SPECIES_COMMON_NAME" labelclass="control-label" trigger="true" content-type="choices"
+			 type="groupedlist" target="observation_species_genus">
+			 <option value="">SPECIES_COMMON_NAME_0</option>
 			 <option value="inconnu">SPECIES_UNKNOWN</option>
 			 <group label="SPECIES_COMMON_NAME_CETACES_ODONTOCETES">
 				 <option value="Cachalot">SPECIES_COMMON_NAME_1</option>
@@ -355,7 +359,7 @@
 			</group>
 			<group label="SPECIES_COMMON_NAME_SEA_LION">
 				<option value="Otarie à fourrure de Nouvelle-Zélande">SPECIES_COMMON_NAME_29</option>
-			</group>		
+			</group>	
 	</field>
 
 	<!--Species genus-->
@@ -365,6 +369,7 @@
 			label="OBSERVATION_SPECIES_GENUS_LABEL"
 			filter="STRING"
 			description="OBSERVATION_SPECIES_GENUS_DESC"
+			hint="OBSERVATION_SPECIES_GENUS"
 			readonly="true"
 			type="text"/>
 
@@ -375,13 +380,14 @@
 			label="OBSERVATION_SPECIES_LABEL"
 			filter="STRING"
 			description="OBSERVATION_SPECIES_DESC"
+			hint="OBSERVATION_SPECIES"
 			readonly="true"
 			type="text"/>
 
-
- 	<!--Species identification-->
-	<field 	name="observation_species_identification"
+	<!--Species identification-->
+	<field name="observation_species_identification"
 			alias="observation_species_identification"
+			class="btn-group"
 			label="OBSERVATION_SPECIES_IDENTIFICATION"
 			description="OBSERVATION_SPECIES_IDENTIFICATION_DESC"
 			type="radio">
@@ -391,36 +397,49 @@
 	</field>
 
 	<!--Sex-->
-	<field 	name="observation_sex"
-		 	alias="observation_sex"
-		 	label="OBSERVATION_SEX"
+	<field name="observation_sex"
+			alias="observation_sex"
+			class="btn-group"
+			label="OBSERVATION_SEX"
 			description="OBSERVATION_SEX_DESC"
 			type="radio"
-			required="true"
-			multiple="false" >
+			required="true" >
 			<option value="M">OBSERVATION_SEX_A</option>
 			<option value="F">OBSERVATION_SEX_B</option>
 			<option value="inconnu">OBSERVATION_SEX_C</option>
 	</field>
 
+	<!--Color-->
+	<field name="observation_color"
+			alias="observation_color"
+			class="form-control"
+			label="OBSERVATION_COLOR"
+			labelclass="control-label"
+			description="OBSERVATION_COLOR_DESC"
+			hint="OBSERVATION_COLOR"
+			type="text"/>
+
 	<!--Encoche médiane à la caudale-->
 	<field name="observation_caudal"
 			alias="observation_caudal"
+			class="btn-group"
 			label="OBSERVATION_CAUDAL"
 			description="OBSERVATION_CAUDAL_DESC"
 			type="radio"
 			required="true" >
 			<option value="présente">OBSERVATION_CAUDAL_A</option>
 			<option value="absente">OBSERVATION_CAUDAL_B</option>
-			<option value="inconnu">OBSERVATION_CAUDAL_C</option>
+			<option value="absente">OBSERVATION_CAUDAL_C</option>
 	</field>
 
 	<!--Beak or Furrows-->
 	<field name="observation_beak_or_furrows"
 			alias="observation_beak_or_furrows"
+			class="btn-group"
 			label="OBSERVATION_BEAK_OR_FURROWS"
 			description="OBSERVATION_BEAK_OR_FURROWS_DESC"
-			type="checkboxes">
+			type="checkboxes"
+			multiple="true">
 			<option value="Bec">OBSERVATION_BEAK</option>
 			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
 	</field>
@@ -431,46 +450,57 @@
 			class="btn-group"
 			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
-			type="radio">
-			<option value="Dents" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_TOOTH</option>
-			<option value="Fanons" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_BALEEN</option>
-			<option value="Défenses" onclick="choixUser(this,'tooth_field','baleen_field')">OBSERVATION_DEFENSES</option>
+			type="radio"
+			required="true">
+			<option value="Dents" >OBSERVATION_TOOTH</option>
+			<option value="Fanons" >OBSERVATION_BALEEN</option>
+			<option value="Défenses" >OBSERVATION_DEFENSES</option>
 	</field>
 
 	<!--Tooth-->
 	<field name="nb_teeth_upper_right"
 			 alias="nb_teeth_upper_right"
+			 class="form-control"
 			 label="OBSERVATION_UPPER_RIGHT"
 			 description="OBSERVATION_UPPER_RIGHT_DESC"
+			 hint="OBSERVATION_UPPER_RIGHT"
 			 labelclass="control-label"
 			 type="number"
 			 max="1000"/>
 	<field name="nb_teeth_upper_left"
 			 alias="nb_teeth_upper_left"
+			 class="form-control"
 			 label="OBSERVATION_UPPER_LEFT"
 			 description="OBSERVATION_UPPER_LEFT_DESC"
+			 hint="OBSERVATION_UPPER_LEFT"
 			 labelclass="control-label"
 			 type="number"
 			 max="1000"/>
 	<field name="nb_teeth_lower_right"
 			 alias="nb_teeth_lower_right"
+			 class="form-control"
 			 label="OBSERVATION_LOWER_RIGHT"
 			 description="OBSERVATION_LOWER_RIGHT_DESC"
+			 hint="OBSERVATION_LOWER_RIGHT"
 			 labelclass="control-label"
 			 type="number"
 			 max="1000"/>
 	<field name="nb_teeth_lower_left"
 			 alias="nb_teeth_lower_left"
+			 class="form-control"
 			 label="OBSERVATION_LOWER_LEFT"
 			 description="OBSERVATION_LOWER_LEFT_DESC"
+			 hint="OBSERVATION_LOWER_LEFT"
 			 labelclass="control-label"
 			 type="number"
 			 max="1000"/>
 	<field name="observation_teeth_base_diametre"
 			alias="observation_teeth_base_diametre"
+			class="form-control"
 			label="OBSERVATION_BASE_DIAMETRE_LBL"
 			labelclass="control-label"
 			description="OBSERVATION_BASE_DIAMETRE_DESC"
+			hint="OBSERVATION_BASE_DIAMETRE_LBL"
 			type="number"
 			step="0.01"
 			max="1000"/>
@@ -478,50 +508,51 @@
 	<!--Baleen-->
 	<field name="observation_baleen_color"
 			alias="observation_baleen_color"
+			class="form-control"
 			label="OBSERVATION_BALEEN_COLOR"
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_COLOR_DESC"
+			hint="OBSERVATION_BALEEN_COLOR"
 			type="text"/>
 	<field name="observation_baleen_height"
 			alias="observation_baleen_height"
+			class="form-control"
 			label="OBSERVATION_BALEEN_HEIGHT"
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_HEIGHT_DESC"
+			hint="OBSERVATION_BALEEN_HEIGHT"
 			type="number"
 			step="0.01"
 			max="1000"/>
 	<field name="observation_baleen_base_height"
 			alias="observation_baleen_base_height"
+			class="form-control"
 			label="OBSERVATION_BALEEN_BASE_DIAMETRE"
 			labelclass="control-label"
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
+			hint="OBSERVATION_BALEEN_BASE_DIAMETRE"
 			type="number"
 			step="0.01"
 			max="1000"/>
 
-	<!--Color-->
-	<field 	name="observation_color"
-			alias="observation_color"
-			label="OBSERVATION_COLOR"
-			labelclass="control-label"
-			description="OBSERVATION_COLOR_DESC"
-			type="text"/>
-
 	<!--Size-->
-	<field 	name="observation_size"
+	<field name="observation_size"
 			alias="observation_size"
+			class="form-control"
 			label="OBSERVATION_SIZE"
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_DESC"
+			hint="OBSERVATION_SIZE"
 			type="number"
 			step="0.01"
 			min="0.00"
-			max="1000.00"
+			max="10000000.00"
 			required="true"/>
 
 	<!--Size precision-->
 	<field name="observation_size_precision"
 			alias="observation_size_precision"
+			class="btn-group"
 			label="OBSERVATION_SIZE_PRECISION"
 			labelclass="control-label"
 			description="OBSERVATION_SIZE_PRECISION_DESC"
@@ -532,36 +563,41 @@
 	</field>
 
 	<!--Abnormalities-->
-	<field 	name="observation_abnormalities"
+	<field name="observation_abnormalities"
 			alias="observation_abnormalities"
+			class="btn-group btn-group-yesno"
 			label="OBSERVATION_ABNORMALITIES"
 			description="OBSERVATION_ABNORMALITIES_DESC"
 			type="radio"
-			required="true" >
+			required="true">
 			<option value="oui">OBSERVATION_ABNORMALITIES_A</option>
 			<option value="non">OBSERVATION_ABNORMALITIES_B</option>
 			<option value="inconnu">OBSERVATION_ABNORMALITIES_C</option>
 	</field>
 
 	<!--Capture traces-->
-	<field 	name="observation_capture_traces"
+	<field name="observation_capture_traces"
 			alias="observation_capture_traces"
+			class="btn-group"
 			label="OBSERVATION_CAPTURE_TRACES"
 			description="OBSERVATION_CAPTURE_TRACES_DESC"
 			type="radio"
-			required="true" >
+			required="true">
 			<option value="probable">OBSERVATION_CAPTURE_TRACES_A</option>
 			<option value="certaine">OBSERVATION_CAPTURE_TRACES_B</option>
 			<option value="inconnu">OBSERVATION_CAPTURE_TRACES_C</option>
 	</field>
 
 	<!--Catch indices-->
-	<field 	name="catch_indices"
+	<field name="catch_indices"
 			alias="catch_indices"
+			class="form-control"
 			label="CATCH_INDICES"
 			filter="STRING"
 			description="CATCH_INDICES_DESC"
+			hint="CATCH_INDICES_PL"
 			type="textarea"/>
+
 
 	<!--Dead or alive-->
 	<field name="observation_dead_or_alive"
@@ -571,47 +607,53 @@
 			description="OBSERVATION_DEAD_OR_ALIVE_DESC"
 			type="radio"
 			required="true">
-			<option value="Mort" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_A</option>
-			<option value="Vivant" onclick="choixUser(this,'dead_field','alive_field')">OBSERVATION_DEAD_OR_ALIVE_B</option>
+			<option value="Mort" >OBSERVATION_DEAD_OR_ALIVE_A</option>
+			<option value="Vivant" >OBSERVATION_DEAD_OR_ALIVE_B</option>
 	</field>
 
 	<!--Death-->
-	<field 	name="observation_death"
+	<field name="observation_death"
 			alias="observation_death"
+			class="btn-group"
 			label="OBSERVATION_DEATH"
 			description="OBSERVATION_DEATH_DESC"
-			type="radio" >
+			type="radio">
 			<option value="mort avant l'arrivée de l'observateur">OBSERVATION_DEATH_A</option>
 			<option value="mort pendant l'intervention de l'observateur">OBSERVATION_DEATH_B</option>
 			<option value="euthanasié">OBSERVATION_DEATH_C</option>
 	</field>
 
 	<!--Date death-->
-	<field 	name="observation_datetime_death"
-			class="form-control form-calendar"
+	<field name="observation_datetime_death"
 			alias="observation_datetime_death"
+			class="form-control form-calendar"
 			label="OBSERVATION_DATE_DEATH"
 			description="OBSERVATION_DATE_DEATH_DESC"
 			hint="OBSERVATION_DATE_DEATH"
-			type="ckcalendar"
-			format="Y-m-d"/>
+			type="ckdatetimepicker"
+			autoclose="true"
+			startDate="today"
+			format="Y-m-d H:i"
+			uiFormat="d/m/Y H:i"/>
 
 	<!--State decomposition-->
-	<field 	name="observation_state_decomposition"
+	<field name="observation_state_decomposition"
 			alias="observation_state_decomposition"
+			class="btn-group"
 			label="OBSERVATION_STATE_DECOMPOSITION"
 			description="OBSERVATION_STATE_DECOMPOSITION_DESC"
 			type="radio">
 			<option value="1">OBSERVATION_STATE_DECOMPOSITION_A</option>
 			<option value="2">OBSERVATION_STATE_DECOMPOSITION_B</option>
-			<option value="3">OBSERVATION_STATE_DECOMPOSITION_D</option>
+			<option value="3">OBSERVATION_STATE_DECOMPOSITION_C</option>
 			<option value="4">OBSERVATION_STATE_DECOMPOSITION_D</option>
 			<option value="5">OBSERVATION_STATE_DECOMPOSITION_E</option>
 	</field>
 
 	<!--Alive-->
-	<field 	name="observation_alive"
+	<field name="observation_alive"
 			alias="observation_alive"
+			class="form-control"
 			label="OBSERVATION_ALIVE"
 			description="OBSERVATION_ALIVE_DESC"
 			type="checkboxes"
@@ -620,20 +662,24 @@
 	</field>
 
 	<!--Date release-->
-	<field 	name="observation_datetime_release"
-			class="form-control form-calendar"
+	<field name="observation_datetime_release"
 			alias="observation_datetime_release"
+			class="form-control form-calendar"
 			label="OBSERVATION_DATE_RELEASE"
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			hint="OBSERVATION_DATE_RELEASE"
-			type="ckcalendar"
-			format="Y-m-d"/>
+			type="ckdatetimepicker"
+			autoclose="true"
+			startDate="today"
+			format="Y-m-d H:i"
+			uiFormat="d/m/Y H:i"/>
 
 	<!--Sampling protocole-->
-	<field 	name="sampling_protocole"
+	<field name="sampling_protocole"
 			alias="sampling_protocole"
+			class="btn-group"
 			label="SAMPLING_PROTOCOL"
-			description="SAMPLING_PROTOCOL"
+			description="SAMPLING_PROTOCOL_DESC"
 			type="radio">
 			<option value="standard">SAMPLING_PROTOCOL_A</option>
 			<option value="intermédiaire">SAMPLING_PROTOCOL_B</option>
@@ -643,50 +689,54 @@
 	<!--Label references-->
 	<field name="label_references"
 			 alias="label_references"
+			 class="form-control"
 			 label="LABEL_REFERENCES"
 			 description="LABEL_REFERENCES_DESC"
+			 hint="LABEL_REFERENCES"
 			 labelclass="control-label"
 			 type="text"/>
 
 	<!--Sampling-->
 	<field name="sampling"
 			alias="sampling"
+			class="btn-group"
 			label="SAMPLING"
 			description="SAMPLING_DESC"
 			type="radio"
 			required="true">
-			<option value="Oui" onclick="choixUser('stockage_location_field', '')">SAMPLING_A</option>
-			<option value="Non" onclick="choixUser('stockage_location_field', '')">SAMPLING_B</option>
+			<option value="Oui" >JYES</option>
+			<option value="Non" >JNO</option>
 	</field>
 
 	<!--Photos-->
 	<field name="photos"
 			alias="photos"
+			class="btn-group"
 			label="PHOTOS"
 			description="PHOTOS_DESC"
 			type="radio"
 			required="true">
-			<option value="Oui">PHOTOS_A</option>
-			<option value="Non">PHOTOS_B</option>
+			<option value="Oui">JYES</option>
+			<option value="Non">JNO</option>
 	</field>
 
 	<!--Upload photos-->
 	<field name="upload_photos"
 		  	alias="upload_photos"
+		  	class="form-control"
+		  	labelclass="control-label"
 		  	label="UPLOAD_PHOTOS"
 		  	description="UPLOAD_PHOTOS_DESC"
 		  	type="file"
 		  	accept="image/*"/>
 
-
 	<!--Tissue removal alive-->
 	<field name="observation_tissue_removal_alive"
 			alias="observation_tissue_removal_alive"
-			
-			label="OBSERVATION_TISSUE_REMOVAL_ALIVE"
-			description="OBSERVATION_TISSUE_REMOVAL_ALIVE_DESC"
+			class="form-control"
+			label="OBSERVATION_TISSUE_REMOVAL"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC_ALIVE"
 			type="checkboxes"
-			multiple="true"
 			multiple="false">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
 	</field>
@@ -694,9 +744,9 @@
 	<!--Tissue removal dead-->
 	<field name="observation_tissue_removal_dead"
 			alias="observation_tissue_removal_dead"
-			
-			label="OBSERVATION_TISSUE_REMOVAL_DEAD"
-			description="OBSERVATION_TISSUE_REMOVAL_DEAD_DESC"
+			class="form-control"
+			label="OBSERVATION_TISSUE_REMOVAL"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC_DEAD"
 			type="checkboxes"
 			multiple="true">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
@@ -712,6 +762,7 @@
 	<!--Cetaces mesurements-->
 	<field name="observation_dolphin_mesures_a"
 			alias="observation_dolphin_mesures_a"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_A"
 			description="OBSERVATION_MESURES_DESC"
@@ -720,6 +771,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_b"
 			alias="observation_dolphin_mesures_b"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_B"
 			description="OBSERVATION_MESURES_DESC"
@@ -728,6 +780,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_c"
 			alias="observation_dolphin_mesures_c"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_C"
 			description="OBSERVATION_MESURES_DESC"
@@ -736,6 +789,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_d"
 			alias="observation_dolphin_mesures_d"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_D"
 			description="OBSERVATION_MESURES_DESC"
@@ -744,6 +798,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_e"
 			alias="observation_dolphin_mesures_e"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_E"
 			description="OBSERVATION_MESURES_DESC"
@@ -752,6 +807,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_f"
 			alias="observation_dolphin_mesures_f"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_F"
 			description="OBSERVATION_MESURES_DESC"
@@ -760,6 +816,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_g"
 			alias="observation_dolphin_mesures_g"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_G"
 			description="OBSERVATION_MESURES_DESC"
@@ -768,6 +825,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_h"
 			alias="observation_dolphin_mesures_h"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_H"
 			description="OBSERVATION_MESURES_DESC"
@@ -776,6 +834,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_i"
 			alias="observation_dolphin_mesures_i"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_I"
 			description="OBSERVATION_MESURES_DESC"
@@ -784,6 +843,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_j"
 			alias="observation_dolphin_mesures_j"
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_J"
 			description="OBSERVATION_MESURES_DESC"
@@ -792,7 +852,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_k"
 			alias="observation_dolphin_mesures_k"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_K"
 			description="OBSERVATION_MESURES_DESC"
@@ -801,7 +861,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_l"
 			alias="observation_dolphin_mesures_l"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_L"
 			description="OBSERVATION_MESURES_DESC"
@@ -810,7 +870,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_m"
 			alias="observation_dolphin_mesures_m"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_M"
 			description="OBSERVATION_MESURES_DESC"
@@ -819,7 +879,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_n"
 			alias="observation_dolphin_mesures_n"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_N"
 			description="OBSERVATION_MESURES_DESC"
@@ -828,7 +888,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_o"
 			alias="observation_dolphin_mesures_o"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_O"
 			description="OBSERVATION_MESURES_DESC"
@@ -837,7 +897,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_p"
 			alias="observation_dolphin_mesures_p"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_P"
 			description="OBSERVATION_MESURES_DESC"
@@ -846,7 +906,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_q"
 			alias="observation_dolphin_mesures_q"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_Q"
 			description="OBSERVATION_MESURES_DESC"
@@ -855,7 +915,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_r"
 			alias="observation_dolphin_mesures_r"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_R"
 			description="OBSERVATION_MESURES_DESC"
@@ -864,7 +924,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_s"
 			alias="observation_dolphin_mesures_s"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_S"
 			description="OBSERVATION_MESURES_DESC"
@@ -873,7 +933,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_t"
 			alias="observation_dolphin_mesures_t"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_T"
 			description="OBSERVATION_MESURES_DESC"
@@ -882,7 +942,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_u"
 			alias="observation_dolphin_mesures_u"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_U"
 			description="OBSERVATION_MESURES_DESC"
@@ -891,7 +951,7 @@
 			max="1000"/>
 	<field name="observation_dolphin_mesures_v"
 			alias="observation_dolphin_mesures_v"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DOLPHIN_MESURES_V"
 			description="OBSERVATION_MESURES_DESC"
@@ -902,7 +962,7 @@
 	<!--Dugong mesurements-->
 	<field name="observation_dugong_mesures_a"
 			alias="observation_dugong_mesures_a"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_A"
 			description="OBSERVATION_MESURES_DESC"
@@ -911,7 +971,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_b"
 			alias="observation_dugong_mesures_b"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_B"
 			description="OBSERVATION_MESURES_DESC"
@@ -920,7 +980,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_c"
 			alias="observation_dugong_mesures_c"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_C"
 			description="OBSERVATION_MESURES_DESC"
@@ -929,7 +989,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_d"
 			alias="observation_dugong_mesures_d"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_D"
 			description="OBSERVATION_MESURES_DESC"
@@ -938,7 +998,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_e"
 			alias="observation_dugong_mesures_e"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_E"
 			description="OBSERVATION_MESURES_DESC"
@@ -947,7 +1007,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_f"
 			alias="observation_dugong_mesures_f"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_F"
 			description="OBSERVATION_MESURES_DESC"
@@ -956,7 +1016,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_g"
 			alias="observation_dugong_mesures_g"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_G"
 			description="OBSERVATION_MESURES_DESC"
@@ -965,7 +1025,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_h"
 			alias="observation_dugong_mesures_h"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_H"
 			description="OBSERVATION_MESURES_DESC"
@@ -974,7 +1034,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_i"
 			alias="observation_dugong_mesures_i"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_I"
 			description="OBSERVATION_MESURES_DESC"
@@ -983,7 +1043,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_j"
 			alias="observation_dugong_mesures_j"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_J"
 			description="OBSERVATION_MESURES_DESC"
@@ -992,7 +1052,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_k"
 			alias="observation_dugong_mesures_k"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_K"
 			description="OBSERVATION_MESURES_DESC"
@@ -1001,7 +1061,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_l"
 			alias="observation_dugong_mesures_l"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_L"
 			description="OBSERVATION_MESURES_DESC"
@@ -1010,7 +1070,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_m"
 			alias="observation_dugong_mesures_m"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_M"
 			description="OBSERVATION_MESURES_DESC"
@@ -1019,7 +1079,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_n"
 			alias="observation_dugong_mesures_n"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_N"
 			description="OBSERVATION_MESURES_DESC"
@@ -1028,7 +1088,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_o"
 			alias="observation_dugong_mesures_o"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_O"
 			description="OBSERVATION_MESURES_DESC"
@@ -1037,7 +1097,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_p"
 			alias="observation_dugong_mesures_p"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_P"
 			description="OBSERVATION_MESURES_DESC"
@@ -1046,7 +1106,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_q"
 			alias="observation_dugong_mesures_q"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_Q"
 			description="OBSERVATION_MESURES_DESC"
@@ -1055,7 +1115,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_r"
 			alias="observation_dugong_mesures_r"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_R"
 			description="OBSERVATION_MESURES_DESC"
@@ -1064,7 +1124,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_s"
 			alias="observation_dugong_mesures_s"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_S"
 			description="OBSERVATION_MESURES_DESC"
@@ -1073,7 +1133,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_t"
 			alias="observation_dugong_mesures_t"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_T"
 			description="OBSERVATION_MESURES_DESC"
@@ -1082,7 +1142,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_u"
 			alias="observation_dugong_mesures_u"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_U"
 			description="OBSERVATION_MESURES_DESC"
@@ -1091,7 +1151,7 @@
 			max="1000"/>
 	<field name="observation_dugong_mesures_v"
 			alias="observation_dugong_mesures_v"
-			
+			class="form-control"
 			labelclass="control-label"
 			label="OBSERVATION_DUGONG_MESURES_V"
 			description="OBSERVATION_MESURES_DESC"
@@ -1102,29 +1162,35 @@
 	<!--Stockage location-->
 	<field name="observation_location_stock"
 			alias="observation_location_stock"
+			class="form-control"
 			label="OBSERVATION_LOCATION_STOCK"
 			labelclass="control-label"
 			description="OBSERVATION_LOCATION_STOCK_DESC"
+			hint="OBSERVATION_LOCATION_STOCK"
 			type="text"/>
 
-	<!--Remarks-->
-	<field 	name="remarks"
+	<field name="remarks"
 			alias="remarks"
+			class="form-control"
 			label="REMARKS"
 			filter="STRING"
 			description="REMARKS_DESC"
-			type="cktextarea"/>
+			hint="REMARKS_PL"
+			type="textarea"/>
 
-	<!--Admin validation-->
-	<field 	name="admin_validation"
+	<field name="admin_validation"
 			alias="admin_validation"
+			class="form-control"
 			label="ADMIN_VALIDATION"
 			labelclass="control-label"
 			description="ADMIN_VALIDATION_DESC"
-			type="checkbox"
-			required="true"/>
+			type="checkbox"/>
 
-
-
+	<!--<field name="captcha" 
+			type="captcha"
+            label="CAPTCHA"
+            description="CAPTCHA_DESC"
+            validate="captcha"
+            namespace="event"/>-->
 </fieldset>
 </form>
