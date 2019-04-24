@@ -93,6 +93,9 @@ $nanimals=1;
   .tab1 {
     display:block;
   }
+  .hidden {
+    display:none;
+  }
 
 </style>
 
@@ -158,11 +161,10 @@ $nanimals=1;
       js('.hasTooltip').each(function(){this.show = null; this.hide = null;});                 
     
       addMainListeners();
-      //addAnimalListeners(1);  
+      addAnimalListeners(1);  
       js('#jform_observation_number').change(function() {
         nanimals = this.value; 
         js('#global_animals').load(document.URL +  ' #global_animals',{"nanimals":""+this.value+""}, function() {
-          console.log(nanimals);
           for(var i=1;i<=nanimals;i++){
             addAnimalListeners(i);  
           }
@@ -170,20 +172,18 @@ $nanimals=1;
       });
      
     });
-    js('global_animals').ready(function(){
-      console.log(nanimals);
-      for(var i=1;i<=nanimals;i++){
-        addAnimalListeners(i);  
-      }
-    });
 });
 
 function addMainListeners(){
   document.getElementById('jform_observation_stranding_type').addEventListener("change", selectStrandingType, false);
+  document.getElementById('jform_observation_latitude').addEventListener("change", function(){convert_Lat_DMD(this.value);}, false);
+  document.getElementById('jform_observation_latitude').addEventListener("change", function(){convert_Lng_DMD(this.value);}, false);
 }
 
 function addAnimalListeners(animalID){
-  console.log('div_observation_clone'+animalID);
+  if(animalID===1){
+    document.getElementById('div_observation_clone1').querySelector('#observation_sp_always_the_same').addEventListener("change", function(){toogleSpeciesChoice();}, false);
+  } 
   document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_dead_or_alive').addEventListener("change", function(){selectDeadOrAlive(animalID);}, false);
   document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_alive').addEventListener("change", function(value){selectAlive(value,animalID);}, false);
   document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_tooth_or_baleen_or_defenses').addEventListener("change", function(value){selectToothOrBaleenOrDefenses(animalID);}, false);
@@ -195,6 +195,21 @@ function addAnimalListeners(animalID){
 function selectStrandingType(){
   document.getElementById('jform_observation_number').disabled=event.target.value==='en groupe'?false:true;
   document.getElementById('jform_observation_number').value=1;
+}
+
+function toogleSpeciesChoice(){
+  var isChecked = document.getElementById('div_observation_clone1').querySelector('#observation_sp_always_the_same').checked;
+  var cname = document.getElementById('div_observation_clone1').querySelector('#jform_observation_species_common_name').value;
+  var genus = document.getElementById('div_observation_clone1').querySelector('#jform_observation_species_genus').value;
+  var species = document.getElementById('div_observation_clone1').querySelector('#jform_observation_species').value;
+
+  for(var i=2;i<=nanimals;i++){
+    document.getElementById('div_observation_clone'+i).querySelector('#jform_observation_species_common_name').disabled=isChecked?true:false;
+    if(isChecked){
+      document.getElementById('div_observation_clone'+i).querySelector('#jform_observation_species_common_name').value=cname;
+      selectSpecies(i,cname);
+    }
+  }
 }
 
 function selectDeadOrAlive(animalID){
@@ -209,7 +224,7 @@ function selectAlive(value,animalID){
 }
 
 function selectToothOrBaleenOrDefenses(animalID){
-  displayBlock('tooth_field_'+animalID, event.target.value==='Dents'?true:false); 
+  displayBlock('tooth_field_'+animalID, event.target.value==='Dents'?true:false);
   displayBlock('baleen_field_'+animalID, event.target.value==='Fanons'?true:false);
 }
 
@@ -224,7 +239,7 @@ function selectPhotos(animalID){
 
 function selectSpecies(animalID,commonName) {
   let value = species.filter(val => val[1]===commonName) ? species.filter(val => val[1]===commonName)[0]:null;
-  if(value){
+  if(value){          
     document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_species_genus').value = value[2];
     document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_species').value = value[3];
 
@@ -239,6 +254,11 @@ function selectSpecies(animalID,commonName) {
       displayBlock('cetace_measures_'+animalID, false);
       displayBlock('dugong_measures_'+animalID, true);
     }
+
+    if(animalID===1 && document.getElementById('div_observation_clone1').querySelector('#observation_sp_always_the_same').checked){
+      toogleSpeciesChoice();
+    }
+
   }
 }
 
@@ -279,7 +299,7 @@ function convert_Lat_DMD(lat) {
 }
 
 // Fonction de conversion longitude en degré minute décimal
-function convert_Long_DMD(long){
+function convert_Lng_DMD(long){
   var long_dir, long_deg, long_min;
   long_dir = long >= 0 ? 'E' : 'W';
   // Garde la partie entière
@@ -307,6 +327,8 @@ function toogleAnimal(tabId,idn) {
     displayBlock("div_mesurements_"+idn, false);
     document.getElementById('caret_'+idn).className="fa fa-caret-right";
     document.getElementById('identification_'+idn).disabled = false;
+    document.getElementById('animal_'+idn).disabled = false;
+    document.getElementById('mesurements_'+idn).disabled = false;
   }
 }
 function displayTab(tabId,idn) {

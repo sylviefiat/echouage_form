@@ -31,8 +31,13 @@
       </div>
       <div class="row groups" id="<?php echo 'identification'.$n ?>">
         <!-- species common name-->
-        <div class="col-lg-12 col-md-12 col-xs-12">
+        <div class="<?php echo ($n===1 && $nanimals >1)? 'col-lg-4 col-md-4 col-xs-6':'col-lg-12 col-md-12 col-xs-12'; ?>">
           <?php echo $this->form->getLabel('observation_species_common_name'); ?>
+        </div>
+        <!-- species the same for all animals or not - only for animal one-->
+        <div class="<?php echo ($n===1 && $nanimals >1)? 'col-lg-8 col-md-8 col-xs-6':'hidden' ?>">
+          <input type="checkbox" id="observation_sp_always_the_same" name="observation_sp_always_the_same" value="<?php echo JText::_('COM_STRANDING_FORMS_VALUE_SP_IS_SAME'); ?>">
+          <label for="observation_sp_always_the_same"><?php echo JText::_('COM_STRANDING_FORMS_EDIT_SP_IS_SAME'); ?></label>
         </div>
         <div class="col-lg-6 col-md-6 col-xs-12">
           <div class="input-group">
@@ -173,6 +178,9 @@
               </div>
             </div>
           </div>
+        </div>        
+        <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+          <button onclick="displayTab('animal',<?php echo $n ?>)"><?php echo JText::_('NEXT');?> <span class="fa fa-arrow-right"></span></button>
         </div>
       </div>
     </div>
@@ -354,6 +362,9 @@
               </div>
             </div>
           </div>
+        </div>             
+        <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+          <button onclick="displayTab('mesurements',<?php echo $n ?>)"><?php echo JText::_('NEXT');?> <span class="fa fa-arrow-right"></span></button>
         </div>
       </div>
     </div>
@@ -734,8 +745,14 @@
                 <?php echo $this->form->getInput('remarks'); ?>
               </div>
             </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+              <button onclick="toogleAnimal('mesurements',<?php echo $n ?>)"><?php echo JText::_('CLOSE');?> <span class="fa fa-close"></span></button>
+            </div>
           </div>
+
         </div>
+
+        
       </div>
     </div>
   </div>
