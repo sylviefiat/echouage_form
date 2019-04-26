@@ -23,13 +23,13 @@ $nanimals=1;
 ?>
 
 <style>
-  #show_tail_fin_image {
+  .show_tail_fin_image {
     position: relative;
-    display: inline-block;
+    display: inline-block !important;
     border-bottom: 1px dotted black;
     cursor: help;
   }
-  #show_tail_fin_image .tail_fin_image {
+  .show_tail_fin_image .tail_fin_image {
     visibility: hidden;
     width: 288px;
     max-width: unset;
@@ -43,7 +43,7 @@ $nanimals=1;
     position: absolute;
     z-index: 1;
   }
-  #show_tail_fin_image:hover .tail_fin_image {
+  .show_tail_fin_image:hover .tail_fin_image {
     visibility: visible;    
   }
   .form-group ul {
@@ -61,6 +61,8 @@ $nanimals=1;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
   }
 
   /* Style the buttons that are used to open the tab content */
@@ -101,6 +103,7 @@ $nanimals=1;
 
 <script type="text/javascript">
   var nanimals = 1;
+  var animals = [];
   var species = [
         ['inconnu','','',''],
         ['inconnu','inconnu','',''],
@@ -135,7 +138,7 @@ $nanimals=1;
         ['dugong','Otarie à fourrure de Nouvelle-Zélande','Arctophoca','Australis forsteri']
   ];
 
-  function getScript(url,success) {
+  /*function getScript(url,success) {
     var script = document.createElement('script');
     script.src = url;
     var head = document.getElementsByTagName('head')[0],
@@ -152,28 +155,37 @@ $nanimals=1;
       }
     };
     head.appendChild(script);
-  }
-  getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',function() {
+  }*/
+
+  //getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',function() {
     js = jQuery.noConflict();   
     
     js(document).ready(function() {
       // fix tooltip conflict with mootools
-      js('.hasTooltip').each(function(){this.show = null; this.hide = null;});                 
-    
-      addMainListeners();
-      addAnimalListeners(1);  
-      js('#jform_observation_number').change(function() {
-        nanimals = this.value; 
+      js('.hasTooltip').each(function(){this.show = null; this.hide = null;});
+      js('.hasPopover').each(function(){this.show = null; this.hide = null;});
+     
+      //addMainListeners();
+      //addAnimalListeners(1);  
+      /*js('#jform_observation_number').change(function() {
+        maxN = nanimals < this.value ? nanimals : this.value;
+        nanimals = this.value;
+        saveAnimals(maxN);
         js('#global_animals').load(document.URL +  ' #global_animals',{"nanimals":""+this.value+""}, function() {
           for(var i=1;i<=nanimals;i++){
-            addAnimalListeners(i);  
-          }
+            addAnimalListeners(i);
+            if(i<=maxN){
+              loadAnimal(i);
+            }
+          }          
         });      
-      });
+      });*/
      
     });
-});
+  //});
 
+
+/*
 function addMainListeners(){
   document.getElementById('jform_observation_stranding_type').addEventListener("change", selectStrandingType, false);
   document.getElementById('jform_observation_latitude').addEventListener("change", function(){convert_Lat_DMD(this.value);}, false);
@@ -262,6 +274,39 @@ function selectSpecies(animalID,commonName) {
   }
 }
 
+function saveAnimals(nanimals){
+  for(i=1;i<=nanimals;i++){
+    saveAnimal(i,nanimals);
+  }
+}
+
+function saveAnimal(id,nanimals){
+  if(!animals[id]){
+    animals[id]=[];
+  }
+  if(id===1 && nanimals>1){
+    animals[id]['sp_same']=document.getElementById('div_observation_clone'+id).querySelector('#observation_sp_always_the_same').checked;
+  }    
+  console.log('div_observation_clone'+id);
+
+  animals[id]['species_common_name']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_common_name').value;
+  animals[id]['species_genus']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_genus').value;
+  animals[id]['species_species']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species').value;
+  console.log(document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_identification'));
+  animals[id]['species_species']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_identification').value;
+  console.log(animals);
+}
+
+function loadAnimal(id){
+  if(id===1 && nanimals>1){    
+    document.getElementById('div_observation_clone'+id).querySelector('#observation_sp_always_the_same').checked = animals[id]['sp_same'] ? animals[id]['sp_same'] : false;
+  }
+  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_common_name').value = animals[id]['species_common_name'];
+  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_genus').value = animals[id]['species_genus'];
+  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species').value = animals[id]['species_species'];
+  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_identification').value=animals[id]['species_species'];
+}
+
 function displayBlock(div, affiche) { 
   document.getElementById(div).style.display = affiche ? 'block' : 'none';
 }
@@ -313,7 +358,7 @@ function toogleInformant() {
   event.preventDefault();
   toggleContainer('informant_field');
   toggleContainer('informantShow');
-  toggleContainer('informantHide')
+  toggleContainer('informantHide');
 }
 
 function toogleAnimal(tabId,idn) {
@@ -331,17 +376,28 @@ function toogleAnimal(tabId,idn) {
     document.getElementById('mesurements_'+idn).disabled = false;
   }
 }
-function displayTab(tabId,idn) {
-  event.preventDefault();  
+function checkTab(tab,tabId,idn){
+  event.preventDefault(); 
+  var isValide = document.formvalidator.isValid(document.getElementById('div_'+tab+'_'+idn));
+  return isValide && tabId ? displayTab(tabId,idn):(isValide ? toogleAnimal(tab,idn):null);
+}
+function displayTab(tabId) {
+  event.preventDefault(); 
+  console.log(tabId);
   var tabs=['identification','animal','mesurements'];
-  if(document.getElementById('caret_'+idn).className.contains('fa-caret-right')){
+  /*if(document.getElementById('caret_'+idn).className.contains('fa-caret-right')){
     document.getElementById('caret_'+idn).className="fa fa-caret-down";
   }
   tabs.forEach(function(tab){
     displayBlock("div_"+tab+'_'+idn, tabId===tab ? true:false);
     document.getElementById(tab+'_'+idn).disabled = tabId===tab ? true:false;
-  })
+  });
 }
+/*function showMe(value){
+  event.preventDefault(); 
+  console.log("toto");
+  console.log(value);
+}*/
 
 </script>
 
@@ -353,7 +409,7 @@ function displayTab(tabId,idn) {
       <p class="card-subtitle mb-2 text-muted"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
     <?php endif; ?>
 
-    <form id="form-stranding_admin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+    <form id="formStrandingAdmin" name="formStrandingAdmin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
 
       <!--Contacts-->
       <div class="row labels">
@@ -508,11 +564,14 @@ function displayTab(tabId,idn) {
         </div>
       </div>
       <!------------FOR LOOP ON ANIMALS--------------->
-      <div class="row labels">
-        <div class="col-12"><h4 class="fa fa-flag fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ANIMAL_DETAILS'); ?></h4></div>
+      
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+          <?php echo $this->form->renderField('animal_form'); ?>
+        </div>
       </div>
-      <div id="global_animals">
-          <?php include 'observation.php' ?>         
+      <div id="global_animals">         
+          <?php include 'observation.php' ?>
       </div>
       
         <!------------END OF FOR LOOP--------------->

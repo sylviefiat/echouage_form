@@ -3,7 +3,7 @@
     $nanimals = $_POST['nanimals'];
   }
   for ($n = 1; $n <= $nanimals; $n++) { ?>
-  <span style="display: none;"><?php echo $this->form->getInput('id_observation'); ?></span>
+  <span style="display: none;"><?php echo $this->form->getInput('id_observation','animal-form','animal-form'.$n); ?></span>
   <script type="text/javascript">
     
   </script>
@@ -42,7 +42,7 @@
         <div class="col-lg-6 col-md-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-eye"></span></span>
-            <?php echo $this->form->getInput('observation_species_common_name'); ?>
+            <?php echo $this->form->getInput('observation_species_common_name','animal_form','animal_form'.$n); ?>
           </div>
         </div>
         <!--species genus-->
@@ -62,7 +62,7 @@
         <!--species identification-->
         <div class="col-lg-6 col-md-6 col-xs-12 sp_id">
           <div class="form-group">
-            <?php echo $this->form->getLabel('observation_species_identification'); ?>
+            <?php echo $this->form->getLabel('observation_species_identification','animal_formX','animal_form'); ?>
             <br/>
             <?php echo $this->form->getInput('observation_species_identification'); ?>
           </div>
@@ -80,7 +80,7 @@
           <div class="form-group">
             <?php echo $this->form->getLabel('observation_caudal'); ?>
             &nbsp;
-            <p id="show_tail_fin_image" name="Tail_Fin_Btn" value="Tail-Fin">
+            <p class="show_tail_fin_image" name="Tail_Fin_Btn" value="Tail-Fin">
               <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_SEE_TF_IMAGE'); ?>
               <img class="tail_fin_image" src="administrator/components/com_stranding_forms/assets/images/s_slot_tail_fin.png" title="<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TAIL_FIN')?>" />
             </p>
@@ -180,7 +180,7 @@
           </div>
         </div>        
         <div class="col-lg-12 col-md-12 col-xs-12 text-center">
-          <button onclick="displayTab('animal',<?php echo $n ?>)"><?php echo JText::_('NEXT');?> <span class="fa fa-arrow-right"></span></button>
+          <button onclick="checkTab('identification','animal',<?php echo $n ?>)"><?php echo JText::_('NEXT');?> <span class="fa fa-arrow-right"></span></button>
         </div>
       </div>
     </div>
@@ -364,7 +364,7 @@
           </div>
         </div>             
         <div class="col-lg-12 col-md-12 col-xs-12 text-center">
-          <button onclick="displayTab('mesurements',<?php echo $n ?>)"><?php echo JText::_('NEXT');?> <span class="fa fa-arrow-right"></span></button>
+          <button onclick="checkTab('animal','mesurements',<?php echo $n ?>)"><?php echo JText::_('NEXT');?> <span class="fa fa-arrow-right"></span></button>
         </div>
       </div>
     </div>
@@ -746,7 +746,7 @@
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-xs-12 text-center">
-              <button onclick="toogleAnimal('mesurements',<?php echo $n ?>)"><?php echo JText::_('CLOSE');?> <span class="fa fa-close"></span></button>
+              <button onclick="checkTab('mesurements',null,<?php echo $n ?>)"><?php echo JText::_('CLOSE');?> <span class="fa fa-close"></span></button>
             </div>
           </div>
 
