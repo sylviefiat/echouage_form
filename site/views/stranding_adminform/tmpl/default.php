@@ -52,7 +52,7 @@ $nanimals=1;
   .label_icon {
     padding:0px !important;
   }
-  .mesure_important {
+  .mesure_important label {
     background-color: #F68E76 !important;
     border: 2px solid #F36166 !important;
   }
@@ -97,6 +97,31 @@ $nanimals=1;
   }
   .hidden {
     display:none;
+  }
+  .mesures_div {
+    display: flex;
+    flex-flow: wrap;
+  }
+  .mesures_div label {
+    width: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555555;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-top:0;
+  }
+  .mesure_middle {
+    align-items:center;
+  }
+  .mesures {
+    float:right;
+    width: auto !important;
   }
 
 </style>
@@ -165,43 +190,61 @@ $nanimals=1;
       js('.hasTooltip').each(function(){this.show = null; this.hide = null;});
       js('.hasPopover').each(function(){this.show = null; this.hide = null;});
      
-      //addMainListeners();
-      //addAnimalListeners(1);  
-      /*js('#jform_observation_number').change(function() {
-        maxN = nanimals < this.value ? nanimals : this.value;
-        nanimals = this.value;
-        saveAnimals(maxN);
-        js('#global_animals').load(document.URL +  ' #global_animals',{"nanimals":""+this.value+""}, function() {
-          for(var i=1;i<=nanimals;i++){
-            addAnimalListeners(i);
-            if(i<=maxN){
-              loadAnimal(i);
-            }
-          }          
-        });      
-      });*/
+      addMainListeners();
+      addAnimalListeners();
+      
+      var subformNode = document.getElementsByClassName('subform-repeatable')[0];
+      // Options for the observer (which mutations to observe)
+      var config = { attributes: false, childList: true, subtree: false };
+      // Create an observer instance linked to the callback function
+      var observer = new MutationObserver(suformCallback);
+      // Start observing the target node for configured mutations
+      observer.observe(subformNode, config);
+
+      // Later, you can stop observing
+      //observer.disconnect();
      
     });
   //});
 
+  // Callback function to execute when mutations are observed
+  var suformCallback = function(mutationsList, observer) {
+    for(var mutation of mutationsList) {      
+      if (mutation.type == 'childList') {
+        addAnimalListeners();
+      }
+    }
+  }
 
-/*
-function addMainListeners(){
+function addMainListeners(){  
+  // Add listener to change number of animals depending on stranding type
   document.getElementById('jform_observation_stranding_type').addEventListener("change", selectStrandingType, false);
-  document.getElementById('jform_observation_latitude').addEventListener("change", function(){convert_Lat_DMD(this.value);}, false);
-  document.getElementById('jform_observation_latitude').addEventListener("change", function(){convert_Lng_DMD(this.value);}, false);
+  // Add observer on latitude and longitude hidden field setted by adresspicker plugin to display DMD values
+  // latitude
+  var observerLat = new MutationObserver(function(mutationsList, observer){
+    document.getElementById('jform_observation_latitude_dmd').value=convert_Lat_DMD(document.getElementById('jform_observation_latitude').value);
+  });
+  observerLat.observe(document.getElementById('jform_observation_latitude'), { attributes: true, childList: false, subtree: false });
+  // longitude
+  var observerLng = new MutationObserver(function(mutationsList, observer){
+    document.getElementById('jform_observation_longitude_dmd').value=convert_Lng_DMD(document.getElementById('jform_observation_longitude').value);
+  });
+  observerLng.observe(document.getElementById('jform_observation_longitude'), { attributes: true, childList: false, subtree: false });
 }
 
-function addAnimalListeners(animalID){
-  if(animalID===1){
-    document.getElementById('div_observation_clone1').querySelector('#observation_sp_always_the_same').addEventListener("change", function(){toogleSpeciesChoice();}, false);
-  } 
-  document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_dead_or_alive').addEventListener("change", function(){selectDeadOrAlive(animalID);}, false);
-  document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_alive').addEventListener("change", function(value){selectAlive(value,animalID);}, false);
-  document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_tooth_or_baleen_or_defenses').addEventListener("change", function(value){selectToothOrBaleenOrDefenses(animalID);}, false);
-  document.getElementById('div_observation_clone'+animalID).querySelector('#jform_sampling').addEventListener("change", function(){selectSampling(animalID);}, false);
-  document.getElementById('div_observation_clone'+animalID).querySelector('#jform_photos').addEventListener("change", function(){selectPhotos(animalID);}, false);
-  document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_species_common_name').addEventListener("change", function(){selectSpecies(animalID,this.value);}, false);
+function addAnimalListeners(){
+  // Add listener to set genus and species on common name selection
+  jQuery("select[name*='observation_species_common_name']").on('change',function(){
+    let animalID = this.id.replace( /[^\d.]/g, '' );
+    selectSpecies(animalID,this.value);
+  });
+  // Set image tooltip on caudal 
+  jQuery("label[id*='observation_caudal_label']").each(function(){
+    if(jQuery(this).find('.show_tail_fin_image').length<=0){
+      var str = "<p class='show_tail_fin_image' name='Tail_Fin_Btn' value='Tail-Fin'>&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_SEE_TF_IMAGE'); ?><img class='tail_fin_image' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/s_slot_tail_fin.png' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TAIL_FIN')?>'/></p>";
+      jQuery(this).append(str);
+    }
+  });
 }
 
 function selectStrandingType(){
@@ -209,103 +252,47 @@ function selectStrandingType(){
   document.getElementById('jform_observation_number').value=1;
 }
 
-function toogleSpeciesChoice(){
-  var isChecked = document.getElementById('div_observation_clone1').querySelector('#observation_sp_always_the_same').checked;
-  var cname = document.getElementById('div_observation_clone1').querySelector('#jform_observation_species_common_name').value;
-  var genus = document.getElementById('div_observation_clone1').querySelector('#jform_observation_species_genus').value;
-  var species = document.getElementById('div_observation_clone1').querySelector('#jform_observation_species').value;
-
-  for(var i=2;i<=nanimals;i++){
-    document.getElementById('div_observation_clone'+i).querySelector('#jform_observation_species_common_name').disabled=isChecked?true:false;
-    if(isChecked){
-      document.getElementById('div_observation_clone'+i).querySelector('#jform_observation_species_common_name').value=cname;
-      selectSpecies(i,cname);
-    }
-  }
-}
-
-function selectDeadOrAlive(animalID){
-  displayBlock('dead_field_'+animalID, event.target.value==='Mort'?true:false); 
-  displayBlock('alive_field_'+animalID, event.target.value==='Mort'?false:true);
-}
-
-function selectAlive(value,animalID){
-  if(value.target.checked !==undefined){
-    displayBlock('released_field_'+animalID, value.target.checked); 
-  }
-}
-
-function selectToothOrBaleenOrDefenses(animalID){
-  displayBlock('tooth_field_'+animalID, event.target.value==='Dents'?true:false);
-  displayBlock('baleen_field_'+animalID, event.target.value==='Fanons'?true:false);
-}
-
-function selectSampling(animalID){
-  displayBlock('stockage_location_field_'+animalID, event.target.value==='Oui'?true:false); 
-  displayBlock('label_references_field_'+animalID, event.target.value==='Oui'?true:false);
-}
-
-function selectPhotos(animalID){
-  displayBlock('upload_photos_field_'+animalID, event.target.value==='Oui'?true:false); 
-}
-
 function selectSpecies(animalID,commonName) {
+  //console.log(value);
   let value = species.filter(val => val[1]===commonName) ? species.filter(val => val[1]===commonName)[0]:null;
-  if(value){          
-    document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_species_genus').value = value[2];
-    document.getElementById('div_observation_clone'+animalID).querySelector('#jform_observation_species').value = value[3];
+  if(value){
+    // set genus and species values       
+    document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_species_genus').value = value[2];
+    document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_species').value = value[3];
+
+    // set mesurements images depending on animal type
+    var image1 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image1');
+    var image2 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image2');
+    var image3 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image3');
+    var image4 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image4');
+    var image5 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image5');
+    // group mesurements div to display next to corresponding image
+    var maindiv = image1.parentElement.parentElement;
+    jQuery(maindiv).find('.mesures_group1').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div'/>");
+    jQuery(maindiv).find('.mesures_group2').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div mesure_middle'/>");
+    jQuery(maindiv).find('.mesures_group3').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div mesure_middle'/>");
+    jQuery(maindiv).find('.mesures_group4').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div mesure_middle'/>");
+    jQuery(maindiv).find('.mesures_group5').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div mesure_middle'/>");
 
     if((species.filter(val=>val[0]==='inconnu').map(val => val[1]).includes(value[1]) ) ||
      (species.filter(val=>val[0]==='cetace').map(val => val[1]).includes(value[1]))) {
-      displayBlock('no_sp_selected_'+animalID,false);
-      displayBlock('cetace_measures_'+animalID, true);
-      displayBlock('dugong_measures_'+animalID, false);
+      image1.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_body.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
+      image2.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image2' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_pectoral_fin.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
+      image3.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image2' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_dorsal_fin.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
+      image4.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image2' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_tail_fin.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
+      image5.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image2' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_bacon_thickness.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
     }
     else if(species.filter(val=>val[0]==='dugong').map(val => val[1]).includes(value[1]) ) {
-      displayBlock('no_sp_selected_'+animalID,false);
-      displayBlock('cetace_measures_'+animalID, false);
-      displayBlock('dugong_measures_'+animalID, true);
+      image1.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_body.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
+      image2.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_facial_disck.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
+      image3.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_pectoral_fin.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
+      image4.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_tail_fin.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
+      image5.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_bacon_thickness.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
     }
 
-    if(animalID===1 && document.getElementById('div_observation_clone1').querySelector('#observation_sp_always_the_same').checked){
-      toogleSpeciesChoice();
-    }
-
   }
 }
 
-function saveAnimals(nanimals){
-  for(i=1;i<=nanimals;i++){
-    saveAnimal(i,nanimals);
-  }
-}
-
-function saveAnimal(id,nanimals){
-  if(!animals[id]){
-    animals[id]=[];
-  }
-  if(id===1 && nanimals>1){
-    animals[id]['sp_same']=document.getElementById('div_observation_clone'+id).querySelector('#observation_sp_always_the_same').checked;
-  }    
-  console.log('div_observation_clone'+id);
-
-  animals[id]['species_common_name']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_common_name').value;
-  animals[id]['species_genus']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_genus').value;
-  animals[id]['species_species']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species').value;
-  console.log(document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_identification'));
-  animals[id]['species_species']=document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_identification').value;
-  console.log(animals);
-}
-
-function loadAnimal(id){
-  if(id===1 && nanimals>1){    
-    document.getElementById('div_observation_clone'+id).querySelector('#observation_sp_always_the_same').checked = animals[id]['sp_same'] ? animals[id]['sp_same'] : false;
-  }
-  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_common_name').value = animals[id]['species_common_name'];
-  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_genus').value = animals[id]['species_genus'];
-  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species').value = animals[id]['species_species'];
-  document.getElementById('div_observation_clone'+id).querySelector('#jform_observation_species_identification').value=animals[id]['species_species'];
-}
 
 function displayBlock(div, affiche) { 
   document.getElementById(div).style.display = affiche ? 'block' : 'none';
@@ -316,22 +303,6 @@ function toggleContainer(name) {
   e.style.display = e.style.display === 'none' ? 'block' : 'none';
 }
 
-// Créer un(e) élément/balise dans un bloc
-function create_element(element, parent) {
-  var x = document.createElement(element);
-  x.className = "block_indices";
-  var x1 = document.getElementById(parent);
-  x1.appendChild(x);  
-}
-
-// Change la valeur présente dans l'élément
-function change_node_value(element, node) {
-  var e = document.getElementsByClassName(element);
-  for(var i = 0; i < e.length; i++) {
-    e[i].html(node);
-  }
-}
-
 // Fonction de conversion latitude en degré minute décimal
 function convert_Lat_DMD(lat) {
   var lat_dir, lat_deg, lat_min;
@@ -340,7 +311,7 @@ function convert_Lat_DMD(lat) {
   lat_deg = ( Math.abs( parseInt( lat ) ) );
   lat_min = ( Math.abs( ( Math.abs( lat ) - lat_deg ) * 60 ) );
   //    176 code ascci du degré. Ne garde que 3 décimales
-  return lat_deg +  '&deg;' + lat_min.toFixed(3) + '&apos;' + lat_dir;
+  return lat_deg +  '°' + lat_min.toFixed(3) + '\'' + lat_dir;
 }
 
 // Fonction de conversion longitude en degré minute décimal
@@ -351,53 +322,16 @@ function convert_Lng_DMD(long){
   long_deg = ( Math.abs( parseInt( long ) ) );
   long_min = ( Math.abs( ( Math.abs( long ) - long_deg ) * 60 ) );
   //    176 code ascci du degré. Ne garde que 3 décimales
-  return long_deg + '&deg;' + long_min.toFixed(3) +  '&apos;' + long_dir;
+  return long_deg + '°' + long_min.toFixed(3) +  '\'' + long_dir;
 }
 
-function toogleInformant() {
+function toggleInformant() {
   event.preventDefault();
   toggleContainer('informant_field');
   toggleContainer('informantShow');
   toggleContainer('informantHide');
 }
 
-function toogleAnimal(tabId,idn) {
-  event.preventDefault();
-  if(document.getElementById('caret_'+idn).className.contains('fa-caret-right')){
-    displayTab(tabId,idn);
-    document.getElementById('caret_'+idn).className="fa fa-caret-down";
-  } else {
-    displayBlock("div_identification_"+idn, false);
-    displayBlock("div_animal_"+idn, false);
-    displayBlock("div_mesurements_"+idn, false);
-    document.getElementById('caret_'+idn).className="fa fa-caret-right";
-    document.getElementById('identification_'+idn).disabled = false;
-    document.getElementById('animal_'+idn).disabled = false;
-    document.getElementById('mesurements_'+idn).disabled = false;
-  }
-}
-function checkTab(tab,tabId,idn){
-  event.preventDefault(); 
-  var isValide = document.formvalidator.isValid(document.getElementById('div_'+tab+'_'+idn));
-  return isValide && tabId ? displayTab(tabId,idn):(isValide ? toogleAnimal(tab,idn):null);
-}
-function displayTab(tabId) {
-  event.preventDefault(); 
-  console.log(tabId);
-  var tabs=['identification','animal','mesurements'];
-  /*if(document.getElementById('caret_'+idn).className.contains('fa-caret-right')){
-    document.getElementById('caret_'+idn).className="fa fa-caret-down";
-  }
-  tabs.forEach(function(tab){
-    displayBlock("div_"+tab+'_'+idn, tabId===tab ? true:false);
-    document.getElementById(tab+'_'+idn).disabled = tabId===tab ? true:false;
-  });
-}
-/*function showMe(value){
-  event.preventDefault(); 
-  console.log("toto");
-  console.log(value);
-}*/
 
 </script>
 
@@ -518,12 +452,7 @@ function displayTab(tabId) {
           <div class="input-group">
             <span class="input-group-addon">Lat</span>
             <?php echo $this->form->getInput('observation_latitude'); ?>
-          </div>
-        </div>
-        <div id="lat_dmd" class="col-md-6 col-md-6 col-xs-12" style="display: none;">
-          <div class="input-group">
-            <span class="input-group-addon"></span>
-            <?php echo $this->form->getInput('observation_latitude_dmd'); ?>
+            <?php echo $this->form->getInput('observation_latitude_dmd'); ?>            
           </div>
         </div>
         <div class="col-md-6 col-md-6 col-xs-12">
@@ -536,11 +465,6 @@ function displayTab(tabId) {
           <div class="input-group">
             <span class="input-group-addon">Lon</span>
             <?php echo $this->form->getInput('observation_longitude'); ?>
-          </div>
-        </div>
-        <div id="lng_dmd" class="col-md-6 col-md-6 col-xs-12" style="display: none;">
-          <div class="input-group">
-            <span class="input-group-addon"></span>
             <?php echo $this->form->getInput('observation_longitude_dmd'); ?>
           </div>
         </div>
@@ -570,9 +494,7 @@ function displayTab(tabId) {
           <?php echo $this->form->renderField('animal_form'); ?>
         </div>
       </div>
-      <div id="global_animals">         
-          <?php include 'observation.php' ?>
-      </div>
+     
       
         <!------------END OF FOR LOOP--------------->
             <!--Admin validation-->
