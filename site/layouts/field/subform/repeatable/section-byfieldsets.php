@@ -31,6 +31,10 @@ $sublayout = 'renderfield';
 	width: 100%;
 	flex-flow:wrap;
 }
+.closeTab {
+	
+	font-size: 1em;
+}
 </style>
 <script type="text/javascript">	
 	function displayTab(tabId,id) {
@@ -43,7 +47,12 @@ $sublayout = 'renderfield';
 		  			} else {
 		  				jQuery(value).show();
 		  			}
-		  		})
+		  		});
+  			}
+  			if(tabId==="none"){
+  				jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-right";
+  			} else {
+  				jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-down";
   			}
   		});
 	}
@@ -54,7 +63,7 @@ $sublayout = 'renderfield';
 	<?php if (!empty($buttons)) : ?>
 	<div class="tab btn-toolbar">
 		<div class="">			
-			<button onclick="displayTab('none',getID(this.parentElement.parentElement.parentElement))">Animal</button>
+			<button onclick="displayTab('none',getID(this.parentElement.parentElement.parentElement))"><span class="animalID"></span><span class="closeTab fa fa-caret-right"></span></button>
 			<?php foreach ($form->getFieldsets() as $fieldset) : ?>		
 				<?php if (!empty($fieldset->label)) : ?>			
 					<button onclick="displayTab('<?php echo $fieldset->label; ?>',getID(this.parentElement.parentElement.parentElement))"><?php echo JText::_($fieldset->label); ?></button>

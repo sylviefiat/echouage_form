@@ -91,13 +91,22 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 	 */
 	public function getItem($pk = null)
 	{
+		//JFactory::getApplication()->enqueueMessage($pk);
 		if ($item = parent::getItem($pk)) {
-
+			//JFactory::getApplication()->enqueueMessage($item->id);
+			$item->animal_form = $this->getAnimalFormTable($item->id);
 			//Do any procesing on fields here if needed
 			
 		}
 
 		return $item;
+	}
+
+	private function getAnimalFormTable($id) {
+	    $model = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+	    $table = $model->getTable('Stranding_animal', 'Stranding_formsTable');
+	    return $table->loadByStrandingId($id);
+	    /**/
 	}
 
 	/**
@@ -120,6 +129,20 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 			}
 
 		}
+	}
+
+	public function save($data) {
+	    $this->saveStrandingAnimalTableData($data);
+	    parent::save($data);
+	}
+
+	private function saveStrandingAnimalTableData($data) {
+		JFactory::getApplication()->enqueueMessage('saving animal');
+	    $model = ModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+	    $table = $model->getTable('Stranding_animal', 'Stranding_formsModel');
+	    $table->bind($data->animal_form);
+	    $table->store();
+	    parent::save($data);
 	}
 
 }

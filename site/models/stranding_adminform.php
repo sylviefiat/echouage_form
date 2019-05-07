@@ -39,15 +39,16 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
             $id = JFactory::getApplication()->input->get('id');
             JFactory::getApplication()->setUserState('com_stranding_forms.edit.stranding_admin.id', $id);
         }
+       
 		$this->setState('stranding_admin.id', $id);
 
 		// Load the parameters.
-        $params = $app->getParams();
+        /*$params = $app->getParams();
         $params_array = $params->toArray();
         if(isset($params_array['item_id'])){
             $this->setState('stranding_admin.id', $params_array['item_id']);
         }
-		$this->setState('params', $params);
+		$this->setState('params', $params);*/
 
 	}
         
@@ -61,23 +62,24 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	 */
 	public function &getData($id = null)
 	{
+        
+       // JFactory::getApplication()->enqueueMessage($id);
 		if ($this->_item === null)
 		{
 			$this->_item = false;
 
 			if (empty($id)) {
-				$id = $this->getState('stranding_admin.id');
+				$id = $this->getState('stranding_admin.id');                
 			}
-
 			// Get a level row instance.
 			$table = $this->getTable();
-
 			// Attempt to load the row.
 			if ($table->load($id))
 			{
-                
+                //JFactory::getApplication()->enqueueMessage($id);
                 $user = JFactory::getUser();
                 $id = $table->id;
+                //JFactory::getApplication()->enqueueMessage($id);
                 $canEdit = $user->authorise('core.edit', 'com_stranding_forms') || $user->authorise('core.create', 'com_stranding_forms');
                 if (!$canEdit && $user->authorise('core.edit.own', 'com_stranding_forms')) {
                     $canEdit = $user->id == $table->created_by;
@@ -93,18 +95,25 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 					if ($table->state != $published) {
 						return $this->_item;
 					}
-				}
+				}                
 
 				// Convert the JTable to a clean JObject.
 				$properties = $table->getProperties(1);
 				$this->_item = JArrayHelper::toObject($properties, 'JObject');
+                //JFactory::getApplication()->enqueueMessage($id);
+                $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
 			} elseif ($error = $table->getError()) {
 				$this->setError($error);
 			}
 		}
-
 		return $this->_item;
 	}
+
+    private function getAnimalFormData($id) {            
+        $table1 = $this->getTable('Stranding_animal', 'Stranding_formsTable');
+        return $table1->loadByStrandingId($id);
+    }
+
     
 	public function getTable($type = 'Stranding_admin', $prefix = 'Stranding_formsTable', $config = array())
 	{   
@@ -204,7 +213,8 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	protected function loadFormData()
 	{
 		$data = JFactory::getApplication()->getUserState('com_stranding_forms.edit.stranding_admin.data', array());
-        if (empty($data)) {
+        
+        if (empty($data)) {            
             $data = $this->getData();
         }
         
@@ -244,6 +254,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         }
         
         $table = $this->getTable();
+        
         if ($table->save($data) === true) {
 	    $id=$table->get('id');
             return $id;

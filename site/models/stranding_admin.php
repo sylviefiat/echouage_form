@@ -54,6 +54,7 @@ class Stranding_formsModelStranding_admin extends JModelItem {
      * @return	mixed	Object on success, false on failure.
      */
     public function &getData($id = null) {
+
         if ($this->_item === null) {
             $this->_item = false;
 

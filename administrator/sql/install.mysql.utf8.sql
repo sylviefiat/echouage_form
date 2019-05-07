@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`created_by` INT(11)  NOT NULL ,
 	`observation_country_code` VARCHAR(100) NOT NULL,
 	`admin_validation` BOOLEAN NOT NULL default 0,
-	PRIMARY KEY (`id`)) DEFAULT COLLATE=utf8_general_ci;
+	PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__stranding_animal` (
 	`observation_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -93,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `#__stranding_animal` (
 	`observation_location_stock` VARCHAR(250) NOT NULL,
 	`remarks` TEXT NOT NULL,
 	PRIMARY KEY (`observation_id`)/*,
-	FOREIGN KEY (stranding_id) REFERENCES `#__stranding_admin` (id))*/
-DEFAULT COLLATE=utf8_general_ci;
+	FOREIGN KEY (stranding_id) REFERENCES `#__stranding_admin` (id)*/)
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 	 
 
 
