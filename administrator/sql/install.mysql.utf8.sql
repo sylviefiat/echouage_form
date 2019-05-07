@@ -24,6 +24,15 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`observation_commune` VARCHAR(100) NOT NULL,
 	`observation_stranding_type` VARCHAR(100) NOT NULL,
 	`observation_number` VARCHAR(100)  NOT NULL,
+	`localisation` POINT NOT NULL ,
+	`created_by` INT(11)  NOT NULL ,
+	`observation_country_code` VARCHAR(100) NOT NULL,
+	`admin_validation` BOOLEAN NOT NULL default 0,
+	PRIMARY KEY (`id`)) DEFAULT COLLATE=utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `#__stranding_animal` (
+	`observation_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`stranding_id` int(11) UNSIGNED NOT NULL,
 	`observation_species_common_name` VARCHAR(100) NOT NULL,
 	`observation_species_genus` VARCHAR(100) NOT NULL,
 	`observation_species` VARCHAR(100) NOT NULL,
@@ -83,11 +92,10 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`observation_dugong_mesures_u` VARCHAR(100) NOT NULL,`observation_dugong_mesures_v` VARCHAR(100) NOT NULL,
 	`observation_location_stock` VARCHAR(250) NOT NULL,
 	`remarks` TEXT NOT NULL,
-	`localisation` POINT NOT NULL ,
-	`created_by` INT(11)  NOT NULL ,
-	`observation_country_code` VARCHAR(100) NOT NULL,
-	`admin_validation` BOOLEAN NOT NULL default 0,
-	PRIMARY KEY (`id`)) DEFAULT COLLATE=utf8_general_ci;
+	PRIMARY KEY (`observation_id`)/*,
+	FOREIGN KEY (stranding_id) REFERENCES `#__stranding_admin` (id))*/
+DEFAULT COLLATE=utf8_general_ci;
+	 
 
 
 CREATE TRIGGER `#__trig_stranding_admin_insert` BEFORE INSERT ON `#__stranding_admin`
@@ -97,54 +105,4 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 CREATE TRIGGER `#__trig_stranding_admin_update` BEFORE UPDATE ON `#__stranding_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),
 				 NEW.id_location = NEW.id;
-
-/*CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_location_insert` AFTER INSERT ON `#__stranding_admin`
-FOR EACH ROW SET OLD.id_location = OLD.id_location + 1;
-
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_location_update` AFTER UPDATE ON `#__stranding_admin`
-FOR EACH ROW SET OLD.id_location = OLD.id_location + 1;*/
-
-/*
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_insert` AFTER INSERT ON `#__users`
-FOR EACH ROW
-BEGIN
-	DECLARE x INTEGER;
-	IF (NEW.observation_number > 1) THEN
-		SET x = 1;
-		WHILE x <= NEW.observation_number DO
-			UPDATE `#__stranding_admin`
-			SET id_location = NEW.id_location + x
-			SET x = x+1;
-		END WHILE;
-		WHERE id = NEW.id;
-	END IF;
-END;
-
-CREATE TRIGGER `#__trig_stranding_admin_icrement_observation_update` AFTER UPDATE ON `#__users`
-FOR EACH ROW
-BEGIN
-	DECLARE x INTEGER;
-	IF (NEW.observation_number > 1) THEN
-		SET x = 1;
-		WHILE x <= NEW.observation_number DO
-			UPDATE `#__stranding_admin`
-			SET id_location = NEW.id_location + x
-			SET x = x+1;
-		END WHILE;
-		WHERE id = NEW.id;
-	END IF;
-END;*/
-	 
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -23,17 +23,8 @@
 			description="ID_LOCATION_DESC"
 			readonly="true"
 			type="cktext"/>
-
-	<!--Observation_ID-->
-	<field name="id_observation"
-			alias="id_observation"
-			class="form-control"
-			label="ID_OBSERVATION"
-			filter="INT"
-			description="ID_OBSERVATION_DESC"
-			readonly="true"
-			type="cktext"/>
-
+	
+<fieldset name="contacts" label="Contacts">
 	<!--Observer contacts-->
 	<field name="observer_name"
 			alias="observer_name"
@@ -98,6 +89,9 @@
 			description="INFORMANT_EMAIL_DESC"
 			hint="INFORMANT_EMAIL"
 			type="email"/>
+</fieldset>
+
+<fieldset name="circunstances" label="Circunstances">
 
 	<!--Date-->
 	<field name="observation_datetime"
@@ -108,113 +102,7 @@
 			hint="OBSERVATION_DATE"
 			type="ckcalendar"
             default="NOW"
-            format="Y-m-d"/>
-
-	<!--Hours-->
-	<field name="observation_hours"
-			alias="observation_hours"
-			class="form-control"
-			label="OBSERVTION_HOURS"
-			labelclass="control-label"
-			description="OBSERVTION_HOURS_DESC"
-			type="list">
-			<option value="">--</option>
-			<option value="00">H0</option>
-			<option value="01">H1</option>
-			<option value="02">H2</option>
-			<option value="03">H3</option>
-			<option value="04">H4</option>
-			<option value="05">H5</option>
-			<option value="06">H6</option>
-			<option value="07">H7</option>
-			<option value="08">H8</option>
-			<option value="09">H9</option>
-			<option value="10">H10</option>
-			<option value="11">H11</option>
-			<option value="12">H12</option>
-			<option value="13">H13</option>
-			<option value="14">H14</option>
-			<option value="15">H15</option>
-			<option value="16">H16</option>
-			<option value="17">H17</option>
-			<option value="18">H18</option>
-			<option value="19">H19</option>
-			<option value="20">H20</option>
-			<option value="21">H21</option>
-			<option value="22">H22</option>
-			<option value="23">H23</option>
-	</field>
-
-	<!--Minutes-->
-	<field name="observation_minutes"
-			alias="observation_minutes"
-			class="form-control"
-			label="OBSERVTION_MINUTES"
-			labelclass="control-label"
-			description="OBSERVTION_MINUTES_DESC"
-			type="list">
-			<option value="">--</option>
-			<option value="00">M0</option>
-			<option value="01">M1</option>
-			<option value="02">M2</option>
-			<option value="03">M3</option>
-			<option value="04">M4</option>
-			<option value="05">M5</option>
-			<option value="06">M6</option>
-			<option value="07">M7</option>
-			<option value="08">M8</option>
-			<option value="09">M9</option>
-			<option value="10">M10</option>
-			<option value="11">M11</option>
-			<option value="12">M12</option>
-			<option value="13">M13</option>
-			<option value="14">M14</option>
-			<option value="15">M15</option>
-			<option value="16">M16</option>
-			<option value="17">M17</option>
-			<option value="18">M18</option>
-			<option value="19">M19</option>
-			<option value="20">M20</option>
-			<option value="21">M21</option>
-			<option value="22">M22</option>
-			<option value="23">M23</option>
-			<option value="24">M24</option>
-			<option value="25">M25</option>
-			<option value="26">M26</option>
-			<option value="27">M27</option>
-			<option value="28">M28</option>
-			<option value="29">M29</option>
-			<option value="30">M30</option>
-			<option value="31">M31</option>
-			<option value="32">M32</option>
-			<option value="33">M33</option>
-			<option value="34">M34</option>
-			<option value="35">M35</option>
-			<option value="36">M36</option>
-			<option value="37">M37</option>
-			<option value="38">M38</option>
-			<option value="39">M39</option>
-			<option value="40">M40</option>
-			<option value="41">M41</option>
-			<option value="42">M42</option>
-			<option value="43">M43</option>
-			<option value="44">M44</option>
-			<option value="45">M45</option>
-			<option value="46">M46</option>
-			<option value="47">M47</option>
-			<option value="48">M48</option>
-			<option value="49">M49</option>
-			<option value="50">M50</option>
-			<option value="51">M51</option>
-			<option value="52">M52</option>
-			<option value="53">M53</option>
-			<option value="54">M54</option>
-			<option value="55">M55</option>
-			<option value="56">M56</option>
-			<option value="57">M57</option>
-			<option value="58">M58</option>
-			<option value="59">M59</option>
-	</field>
+            format="Y-m-d"/>	
 
 	<!--Position-->
 	<field name="observation_location"
@@ -231,7 +119,8 @@
 			description="OBSERVATION_PICK_DESC"
 			filter="STRING"
 			class="formatted_address form-control"
-			type="ckaddresspicker"/>
+			type="ckaddresspicker"
+			required="true"/>
 	<field name="observation_region"
 			alias="region"
 			label="OBSERVATION_REGION"
@@ -256,7 +145,8 @@
 			filter="STRING"
 			class="country_code form-control"
 			hint="OBSERVATION_COUNTRY_CODE"
-			type="text"/>
+			type="text"/>	
+					
 	<field name="observation_latitude"
 			alias="latitude"
 			label="OBSERVATION_LATITUDE"
@@ -264,14 +154,14 @@
 			filter="FLOAT"
 			class="latitude form-control"
 			hint="OBSERVATION_LATITUDE"
-			type="text"/>
+			type="hidden"/>
 	<field name="observation_latitude_dmd"
 			alias="latitude_dmd"
 			label="OBSERVATION_LATITUDE_DMD"
 			description="OBSERVATION_LATITUDE_DMD_DESC"
 			filter="FLOAT"
 			class="latitude_dmd form-control"
-			hint="OBSERVATION_LATITUDE_DMD"
+			hint="OBSERVATION_LATITUDE"
 			type="text"/>
 	<field name="observation_longitude"
 			alias="longitude"
@@ -280,12 +170,12 @@
 			hint="OBSERVATION_LONGITUDE"
 			filter="FLOAT"
 			class="longitude form-control"
-			type="text"/>
+			type="hidden"/>
 	<field name="observation_longitude_dmd"
 			alias="longitude_dmd"
 			label="OBSERVATION_LONGITUDE_DMD"
 			description="OBSERVATION_LONGITUDE_DMD_DESC"
-			hint="OBSERVATION_LONGITUDE_DMD"
+			hint="OBSERVATION_LONGITUDE"
 			filter="FLOAT"
 			class="longitude_dmd form-control"
 			type="text"/>
@@ -312,15 +202,47 @@
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
 			type="number"
+			showon="observation_stranding_type!:isolé"
 			min="1"
 			max="1000"
 			disabled="true"/>
+</fieldset>
+
+<field
+	name="animal_form"
+	type="subform"
+	label="COM_STRANDING_FORMS_EDIT_ITEM_ANIMAL_DETAILS"
+	description="Animal Fields"
+	layout="field/subform/repeatable"
+	multiple="true"
+	groupByFieldset="true"
+	min="1"
+	max="50"
+	>
+	<form>
+	<fieldset name="identification" label="Identification">
+		<!--Observation_ID-->
+		<field name="id_observation"
+			alias="id_observation"
+			label="ID_OBSERVATION"
+			hiddenLabel="true"
+			filter="INT"
+			description="ID_OBSERVATION_DESC"
+			readonly="true"
+			type="hidden"/>
 
 	<!--Species common name-->
-	 <field name="observation_species_common_name" alias="observation_species_common_name" class="form-control"
-			 label="OBSERVATION_SPECIES_COMMON_NAME_LABEL" description="OBSERVATION_SPECIES_COMMON_NAME_DESC"
-			 hint="OBSERVATION_SPECIES_COMMON_NAME" labelclass="control-label" trigger="true" content-type="choices"
-			 type="groupedlist" target="observation_species_genus">
+	 	<field name="observation_species_common_name" 
+	 		alias="observation_species_common_name" 
+			label="OBSERVATION_SPECIES_COMMON_NAME_LABEL" 
+			description="OBSERVATION_SPECIES_COMMON_NAME_DESC"
+			hint="OBSERVATION_SPECIES_COMMON_NAME" 
+			labelclass="col-lg-6 col-md-6 col-xs-12" 
+			trigger="true" 
+			content-type="choices"
+			type="groupedlist" 
+			target="observation_species_genus"
+			required="true">
 			 <option value="">SPECIES_COMMON_NAME_0</option>
 			 <option value="inconnu">SPECIES_UNKNOWN</option>
 			 <group label="SPECIES_COMMON_NAME_CETACES_ODONTOCETES">
@@ -360,12 +282,12 @@
 			<group label="SPECIES_COMMON_NAME_SEA_LION">
 				<option value="Otarie à fourrure de Nouvelle-Zélande">SPECIES_COMMON_NAME_29</option>
 			</group>	
-	</field>
+		</field>
 
-	<!--Species genus-->
-	<field name="observation_species_genus"
+		<!--Species genus-->
+		<field name="observation_species_genus"
 			alias="observation_species_genus"
-			class="form-control"
+			labelclass="col-lg-3 col-md-3 col-xs-3"
 			label="OBSERVATION_SPECIES_GENUS_LABEL"
 			filter="STRING"
 			description="OBSERVATION_SPECIES_GENUS_DESC"
@@ -373,10 +295,10 @@
 			readonly="true"
 			type="text"/>
 
-	<!--Species species-->
-	<field name="observation_species"
+		<!--Species species-->
+		<field name="observation_species"
 			alias="observation_species"
-			class="form-control"
+			labelclass="col-lg-3 col-md-3 col-xs-3"
 			label="OBSERVATION_SPECIES_LABEL"
 			filter="STRING"
 			description="OBSERVATION_SPECIES_DESC"
@@ -384,22 +306,33 @@
 			readonly="true"
 			type="text"/>
 
-	<!--Species identification-->
-	<field name="observation_species_identification"
+		<!--Species identification-->
+		<field name="observation_species_identification"
 			alias="observation_species_identification"
 			class="btn-group"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_SPECIES_IDENTIFICATION"
 			description="OBSERVATION_SPECIES_IDENTIFICATION_DESC"
 			type="radio">
 			<option value="probable">OBSERVATION_SPECIES_IDENTIFICATION_A</option>
 			<option value="certain">OBSERVATION_SPECIES_IDENTIFICATION_B</option>
 			<option value="inconnu">OBSERVATION_SPECIES_IDENTIFICATION_C</option>
-	</field>
+		</field>		
 
-	<!--Sex-->
-	<field name="observation_sex"
+		<!--Color-->
+		<field name="observation_color"
+			alias="observation_color"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+			label="OBSERVATION_COLOR"
+			description="OBSERVATION_COLOR_DESC"
+			hint="OBSERVATION_COLOR"
+			type="text"/>
+
+		<!--Sex-->
+		<field name="observation_sex"
 			alias="observation_sex"
 			class="btn-group"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_SEX"
 			description="OBSERVATION_SEX_DESC"
 			type="radio"
@@ -407,140 +340,142 @@
 			<option value="M">OBSERVATION_SEX_A</option>
 			<option value="F">OBSERVATION_SEX_B</option>
 			<option value="inconnu">OBSERVATION_SEX_C</option>
-	</field>
+		</field>
 
-	<!--Color-->
-	<field name="observation_color"
-			alias="observation_color"
-			class="form-control"
-			label="OBSERVATION_COLOR"
-			labelclass="control-label"
-			description="OBSERVATION_COLOR_DESC"
-			hint="OBSERVATION_COLOR"
-			type="text"/>
-
-	<!--Encoche médiane à la caudale-->
-	<field name="observation_caudal"
+		<!--Encoche médiane à la caudale-->
+		<field name="observation_caudal"
 			alias="observation_caudal"
-			class="btn-group"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_CAUDAL"
 			description="OBSERVATION_CAUDAL_DESC"
 			type="radio"
 			required="true" >
-			<option value="présente">OBSERVATION_CAUDAL_A</option>
+			<option value="presente">OBSERVATION_CAUDAL_A</option>
 			<option value="absente">OBSERVATION_CAUDAL_B</option>
 			<option value="absente">OBSERVATION_CAUDAL_C</option>
-	</field>
+		</field>
 
-	<!--Beak or Furrows-->
-	<field name="observation_beak_or_furrows"
+		<!--Beak or Furrows-->
+		<field name="observation_beak_or_furrows"
 			alias="observation_beak_or_furrows"
 			class="btn-group"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="OBSERVATION_BEAK_OR_FURROWS"
 			description="OBSERVATION_BEAK_OR_FURROWS_DESC"
 			type="checkboxes"
 			multiple="true">
-			<option value="Bec">OBSERVATION_BEAK</option>
-			<option value="Sillons sous la gorge">OBSERVATION_FURROWS</option>
-	</field>
+			<option value="bec">OBSERVATION_BEAK</option>
+			<option value="sillons">OBSERVATION_FURROWS</option>
+		</field>
 
-	<!--Tooth, Baleen or Defenses-->
-	<field name="observation_tooth_or_baleen_or_defenses"
+		<!--Tooth, Baleen or Defenses-->
+		<field name="observation_tooth_or_baleen_or_defenses"
 			alias="observation_tooth_or_baleen_or_defenses"
 			class="btn-group"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
 			type="radio"
 			required="true">
-			<option value="Dents" >OBSERVATION_TOOTH</option>
-			<option value="Fanons" >OBSERVATION_BALEEN</option>
-			<option value="Défenses" >OBSERVATION_DEFENSES</option>
-	</field>
+			<option value="dents" >OBSERVATION_TOOTH</option>
+			<option value="baleen" >OBSERVATION_BALEEN</option>
+			<option value="defenses" >OBSERVATION_DEFENSES</option>
+		</field>
 
-	<!--Tooth-->
-	<field name="nb_teeth_upper_right"
-			 alias="nb_teeth_upper_right"
-			 class="form-control"
-			 label="OBSERVATION_UPPER_RIGHT"
-			 description="OBSERVATION_UPPER_RIGHT_DESC"
-			 hint="OBSERVATION_UPPER_RIGHT"
-			 labelclass="control-label"
-			 type="number"
-			 max="1000"/>
-	<field name="nb_teeth_upper_left"
-			 alias="nb_teeth_upper_left"
-			 class="form-control"
-			 label="OBSERVATION_UPPER_LEFT"
-			 description="OBSERVATION_UPPER_LEFT_DESC"
-			 hint="OBSERVATION_UPPER_LEFT"
-			 labelclass="control-label"
-			 type="number"
-			 max="1000"/>
-	<field name="nb_teeth_lower_right"
-			 alias="nb_teeth_lower_right"
-			 class="form-control"
-			 label="OBSERVATION_LOWER_RIGHT"
-			 description="OBSERVATION_LOWER_RIGHT_DESC"
-			 hint="OBSERVATION_LOWER_RIGHT"
-			 labelclass="control-label"
-			 type="number"
-			 max="1000"/>
-	<field name="nb_teeth_lower_left"
-			 alias="nb_teeth_lower_left"
-			 class="form-control"
-			 label="OBSERVATION_LOWER_LEFT"
-			 description="OBSERVATION_LOWER_LEFT_DESC"
-			 hint="OBSERVATION_LOWER_LEFT"
-			 labelclass="control-label"
-			 type="number"
-			 max="1000"/>
-	<field name="observation_teeth_base_diametre"
-			alias="observation_teeth_base_diametre"
-			class="form-control"
-			label="OBSERVATION_BASE_DIAMETRE_LBL"
-			labelclass="control-label"
-			description="OBSERVATION_BASE_DIAMETRE_DESC"
-			hint="OBSERVATION_BASE_DIAMETRE_LBL"
-			type="number"
-			step="0.01"
-			max="1000"/>
+		<!--Tooth-->			
+			<field name="nb_teeth_upper_left"
+				 alias="nb_teeth_upper_left"
+				 label="OBSERVATION_UPPER_LEFT"
+				 description="OBSERVATION_UPPER_LEFT_DESC"
+				 hint="OBSERVATION_UPPER_LEFT"
+				 labelclass="col-lg-6 col-md-6 col-xs-12"
+				 type="number"
+				 max="1000"
+				 showon="observation_tooth_or_baleen_or_defenses:dents"
+			/>
+			<field name="nb_teeth_upper_right"
+				 alias="nb_teeth_upper_right"				 
+				 label="OBSERVATION_UPPER_RIGHT"
+				 description="OBSERVATION_UPPER_RIGHT_DESC"
+				 hint="OBSERVATION_UPPER_RIGHT"
+				 labelclass="col-lg-6 col-md-6 col-xs-12"
+				 type="number"
+				 max="1000"
+				 showon="observation_tooth_or_baleen_or_defenses:dents"
+			/>
+			<field name="nb_teeth_lower_left"
+				 alias="nb_teeth_lower_left"
+				 label="OBSERVATION_LOWER_LEFT"
+				 description="OBSERVATION_LOWER_LEFT_DESC"
+				 hint="OBSERVATION_LOWER_LEFT"
+				 labelclass="col-lg-6 col-md-6 col-xs-12"
+				 type="number"
+				 max="1000"
+				 showon="observation_tooth_or_baleen_or_defenses:dents"
+			/>
+			<field name="nb_teeth_lower_right"
+				 alias="nb_teeth_lower_right"
+				 label="OBSERVATION_LOWER_RIGHT"
+				 description="OBSERVATION_LOWER_RIGHT_DESC"
+				 hint="OBSERVATION_LOWER_RIGHT"
+				 labelclass="col-lg-6 col-md-6 col-xs-12"
+				 type="number"
+				 max="1000"
+				 showon="observation_tooth_or_baleen_or_defenses:dents"
+			/>
+			<field name="observation_teeth_base_diametre"
+				alias="observation_teeth_base_diametre"
+				label="OBSERVATION_BASE_DIAMETRE_LBL"
+				labelclass="col-lg-12 col-md-12 col-xs-12"
+				description="OBSERVATION_BASE_DIAMETRE_DESC"
+				hint="OBSERVATION_BASE_DIAMETRE_LBL"
+				type="number"
+				step="0.01"
+				max="1000"
+				showon="observation_tooth_or_baleen_or_defenses:dents"
+			/>
 
-	<!--Baleen-->
-	<field name="observation_baleen_color"
+		<!--Baleen-->
+		<field name="observation_baleen_color"
 			alias="observation_baleen_color"
-			class="form-control"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="OBSERVATION_BALEEN_COLOR"
-			labelclass="control-label"
 			description="OBSERVATION_BALEEN_COLOR_DESC"
 			hint="OBSERVATION_BALEEN_COLOR"
-			type="text"/>
-	<field name="observation_baleen_height"
+			type="text"
+			showon="observation_tooth_or_baleen_or_defenses:baleen"
+			/>
+		<field name="observation_baleen_height"
 			alias="observation_baleen_height"
-			class="form-control"
 			label="OBSERVATION_BALEEN_HEIGHT"
-			labelclass="control-label"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_BALEEN_HEIGHT_DESC"
 			hint="OBSERVATION_BALEEN_HEIGHT"
 			type="number"
 			step="0.01"
-			max="1000"/>
-	<field name="observation_baleen_base_height"
+			max="1000"
+			showon="observation_tooth_or_baleen_or_defenses:baleen"
+			/>
+		<field name="observation_baleen_base_height"
 			alias="observation_baleen_base_height"
-			class="form-control"
 			label="OBSERVATION_BALEEN_BASE_DIAMETRE"
-			labelclass="control-label"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_BALEEN_BASE_DIAMETRE_DESC"
 			hint="OBSERVATION_BALEEN_BASE_DIAMETRE"
 			type="number"
 			step="0.01"
-			max="1000"/>
+			max="1000"
+			showon="observation_tooth_or_baleen_or_defenses:baleen"
+			/>
+	</fieldset>
 
-	<!--Size-->
-	<field name="observation_size"
+	<fieldset name="animal" label="Animal">
+
+		<!--Size-->
+		<field name="observation_size"
 			alias="observation_size"
-			class="form-control"
 			label="OBSERVATION_SIZE"
-			labelclass="control-label"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_SIZE_DESC"
 			hint="OBSERVATION_SIZE"
 			type="number"
@@ -549,85 +484,94 @@
 			max="10000000.00"
 			required="true"/>
 
-	<!--Size precision-->
-	<field name="observation_size_precision"
+		<!--Size precision-->
+		<field name="observation_size_precision"
 			alias="observation_size_precision"
 			class="btn-group"
 			label="OBSERVATION_SIZE_PRECISION"
-			labelclass="control-label"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_SIZE_PRECISION_DESC"
 			type="radio"
 			required="true">
 			<option value="1">OBSERVATION_SIZE_PRECISION_A</option>
 			<option value="2">OBSERVATION_SIZE_PRECISION_B</option>
-	</field>
+		</field>
 
-	<!--Abnormalities-->
-	<field name="observation_abnormalities"
+		<!--Abnormalities-->
+		<field name="observation_abnormalities"
 			alias="observation_abnormalities"
 			class="btn-group btn-group-yesno"
 			label="OBSERVATION_ABNORMALITIES"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_ABNORMALITIES_DESC"
 			type="radio"
 			required="true">
 			<option value="oui">OBSERVATION_ABNORMALITIES_A</option>
 			<option value="non">OBSERVATION_ABNORMALITIES_B</option>
 			<option value="inconnu">OBSERVATION_ABNORMALITIES_C</option>
-	</field>
+		</field>
 
-	<!--Capture traces-->
-	<field name="observation_capture_traces"
+		<!--Capture traces-->
+		<field name="observation_capture_traces"
 			alias="observation_capture_traces"
 			class="btn-group"
 			label="OBSERVATION_CAPTURE_TRACES"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_CAPTURE_TRACES_DESC"
 			type="radio"
 			required="true">
 			<option value="probable">OBSERVATION_CAPTURE_TRACES_A</option>
 			<option value="certaine">OBSERVATION_CAPTURE_TRACES_B</option>
 			<option value="inconnu">OBSERVATION_CAPTURE_TRACES_C</option>
-	</field>
+		</field>
 
-	<!--Catch indices-->
-	<field name="catch_indices"
+		<!--Catch indices-->
+		<field name="catch_indices"
 			alias="catch_indices"
 			class="form-control"
 			label="CATCH_INDICES"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			filter="STRING"
 			description="CATCH_INDICES_DESC"
 			hint="CATCH_INDICES_PL"
-			type="textarea"/>
+			type="textarea"
+		/>
 
 
-	<!--Dead or alive-->
-	<field name="observation_dead_or_alive"
+		<!--Dead or alive-->
+		<field name="observation_dead_or_alive"
 			alias="observation_dead_or_alive"
 			class="btn-group"
 			label="OBSERVATION_DEAD_OR_ALIVE"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_DEAD_OR_ALIVE_DESC"
 			type="radio"
 			required="true">
 			<option value="Mort" >OBSERVATION_DEAD_OR_ALIVE_A</option>
 			<option value="Vivant" >OBSERVATION_DEAD_OR_ALIVE_B</option>
-	</field>
+		</field>
 
-	<!--Death-->
-	<field name="observation_death"
+		<!--Death-->
+		<field name="observation_death"
 			alias="observation_death"
 			class="btn-group"
 			label="OBSERVATION_DEATH"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_DEATH_DESC"
-			type="radio">
+			type="radio"
+			showon="observation_dead_or_alive:Mort">
 			<option value="mort avant l'arrivée de l'observateur">OBSERVATION_DEATH_A</option>
 			<option value="mort pendant l'intervention de l'observateur">OBSERVATION_DEATH_B</option>
 			<option value="euthanasié">OBSERVATION_DEATH_C</option>
-	</field>
+		</field>
 
-	<!--Date death-->
-	<field name="observation_datetime_death"
+		<!--Date death-->
+		<field name="observation_datetime_death"
 			alias="observation_datetime_death"
 			class="form-control form-calendar"
 			label="OBSERVATION_DATE_DEATH"
+			labelclass="col-lg-4 col-md-4 col-xs-12"
+			showon="observation_dead_or_alive:Mort"
 			description="OBSERVATION_DATE_DEATH_DESC"
 			hint="OBSERVATION_DATE_DEATH"
 			type="ckdatetimepicker"
@@ -636,11 +580,13 @@
 			format="Y-m-d H:i"
 			uiFormat="d/m/Y H:i"/>
 
-	<!--State decomposition-->
-	<field name="observation_state_decomposition"
+		<!--State decomposition-->
+		<field name="observation_state_decomposition"
 			alias="observation_state_decomposition"
 			class="btn-group"
 			label="OBSERVATION_STATE_DECOMPOSITION"
+			labelclass="col-lg-8 col-md-8 col-xs-12"
+			showon="observation_dead_or_alive:Mort"
 			description="OBSERVATION_STATE_DECOMPOSITION_DESC"
 			type="radio">
 			<option value="1">OBSERVATION_STATE_DECOMPOSITION_A</option>
@@ -648,104 +594,91 @@
 			<option value="3">OBSERVATION_STATE_DECOMPOSITION_C</option>
 			<option value="4">OBSERVATION_STATE_DECOMPOSITION_D</option>
 			<option value="5">OBSERVATION_STATE_DECOMPOSITION_E</option>
-	</field>
+		</field>
 
-	<!--Alive-->
-	<field name="observation_alive"
+		<!--Alive-->
+		<field name="observation_alive"
 			alias="observation_alive"
 			class="form-control"
 			label="OBSERVATION_ALIVE"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_ALIVE_DESC"
 			type="checkboxes"
+			showon="observation_dead_or_alive:Vivant"
 			multiple="false">
 			<option value="6">OBSERVATION_ALIVE_A</option>
-	</field>
+		</field>
 
-	<!--Date release-->
-	<field name="observation_datetime_release"
+		<!--Date release-->
+		<field name="observation_datetime_release"
 			alias="observation_datetime_release"
 			class="form-control form-calendar"
 			label="OBSERVATION_DATE_RELEASE"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			hint="OBSERVATION_DATE_RELEASE"
+			showon="observation_dead_or_alive:Vivant"
 			type="ckdatetimepicker"
 			autoclose="true"
 			startDate="today"
 			format="Y-m-d H:i"
 			uiFormat="d/m/Y H:i"/>
 
-	<!--Sampling protocole-->
-	<field name="sampling_protocole"
-			alias="sampling_protocole"
-			class="btn-group"
-			label="SAMPLING_PROTOCOL"
-			description="SAMPLING_PROTOCOL_DESC"
-			type="radio">
-			<option value="standard">SAMPLING_PROTOCOL_A</option>
-			<option value="intermédiaire">SAMPLING_PROTOCOL_B</option>
-			<option value="complet">SAMPLING_PROTOCOL_C</option>
-	</field>
-
-	<!--Label references-->
-	<field name="label_references"
-			 alias="label_references"
-			 class="form-control"
-			 label="LABEL_REFERENCES"
-			 description="LABEL_REFERENCES_DESC"
-			 hint="LABEL_REFERENCES"
-			 labelclass="control-label"
-			 type="text"/>
-
-	<!--Sampling-->
-	<field name="sampling"
+		<!--Sampling-->
+		<field name="sampling"
 			alias="sampling"
 			class="btn-group"
-			label="SAMPLING"
+			label="SAMPLING"			
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="SAMPLING_DESC"
 			type="radio"
 			required="true">
 			<option value="Oui" >JYES</option>
 			<option value="Non" >JNO</option>
-	</field>
+		</field>
 
-	<!--Photos-->
-	<field name="photos"
-			alias="photos"
+		<!--Sampling protocole-->
+		<field name="sampling_protocole"
+			alias="sampling_protocole"
 			class="btn-group"
-			label="PHOTOS"
-			description="PHOTOS_DESC"
-			type="radio"
-			required="true">
-			<option value="Oui">JYES</option>
-			<option value="Non">JNO</option>
-	</field>
+			label="SAMPLING_PROTOCOL"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+			showon="sampling:Oui"
+			description="SAMPLING_PROTOCOL_DESC"
+			type="radio">
+			<option value="standard">SAMPLING_PROTOCOL_A</option>
+			<option value="intermédiaire">SAMPLING_PROTOCOL_B</option>
+			<option value="complet">SAMPLING_PROTOCOL_C</option>
+		</field>
 
-	<!--Upload photos-->
-	<field name="upload_photos"
-		  	alias="upload_photos"
-		  	class="form-control"
-		  	labelclass="control-label"
-		  	label="UPLOAD_PHOTOS"
-		  	description="UPLOAD_PHOTOS_DESC"
-		  	type="file"
-		  	accept="image/*"/>
+		<!--Label references-->
+		<field name="label_references"
+			alias="label_references"
+			label="LABEL_REFERENCES"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+			showon="sampling:Oui"
+			description="LABEL_REFERENCES_DESC"
+			hint="LABEL_REFERENCES"
+			type="text"/>
 
-	<!--Tissue removal alive-->
-	<field name="observation_tissue_removal_alive"
+		<!--Tissue removal alive-->
+		<field name="observation_tissue_removal_alive"
 			alias="observation_tissue_removal_alive"
-			class="form-control"
 			label="OBSERVATION_TISSUE_REMOVAL"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
+			showon="observation_dead_or_alive:Vivant[AND]sampling:Oui"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC_ALIVE"
 			type="checkboxes"
 			multiple="false">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
-	</field>
+		</field>
 
-	<!--Tissue removal dead-->
-	<field name="observation_tissue_removal_dead"
+		<!--Tissue removal dead-->
+		<field name="observation_tissue_removal_dead"
 			alias="observation_tissue_removal_dead"
-			class="form-control"
 			label="OBSERVATION_TISSUE_REMOVAL"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
+			showon="observation_dead_or_alive:Mort[AND]sampling:Oui"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC_DEAD"
 			type="checkboxes"
 			multiple="true">
@@ -757,426 +690,517 @@
 			<option value="foi">OBSERVATION_TISSUE_REMOVAL_F</option>
 			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
-	</field>
+		</field>
 
-	<!--Cetaces mesurements-->
-	<field name="observation_dolphin_mesures_a"
-			alias="observation_dolphin_mesures_a"
+		<!--Photos-->
+		<field name="photos"
+			alias="photos"
+			class="btn-group"
+			label="PHOTOS"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+			description="PHOTOS_DESC"
+			type="radio"
+			required="true">
+			<option value="Oui">JYES</option>
+			<option value="Non">JNO</option>
+		</field>
+
+		<!--Upload photos-->
+		<field name="upload_photos"
+		  	alias="upload_photos"
 			class="form-control"
-			labelclass="control-label"
+		  	label="UPLOAD_PHOTOS"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+		  	description="UPLOAD_PHOTOS_DESC"
+			showon="photos:Oui"
+		  	type="file"
+		  	accept="image/*"/>
+
+	</fieldset>
+
+	<fieldset name="mesurements" label="Mesurements">
+		<field name="observation_mesurements_image1"
+			alias="observation_mesurements_image1"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+			type="hidden"
+		/>
+		<!--Cetaces mesurements-->
+		<field name="observation_dolphin_mesures_a"
+			alias="observation_dolphin_mesures_a"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_A"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_b"
+		<field name="observation_dolphin_mesures_b"
 			alias="observation_dolphin_mesures_b"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_B"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_c"
+		<field name="observation_dolphin_mesures_c"
 			alias="observation_dolphin_mesures_c"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_C"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_d"
+		<field name="observation_dolphin_mesures_d"
 			alias="observation_dolphin_mesures_d"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_D"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_e"
+		<field name="observation_dolphin_mesures_e"
 			alias="observation_dolphin_mesures_e"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_E"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_f"
+		<field name="observation_dolphin_mesures_f"
 			alias="observation_dolphin_mesures_f"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_F"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_g"
+		<field name="observation_dolphin_mesures_g"
 			alias="observation_dolphin_mesures_g"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_G"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_h"
+		<field name="observation_dolphin_mesures_h"
 			alias="observation_dolphin_mesures_h"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_H"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_i"
+		<field name="observation_dolphin_mesures_i"
 			alias="observation_dolphin_mesures_i"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_I"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_j"
+		<field name="observation_dolphin_mesures_j"
 			alias="observation_dolphin_mesures_j"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_J"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_k"
+		<field name="observation_dolphin_mesures_k"
 			alias="observation_dolphin_mesures_k"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_K"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_l"
+		<field name="observation_dolphin_mesures_l"
 			alias="observation_dolphin_mesures_l"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_L"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_m"
+		<field name="observation_dolphin_mesures_m"
 			alias="observation_dolphin_mesures_m"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_M"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_n"
+
+		<!--Dugong mesurements-->
+		<field name="observation_dugong_mesures_a"
+			alias="observation_dugong_mesures_a"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_A"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_b"
+			alias="observation_dugong_mesures_b"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_B"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_c"
+			alias="observation_dugong_mesures_c"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_C"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_d"
+			alias="observation_dugong_mesures_d"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_D"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_e"
+			alias="observation_dugong_mesures_e"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_E"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_f"
+			alias="observation_dugong_mesures_f"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_F"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_g"
+			alias="observation_dugong_mesures_g"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_G"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_h"
+			alias="observation_dugong_mesures_h"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_H"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_i"
+			alias="observation_dugong_mesures_i"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_I"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_j"
+			alias="observation_dugong_mesures_j"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_J"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_k"
+			alias="observation_dugong_mesures_k"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_K"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_l"
+			alias="observation_dugong_mesures_l"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_L"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+		<field name="observation_dugong_mesures_m"
+			alias="observation_dugong_mesures_m"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group1"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
+			label="OBSERVATION_DUGONG_MESURES_M"
+			description="OBSERVATION_MESURES_DESC"
+			type="number"
+			step="0.01"
+			max="1000"/>
+
+		<field name="observation_mesurements_image2"
+			alias="observation_mesurements_image2"
+			labelclass="col-lg-6 col-md-6 col-xs-12"
+			type="hidden"
+		/>
+		<!-- cetaces -->
+		<field name="observation_dolphin_mesures_n"
 			alias="observation_dolphin_mesures_n"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_N"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_o"
+		<field name="observation_dolphin_mesures_o"
 			alias="observation_dolphin_mesures_o"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_O"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_p"
+		<field name="observation_dolphin_mesures_p"
 			alias="observation_dolphin_mesures_p"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_P"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
-			max="1000"/>
-	<field name="observation_dolphin_mesures_q"
+			max="1000"/>		
+		<field name="observation_dolphin_mesures_q"
 			alias="observation_dolphin_mesures_q"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_Q"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_r"
+		<field name="observation_dolphin_mesures_r"
 			alias="observation_dolphin_mesures_r"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_R"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_s"
+		<field name="observation_dolphin_mesures_s"
 			alias="observation_dolphin_mesures_s"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_S"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_t"
+		<field name="observation_dolphin_mesures_t"
 			alias="observation_dolphin_mesures_t"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_T"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_u"
+		<field name="observation_dolphin_mesures_u"
 			alias="observation_dolphin_mesures_u"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_U"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dolphin_mesures_v"
+		<field name="observation_dolphin_mesures_v"
 			alias="observation_dolphin_mesures_v"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name!:Dugong ou vache marine[AND]observation_species_common_name!:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DOLPHIN_MESURES_V"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
 
-	<!--Dugong mesurements-->
-	<field name="observation_dugong_mesures_a"
-			alias="observation_dugong_mesures_a"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_A"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_b"
-			alias="observation_dugong_mesures_b"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_B"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_c"
-			alias="observation_dugong_mesures_c"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_C"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_d"
-			alias="observation_dugong_mesures_d"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_D"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_e"
-			alias="observation_dugong_mesures_e"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_E"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_f"
-			alias="observation_dugong_mesures_f"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_F"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_g"
-			alias="observation_dugong_mesures_g"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_G"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_h"
-			alias="observation_dugong_mesures_h"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_H"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_i"
-			alias="observation_dugong_mesures_i"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_I"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_j"
-			alias="observation_dugong_mesures_j"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_J"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_k"
-			alias="observation_dugong_mesures_k"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_K"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_l"
-			alias="observation_dugong_mesures_l"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_L"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_m"
-			alias="observation_dugong_mesures_m"
-			class="form-control"
-			labelclass="control-label"
-			label="OBSERVATION_DUGONG_MESURES_M"
-			description="OBSERVATION_MESURES_DESC"
-			type="number"
-			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_n"
+
+		<!-- dugong -->
+		<field name="observation_dugong_mesures_n"
 			alias="observation_dugong_mesures_n"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_N"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_o"
+		<field name="observation_dugong_mesures_o"
 			alias="observation_dugong_mesures_o"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_O"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_p"
+		<!-- dugong -->
+		<field name="observation_dugong_mesures_p"
 			alias="observation_dugong_mesures_p"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_P"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
-			max="1000"/>
-	<field name="observation_dugong_mesures_q"
+			max="1000"/>		
+		<field name="observation_dugong_mesures_q"
 			alias="observation_dugong_mesures_q"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesure_important mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_Q"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_r"
+		<field name="observation_dugong_mesures_r"
 			alias="observation_dugong_mesures_r"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_R"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_s"
+		<field name="observation_dugong_mesures_s"
 			alias="observation_dugong_mesures_s"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_S"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_t"
+		<field name="observation_dugong_mesures_t"
 			alias="observation_dugong_mesures_t"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_T"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_u"
+		<field name="observation_dugong_mesures_u"
 			alias="observation_dugong_mesures_u"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_U"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
-	<field name="observation_dugong_mesures_v"
+		<field name="observation_dugong_mesures_v"
 			alias="observation_dugong_mesures_v"
-			class="form-control"
-			labelclass="control-label"
+			class="mesures form-control"
+			labelclass="col-lg-6 col-md-6 col-xs-12 mesures_group2"
+			showon="observation_species_common_name:Dugong ou vache marine[OR]observation_species_common_name:Otarie à fourrure de Nouvelle-Zélande"
 			label="OBSERVATION_DUGONG_MESURES_V"
 			description="OBSERVATION_MESURES_DESC"
 			type="number"
 			step="0.01"
 			max="1000"/>
 
-	<!--Stockage location-->
-	<field name="observation_location_stock"
+		<!--Stockage location-->
+		<field name="observation_location_stock"
 			alias="observation_location_stock"
 			class="form-control"
 			label="OBSERVATION_LOCATION_STOCK"
-			labelclass="control-label"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_LOCATION_STOCK_DESC"
 			hint="OBSERVATION_LOCATION_STOCK"
 			type="text"/>
 
-	<field name="remarks"
+		<field name="remarks"
 			alias="remarks"
 			class="form-control"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="REMARKS"
 			filter="STRING"
 			description="REMARKS_DESC"
 			hint="REMARKS_PL"
 			type="textarea"/>
+	</fieldset>
+	</form>
+	</field>
 
 	<field name="admin_validation"
 			alias="admin_validation"
