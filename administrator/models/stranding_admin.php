@@ -137,7 +137,7 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 	}
 
 	private function saveStrandingAnimalTableData($data) {
-		JFactory::getApplication()->enqueueMessage('saving animal');
+		//JFactory::getApplication()->enqueueMessage('saving animal');
 	    $model = ModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
 	    $table = $model->getTable('Stranding_animal', 'Stranding_formsModel');
 	    $table->bind($data->animal_form);

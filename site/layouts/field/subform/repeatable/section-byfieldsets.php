@@ -54,6 +54,9 @@ $sublayout = 'renderfield';
   			} else {
   				jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-down";
   			}
+  			if(tabId==="Animal"){
+  				bindDatetimepickerFunctions();
+  			}
   		});
 	}
 	function getID(element) {

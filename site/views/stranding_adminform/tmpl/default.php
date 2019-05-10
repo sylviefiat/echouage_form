@@ -20,110 +20,11 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
 
 $user = JFactory::getUser();
 
-$nanimals=1;
+$document = JFactory::getDocument();
+$url = JUri::base() . 'components/com_stranding_forms/views/stranding_adminform/tmpl/stranding.css';
+$document->addStyleSheet($url);
 ?>
-
 <style>
-  .show_tail_fin_image {
-    position: relative;
-    display: inline-block !important;
-    border-bottom: 1px dotted black;
-    cursor: help;
-  }
-  .show_tail_fin_image .tail_fin_image {
-    visibility: hidden;
-    width: 288px;
-    max-width: unset;
-    background-color: #fff;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border: 1px solid #000;
-    border-radius: 6px;   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
-  .show_tail_fin_image:hover .tail_fin_image {
-    visibility: visible;    
-  }
-  .form-group ul {
-    list-style:none;
-  }
-  .label_icon {
-    padding:0px !important;
-  }
-  .mesure_important label {
-    background-color: #F68E76 !important;
-    border: 2px solid #F36166 !important;
-  }
-  /* Style the tab */
-  .tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  /* Style the buttons that are used to open the tab content */
-  .tab button {
-    background-color: inherit;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-  }
-
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: #ddd;
-  }
-
-  /* Create an active/current tablink class */
-  .tab button.active {
-    background-color: #ccc;
-  }
-
-  /* Style the tab content */
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-  .tab1 {
-    display:block;
-  }
-  .hidden {
-    display:none;
-  }
-  .mesures_div {
-    display: flex;
-    flex-flow: wrap;
-  }
-  .mesures_div label {
-    width: 40px;
-    padding: 8px 12px;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1;
-    color: #555555;
-    text-align: center;
-    background-color: #eeeeee;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    vertical-align: middle;
-    margin-top:0;
-  }
-  .mesure_middle {
-    align-items:center;
-  }
-  .mesures {
-    float:right;
-    width: auto !important;
-  }
 
 </style>
 
@@ -190,7 +91,8 @@ $nanimals=1;
       // fix tooltip conflict with mootools
       js('.hasTooltip').each(function(){this.show = null; this.hide = null;});
       js('.hasPopover').each(function(){this.show = null; this.hide = null;});
-     
+      alert = function() {};
+      
       addMainListeners();
       addAnimalListeners();
       
@@ -233,7 +135,15 @@ $nanimals=1;
     }
   }
 
-function addMainListeners(){   
+  function bindDatetimepickerFunctions(){
+    for ( var i in window) {
+      if((typeof window[i]).toString()=="function" && window[i].toString().indexOf("native")==-1 && window[i].name.startsWith('setupDatetimepicker')){
+        console.log(window[i].name);
+        eval(window[i].name);
+      }}
+  }
+
+function addMainListeners(){   jform_animal_form__animal_form0__observation_dead_or_alive0
   // Add listener to change number of animals depending on stranding type
   //document.getElementById('jform_observation_stranding_type').addEventListener("change", selectStrandingType, false);
   // Add observer on latitude and longitude hidden field setted by adresspicker plugin to display DMD values
@@ -268,6 +178,7 @@ function addAnimalListeners(){
       jQuery(this).append(str);
     }
   });
+  jQuery("[id*='__observation_dead_or_alive']").on("click",bindDatetimepickerFunctions);
 }
 
 function selectStrandingType(number){

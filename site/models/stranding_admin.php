@@ -77,6 +77,9 @@ class Stranding_formsModelStranding_admin extends JModelItem {
                 // Convert the JTable to a clean JObject.
                 $properties = $table->getProperties(1);
                 $this->_item = JArrayHelper::toObject($properties, 'JObject');
+                if(!empty($id)){
+                    $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
+                }
             } elseif ($error = $table->getError()) {
                 $this->setError($error);
             }
@@ -88,6 +91,12 @@ class Stranding_formsModelStranding_admin extends JModelItem {
 		}
 
         return $this->_item;
+    }
+
+    private function getAnimalFormData($id) {   
+        JModelLegacy::addIncludePath(JPATH_SITE . '/administrator/components/com_stranding_forms/models', 'Stranding_formsModel');         
+        $modelAnimal = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+        return $modelAnimal->getDataByStrandingId($id);
     }
 
     public function getTable($type = 'Stranding_admin', $prefix = 'Stranding_formsTable', $config = array()) {

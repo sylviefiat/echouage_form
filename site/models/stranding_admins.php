@@ -69,7 +69,6 @@ class Stranding_formsModelStranding_admins extends JModelList {
       $query->select(
         $this->getState(
           'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0",id_observation),
-          a.observation_species,
           a.observation_datetime,
           Year(observation_datetime),
           a.observation_country,
@@ -78,16 +77,9 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.observation_localisation,
           a.observation_latitude,
           a.observation_longitude,
-          a.observation_number,
-          a.observation_sex,
-          a.observation_size,
-          a.observation_size_precision,
-          CONCAT(observation_state_decomposition, observation_alive),
+          a.observation_number
           CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
           CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
-          a.catch_indices,
-          a.sampling,
-          a.observation_location_stock,
           a.admin_validation'
         )
       );
@@ -131,64 +123,12 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.observation_longitude,
           a.observation_stranding_type,
           a.observation_number,
-          a.observation_species_common_name,
-          a.observation_species_genus,
-          a.observation_species,
-          a.observation_species_identification,
-          a.observation_sex,
-          a.observation_size,
-          a.observation_color,
+          
           a.observer_name,
           CONCAT(observer_address, " ", observer_tel, " ", observer_email),
           a.informant_name, 
           CONCAT(informant_address, " ", informant_tel, " ", informant_email),
-          a.sampling,
-          a.photos,
-          a.observation_caudal,
-          a.observation_beak_or_furrows,
-          a.observation_tooth_or_baleen_or_defenses,
-          a.nb_teeth_upper_right,
-          a.nb_teeth_upper_left,
-          a.nb_teeth_lower_right,
-          a.nb_teeth_lower_left,
-          a.observation_teeth_base_diametre,
-          a.observation_baleen_color,
-          a.observation_baleen_height,
-          a.observation_baleen_base_height,
-          a.observation_abnormalities,
-          a.observation_capture_traces,
-          a.catch_indices,
-          CONCAT(observation_state_decomposition,observation_alive),
-          a.observation_datetime_death, 
-           a.observation_datetime_release, 
-          CONCAT(a.observation_hours, " ", a.observation_minutes),
-          a.sampling_protocole,
-          a.label_references,
-          CONCAT(observation_tissue_removal_dead, observation_tissue_removal_alive),
-          CONCAT(observation_dolphin_mesures_a,observation_dugong_mesures_a),
-          CONCAT(observation_dolphin_mesures_b,observation_dugong_mesures_b),
-          CONCAT(observation_dolphin_mesures_c,observation_dugong_mesures_c),
-          CONCAT(observation_dolphin_mesures_d,observation_dugong_mesures_d),
-          CONCAT(observation_dolphin_mesures_e,observation_dugong_mesures_e),
-          CONCAT(observation_dolphin_mesures_f,observation_dugong_mesures_f),
-          CONCAT(observation_dolphin_mesures_g,observation_dugong_mesures_g),
-          CONCAT(observation_dolphin_mesures_h,observation_dugong_mesures_h),
-          CONCAT(observation_dolphin_mesures_i,observation_dugong_mesures_i),
-          CONCAT(observation_dolphin_mesures_j,observation_dugong_mesures_j),
-          CONCAT(observation_dolphin_mesures_k,observation_dugong_mesures_k),
-          CONCAT(observation_dolphin_mesures_l,observation_dugong_mesures_l),
-          CONCAT(observation_dolphin_mesures_m,observation_dugong_mesures_m),
-          CONCAT(observation_dolphin_mesures_n,observation_dugong_mesures_n),
-          CONCAT(observation_dolphin_mesures_o,observation_dugong_mesures_o),
-          CONCAT(observation_dolphin_mesures_p,observation_dugong_mesures_p),
-          CONCAT(observation_dolphin_mesures_q,observation_dugong_mesures_q),
-          CONCAT(observation_dolphin_mesures_r,observation_dugong_mesures_r),
-          CONCAT(observation_dolphin_mesures_s,observation_dugong_mesures_s),
-          CONCAT(observation_dolphin_mesures_t,observation_dugong_mesures_t),
-          CONCAT(observation_dolphin_mesures_u,observation_dugong_mesures_u),
-          CONCAT(observation_dolphin_mesures_v,observation_dugong_mesures_v),
-          a.observation_location_stock,
-          a.remarks,
+          
           a.id,
           a.observer_name,
           a.admin_validation'
@@ -234,7 +174,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         //$enclosure = '"';
 
         if($var == 0) {
-          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur', 'Précision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
+          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Informateur', 'Observateur', 'Observations');
 
           $csv =  fopen('php://output', 'w');
           // encodage pour excel windows

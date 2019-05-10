@@ -1,0 +1,78 @@
+#sp-main-body {
+  padding:20px 0 !important;
+}
+.panel-heading {
+    color: #1481ab;
+    margin-bottom:30px;
+}
+.groups {
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    border: 2px solid  #1481ab;
+    justify-content: space-around;
+}
+.hgroups {
+    display: flex;
+    flex-direction: row;
+    flex-flow:wrap;
+    padding:10px;
+    border: 2px solid  #1481ab;
+    justify-content: space-around;
+}
+.groups div {
+    display: flex;
+    border-bottom: 1px solid #1481ab;
+}
+.groups div:not([style*="display: none"]):last-child {
+    border-bottom: none;
+}
+.groups div label, .groups div span {
+    flex:1;
+}
+.groups div label {
+    /*text-decoration: underline;*/
+}
+.flex-centre {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.flex-centre label {
+    width: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555555;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-top:0;
+  }
+.flex-centre span {
+    width: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555555;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-top:0;
+}
+.flex-centre label.important {
+  background-color: rgb(246, 142, 118);
+  border:red;
+}
+div[class^="animal"] {
+    display:none;
+}
+div.animal0 {
+    display:block;
+}

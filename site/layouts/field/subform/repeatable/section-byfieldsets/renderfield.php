@@ -40,7 +40,7 @@ $required      = (strpos($input, 'aria-required="true"') !== false || (!empty($m
 $typeOfSpacer  = (strpos($label, 'spacer-lbl') !== false);
 
 ?>
-<div class="form-group<?php echo $labelclass; ?>"<?php echo $rel; ?>>
+<div class="form-group <?php echo $labelclass; ?>"<?php echo $rel; ?>>
     <?php if (empty($options['hiddenLabel'])) : ?>
         <?php echo $label; ?>
     <?php endif; ?>

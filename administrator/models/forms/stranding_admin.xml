@@ -183,7 +183,7 @@
 	<!--Stranding type-->
 	<field 	name="observation_stranding_type"
 			alias="observation_stranding_type"
-			class="custom-control custom-radio custom-control-inline"
+			class="custom-control custom-radio"
 			label="OBSERVATION_STRANDING_TYPE"
 			description="OBSERVATION_STRANDING_TYPE_DESC"
 			type="radio"
@@ -236,7 +236,8 @@
 	 		alias="observation_species_common_name" 
 			label="OBSERVATION_SPECIES_COMMON_NAME_LABEL" 
 			description="OBSERVATION_SPECIES_COMMON_NAME_DESC"
-			hint="OBSERVATION_SPECIES_COMMON_NAME" 
+			hint="OBSERVATION_SPECIES_COMMON_NAME"
+			class="custom-control"
 			labelclass="col-lg-6 col-md-6 col-xs-12" 
 			trigger="true" 
 			content-type="choices"
@@ -287,6 +288,7 @@
 		<!--Species genus-->
 		<field name="observation_species_genus"
 			alias="observation_species_genus"
+			class="custom-control"
 			labelclass="col-lg-3 col-md-3 col-xs-3"
 			label="OBSERVATION_SPECIES_GENUS_LABEL"
 			filter="STRING"
@@ -298,6 +300,7 @@
 		<!--Species species-->
 		<field name="observation_species"
 			alias="observation_species"
+			class="custom-control"
 			labelclass="col-lg-3 col-md-3 col-xs-3"
 			label="OBSERVATION_SPECIES_LABEL"
 			filter="STRING"
@@ -309,7 +312,7 @@
 		<!--Species identification-->
 		<field name="observation_species_identification"
 			alias="observation_species_identification"
-			class="btn-group"
+			class="btn-group custom-control"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_SPECIES_IDENTIFICATION"
 			description="OBSERVATION_SPECIES_IDENTIFICATION_DESC"
@@ -322,6 +325,7 @@
 		<!--Color-->
 		<field name="observation_color"
 			alias="observation_color"
+			class="custom-control"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_COLOR"
 			description="OBSERVATION_COLOR_DESC"
@@ -331,7 +335,7 @@
 		<!--Sex-->
 		<field name="observation_sex"
 			alias="observation_sex"
-			class="btn-group"
+			class="btn-group custom-control"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_SEX"
 			description="OBSERVATION_SEX_DESC"
@@ -345,6 +349,7 @@
 		<!--Encoche médiane à la caudale-->
 		<field name="observation_caudal"
 			alias="observation_caudal"
+			class="custom-control"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			label="OBSERVATION_CAUDAL"
 			description="OBSERVATION_CAUDAL_DESC"
@@ -358,7 +363,7 @@
 		<!--Beak or Furrows-->
 		<field name="observation_beak_or_furrows"
 			alias="observation_beak_or_furrows"
-			class="btn-group"
+			class="btn-group custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="OBSERVATION_BEAK_OR_FURROWS"
 			description="OBSERVATION_BEAK_OR_FURROWS_DESC"
@@ -371,7 +376,7 @@
 		<!--Tooth, Baleen or Defenses-->
 		<field name="observation_tooth_or_baleen_or_defenses"
 			alias="observation_tooth_or_baleen_or_defenses"
-			class="btn-group"
+			class="btn-group custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
@@ -487,20 +492,20 @@
 		<!--Size precision-->
 		<field name="observation_size_precision"
 			alias="observation_size_precision"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="OBSERVATION_SIZE_PRECISION"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_SIZE_PRECISION_DESC"
 			type="radio"
 			required="true">
-			<option value="1">OBSERVATION_SIZE_PRECISION_A</option>
-			<option value="2">OBSERVATION_SIZE_PRECISION_B</option>
+			<option value="précise">OBSERVATION_SIZE_PRECISION_A</option>
+			<option value="approximative">OBSERVATION_SIZE_PRECISION_B</option>
 		</field>
 
 		<!--Abnormalities-->
 		<field name="observation_abnormalities"
 			alias="observation_abnormalities"
-			class="btn-group btn-group-yesno"
+			class="btn-group custom-control"
 			label="OBSERVATION_ABNORMALITIES"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_ABNORMALITIES_DESC"
@@ -514,7 +519,7 @@
 		<!--Capture traces-->
 		<field name="observation_capture_traces"
 			alias="observation_capture_traces"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="OBSERVATION_CAPTURE_TRACES"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_CAPTURE_TRACES_DESC"
@@ -528,7 +533,7 @@
 		<!--Catch indices-->
 		<field name="catch_indices"
 			alias="catch_indices"
-			class="form-control"
+			class="form-control custom-control"
 			label="CATCH_INDICES"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			filter="STRING"
@@ -541,7 +546,7 @@
 		<!--Dead or alive-->
 		<field name="observation_dead_or_alive"
 			alias="observation_dead_or_alive"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="OBSERVATION_DEAD_OR_ALIVE"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_DEAD_OR_ALIVE_DESC"
@@ -554,7 +559,7 @@
 		<!--Death-->
 		<field name="observation_death"
 			alias="observation_death"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="OBSERVATION_DEATH"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_DEATH_DESC"
@@ -565,7 +570,7 @@
 			<option value="euthanasié">OBSERVATION_DEATH_C</option>
 		</field>
 
-		<!--Date death-->
+		<!--Date death ckdatetimepicker-->
 		<field name="observation_datetime_death"
 			alias="observation_datetime_death"
 			class="form-control form-calendar"
@@ -574,7 +579,7 @@
 			showon="observation_dead_or_alive:Mort"
 			description="OBSERVATION_DATE_DEATH_DESC"
 			hint="OBSERVATION_DATE_DEATH"
-			type="ckdatetimepicker"
+			type="ckcalendar"
 			autoclose="true"
 			startDate="today"
 			format="Y-m-d H:i"
@@ -583,7 +588,7 @@
 		<!--State decomposition-->
 		<field name="observation_state_decomposition"
 			alias="observation_state_decomposition"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="OBSERVATION_STATE_DECOMPOSITION"
 			labelclass="col-lg-8 col-md-8 col-xs-12"
 			showon="observation_dead_or_alive:Mort"
@@ -599,17 +604,17 @@
 		<!--Alive-->
 		<field name="observation_alive"
 			alias="observation_alive"
-			class="form-control"
+			class="form-control custom-control"
 			label="OBSERVATION_ALIVE"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_ALIVE_DESC"
 			type="checkboxes"
 			showon="observation_dead_or_alive:Vivant"
 			multiple="false">
-			<option value="6">OBSERVATION_ALIVE_A</option>
+			<option value="relaché">OBSERVATION_ALIVE_A</option>
 		</field>
 
-		<!--Date release-->
+		<!--Date release ckdatetimepicker-->
 		<field name="observation_datetime_release"
 			alias="observation_datetime_release"
 			class="form-control form-calendar"
@@ -617,8 +622,8 @@
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_DATE_RELEASE_DESC"
 			hint="OBSERVATION_DATE_RELEASE"
-			showon="observation_dead_or_alive:Vivant"
-			type="ckdatetimepicker"
+			showon="observation_alive:relaché"
+			type="ckcalendar"
 			autoclose="true"
 			startDate="today"
 			format="Y-m-d H:i"
@@ -627,7 +632,7 @@
 		<!--Sampling-->
 		<field name="sampling"
 			alias="sampling"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="SAMPLING"			
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="SAMPLING_DESC"
@@ -640,7 +645,7 @@
 		<!--Sampling protocole-->
 		<field name="sampling_protocole"
 			alias="sampling_protocole"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="SAMPLING_PROTOCOL"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			showon="sampling:Oui"
@@ -665,6 +670,7 @@
 		<field name="observation_tissue_removal_alive"
 			alias="observation_tissue_removal_alive"
 			label="OBSERVATION_TISSUE_REMOVAL"
+			class="custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			showon="observation_dead_or_alive:Vivant[AND]sampling:Oui"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC_ALIVE"
@@ -677,6 +683,7 @@
 		<field name="observation_tissue_removal_dead"
 			alias="observation_tissue_removal_dead"
 			label="OBSERVATION_TISSUE_REMOVAL"
+			class="custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			showon="observation_dead_or_alive:Mort[AND]sampling:Oui"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC_DEAD"
@@ -695,7 +702,7 @@
 		<!--Photos-->
 		<field name="photos"
 			alias="photos"
-			class="btn-group"
+			class="btn-group custom-control"
 			label="PHOTOS"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="PHOTOS_DESC"

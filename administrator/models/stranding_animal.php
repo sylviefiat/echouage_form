@@ -46,7 +46,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
      * @return  JForm   A JForm object on success, false on failure
      * @since   1.6
      */
-   /* public function getForm($data = array(), $loadData = true)
+    public function getForm($data = array(), $loadData = true)
     {
         // Initialise variables.
         $app    = JFactory::getApplication();
@@ -60,7 +60,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         }
 
         return $form;
-    }*/
+    }
 
     /**
      * Method to get the data that should be injected in the form.
@@ -68,7 +68,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
      * @return  mixed   The data for the form.
      * @since   1.6
      */
-    /*protected function loadFormData()
+    protected function loadFormData()
     {
         // Check the session for previously entered form data.
         $data = JFactory::getApplication()->getUserState('com_stranding_forms.edit.stranding_admin.data', array());
@@ -79,7 +79,72 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         }
 
         return $data;
-    }*/
+    }
+    public function &getData($id = null)
+    {
+        
+       // JFactory::getApplication()->enqueueMessage($id);
+        if ($this->_item === null)
+        {
+            $this->_item = false;
+
+            if (empty($id)) {
+                $id = $this->getState('stranding_animal.id');                
+            }
+            // Get a level row instance.
+            $table = $this->getTable();
+            JFactory::getApplication()->enqueueMessage($id);
+            // Attempt to load the row.
+            if ($table->load($id))
+            {
+                //JFactory::getApplication()->enqueueMessage($id);
+                $user = JFactory::getUser();
+                $id = $table->id;
+                //JFactory::getApplication()->enqueueMessage($id);
+                $canEdit = $user->authorise('core.edit', 'com_stranding_forms') || $user->authorise('core.create', 'com_stranding_forms');
+                if (!$canEdit && $user->authorise('core.edit.own', 'com_stranding_forms')) {
+                    $canEdit = $user->id == $table->created_by;
+                }
+
+                if (!$canEdit) {
+                    JError::raiseError('500', JText::_('JERROR_ALERTNOAUTHOR'));
+                }
+                
+                // Check published state.
+                if ($published = $this->getState('filter.published'))
+                {
+                    if ($table->state != $published) {
+                        return $this->_item;
+                    }
+                }                
+
+                // Convert the JTable to a clean JObject.
+                $properties = $table->getProperties(1);
+                $this->_item = JArrayHelper::toObject($properties, 'JObject');
+                //JFactory::getApplication()->enqueueMessage($table->id);
+                if(!empty($id)){
+                    $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
+                }
+            } elseif ($error = $table->getError()) {
+                $this->setError($error);
+            }
+        }
+        return $this->_item;
+    }
+
+    public function &getDataByStrandingId($strID = null)
+    {
+        
+        $table = $this->getTable();
+
+        $ids = $table->getIdsByStrandingId($strID);
+        $index = 0;
+        foreach($ids as $key => $value){
+            $animals[$index++]=$this->getData($key);
+        }
+
+        return $animals;
+    }
 
     /**
      * Method to get a single record.
@@ -95,7 +160,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
             //Do any procesing on fields here if needed
             
         }
-        JFactory::getApplication()->enqueueMessage('animal form');
+        
         return $item;
     }
 

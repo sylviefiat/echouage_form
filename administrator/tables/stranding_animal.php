@@ -24,14 +24,18 @@ class Stranding_formsTableStranding_Animal extends JTable {
         parent::__construct('#__stranding_animal', 'observation_id', $db);
     }
 
-    public function loadByStrandingId($strID){       
+    public function getIdsByStrandingId($strID){       
         //JFactory::getApplication()->enqueueMessage($strID);
         $this->_db->setQuery(
                 'SELECT * FROM `' . $this->_tbl . '`' .
                 ' WHERE (stranding_id='.$strID.')'
         );
         $this->records = $this->_db->loadRowList();
-        return $this->records;
+
+        foreach ($this->records as $key => $value){
+            $ids[$value[0]] = intval($value[1],10);
+        }
+        return $ids;
     }
 
     /**
@@ -43,7 +47,6 @@ class Stranding_formsTableStranding_Animal extends JTable {
      * @since   1.5
      */
     public function bind($array, $ignore = '') {
-        JFactory::getApplication()->enqueueMessage('until here');
         if (isset($array['params']) && is_array($array['params'])) {
             $registry = new JRegistry();
             $registry->loadArray($array['params']);
@@ -70,13 +73,12 @@ class Stranding_formsTableStranding_Animal extends JTable {
         }
 
 
-        /*$keys_tab = array_keys($array);
-
+        $keys_tab = array_keys($array);
         foreach ($keys_tab as $tab) {
             if (array_key_exists( $tab, $array ) && is_array( $array[ $tab] )) {
             $array[ $tab] = implode( ',', $array[ $tab] );
          }
-        }*/
+        }
 
         return parent::bind($array, $ignore);
     }

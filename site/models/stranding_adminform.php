@@ -43,7 +43,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 		$this->setState('stranding_admin.id', $id);
 
 		// Load the parameters.
-        /*$params = $app->getParams();
+       /* $params = $app->getParams();
         $params_array = $params->toArray();
         if(isset($params_array['item_id'])){
             $this->setState('stranding_admin.id', $params_array['item_id']);
@@ -63,13 +63,12 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 	public function &getData($id = null)
 	{
         
-       // JFactory::getApplication()->enqueueMessage($id);
 		if ($this->_item === null)
 		{
 			$this->_item = false;
 
 			if (empty($id)) {
-				$id = $this->getState('stranding_admin.id');                
+				$id = $this->getState('stranding_admin.id');
 			}
 			// Get a level row instance.
 			$table = $this->getTable();
@@ -101,7 +100,9 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 				$properties = $table->getProperties(1);
 				$this->_item = JArrayHelper::toObject($properties, 'JObject');
                 //JFactory::getApplication()->enqueueMessage($id);
-                $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
+                if(!empty($id)){
+                    $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
+                }
 			} elseif ($error = $table->getError()) {
 				$this->setError($error);
 			}
@@ -109,9 +110,11 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 		return $this->_item;
 	}
 
-    private function getAnimalFormData($id) {            
-        $table1 = $this->getTable('Stranding_animal', 'Stranding_formsTable');
-        return $table1->loadByStrandingId($id);
+    private function getAnimalFormData($id) {   
+        JModelLegacy::addIncludePath(JPATH_SITE . '/administrator/components/com_stranding_forms/models', 'Stranding_formsModel');         
+        $modelAnimal = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+        //JFactory::getApplication()->enqueueMessage(var_dump($modelAnimal));
+        return $modelAnimal->getDataByStrandingId($id);
     }
 
     
@@ -135,7 +138,6 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 		$id = (!empty($id)) ? $id : (int)$this->getState('stranding_admin.id');
 
 		if ($id) {
-            
 			// Initialise the table
 			$table = $this->getTable();
 
@@ -234,7 +236,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         $state = (!empty($data['state'])) ? 1 : 0;
         $user = JFactory::getUser();
 
-        if($id) {
+        if($id) {         
             //Check the user can edit this item
             $authorised = $user->authorise('core.edit', 'com_stranding_forms') || $authorised = $user->authorise('core.edit.own', 'com_stranding_forms');
             if($user->authorise('core.edit.state', 'com_stranding_forms') !== true && $state == 1){ //The user cannot edit the state of the item.
@@ -256,13 +258,24 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         $table = $this->getTable();
         
         if ($table->save($data) === true) {
-	    $id=$table->get('id');
+	        $id=$table->get('id');
+            foreach($data['animal_form'] as $animal){
+                $animal['stranding_id']=$id;
+                $this->saveAnimal($animal);
+            }
             return $id;
         } else {
             return false;
         }
         
 	}
+
+    private function saveAnimal($animal) {   
+        JModelLegacy::addIncludePath(JPATH_SITE . '/administrator/components/com_stranding_forms/models', 'Stranding_formsModel');         
+        $modelAnimal = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+        //JFactory::getApplication()->enqueueMessage(var_dump($animal));
+        return $modelAnimal->save($animal);
+    }
     
      function delete($data)
     {
