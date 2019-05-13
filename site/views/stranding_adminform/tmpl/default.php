@@ -94,7 +94,7 @@ $document->addStyleSheet($url);
       alert = function() {};
       
       addMainListeners();
-      addAnimalListeners();
+      addAnimalListeners();      
       
       // sureveille les ajouts d'animaux
       var subformNode = document.getElementsByClassName('subform-repeatable')[0];
@@ -112,14 +112,12 @@ $document->addStyleSheet($url);
       jQuery(document).on('subform-row-add', function(event, row){
         let nid=parseInt(document.getElementById('jform_observation_number').value,10)+1;
         document.getElementById('jform_observation_number').value=nid;
-        //console.log(jQuery('#jform_observation_stranding_type'));
         selectStrandingType(nid);
 
       });
       jQuery(document).on('subform-row-remove', function(event, row){
         let nid=parseInt(document.getElementById('jform_observation_number').value,10)-1;
         document.getElementById('jform_observation_number').value=nid;
-        //console.log(jQuery('#jform_observation_stranding_type'));
         selectStrandingType(nid);
       });
      
@@ -166,6 +164,15 @@ function addAnimalListeners(){
     let animalID = parseInt(id.replace( /[^\d.]/g, '' ))+1;
     value.innerHTML = "Animal "+animalID;
   });
+
+  jQuery("select[name*='observation_species_common_name']").each(function(index, value){
+    let animalID = this.id.replace( /[^\d.]/g, '' );
+    if(jQuery(value).val() !== null){
+      displayMesuresImages(animalID,jQuery(value).val());
+    } else {
+      displayMesuresImages(animalID,"inconnu");
+    }
+  });
   // Add listener to set genus and species on common name selection
   jQuery("select[name*='observation_species_common_name']").on('change',function(){
     let animalID = this.id.replace( /[^\d.]/g, '' );
@@ -179,6 +186,29 @@ function addAnimalListeners(){
     }
   });
   jQuery("[id*='__observation_dead_or_alive']").on("click",bindDatetimepickerFunctions);
+}
+
+function displayMesuresImages(animalID,commonName) {
+  let value = species.filter(val => val[1]===commonName) ? species.filter(val => val[1]===commonName)[0]:null;
+
+  var image1 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image1');
+  var image2 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image2');
+
+  // group mesurements div to display next to corresponding image
+  var maindiv = image1.parentElement.parentElement;
+  if(jQuery(maindiv).find('.wrapped').length<=0){    
+    jQuery(maindiv).find('.mesures_group1').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div mesure_middle wrapped'/>").parent().after( "<hr/>" ); 
+    jQuery(maindiv).find('.mesures_group2').wrapAll("<div class='col-lg-6 col-md-6 col-xs-12 mesures_div mesure_middle wrapped'/>").parent().after( "<hr/>" );
+  }
+
+  if(!value || (species.filter(val=>val[0]==='inconnu').map(val => val[1]).includes(value[1]) ) ||
+     (species.filter(val=>val[0]==='cetace').map(val => val[1]).includes(value[1]))) {
+    image1.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_body.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
+    image2.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image2' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dolphin/large/l_dolphin_details.png' alt='Mesures sur cétacés' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_CETACE_IMAGE_DESC'); ?>' />";
+  } else if(species.filter(val=>val[0]==='dugong').map(val => val[1]).includes(value[1])) {
+    image1.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_body.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
+    image2.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image2' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_details.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
+  }
 }
 
 function selectStrandingType(number){
@@ -198,8 +228,9 @@ function selectSpecies(animalID,commonName) {
     document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_species_genus').value = value[2];
     document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_species').value = value[3];
 
+    displayMesuresImages(animalID,commonName);
     // set mesurements images depending on animal type
-    var image1 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image1');
+    /*var image1 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image1');
     var image2 = document.getElementById('jform_animal_form__animal_form'+animalID+'__observation_mesurements_image2');
     // group mesurements div to display next to corresponding image
     var maindiv = image1.parentElement.parentElement;
@@ -214,7 +245,7 @@ function selectSpecies(animalID,commonName) {
     else if(species.filter(val=>val[0]==='dugong').map(val => val[1]).includes(value[1]) ) {
       image1.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_body.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
       image2.parentElement.innerHTML="<img id='jform_animal_form__animal_form"+animalID+"__observation_mesurements_image1' src='http://"+window.location.hostname+"/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_details.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />";
-    }
+    }*/
 
   }
 }

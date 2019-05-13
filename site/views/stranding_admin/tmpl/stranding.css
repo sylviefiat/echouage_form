@@ -22,7 +22,7 @@
 }
 .groups div {
     display: flex;
-    border-bottom: 1px solid #1481ab;
+    /*border-bottom: 1px solid #1481ab;*/
 }
 .groups div:not([style*="display: none"]):last-child {
     border-bottom: none;
@@ -31,7 +31,7 @@
     flex:1;
 }
 .groups div label {
-    /*text-decoration: underline;*/
+    font-weight: bold;
 }
 .flex-centre {
     display:flex;
@@ -75,4 +75,14 @@ div[class^="animal"] {
 }
 div.animal0 {
     display:block;
+}
+.tabs {
+    margin-top: 20px;
+}
+.tab {
+    margin-left: -15px !important;
+}
+.tab button {
+    border-radius: 10px 10px 0 0;
+    border : 1px solid #1481ab;
 }

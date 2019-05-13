@@ -209,7 +209,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row tabs">
                     <div class="col-md-12 col-lg-12 tab btn-toolbar">
                     <?php foreach ($this->item->animal_form as $key => $animal) {  ?>                        
                             <button onclick="display(<?php echo $key ?>)" class="fa fa-one fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_ANIMAL') ?> <?php echo intval($key)+1; ?></button>                        

@@ -83,29 +83,24 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
     public function &getData($id = null)
     {
         
-       // JFactory::getApplication()->enqueueMessage($id);
         if ($this->_item === null)
         {
             $this->_item = false;
 
             if (empty($id)) {
-                $id = $this->getState('stranding_animal.id');                
+                $id = $this->getState('stranding_animal.observation_id');                
             }
             // Get a level row instance.
             $table = $this->getTable();
-            JFactory::getApplication()->enqueueMessage($id);
             // Attempt to load the row.
             if ($table->load($id))
             {
-                //JFactory::getApplication()->enqueueMessage($id);
                 $user = JFactory::getUser();
-                $id = $table->id;
-                //JFactory::getApplication()->enqueueMessage($id);
+                $id = $table->observation_id;
                 $canEdit = $user->authorise('core.edit', 'com_stranding_forms') || $user->authorise('core.create', 'com_stranding_forms');
                 if (!$canEdit && $user->authorise('core.edit.own', 'com_stranding_forms')) {
                     $canEdit = $user->id == $table->created_by;
                 }
-
                 if (!$canEdit) {
                     JError::raiseError('500', JText::_('JERROR_ALERTNOAUTHOR'));
                 }
@@ -117,14 +112,10 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
                         return $this->_item;
                     }
                 }                
-
                 // Convert the JTable to a clean JObject.
                 $properties = $table->getProperties(1);
                 $this->_item = JArrayHelper::toObject($properties, 'JObject');
-                //JFactory::getApplication()->enqueueMessage($table->id);
-                if(!empty($id)){
-                    $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
-                }
+                JFactory::getApplication()->enqueueMessage(var_dump($this->_item));
             } elseif ($error = $table->getError()) {
                 $this->setError($error);
             }
@@ -138,9 +129,10 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         $table = $this->getTable();
 
         $ids = $table->getIdsByStrandingId($strID);
+
         $index = 0;
         foreach($ids as $key => $value){
-            $animals[$index++]=$this->getData($key);
+            $animals[$index++]=$this->getItem($key);
         }
 
         return $animals;

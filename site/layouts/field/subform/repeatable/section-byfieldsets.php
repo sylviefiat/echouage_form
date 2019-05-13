@@ -50,7 +50,12 @@ $sublayout = 'renderfield';
 		  		});
   			}
   			if(tabId==="none"){
-  				jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-right";
+  				if(jQuery(value).find(".fa-caret-down")[0] !== undefined){
+  					jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-right";
+  				} else {
+  					jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-down";
+  					jQuery(value).find(".Identification").show();
+  				}
   			} else {
   				jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-down";
   			}
