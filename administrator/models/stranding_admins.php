@@ -29,7 +29,6 @@ class Stranding_formsModelStranding_admins extends JModelList {
                 'id', 'a.id',
                 //id_location
                 'id_location','a.id_location',
-                'id_observation','a.id_observation',
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',

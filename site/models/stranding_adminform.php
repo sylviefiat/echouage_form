@@ -259,10 +259,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         
         if ($table->save($data) === true) {
 	        $id=$table->get('id');
-            foreach($data['animal_form'] as $animal){
-                $animal['stranding_id']=$id;
-                $this->saveAnimal($animal);
-            }
+            $this->saveAnimals($id,$data['animal_form']);
             return $id;
         } else {
             return false;
@@ -270,11 +267,10 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         
 	}
 
-    private function saveAnimal($animal) {   
+    private function saveAnimals($id,$animals) {   
         JModelLegacy::addIncludePath(JPATH_SITE . '/administrator/components/com_stranding_forms/models', 'Stranding_formsModel');         
         $modelAnimal = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
-        //JFactory::getApplication()->enqueueMessage(var_dump($animal));
-        return $modelAnimal->save($animal);
+        return $modelAnimal->saveStrandingAnimals($id,$animals);
     }
     
      function delete($data)

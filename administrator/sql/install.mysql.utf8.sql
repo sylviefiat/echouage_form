@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 	`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`id_location` INT(12) NOT NULL,
-	`id_observation` INT(12) NOT NULL,
 	`observer_name` VARCHAR(100)  NOT NULL,
 	`observer_address` VARCHAR(250) NOT NULL,
 	`observer_tel` VARCHAR(100)  NOT NULL,

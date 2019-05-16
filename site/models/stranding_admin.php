@@ -187,8 +187,10 @@ class Stranding_formsModelStranding_admin extends JModelItem {
     }
 
     public function validate($id) {
+        
         $table = $this->getTable();
         return $table->validate($id);
     }
 
+   
 }

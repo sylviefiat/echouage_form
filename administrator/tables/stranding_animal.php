@@ -24,7 +24,14 @@ class Stranding_formsTableStranding_Animal extends JTable {
         parent::__construct('#__stranding_animal', 'observation_id', $db);
     }
 
-    public function getIdsByStrandingId($strID){       
+    /**
+     * get the animals ids of a specific stranding.
+     *
+     * @param   integer       $strID the id of the stranding
+     * @return  null|array null if no animals, array of animals observation_id
+     */
+    public function getIdsByStrandingId($strID){  
+
         //JFactory::getApplication()->enqueueMessage($strID);
         $this->_db->setQuery(
                 'SELECT * FROM `' . $this->_tbl . '`' .
@@ -33,7 +40,8 @@ class Stranding_formsTableStranding_Animal extends JTable {
         $this->records = $this->_db->loadRowList();
 
         foreach ($this->records as $key => $value){
-            $ids[$value[0]] = intval($value[1],10);
+            $observation_id = $value[0];
+            $ids[$key] = intval($observation_id,10);
         }
         return $ids;
     }
@@ -57,9 +65,9 @@ class Stranding_formsTableStranding_Animal extends JTable {
             $registry->loadArray($array['metadata']);
             $array['metadata'] = (string) $registry;
         }
-        if (!JFactory::getUser()->authorise('core.admin', 'com_stranding_forms.stranding_admin.' . $array['id'])) {
+        if (!JFactory::getUser()->authorise('core.admin', 'com_stranding_forms.stranding_admin.' . $array['observation_id'])) {
             $actions = JFactory::getACL()->getActions('com_stranding_forms', 'stranding_admin');
-            $default_actions = JFactory::getACL()->getAssetRules('com_stranding_forms.stranding_admin.' . $array['id'])->getData();
+            $default_actions = JFactory::getACL()->getAssetRules('com_stranding_forms.stranding_admin.' . $array['observation_id'])->getData();
             $array_jaccess = array();
             foreach ($actions as $action) {
                 $array_jaccess[$action->name] = $default_actions[$action->name];
@@ -72,16 +80,25 @@ class Stranding_formsTableStranding_Animal extends JTable {
             $this->setRules($array['rules']);
         }
 
-
-        $keys_tab = array_keys($array);
-        foreach ($keys_tab as $tab) {
-            if (array_key_exists( $tab, $array ) && is_array( $array[ $tab] )) {
-            $array[ $tab] = implode( ',', $array[ $tab] );
-         }
-        }
-
-        return parent::bind($array, $ignore);
+       return parent::bind($array, $ignore);
     }
+
+    public function store($updateNulls = true)
+    {        
+        JArrayHelper::toString($this->observation_beak_or_furrows);
+        $this->observation_beak_or_furrows= implode(',', $this->observation_beak_or_furrows); 
+
+        JArrayHelper::toString($this->observation_alive);
+        $this->observation_alive= implode(',', $this->observation_alive); 
+
+        JArrayHelper::toString($this->observation_tissue_removal_alive);
+        $this->observation_tissue_removal_alive= implode(',', $this->observation_tissue_removal_alive); 
+        
+        JArrayHelper::toString($this->observation_tissue_removal_dead);
+        $this->observation_tissue_removal_dead= implode(',', $this->observation_tissue_removal_dead); 
+        
+        return parent::store($updateNulls);
+    } 
 
     /**
      * This function convert an array of JAccessRule objects into an rules array.
@@ -105,7 +122,7 @@ class Stranding_formsTableStranding_Animal extends JTable {
     public function check() {
 
         //If there is an ordering column and this is a new row then get the next ordering value
-        if (property_exists($this, 'ordering') && $this->id == 0) {
+        if (property_exists($this, 'ordering') && $this->observation_id == 0) {
             $this->ordering = self::getNextOrder();
         }
 
@@ -268,6 +285,5 @@ class Stranding_formsTableStranding_Animal extends JTable {
         $this->setError('');
         return true;
     }
-
 
 }

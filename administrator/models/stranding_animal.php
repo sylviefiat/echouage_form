@@ -115,7 +115,6 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
                 // Convert the JTable to a clean JObject.
                 $properties = $table->getProperties(1);
                 $this->_item = JArrayHelper::toObject($properties, 'JObject');
-                JFactory::getApplication()->enqueueMessage(var_dump($this->_item));
             } elseif ($error = $table->getError()) {
                 $this->setError($error);
             }
@@ -131,8 +130,8 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         $ids = $table->getIdsByStrandingId($strID);
 
         $index = 0;
-        foreach($ids as $key => $value){
-            $animals[$index++]=$this->getItem($key);
+        foreach($ids as $key => $observation_id){
+            $animals[$key]=$this->getItem($observation_id);
         }
 
         return $animals;
@@ -147,7 +146,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
      * @since   1.6
      */
     public function getItem($pk = null)
-    {
+    {        
         if ($item = parent::getItem($pk)) {
             //Do any procesing on fields here if needed
             
@@ -165,7 +164,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
     {
         jimport('joomla.filter.output');
 
-        if (empty($table->id)) {
+        if (empty($table->observation_id)) {
 
             // Set ordering to the last item if not set
             if (@$table->ordering === '') {
@@ -176,6 +175,35 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
             }
 
         }
+    }
+    
+    /**
+     * Save all the animals of a stranding
+     *
+     * @param    integer $strID the id of the stranding
+     * @param    array $animals the array with animal object related to the stranding
+     * @return   boolean true if all was saved with success, otherwise false
+     */
+    public function saveStrandingAnimals($strID, $animals){
+        $table = $this->getTable();
+
+        $ids = $table->getIdsByStrandingId($strID);
+        $string = "";
+        foreach ($animals as $key => $animal) {
+            $animal['stranding_id']=$strID;
+            $save = $table->save($animal);
+            if($save === false){
+                return false;
+            }
+            $observation_id = $table->get('observation_id');
+            $uid = array_search($observation_id, $ids);
+            unset($ids[$uid]);
+        }
+
+        foreach ($ids as $key2 => $observation_id) {
+            $table->delete($observation_id);
+        }
+        return true;
     }
 
 }

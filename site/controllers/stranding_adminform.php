@@ -60,31 +60,23 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 	 */
 	public function save()
 	{
-		 echo "<script>console.log( 'Debug Objects: sav1' );</script>";
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-		echo "<script>console.log( 'Debug Objects: sav2' );</script>";
 		// Initialise variables.
 		$app	= JFactory::getApplication();
 		$model = $this->getModel('Stranding_adminForm', 'Stranding_formsModel');
-		sprintf($model);
-		echo "<script>console.log( 'Debug Objects: sav3' );</script>";
 		// Get the user data.
 		$data = JFactory::getApplication()->input->get('jform', array(), 'array');
-		echo "<script>console.log( 'Debug Objects: sav4' );</script>";
 		// Validate the posted data.
 		$form = $model->getForm();
 		if (!$form) {
 			JError::raiseError(500, $model->getError());
 			return false;
 		}
-		echo "<script>console.log( 'Debug Objects: sav5' );</script>";
 		//var_dump($data);
 		// Validate the posted data.
 		$data = $model->validate($form, $data);
-		echo "<script>console.log( 'Debug Objects: sav6' );</script>";
 		$editId	= JFactory::getApplication()->input->getInt('id', null, 'array');
-		echo "<script>console.log( 'Debug Objects: sav7' );</script>";
 		// Check for errors.
 		if ($data === false) {
 			// Get the validation messages.
@@ -104,8 +96,10 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 			$this->setRedirect(JRoute::_('index.php?option=com_stranding_forms&view=stranding_adminform&layout=edit&id='.$id, false));
 			return false;
 		}
+
 		// Attempt to save the data.
 		$return	= $model->save($data);
+
 		// Check for errors.
 		if ($return === false) {
 			// Save the data in the session.
@@ -118,10 +112,10 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 		} else {
 			$data['id'] = $return;
 		}
-	if($editId == null){
-	    // Send Email to STRANDING Admin	
-	    //$email_admin = $app->getParams('com_stranding_forms')->get('email_admin');
-	    //$email=Stranding_formsHelper::sendMail($data,$email_admin);			
+		if($editId == null){
+		    // Send Email to STRANDING Admin	
+		    //$email_admin = $app->getParams('com_stranding_forms')->get('email_admin');
+		    //$email=Stranding_formsHelper::sendMail($data,$email_admin);			
         }
         // Check in the profile.
         if ($return) {
@@ -133,7 +127,7 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 
         // Redirect to the list screen.
         $this->setMessage(JText::_('COM_STRANDING_FORMS_ITEM_STRANDING_ADMIN_SAVED_SUCCESSFULLY'));
-	//$this->setMessage($email);
+		//$this->setMessage($email);
 	
         //$menu = & JSite::getMenu();
         $menu = & JFactory::getApplication()->getMenu();

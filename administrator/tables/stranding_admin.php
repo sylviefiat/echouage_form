@@ -59,24 +59,12 @@ class Stranding_formsTableStranding_Admin extends JTable {
             $this->setRules($array['rules']);
         }
 
-    	// Set up for specific checkboxes component 
-    	/*if (array_key_exists( 'observation_tissue_removal_dead', $array ) && is_array( $array['observation_tissue_removal_dead'] )) {
-    		$array['observation_tissue_removal_dead'] = implode( ',', $array['observation_tissue_removal_dead'] );
-    	}
-        if (array_key_exists( 'observation_beak_or_furrows', $array ) && is_array( $array['observation_beak_or_furrows'] )) {
-            $array['observation_beak_or_furrows'] = implode( ' & ', $array['observation_beak_or_furrows'] );
-        }*/
+        //$keys_tab = array_keys($array);
 
-        $keys_tab = array_keys($array);
-
-        foreach ($keys_tab as $tab) {
+        /*foreach ($keys_tab as $tab) {
             if (array_key_exists( $tab, $array ) && is_array( $array[ $tab] )) {
             $array[ $tab] = implode( ',', $array[ $tab] );
          }
-        }
-
-        /*if (array_key_exists( 'observation_species', $array ) && is_array( $array['observation_species'] )) {
-            $array['observation_species'] = implode( ',', $array['observation_species'] );
         }*/
 
         return parent::bind($array, $ignore);

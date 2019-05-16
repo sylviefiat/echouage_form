@@ -68,7 +68,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
         $this->getState(
-          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0",id_observation),
+          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0"),
           a.observation_datetime,
           Year(observation_datetime),
           a.observation_country,
@@ -112,7 +112,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
         $this->getState(
-          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0",id_observation),
+          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0"),
           Year(observation_datetime),
           Month(observation_datetime),
           a.observation_datetime,

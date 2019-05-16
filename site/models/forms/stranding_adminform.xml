@@ -222,8 +222,8 @@
 	<form>
 	<fieldset name="identification" label="Identification">
 		<!--Observation_ID-->
-		<field name="id_observation"
-			alias="id_observation"
+		<field name="observation_id"
+			alias="observation_id"
 			label="ID_OBSERVATION"
 			hiddenLabel="true"
 			filter="INT"

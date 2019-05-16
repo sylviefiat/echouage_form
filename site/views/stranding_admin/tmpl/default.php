@@ -421,7 +421,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                         <span><?php echo $animal->observation_dugong_mesures_f; ?></span>
                                     </div>
                                     <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONGN_MESURES_G'); ?></label>
+                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_G'); ?></label>
                                         <span><?php echo $animal->observation_dugong_mesures_g; ?></span>
                                     </div>
                                     <div>
@@ -523,7 +523,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                         <span><?php echo $animal->observation_dugong_mesures_s; ?></span>
                                     </div>
                                     <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONGN_MESURES_T'); ?></label>
+                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_T'); ?></label>
                                         <span><?php echo $animal->observation_dugong_mesures_t; ?></span>
                                     </div>
                                     <div>
