@@ -212,7 +212,9 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                 <div class="row tabs">
                     <div class="col-md-12 col-lg-12 tab btn-toolbar">
                     <?php foreach ($this->item->animal_form as $key => $animal) {  ?>                        
-                            <button onclick="display(<?php echo $key ?>,this)" class="fa fa-one fa-2x <?php echo ($key===0?'selected':'') ?>"> <?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_ANIMAL') ?> <?php echo intval($key)+1; ?></button>                        
+                            <button onclick="display(<?php echo $key ?>,this)" class="fa fa-one fa-2x <?php echo ($key===0?'selected':'') ?>"> 
+                                EC<?php echo date('Y',strtotime($this->item->observation_datetime)); ?>-<?php echo $this->item->id; ?>-<?php echo $animal->observation_id; ?>   
+                            </button>                        
                     <?php } ; ?> 
                     </div>
                     <?php foreach ($this->item->animal_form as $key => $animal) {  ?>

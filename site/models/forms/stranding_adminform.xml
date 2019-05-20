@@ -564,7 +564,7 @@
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			description="OBSERVATION_DEATH_DESC"
 			type="radio"
-			showon="observation_dead_or_alive:Mort">
+			showon="observation_dead_or_alive:mort">
 			<option value="mort avant l'arrivée de l'observateur">OBSERVATION_DEATH_A</option>
 			<option value="mort pendant l'intervention de l'observateur">OBSERVATION_DEATH_B</option>
 			<option value="euthanasié">OBSERVATION_DEATH_C</option>
@@ -576,7 +576,7 @@
 			class="form-control form-calendar"
 			label="OBSERVATION_DATE_DEATH"
 			labelclass="col-lg-4 col-md-4 col-xs-12"
-			showon="observation_dead_or_alive:Mort"
+			showon="observation_dead_or_alive:mort"
 			description="OBSERVATION_DATE_DEATH_DESC"
 			hint="OBSERVATION_DATE_DEATH"
 			type="ckdatetimepicker"
@@ -591,7 +591,7 @@
 			class="btn-group custom-control"
 			label="OBSERVATION_STATE_DECOMPOSITION"
 			labelclass="col-lg-8 col-md-8 col-xs-12"
-			showon="observation_dead_or_alive:Mort"
+			showon="observation_dead_or_alive:mort"
 			description="OBSERVATION_STATE_DECOMPOSITION_DESC"
 			type="radio">
 			<option value="très frais">OBSERVATION_STATE_DECOMPOSITION_A</option>
@@ -609,7 +609,7 @@
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 			description="OBSERVATION_ALIVE_DESC"
 			type="checkboxes"
-			showon="observation_dead_or_alive:Vivant"
+			showon="observation_dead_or_alive:vivant"
 			multiple="false">
 			<option value="relaché">OBSERVATION_ALIVE_A</option>
 		</field>
@@ -649,7 +649,7 @@
 			class="btn-group custom-control"
 			label="SAMPLING_PROTOCOL"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
-			showon="sampling:Oui"
+			showon="sampling:oui"
 			description="SAMPLING_PROTOCOL_DESC"
 			type="radio">
 			<option value="standard">SAMPLING_PROTOCOL_A</option>
@@ -662,7 +662,7 @@
 			alias="label_references"
 			label="LABEL_REFERENCES"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
-			showon="sampling:Oui"
+			showon="sampling:oui"
 			description="LABEL_REFERENCES_DESC"
 			hint="LABEL_REFERENCES"
 			type="text"/>
@@ -673,7 +673,7 @@
 			label="OBSERVATION_TISSUE_REMOVAL"
 			class="custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
-			showon="observation_dead_or_alive:Vivant[AND]sampling:Oui"
+			showon="observation_dead_or_alive:vivant[AND]sampling:oui"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC_ALIVE"
 			type="checkboxes"
 			multiple="false">
@@ -686,7 +686,7 @@
 			label="OBSERVATION_TISSUE_REMOVAL"
 			class="custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
-			showon="observation_dead_or_alive:Mort[AND]sampling:Oui"
+			showon="observation_dead_or_alive:mort[AND]sampling:oui"
 			description="OBSERVATION_TISSUE_REMOVAL_DESC_DEAD"
 			type="checkboxes"
 			multiple="true">
@@ -720,7 +720,7 @@
 		  	label="UPLOAD_PHOTOS"
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 		  	description="UPLOAD_PHOTOS_DESC"
-			showon="photos:Oui"
+			showon="photos:oui"
 		  	type="file"
 		  	accept="image/*"/>
 

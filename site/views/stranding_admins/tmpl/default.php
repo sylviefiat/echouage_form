@@ -15,6 +15,21 @@ defined('_JEXEC') or die;
 .items_list {
 	list-style: none;
 }
+.badge {
+	display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #777777;
+    border-radius: 10px;
+    float: right;
+}
 </style>
 <script type="text/javascript">
 	function deleteItem(item_id){
@@ -36,7 +51,8 @@ defined('_JEXEC') or die;
 			<?php $show = true; ?>
 			<li class="list-group-item">
 				<?php if(!$item->admin_validation){ ?><span class="fa fa-square-o"></span> <?php } else { ?> <span class="fa fa-check"></span><?php } ?>
-				ID<?php echo $item->id; ?> <?php echo $item->observation_datetime; ?> <?php echo JText::_('COM_STRANDING_FORMS_OBSERVER_ITEM'); ?> <?php echo $item->observer_name; ?>
+				
+				EC<?php echo date('Y',strtotime($item->observation_datetime)); ?>-<?php echo $item->id; ?> <?php echo $item->observation_datetime; ?> <?php echo JText::_('COM_STRANDING_FORMS_OBSERVER_ITEM'); ?> <?php echo $item->observer_name; ?>
 				<span class="badge"><?php echo $item->observation_number; ?> </span>
 				&nbsp;&nbsp;&nbsp;
 				<a href="<?php echo JRoute::_('index.php?option=com_stranding_forms&view=stranding_admin&id=' . (int)$item->id); ?>" >

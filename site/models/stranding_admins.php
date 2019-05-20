@@ -152,11 +152,11 @@ class Stranding_formsModelStranding_admins extends JModelList {
           b.observation_capture_traces,
           b.catch_indices,
           b.observation_state_decomposition,
-          b.observation_datetime_death,
-          b.observation_datetime_release,
+          CASE WHEN lower(b.observation_dead_or_alive)="mort" THEN b.observation_datetime_death ELSE "" END,
+          CASE WHEN lower(b.observation_dead_or_alive)="vivant" THEN b.observation_datetime_release ELSE "" END,
           b.sampling_protocole,
           b.label_references,
-          CASE WHEN lower(b.observation_dead_or_alive)="mort" b.observation_tissue_removal_dead ELSE b.observation_tissue_removal_alive,
+          CASE WHEN lower(b.observation_dead_or_alive)="mort" THEN b.observation_tissue_removal_dead ELSE b.observation_tissue_removal_alive END,
           b.observation_mesure_a,
           b.observation_mesure_b,
           b.observation_mesure_c,
@@ -204,7 +204,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
         $this->getState(
-          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0"),
+          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id),
           Year(observation_datetime),
           Month(observation_datetime),
           a.observation_datetime,
@@ -214,13 +214,11 @@ class Stranding_formsModelStranding_admins extends JModelList {
           a.observation_latitude,
           a.observation_longitude,
           a.observation_stranding_type,
-          a.observation_number,
-          
+          a.observation_number,          
           a.observer_name,
           CONCAT(observer_address, " ", observer_tel, " ", observer_email),
           a.informant_name, 
-          CONCAT(informant_address, " ", informant_tel, " ", informant_email),
-          
+          CONCAT(informant_address, " ", informant_tel, " ", informant_email),          
           a.id,
           a.observer_name,
           a.admin_validation'

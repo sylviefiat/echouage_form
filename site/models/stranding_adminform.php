@@ -256,6 +256,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         }
         
         $table = $this->getTable();
+        $table->observation_number = count($data['animal_form']);
         
         if ($table->save($data) === true) {
 	        $id=$table->get('id');

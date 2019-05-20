@@ -83,7 +83,7 @@ class Stranding_formsTableStranding_Animal extends JTable {
         // clear data before load
         foreach ($this->getProperties() as $k => $v) {
             $this->$k = null;
-        }  
+        }
 
        return parent::bind($array, $ignore);
     }
@@ -98,20 +98,6 @@ class Stranding_formsTableStranding_Animal extends JTable {
         } else {
             $this->observation_beak_or_furrows = '';
         }
-
-        /*if(isset($this->observation_alive)){
-            JArrayHelper::toString($this->observation_alive);
-            $this->observation_alive = implode(',', $this->observation_alive); 
-        } else {
-            $this->observation_alive = '';
-        }*/
-
-        /*if(isset($this->observation_tissue_removal_alive)){
-            JArrayHelper::toString($this->observation_tissue_removal_alive);
-            $this->observation_tissue_removal_alive= implode(',', $this->observation_tissue_removal_alive); 
-        } else {
-            $this->observation_tissue_removal_alive= '';
-        }*/
 
         if(isset($this->observation_tissue_removal_dead)){
             JArrayHelper::toString($this->observation_tissue_removal_dead);
