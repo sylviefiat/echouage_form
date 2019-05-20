@@ -32,10 +32,7 @@ $document->addStyleSheet($url);
         };
         head.appendChild(script);
     }
-    function validateItem(item_id){
-        document.getElementById('form-stranding-admin-validate-' + item_id).submit();
-        
-    }
+    
     var map;
     function initMap(lat,lng,zoom) {
         var div = document.getElementById("map");
@@ -94,10 +91,13 @@ $document->addStyleSheet($url);
     	document.getElementById("squeaker").style.visibility = "hidden";
     }
 
-    function display(animal_id){
+    function display(animal_id,element) {
         jQuery('[class*=animal]').hide();
-        console.log(animal_id);
         jQuery('[class*=animal'+animal_id+']').show();
+        jQuery(element).parent().find("button").each(function() {
+            jQuery(this).removeClass('selected');
+        });
+        jQuery(element).addClass('selected');
     }
 
 
@@ -212,7 +212,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                 <div class="row tabs">
                     <div class="col-md-12 col-lg-12 tab btn-toolbar">
                     <?php foreach ($this->item->animal_form as $key => $animal) {  ?>                        
-                            <button onclick="display(<?php echo $key ?>)" class="fa fa-one fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_ANIMAL') ?> <?php echo intval($key)+1; ?></button>                        
+                            <button onclick="display(<?php echo $key ?>,this)" class="fa fa-one fa-2x <?php echo ($key===0?'selected':'') ?>"> <?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_ANIMAL') ?> <?php echo intval($key)+1; ?></button>                        
                     <?php } ; ?> 
                     </div>
                     <?php foreach ($this->item->animal_form as $key => $animal) {  ?>
@@ -296,7 +296,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                 <label><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_DEAD_OR_ALIVE'); ?></label>
                                 <span><?php echo $animal->observation_dead_or_alive; ?></span>
                             </div>
-                            <div style="display:<?php echo ($animal->observation_dead_or_alive == JText::_('OBSERVATION_DEAD_OR_ALIVE_A')) ? 'flex' : 'none'; ?>">
+                            <div style="display:<?php echo ($animal->observation_dead_or_alive === 'Mort') ? 'flex' : 'none'; ?>">
                                 <label><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_DEATH'); ?></label>
                                 <span><?php echo $animal->observation_datetime_death; ?></span>
                                 <label><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_DEATH_DATE'); ?></label>
@@ -304,7 +304,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                 <label><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_DEAD_DECOMPOSITION'); ?></label>
                                 <span><?php echo $animal->observation_state_decomposition; ?></span>
                             </div>
-                            <div style="display:<?php echo ($animal->observation_dead_or_alive == JText::_('OBSERVATION_DEAD_OR_ALIVE_B')) ? 'flex' : 'none'; ?>">
+                            <div style="display:<?php echo ($animal->observation_dead_or_alive === 'Vivant') ? 'flex' : 'none'; ?>">
                                 <label><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_ALIVE_ALIVE'); ?></label>
                                 <span><?php echo $animal->observation_alive; ?></span>
                                 <label><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_OBSERVATION_ALIVE_DATETIME_RELEASE'); ?></label>
@@ -340,115 +340,58 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                 <div class="col-md-6 col-lg-6 flex-centre" style="display:<?php echo ($animal->observation_species_genus=='Dugong' || $animal->observation_species_genus=='Arctophoca') ? 'none' : 'flex'; ?>">
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_A'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_a; ?></span>
+                                        <span><?php echo $animal->observation_mesure_a; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_B'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_b; ?></span>
+                                        <span><?php echo $animal->observation_mesure_b; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_C'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_c; ?></span>
+                                        <span><?php echo $animal->observation_mesure_c; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_D'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_d; ?></span>
+                                        <span><?php echo $animal->observation_mesure_d; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_E'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_e; ?></span>
+                                        <span><?php echo $animal->observation_mesure_e; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_F'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_f; ?></span>
+                                        <span><?php echo $animal->observation_mesure_f; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_G'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_g; ?></span>
+                                        <span><?php echo $animal->observation_mesure_g; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_H'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_h; ?></span>
+                                        <span><?php echo $animal->observation_mesure_h; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_I'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_i; ?></span>
+                                        <span><?php echo $animal->observation_mesure_i; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_J'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_j; ?></span>
+                                        <span><?php echo $animal->observation_mesure_j; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_K'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_k; ?></span>
+                                        <span><?php echo $animal->observation_mesure_k; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_L'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_l; ?></span>
+                                        <span><?php echo $animal->observation_mesure_l; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_M'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_m; ?></span>
+                                        <span><?php echo $animal->observation_mesure_m; ?></span>
                                     </div>
                                 </div>
-                                <!-- DUGONG -->
-                                <div class="col-md-6 col-lg-6" style="display:<?php echo ($animal->observation_species_genus=='Dugong' || $animal->observation_species_genus=='Arctophoca') ? 'flex' : 'none'; ?>">
-                                    <img src='/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_body.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />
-                                </div>
-                                <div class="col-md-6 col-lg-6 flex-centre" style="display:<?php echo ($animal->observation_species_genus=='Dugong' || $animal->observation_species_genus=='Arctophoca') ? 'flex' : 'none'; ?>">
-                                    <div>
-                                        <label class="important"><?php echo JText::_('OBSERVATION_DUGONG_MESURES_A'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_a; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_B'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_b; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_C'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_c; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_D'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_d; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_E'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_e; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_F'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_f; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_G'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_g; ?></span>
-                                    </div>
-                                    <div>
-                                        <label class="mesure important"><?php echo JText::_('OBSERVATION_DUGONG_MESURES_H'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_h; ?></span>
-                                    </div>
-                                    <div>
-                                        <label class="mesure important"><?php echo JText::_('OBSERVATION_DUGONG_MESURES_I'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_i; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_J'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_j; ?></span>
-                                    </div>
-                                    <div>
-                                        <label class="mesure important"><?php echo JText::_('OBSERVATION_DUGONG_MESURES_K'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_k; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_L'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_l; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_M'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_m; ?></span>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="col-md-12 col-lg-12" style="display:flex;">
                                 <!-- dauphin -->                                
@@ -458,81 +401,39 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                 <div class="col-md-6 col-lg-6 flex-centre" style="display:<?php echo ($animal->observation_species_genus=='Dugong' || $animal->observation_species_genus=='Arctophoca') ? 'none' : 'flex'; ?>">
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_N'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_n; ?></span>
+                                        <span><?php echo $animal->observation_mesure_n; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_O'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_o; ?></span>
+                                        <span><?php echo $animal->observation_mesure_o; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_P'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_p; ?></span>
+                                        <span><?php echo $animal->observation_mesure_p; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_Q'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_q; ?></span>
+                                        <span><?php echo $animal->observation_mesure_q; ?></span>
                                     </div>
                                     <div>
                                         <label class="mesure important"><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_R'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_r; ?></span>
+                                        <span><?php echo $animal->observation_mesure_r; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_S'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_s; ?></span>
+                                        <span><?php echo $animal->observation_mesure_s; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_T'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_t; ?></span>
+                                        <span><?php echo $animal->observation_mesure_t; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_U'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_u; ?></span>
+                                        <span><?php echo $animal->observation_mesure_u; ?></span>
                                     </div>
                                     <div>
                                         <label><?php echo JText::_('OBSERVATION_DOLPHIN_MESURES_V'); ?></label>
-                                        <span><?php echo $animal->observation_dolphin_mesures_v; ?></span>
-                                    </div>
-                                </div>
-                                <!-- dugong -->
-                                <div class="col-md-6 col-lg-6" style="display:<?php echo ($animal->observation_species_genus=='Dugong' || $animal->observation_species_genus=='Arctophoca') ? 'flex' : 'none'; ?>">
-                                    <img src='/administrator/components/com_stranding_forms/assets/images/dugong/large/l_dugong_details.png' alt='Mesures sur Dugong' title='<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_MESURES_DUGONG_IMAGE_DESC'); ?>' />
-                                </div>
-                                <div class="col-md-6 col-lg-6 flex-centre" style="display:<?php echo ($animal->observation_species_genus=='Dugong' || $animal->observation_species_genus=='Arctophoca') ? 'flex' : 'none'; ?>">
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_N'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_n; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_O'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_o; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_P'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_p; ?></span>
-                                    </div>
-                                    <div>
-                                        <label class="mesure important"><?php echo JText::_('OBSERVATION_DUGONG_MESURES_Q'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_q; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_R'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_r; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_S'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_s; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_T'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_t; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_U'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_u; ?></span>
-                                    </div>
-                                    <div>
-                                        <label><?php echo JText::_('OBSERVATION_DUGONG_MESURES_V'); ?></label>
-                                        <span><?php echo $animal->observation_dugong_mesures_v; ?></span>
+                                        <span><?php echo $animal->observation_mesure_v; ?></span>
                                     </div>
                                 </div>
                             </div>

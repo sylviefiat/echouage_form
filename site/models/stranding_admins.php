@@ -68,38 +68,130 @@ class Stranding_formsModelStranding_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
         $this->getState(
-          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id,"-","0"),
+          'list.select', 
+          'CONCAT("EC",Year(a.observation_datetime),"-","0",a.id,"-",b.observation_id),
+          CONCAT(b.observation_species_genus," ",b.observation_species),
           a.observation_datetime,
-          Year(observation_datetime),
+          Year(a.observation_datetime),
           a.observation_country,
           988,
           a.observation_region,
           a.observation_localisation,
           a.observation_latitude,
           a.observation_longitude,
-          a.observation_number
-          CONCAT(informant_name, " ", informant_address, " ", informant_tel, " ", informant_email),
-          CONCAT(observer_name, " ", observer_address, " ", observer_tel, " ", observer_email),
-          a.admin_validation'
+          a.observation_number,
+          b.observation_sex,
+          b.observation_size,
+          b.observation_size_precision,
+          b.observation_state_decomposition,
+          CONCAT(a.informant_name, " ", a.informant_address, " ", a.informant_tel, " ", a.informant_email),
+          CONCAT(a.observer_name, " ", a.observer_address, " ", a.observer_tel, " ", a.observer_email),
+          b.remarks,
+          b.sampling,
+          b.observation_location_stock'
         )
       );
 
-      $query->from('`#__stranding_admin` AS a');
+      $query->from('`#__stranding_admin` AS a, `#__stranding_animal` AS b');
 
       // Join over the created by field 'created_by'
-      $query->select('created_by.name AS created_by');
+      /*$query->select('created_by.name AS created_by');
       $query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
+*/
+      $query->where('a.id = b.stranding_id');
 
-      // Filter by search in title
-      $search = $this->getState('filter.search');
-      if (!empty($search)) {
-        if (stripos($search, 'id:') === 0) {
-          $query->where('a.id = ' . (int) substr($search, 3));
-        } else {
-          $search = $db->Quote('%' . $db->escape($search, true) . '%');
-          $query->where('( a.observer_name LIKE '.$search.' )');
-        }
-      }
+      return $query;
+    }
+
+    // Simple data output
+    protected function getListQueryComplex() {
+      // Create a new query object.
+      $db = $this->getDbo();
+      $query = $db->getQuery(true);
+
+      // Select the required fields from the table.
+      $query->select(
+        $this->getState(
+          'list.select', 
+          'CONCAT("EC",Year(a.observation_datetime),"-",a.id,"-",b.observation_id),
+          Year(a.observation_datetime),
+          Month(a.observation_datetime),
+          a.observation_datetime,
+          a.observation_region,
+          a.observation_localisation,
+          a.observation_country,
+          a.observation_latitude,
+          a.observation_longitude,
+          a.observation_stranding_type,
+          a.observation_number,
+          b.observation_species_common_name,
+          b.observation_species_genus,
+          b.observation_species,
+          b.observation_species_identification,
+          b.observation_sex,
+          b.observation_size,
+          b.observation_color,
+          a.observer_name,
+          CONCAT(a.observer_address, " ", a.observer_tel, " ", a.observer_email),
+          a.informant_name,
+          CONCAT(a.informant_address, " ", a.informant_tel, " ", a.informant_email),
+          b.sampling,
+          b.photos,
+          b.observation_caudal,
+          b.observation_beak_or_furrows,
+          b.observation_tooth_or_baleen_or_defenses,
+          b.nb_teeth_upper_right,
+          b.nb_teeth_upper_left,
+          b.nb_teeth_lower_right,
+          b.nb_teeth_lower_left,
+          b.observation_teeth_base_diametre,
+          b.observation_baleen_color,
+          b.observation_baleen_height,
+          b.observation_baleen_base_height,
+          b.observation_abnormalities,
+          b.observation_capture_traces,
+          b.catch_indices,
+          b.observation_state_decomposition,
+          b.observation_datetime_death,
+          b.observation_datetime_release,
+          b.sampling_protocole,
+          b.label_references,
+          CASE WHEN lower(b.observation_dead_or_alive)="mort" b.observation_tissue_removal_dead ELSE b.observation_tissue_removal_alive,
+          b.observation_mesure_a,
+          b.observation_mesure_b,
+          b.observation_mesure_c,
+          b.observation_mesure_d,
+          b.observation_mesure_e,
+          b.observation_mesure_f,
+          b.observation_mesure_g,
+          b.observation_mesure_h,
+          b.observation_mesure_i,
+          b.observation_mesure_j,
+          b.observation_mesure_k,
+          b.observation_mesure_l,
+          b.observation_mesure_m,
+          b.observation_mesure_n,
+          b.observation_mesure_o,
+          b.observation_mesure_p,
+          b.observation_mesure_q,
+          b.observation_mesure_r,
+          b.observation_mesure_s,
+          b.observation_mesure_t,
+          b.observation_mesure_u,
+          b.observation_mesure_v,
+          b.observation_location_stock,
+          b.remarks'
+        )
+      );
+
+      $query->from('`#__stranding_admin` AS a, `#__stranding_animal` AS b');
+
+      // Join over the created by field 'created_by'
+      /*$query->select('created_by.name AS created_by');
+      $query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
+      */
+      $query->where('a.id = b.stranding_id');
+
       return $query;
     }
 
@@ -174,7 +266,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         //$enclosure = '"';
 
         if($var == 0) {
-          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Informateur', 'Observateur', 'Observations');
+          array_push($cols, 'ID_OM', 'Espèce', 'Date_examen', 'Année','Collectivité', 'Dpt', 'Commune', 'Lieu', 'Position_latitude', 'Postion_longitude', 'Nombre', 'Sexe', 'Longueur','precision', 'DCC', 'Informateur', 'Observateur', 'Observations','Prélèvements', 'Stockage_lieu');
 
           $csv =  fopen('php://output', 'w');
           // encodage pour excel windows
@@ -202,7 +294,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           return fclose($csv);
 
         }else if($var == 1) {
-          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus", 'Nom commun','Genre','Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur',"Nom de l'observateur", "Contact de l'observateur", "Nom de l'informateur","Contact de l'informateur", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort', "Date de la remise à l'eau", 'Heure',  'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Mesure A', 'Mesure B', 'Mesure C', 'Mesure D', 'Mesure E', 'Mesure F', 'Mesure G', 'Mesure H', 'Mesure I', 'Mesure J', 'Mesure K', 'Mesure L', 'Mesure M','Mesure N', 'Mesure O', 'Mesure P', 'Mesure Q', 'Mesure R', 'Mesure S', 'Mesure T', 'Mesure U', 'Mersure V', 'Lieu de stockage', 'Remarques');
+          array_push($cols, 'Réferences', 'Année', 'Mois', 'Date', 'Commune', 'Lieu', 'Information complémentaire sur le lieu','Latitude', 'Longitude',  'Echouage isolé ou en groupe', "Nombre d'individus", 'Nom commun','Genre','Espèce', 'Identification', 'Sexe', 'Taille', 'Couleur',"Nom de l'observateur", "Contact de l'observateur", "Nom de l'informateur","Contact de l'informateur", 'Prélèvements','Photos', 'Encoche médiane à la caudale', 'Bec/Sillons sous la gorge', 'Dents/Fanons/Défenses','Nombre de dents en haut à droite', 'Nombre de dents en haut à gauche', 'Nombre de dents en bas à droite', 'Nombre de dents en bas à gauche', 'Diamètre à la base', 'Couleur des fanons', 'Hauteur des fanons', 'largeure à la base','Présence de blessures, morssures', 'Présence de traces de capture', 'Indices de capture', 'DCC','Date de la mort', "Date de la remise à l'eau", 'Protocole de prélèvements', 'Référence sur les étiquettes', 'Prélèvements de tissus', 'Mesure A', 'Mesure B', 'Mesure C', 'Mesure D', 'Mesure E', 'Mesure F', 'Mesure G', 'Mesure H', 'Mesure I', 'Mesure J', 'Mesure K', 'Mesure L', 'Mesure M','Mesure N', 'Mesure O', 'Mesure P', 'Mesure Q', 'Mesure R', 'Mesure S', 'Mesure T', 'Mesure U', 'Mersure V', 'Lieu de stockage', 'Remarques');
           
           $csv =  fopen('php://output', 'w');
           // encodage pour excel windows
@@ -210,7 +302,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
           fputcsv($csv, $cols);
 
-          $items = $db->setQuery($this->getListQuery())->loadObjectList();
+          $items = $db->setQuery($this->getListQueryComplex())->loadObjectList();
           foreach($items as $line){
             $in = (array) $line;
 

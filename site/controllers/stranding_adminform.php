@@ -114,8 +114,8 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 		}
 		if($editId == null){
 		    // Send Email to STRANDING Admin	
-		    //$email_admin = $app->getParams('com_stranding_forms')->get('email_admin');
-		    //$email=Stranding_formsHelper::sendMail($data,$email_admin);			
+		    $email_admin = $app->getParams('com_stranding_forms')->get('email_admin');
+		    $email=Stranding_formsHelper::sendMail($data,$email_admin);			
         }
         // Check in the profile.
         if ($return) {

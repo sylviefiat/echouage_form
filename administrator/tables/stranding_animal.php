@@ -37,9 +37,9 @@ class Stranding_formsTableStranding_Animal extends JTable {
                 'SELECT * FROM `' . $this->_tbl . '`' .
                 ' WHERE (stranding_id='.$strID.')'
         );
-        $this->records = $this->_db->loadRowList();
+        $records = $this->_db->loadRowList();
 
-        foreach ($this->records as $key => $value){
+        foreach ($records as $key => $value){
             $observation_id = $value[0];
             $ids[$key] = intval($observation_id,10);
         }
@@ -80,22 +80,57 @@ class Stranding_formsTableStranding_Animal extends JTable {
             $this->setRules($array['rules']);
         }
 
+        // clear data before load
+        foreach ($this->getProperties() as $k => $v) {
+            $this->$k = null;
+        }  
+
        return parent::bind($array, $ignore);
     }
 
     public function store($updateNulls = true)
     {        
-        JArrayHelper::toString($this->observation_beak_or_furrows);
-        $this->observation_beak_or_furrows= implode(',', $this->observation_beak_or_furrows); 
 
-        JArrayHelper::toString($this->observation_alive);
-        $this->observation_alive= implode(',', $this->observation_alive); 
+        // registering checkboxes
+        if(isset($this->observation_beak_or_furrows)){
+            JArrayHelper::toString($this->observation_beak_or_furrows);
+            $this->observation_beak_or_furrows = implode(',', $this->observation_beak_or_furrows); 
+        } else {
+            $this->observation_beak_or_furrows = '';
+        }
 
-        JArrayHelper::toString($this->observation_tissue_removal_alive);
-        $this->observation_tissue_removal_alive= implode(',', $this->observation_tissue_removal_alive); 
-        
-        JArrayHelper::toString($this->observation_tissue_removal_dead);
-        $this->observation_tissue_removal_dead= implode(',', $this->observation_tissue_removal_dead); 
+        /*if(isset($this->observation_alive)){
+            JArrayHelper::toString($this->observation_alive);
+            $this->observation_alive = implode(',', $this->observation_alive); 
+        } else {
+            $this->observation_alive = '';
+        }*/
+
+        /*if(isset($this->observation_tissue_removal_alive)){
+            JArrayHelper::toString($this->observation_tissue_removal_alive);
+            $this->observation_tissue_removal_alive= implode(',', $this->observation_tissue_removal_alive); 
+        } else {
+            $this->observation_tissue_removal_alive= '';
+        }*/
+
+        if(isset($this->observation_tissue_removal_dead)){
+            JArrayHelper::toString($this->observation_tissue_removal_dead);
+            $this->observation_tissue_removal_dead= implode(',', $this->observation_tissue_removal_dead); 
+        } else {
+            $this->observation_tissue_removal_dead = '';
+        }
+
+        // registering timestamp
+        if(isset($this->observation_datetime_release)){
+            $date   = JFactory::getDate($this->observation_datetime_release);
+            $this->observation_datetime_release = $date->toSql(true);
+        }
+        if(isset($this->observation_datetime_death)){
+            $date   = JFactory::getDate($this->observation_datetime_death);
+            $this->observation_datetime_death = $date->toSql(true);
+        } 
+
+        //JFactory::getApplication()->enqueueMessage($this->observation_datetime_release);   
         
         return parent::store($updateNulls);
     } 

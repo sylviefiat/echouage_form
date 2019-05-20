@@ -90,10 +90,9 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 	 * @since	1.6
 	 */
 	public function getItem($pk = null)
-	{
-		JFactory::getApplication()->enqueueMessage("coucou1");
+	{		
 		if ($item = parent::getItem($pk)) {
-			JFactory::getApplication()->enqueueMessage($item->id);
+			//JFactory::getApplication()->enqueueMessage($item->id);
 			$item->animal_form = $this->getAnimalFormTable($item->id);
 			//Do any procesing on fields here if needed
 			
@@ -137,9 +136,9 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 	}
 
 	private function saveStrandingAnimalTableData($data) {
-	    $model = ModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
-	    $table = $model->getTable('Stranding_animal', 'Stranding_formsModel');
-	    $table->saveStrandingAnimals($data->id, $data->animal);
+	    $model = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+	    //$table = $model->getTable('Stranding_animal', 'Stranding_formsModel');
+	    $model->saveStrandingAnimals($data->id, $data->animal);
 	    
 	}
 

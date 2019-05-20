@@ -133,7 +133,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         foreach($ids as $key => $observation_id){
             $animals[$key]=$this->getItem($observation_id);
         }
-
+        //JFactory::getApplication()->enqueueMessage($animals[0]->observation_datetime_release);
         return $animals;
     }
 
@@ -148,8 +148,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
     public function getItem($pk = null)
     {        
         if ($item = parent::getItem($pk)) {
-            //Do any procesing on fields here if needed
-            
+            //Do any procesing on fields here if needed           
         }
         
         return $item;
@@ -188,7 +187,7 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         $table = $this->getTable();
 
         $ids = $table->getIdsByStrandingId($strID);
-        $string = "";
+
         foreach ($animals as $key => $animal) {
             $animal['stranding_id']=$strID;
             $save = $table->save($animal);

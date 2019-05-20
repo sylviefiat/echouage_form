@@ -31,7 +31,7 @@ abstract class Stranding_formsHelper
 
 		$valid = "<a href='".JURI::base()."index.php/administrer-les-observations/".$data['id']."?view=stranding_admin'>Aller sur le site pour valider</a>";
 
-		$body   = "<h4>Un nouveau report d'échouage a été effectué:</h4>"
+		$body   = "<h4>Un nouveau report d'échouage de cétacés a été effectué:</h4>"
 		."<div>Observateur: ".$data['observer_name']."</div>"
 		.($data['observer_tel']!== ''?"<div>Téléphone: ".$data['observer_tel']."</div>":"")
 		.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
@@ -46,19 +46,7 @@ abstract class Stranding_formsHelper
 		.($data['observation_region']!== ''?"<div>Région: ".$data['observation_region']."</div>":"")
 		.($data['observation_country']!== ''?"<div>Pays: ".$data['observation_country']."</div>":"")
 		."<div>Type d’échouage: ".$data['observation_stranding_type']."</div>"
-		."<div>Nombre: ".$data['observation_number']."</div>"
-		."<div>Espèces: ".$data['observation_species']."</div>"
-		."<div>Taille:".$data['observation_size']."</div>"
-		."<div>Sex:".$data['observation_sex']."</div>"
-		."<div>Présence de bléssures, morssures:".$data['observation_abnormalities']."</div>"
-		."<div>Présence de traces de capture:".$data['observation_capture_traces']."</div>"
-		.($data['catch_indices']!== ''?"<div>Indices de capture: ".$data['catch_indices']."</div>":"")
-		."<div>Etat: </div>"
-		.($data['observation_alive']!==''?"<div>Animal: ".$data['observation_alive']."</div>":"")
-		.($data['observation_datetime_release']!==''?"<div>Date le remise à l'eau: ".$data['observation_datetime_release']."</div>":"")
-		.($data['observation_death']!==''?"<div>Animal: ".$data['observation_death']."</div>":"")
-		.($data['observation_datetime_death']!==''?"<div>Date de la mort: ".$data['observation_datetime_death']."</div>":"")
-		.($data['remarks']!== ''?"<div>Remarques: ".$data['remarks']."</div>":"")
+		."<div>Nombre: ".$data['observation_number']."</div>"		
 		."<div>Observation validation: ".$valid." </div>";
 
 

@@ -132,7 +132,7 @@ class JDomHtmlFormInputDatetimepicker extends JDomHtmlFormInput
 		}
 		
 		if(isset($inputsCreated[$inputId])){
-			$rand++;
+			$rand=Math.random();
 		}
 		
 		$script = '
@@ -175,10 +175,10 @@ class JDomHtmlFormInputDatetimepicker extends JDomHtmlFormInput
 
 	
 	public function formatDate($rawDate,$dateFormat){
-		if((string)intval($rawDate) != $rawDate){
+		//JFactory::getApplication()->enqueueMessage($rawDate);
+		/*if((string)intval($rawDate) != $rawDate){
 			$rawDate = strtotime($rawDate);
-		}
-
+		}*/
 		//JDate::toFormat() is deprecated. CONVERT Legacy Joomla Format
 		//Minutes : ‰M > i
 		$dateFormat = str_replace("%M", "i", $dateFormat);
@@ -192,6 +192,7 @@ class JDomHtmlFormInputDatetimepicker extends JDomHtmlFormInput
 		&& ($rawDate != "0000-00-00 00:00:00"))
 		{
 			jimport("joomla.utilities.date");
+
 			$date = JFactory::getDate($rawDate);
 			$formatedDate = $date->format($dateFormat);
 
