@@ -65,26 +65,6 @@ $document->addStyleSheet($url);
         ['dugong','Otarie à fourrure de Nouvelle-Zélande','Arctophoca','Australis forsteri']
   ];
 
-  /*function getScript(url,success) {
-    var script = document.createElement('script');
-    script.src = url;
-    var head = document.getElementsByTagName('head')[0],
-    done = false;
-    // Attach handlers for all browsers
-    script.onload = script.onreadystatechange = function() {
-      if (!done && (!this.readyState
-        || this.readyState == 'loaded'
-        || this.readyState == 'complete')) {
-        done = true;
-        success();
-        script.onload = script.onreadystatechange = null;
-        head.removeChild(script);
-      }
-    };
-    head.appendChild(script);
-  }*/
-
-  //getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',function() {
     js = jQuery.noConflict();   
     
     js(document).ready(function() {
@@ -123,7 +103,6 @@ $document->addStyleSheet($url);
       
      
     });
-  //});
 
   // Callback function to execute when mutations are observed
   var suformCallback = function(mutationsList, observer) {
@@ -135,9 +114,7 @@ $document->addStyleSheet($url);
   }
 
 
-function addMainListeners(){   jform_animal_form__animal_form0__observation_dead_or_alive0
-  // Add listener to change number of animals depending on stranding type
-  //document.getElementById('jform_observation_stranding_type').addEventListener("change", selectStrandingType, false);
+function addMainListeners(){   
   // Add observer on latitude and longitude hidden field setted by adresspicker plugin to display DMD values
   // latitude
   var observerLat = new MutationObserver(function(mutationsList, observer){
@@ -241,13 +218,13 @@ function selectSpecies(animalID,commonName) {
 }
 
 
-function displayBlock(div, affiche) { 
-  document.getElementById(div).style.display = affiche ? 'block' : 'none';
+function displayBlock(div,display = "block", affiche) { 
+  document.getElementById(div).style.display = affiche ? display : 'none';
 }
 
-function toggleContainer(name) {
+function toggleContainer(name,display = "block") {
   var e = document.getElementById(name);// MooTools might not be available ;)
-  e.style.display = e.style.display === 'none' ? 'block' : 'none';
+  e.style.display = e.style.display === 'none' ? display : 'none';
 }
 
 // Fonction de conversion latitude en degré minute décimal
@@ -274,9 +251,9 @@ function convert_Lng_DMD(long){
 
 function toggleInformant() {
   event.preventDefault();
-  toggleContainer('informant_field');
-  toggleContainer('informantShow');
-  toggleContainer('informantHide');
+  toggleContainer('informant_field','flex');
+  toggleContainer('informantShow','flex');
+  toggleContainer('informantHide','flex');
 }
 
 
@@ -284,20 +261,20 @@ function toggleInformant() {
 
 <div class="stranding_admin-edit front-end-edit">
   <?php if (!empty($this->item->id)): ?>
-    <h1 class="fa fa-eye fa-3x"> <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
+    <h1 class="fa fa-eye fa-3x">&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
     <?php else: ?>
-      <h1 class="fa fa-eye fa-3x"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
+      <h1 class="fa fa-eye fa-3x">&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
       <p class="card-subtitle mb-2 text-muted"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
     <?php endif; ?>
 
     <form id="formStrandingAdmin" name="formStrandingAdmin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
 
       <!--Contacts-->
-      <div class="row labels">
-        <div class="col-12"><h4 class="fa fa-user fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></h4></div>
-      </div>
-      <!--Observer contacts-->
-      <div class="row groups">
+      <div class="card-columns">
+        <div class="card">
+          <div class="card-header"><span class="fa fa-user fa-2x">&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW1'); ?></span></div>
+          <div class="card-body groups">
+      
         <div class="col-12"><?php echo $this->form->getLabel('observer_name'); ?></div>
         <div class="col-12">
           <div class="input-group">
@@ -325,7 +302,7 @@ function toggleInformant() {
         </div>
         
         <!--Informant contacts-->
-        <span id="informant_field" style="display: none;flex:1">
+        <span id="informant_field" style="display: none;flex:1;flex-wrap:wrap;">
           <div class="col-12"><?php echo $this->form->getLabel('informant_name'); ?></div>
           <div class="col-12">
             <div class="input-group">
@@ -361,13 +338,13 @@ function toggleInformant() {
           </button>          
         </div>
       </div>
+    </div>
+  
       
-      <!--Circonstance de l'échouage-->
-      <div class="row labels">
-        <div class="col-12"><h4 class="fa fa-flag fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW2'); ?></h4></div>
-      </div>
-      <!--Date-->
-      <div class="row groups">
+    <div class="card">
+      <div class="card-header"><span class="fa fa-flag fa-2x">&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_ROW2'); ?></span></div>
+      <div class="card-body groups">
+          <!--Date-->
         <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
         <div class="col-lg-4 col-md-6 col-xs-12">
           <div class="input-group">
@@ -434,28 +411,30 @@ function toggleInformant() {
           </div>
         </div>
       </div>
+    </div>
+  </div>
       <!------------FOR LOOP ON ANIMALS--------------->
-      
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-xs-12">
-          <?php echo $this->form->renderField('animal_form'); ?>
-        </div>
+  <div class="card-columns">
+    <div class="card">
+      <div class="card-header"><span class="fa fa-eye fa-2x">&nbsp;<?php echo $this->form->getLabel('animal_form'); ?></span></div>
+      <div class="card-body">
+        <?php echo $this->form->getInput('animal_form'); ?>
       </div>
-     
-      
-        <!------------END OF FOR LOOP--------------->
-            <!--Admin validation-->
-            <?php if($user->id != 0){ ?>
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-xs-12"><?php echo $this->form->getLabel('admin_validation'); ?></div>
-              <div class="col-lg-12 col-md-12 col-xs-12">
-                <div class="input-group">
-                  <span class="input-group-addon"><span class="fa fa-check "></span></span>
-                  <?php echo $this->form->getInput('admin_validation'); ?>
-                </div>
-              </div>
-            </div>
-            <?php } ?>
+    </div>
+  </div>    
+  <!------------END OF FOR LOOP--------------->
+  <!--Admin validation-->
+  <?php if($user->id != 0){ ?>
+  <div class="card">
+    <div class="card-header"><span class="fa fa-eye fa-2x">&nbsp;<?php echo $this->form->getLabel('admin_validation'); ?></span></div>
+    <div class="card-body">
+      <div class="input-group">
+        <span class="input-group-addon"><span class="fa fa-check "></span></span>
+        <?php echo $this->form->getInput('admin_validation'); ?>
+      </div>
+    </div>
+  </div>
+  <?php } ?>
 <!--Captcha
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12"><?php //echo $this->form->getLabel('captcha'); ?></div>

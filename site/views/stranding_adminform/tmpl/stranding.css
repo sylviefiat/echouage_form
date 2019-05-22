@@ -2,15 +2,14 @@
   padding:20px 0 !important;
 }
 hr {
-  border: 1px solid #1481ab !important;
+  /*border: 1px solid #1481ab !important;*/
   clear: both;
   width: 100%;
 
 }
-.groups, .fieldset {
-  border: 2px solid #1481ab;
-  padding: 10px;
-  margin-bottom:20px;
+.groups, .fieldset { 
+  display: flex;
+  flex-wrap: wrap;
 }
 .groups .input-group {
   padding-bottom:5px;
@@ -18,7 +17,10 @@ hr {
 .labels {
   color: #1481ab;
 }
-#jform_animal_form-lbl {
+.card-columns {
+  column-count:1 !important;
+}
+/*#jform_animal_form-lbl {
   color: #1481ab;
   font-size: 2em;
   font-family: "FontAwesome"; 
@@ -28,7 +30,7 @@ hr {
   content: '\f06e';
   font-weight: 900; 
   display: inline-block;
-}
+}*/
 .input-group-addon {
     padding: 6px 12px;
     font-size: 14px;
@@ -315,12 +317,15 @@ ul {
     margin-bottom: 20px;
   }
   /* Style the tab */
-  .tab {
+  .tab, .panel {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     display: flex;
     justify-content: space-between !important;
+  }
+  .panel {
+    padding: 5px;
   }
 
   /* Style the buttons that are used to open the tab content */

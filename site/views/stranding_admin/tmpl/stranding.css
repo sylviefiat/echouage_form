@@ -16,30 +16,37 @@
     display: flex;
     flex-direction: row;
     flex-flow:wrap;
-    padding:10px;
-    border: 2px solid  #1481ab;
+    /*padding:10px;*/
+    /*border: 2px solid  #1481ab;*/
     justify-content: space-around;
 }
-.groups div {
+.hgroups .card-body {
+    display: block;
+}
+.groups div, .card-body div {
     display: flex;
+    justify-content: left;
     /*border-bottom: 1px solid #1481ab;*/
 }
 .groups div:not([style*="display: none"]):last-child {
     border-bottom: none;
 }
-.groups div label, .groups div span {
+.groups div label, .groups div span, .card-body div label, .card-body div span {
     flex:1;
 }
-.groups div label {
+.groups div label, .card-body div label {
     font-weight: bold;
 }
-.flex-centre {
+.hgroups .card-body .mesures {
     display:flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
-.flex-centre label {
+.hgroups .card-body .mesures div {
+    display: block;
+}
+.hgroups .card-body label {
     width: 40px;
     padding: 8px 12px;
     font-size: 14px;
@@ -52,7 +59,7 @@
     border-radius: 4px;
     margin-top:0;
   }
-.flex-centre span {
+.hgroups .card-body span {
     width: 40px;
     padding: 8px 12px;
     font-size: 14px;
@@ -66,15 +73,22 @@
     vertical-align: middle;
     margin-top:0;
 }
-.flex-centre label.important {
+.hgroups .card-body label.important {
   background-color: rgb(246, 142, 118);
   border:red;
 }
 div[class^="animal"] {
     display:none;
+    border: 1px solid #1481ab;
+    border-radius: 0 10px 10px 10px;
+    padding:10px;
+    background-color: rgba(20,129,171,1);
 }
 div.animal0 {
     display:block;
+}
+.hgroups.card-columns {
+    column-count:1;
 }
 .tabs {
     margin-top: 20px;

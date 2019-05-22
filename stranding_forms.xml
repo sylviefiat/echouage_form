@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_stranding_forms</name>
-    <creationDate>2018-11-30</creationDate>
+    <creationDate>2019-05-22</creationDate>
     <copyright>Copyright (C) 2014. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Ezechiel Wahoulo, Sylvie Fiat</author>
@@ -37,6 +37,7 @@
         <folder>models</folder>
         <folder>controllers</folder>
         <folder>helpers</folder>
+        <folder>layouts</folder>
     </files>
     <languages folder="site">
         <language tag="fr-FR">language/fr-FR.com_stranding_forms.ini</language>

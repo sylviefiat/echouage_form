@@ -275,8 +275,8 @@ class Stranding_formsModelStranding_admins extends JModelList {
           $items = $db->setQuery($this->getListQuerySimple())->loadObjectList();
           foreach($items as $line){
             $in = (array) $line;
-            array_pop($in);
-            array_pop($in);
+            //array_pop($in);
+            //array_pop($in);
             // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
             /*$keys_in = array_keys($in);
             $i = 0;
@@ -304,9 +304,9 @@ class Stranding_formsModelStranding_admins extends JModelList {
           foreach($items as $line){
             $in = (array) $line;
 
-            array_pop($in);
-            array_pop($in);
-            array_pop($in);
+            //array_pop($in);
+            //array_pop($in);
+            //array_pop($in);
 
             // Début : Convertion d'une chaîne UTF-8 en ISO-8859-1
             /*$keys_in = array_keys($in);
