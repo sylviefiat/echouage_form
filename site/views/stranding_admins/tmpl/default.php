@@ -42,7 +42,7 @@ defined('_JEXEC') or die;
 		
 	}
 </script>
-<h1 class="fa fa-list-alt fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_TITLE_LIST_VIEW_STRANDING_ADMINS'); ?></h1>
+<h1><?php echo JText::_('COM_STRANDING_FORMS_TITLE_LIST_VIEW_STRANDING_ADMINS'); ?></h1>
 
 <div id="items" class="items">
 	<div class="list-group">

@@ -112,7 +112,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
 	<div class="col-xs-12" >
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<h3 class="fa fa-caret-right fa-3x panel-title">&nbsp;EC<?php echo date('Y',strtotime($this->item->observation_datetime)); ?>-<?php echo $this->item->id; ?></h3>
+				<h1>EC<?php echo date('Y',strtotime($this->item->observation_datetime)); ?>-<?php echo $this->item->id; ?></h1>
 			</div>
 			<div class="panel-body">
                 <div class="card-columns">

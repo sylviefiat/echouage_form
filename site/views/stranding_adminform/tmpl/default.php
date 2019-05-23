@@ -261,9 +261,9 @@ function toggleInformant() {
 
 <div class="stranding_admin-edit front-end-edit">
   <?php if (!empty($this->item->id)): ?>
-    <h1 class="fa fa-eye fa-3x">&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
+    <h1><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
     <?php else: ?>
-      <h1 class="fa fa-eye fa-3x">&nbsp;<?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
+      <h1><?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
       <p class="card-subtitle mb-2 text-muted"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
     <?php endif; ?>
 
