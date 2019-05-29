@@ -267,7 +267,7 @@ function toggleInformant() {
       <p class="card-subtitle mb-2 text-muted"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
     <?php endif; ?>
 
-    <form id="formStrandingAdmin" name="formStrandingAdmin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+    <form id="formStrandingAdmin" name="formStrandingAdmin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_adminform.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
 
       <!--Contacts-->
       <div class="card-columns">
@@ -439,9 +439,9 @@ function toggleInformant() {
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12"><?php //echo $this->form->getLabel('captcha'); ?></div>
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <div class="input-group">
-      <?php //echo $this->form->getInput('captcha'); ?>
-    </div>
+    <div class="input-group"-->
+      <?php echo $this->form->getInput('captcha'); ?>
+    <!--/div>
   </div>
 </div>-->
       <button type="submit" class="validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>

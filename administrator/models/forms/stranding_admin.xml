@@ -214,7 +214,6 @@
 	label="COM_STRANDING_FORMS_EDIT_ITEM_ANIMAL_DETAILS"
 	description="Animal Fields"
 	layout="field/subform/repeatable"
-	validate="subform"
 	multiple="true"
 	groupByFieldset="true"
 	min="1"
@@ -722,8 +721,7 @@
 			labelclass="col-lg-6 col-md-6 col-xs-12"
 		  	description="UPLOAD_PHOTOS_DESC"
 			showon="photos:oui"
-		  	type="file"
-		  	accept="image/*"/>
+		  	type="file"/>
 
 	</fieldset>
 
@@ -971,11 +969,11 @@
 			description="ADMIN_VALIDATION_DESC"
 			type="checkbox"/>
 
-	<!--<field name="captcha" 
+	<field name="captcha" 
 			type="captcha"
             label="CAPTCHA"
             description="CAPTCHA_DESC"
             validate="captcha"
-            namespace="event"/>-->
+            namespace="event"/>
 </fieldset>
 </form>

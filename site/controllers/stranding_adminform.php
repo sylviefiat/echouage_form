@@ -67,6 +67,7 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 		$model = $this->getModel('Stranding_adminForm', 'Stranding_formsModel');
 		// Get the user data.
 		$data = JFactory::getApplication()->input->get('jform', array(), 'array');
+
 		// Validate the posted data.
 		$form = $model->getForm();
 		if (!$form) {
@@ -96,7 +97,31 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 			$this->setRedirect(JRoute::_('index.php?option=com_stranding_forms&view=stranding_adminform&layout=edit&id='.$id, false));
 			return false;
 		}
-
+		// save photos
+		jimport( 'joomla.filesystem.folder' );
+        jimport('joomla.filesystem.file');
+        if ( !JFolder::exists( JPATH_SITE . DS . "images" . DS . "strandings" ) ) {
+            JFolder::create( JPATH_SITE . DS . "images" . DS . "strandings" );
+        }
+        // Get the file data array from the request.
+        foreach ($data['animal'] as $key => $animal) {
+                 
+	        $file = $animal['upload_photos'];
+	        // Make the file name safe.
+	        $filename = JFile::makeSafe($file['name']);	
+	        JFactory::getApplication()->enqueueMessage($filename);
+	        JFactory::getApplication()->enqueueMessage("blabla");
+	        // Move the uploaded file into a permanent location.
+	        if ( $filename != '' ) {
+	            // Make sure that the full file path is safe.
+	            $filepath = JPath::clean( JPATH_SITE . DS . 'images' . DS . 'strandings' . DS . strtolower( $filename ) );
+	            // Move the uploaded file.
+	            JFile::upload( $file['tmp_name'], $filepath );
+	            // Change $data['file'] value before save into the database 
+	            $data['animal'][$key]['upload_photos'] = strtolower( $filename );
+	        }
+	    }
+        // ---------------------------- File Upload Ends ------------------------
 		// Attempt to save the data.
 		$return	= $model->save($data);
 
