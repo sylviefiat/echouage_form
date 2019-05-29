@@ -103,9 +103,7 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 
 	private function getAnimalFormTable($id) {
 	    $model = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
-	    //$table = $model->getTable('Stranding_animal', 'Stranding_formsTable');
 	    return $model->getDataByStrandingId($id);
-	    /**/
 	}
 
 	/**

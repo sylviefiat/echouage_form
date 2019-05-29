@@ -214,13 +214,14 @@
 	label="COM_STRANDING_FORMS_EDIT_ITEM_ANIMAL_DETAILS"
 	description="Animal Fields"
 	layout="field/subform/repeatable"
+	validate="subform"
 	multiple="true"
 	groupByFieldset="true"
 	min="1"
 	max="50"
 	>
 	<form>
-	<fieldset name="identification" label="Identification">
+	<fieldset name="identification" label="OBSERVATION_ANIMAL_IDENTIFICATION">
 		<!--Observation_ID-->
 		<field name="observation_id"
 			alias="observation_id"
@@ -474,7 +475,7 @@
 			/>
 	</fieldset>
 
-	<fieldset name="animal" label="Animal">
+	<fieldset name="animal" label="OBSERVATION_ANIMAL_STATE">
 
 		<!--Size-->
 		<field name="observation_size"
@@ -726,7 +727,7 @@
 
 	</fieldset>
 
-	<fieldset name="mesurements" label="Mesurements">
+	<fieldset name="mesurements" label="OBSERVATION_ANIMAL_MESUREMENTS">
 		<field name="observation_mesurements_image1"
 			alias="observation_mesurements_image1"
 			labelclass="col-lg-6 col-md-6 col-xs-12"

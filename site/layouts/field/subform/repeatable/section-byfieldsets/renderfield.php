@@ -21,8 +21,10 @@ $class = empty($options['class']) ? '' : ' ' . $options['class'];
 $labelclass = empty($options['labelclass']) ? '' : ' ' . $options['labelclass'];
 $rel   = empty($options['rel']) ? '' : ' ' . $options['rel'];
 $label = preg_replace('/class=\"([^\"]+)\"/i', '', $label);
-
-
+$matches = array();
+preg_match('/id=\"([^\"]+)\"/', $input, $matches);
+$inputID = $matches[1];
+$label = preg_replace('/for=\"([^\"]+)\"/i', 'for="'.$inputID.'"', $label);
 
 /**
 * @TODO:
