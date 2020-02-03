@@ -17,9 +17,9 @@ Formulaires EchouageNC pour le report d'échouges de cétacés et de dugongs en 
 
 # Base de données : administrator/sql/install.mysql.utf8.sql
 - Le champ id_observation représente l'id de l'animal.
-- Le champ id_location sert a identifier le lieu de l'échouage, c'est à dire que pour chaque animal échoué au même endroit leur id_location sera le même. 
-L'idée est que id_location puisse être incrémenté en tenant compte de son ancienne valeur. (J'ai essayé de créé un trigger sans succès).
-- L'idée: Si NEW.id_location <= OLD.id_location alors NEW.id_location = OLD.id_location+1; si l'anciènne valeur de id_location vaut 1 alors la nouvelle va valoir 2.  
+- Le champ stranding_id sert a identifier le lieu de l'échouage, c'est à dire que pour chaque animal échoué au même endroit leur stranding_id sera le même. 
+L'idée est que stranding_id puisse être incrémenté en tenant compte de son ancienne valeur. (J'ai essayé de créé un trigger sans succès).
+- L'idée: Si NEW.stranding_id <= OLD.stranding_id alors NEW.stranding_id = OLD.stranding_id+1; si l'anciènne valeur de stranding_id vaut 1 alors la nouvelle va valoir 2.  
 
 # Le front-end (Formulaire) : /site/views/stranding_adminform/tmpl/default.php
 - Pour les espèces j'ai séparer le "nom commun" du "genre" et de "l'espèce", à la demande de Claire. J'ai fait en sorte que lorsqu'on renseigne le "nom commun" les champs "genre" et "espèce(s)" se remplissent automatiquement.

@@ -15,14 +15,14 @@
 			type="cktext"/>
 
 	<!--Location_ID-->
-	<field name="id_location"
-			alias="id_location"
+	<field name="stranding_id"
+			alias="stranding_id"
 			class="form-control"
-			label="ID_LOCATION"
-			filter="INT"
-			description="ID_LOCATION_DESC"
+			label="STRANDING_ID"
+			filter="STRING"
+			description="STRANDING_ID_DESC"
 			readonly="true"
-			type="cktext"/>
+			type="hidden"/>
 	
 <fieldset name="contacts" label="Contacts">
 	<!--Observer contacts-->
@@ -212,7 +212,7 @@
 	name="animal_form"
 	type="subform"
 	label="COM_STRANDING_FORMS_EDIT_ITEM_ANIMAL_DETAILS"
-	description="Animal Fields"
+	description="COM_STRANDING_FORMS_EDIT_ITEM_ANIMAL_DESC"
 	layout="field/subform/repeatable"
 	multiple="true"
 	groupByFieldset="true"
@@ -231,6 +231,24 @@
 			readonly="true"
 			type="hidden"/>
 
+		<field name="animal_id"
+			alias="animal_id"
+			label="ANIMAL_ID"
+			hiddenLabel="true"
+			filter="INT"
+			description="ID_ANIMAL_DESC"
+			readonly="true"
+			type="hidden"/>
+
+		<field name="stranding_id"
+			alias="stranding_id"
+			label="STRANDING_ID"
+			hiddenLabel="true"
+			filter="STRING"
+			description="STRANDING_ID_DESC"
+			readonly="true"
+			type="hidden"/>
+
 	<!--Species common name-->
 	 	<field name="observation_species_common_name" 
 	 		alias="observation_species_common_name" 
@@ -244,45 +262,37 @@
 			type="groupedlist" 
 			target="observation_species_genus"
 			required="true">
-			 <option value="">SPECIES_COMMON_NAME_0</option>
-			 <option value="inconnu">SPECIES_UNKNOWN</option>
-			 <group label="SPECIES_COMMON_NAME_CETACES_ODONTOCETES">
-				 <option value="Cachalot">SPECIES_COMMON_NAME_1</option>
-				 <option value="Cachalot pygmée">SPECIES_COMMON_NAME_2</option>
-				 <option value="Cachalot nain">SPECIES_COMMON_NAME_3</option>
-				 <option value="Baleine à bec de Blainville">SPECIES_COMMON_NAME_4</option>
-				 <option value="Baleine à bec de longman">SPECIES_COMMON_NAME_5</option>
-				 <option value="Baleine à bec de Cuvier">SPECIES_COMMON_NAME_6</option>
-			 	 <option value="Orque">SPECIES_COMMON_NAME_7</option>
-				 <option value="Fausse orque">SPECIES_COMMON_NAME_8</option>
-				 <option value="Globicéphale tropical">SPECIES_COMMON_NAME_9</option>
-				 <option value="Dauphin de Risso">SPECIES_COMMON_NAME_10</option>
-				 <option value="Orque Pygmée">SPECIES_COMMON_NAME_11</option>
-				 <option value="Péponocéphale ou dauphin d’Electre">SPECIES_COMMON_NAME_12</option>
-				 <option value="Sténo ou dauphin à bec étroit">SPECIES_COMMON_NAME_13</option>
-				 <option value="Grand dauphin commun">SPECIES_COMMON_NAME_14</option>
-				 <option value="Grand dauphin de l’Indo-Pacifique">SPECIES_COMMON_NAME_15</option>
-				 <option value="Dauphin commun">SPECIES_COMMON_NAME_16</option>
-				 <option value="Dauphin à long bec">SPECIES_COMMON_NAME_17</option>
-				 <option value="Dauphin tacheté pantropical">SPECIES_COMMON_NAME_18</option>
-				 <option value="Dauphin de Fraser">SPECIES_COMMON_NAME_19</option>
-			 </group>
-			 <group label="SPECIES_COMMON_NAME_CETACE_MYSTICETES">
-				 <option value="Baleine bleue pygmée">SPECIES_COMMON_NAME_20</option>
-				 <option value="Rorqual commun">SPECIES_COMMON_NAME_21</option>
-				 <option value="Rorqual boréal ou rorqual de Rudolphi">SPECIES_COMMON_NAME_22</option>
-				 <option value="Rorqual tropical ou rorqual de Bryde">SPECIES_COMMON_NAME_23</option>
-				 <option value="Rorqual de Omura">SPECIES_COMMON_NAME_24</option>
-				 <option value="Petit rorqual antarctique">SPECIES_COMMON_NAME_25</option>
-				 <option value="Petit rorqual pygmée">SPECIES_COMMON_NAME_26</option>
-				 <option value="Baleine à bosse">SPECIES_COMMON_NAME_27</option>
-			</group>
-			<group label="SPECIES_COMMON_NAME_DUGONG">
-			 	 <option value="Dugong ou vache marine">SPECIES_COMMON_NAME_28</option>
-			</group>
-			<group label="SPECIES_COMMON_NAME_SEA_LION">
-				<option value="Otarie à fourrure de Nouvelle-Zélande">SPECIES_COMMON_NAME_29</option>
-			</group>	
+			<option value="">SPECIES_COMMON_NAME_0</option>
+			<option value="inconnu">SPECIES_UNKNOWN</option>
+			<option value="Baleine à bec de Blainville">SPECIES_COMMON_NAME_4</option>
+			<option value="Baleine à bec de Cuvier">SPECIES_COMMON_NAME_6</option>
+			<option value="Baleine à bec de longman">SPECIES_COMMON_NAME_5</option>
+			<option value="Baleine à bosse">SPECIES_COMMON_NAME_27</option>
+			<option value="Baleine bleue pygmée">SPECIES_COMMON_NAME_20</option>
+			<option value="Cachalot">SPECIES_COMMON_NAME_1</option>
+			<option value="Cachalot pygmée">SPECIES_COMMON_NAME_2</option>
+			<option value="Cachalot nain">SPECIES_COMMON_NAME_3</option>
+			<option value="Dauphin à bec étroit ou Sténo">SPECIES_COMMON_NAME_13</option>
+			<option value="Dauphin à long bec">SPECIES_COMMON_NAME_17</option>
+			<option value="Dauphin commun">SPECIES_COMMON_NAME_16</option>
+			<option value="Dauphin d’Electre ou Péponocéphale">SPECIES_COMMON_NAME_12</option>
+			<option value="Dauphin de Fraser">SPECIES_COMMON_NAME_19</option>
+			<option value="Dauphin de Risso">SPECIES_COMMON_NAME_10</option>
+			<option value="Dauphin tacheté pantropical">SPECIES_COMMON_NAME_18</option>
+			<option value="Grand dauphin commun">SPECIES_COMMON_NAME_14</option>
+			<option value="Grand dauphin de l’Indo-Pacifique">SPECIES_COMMON_NAME_15</option>
+			<option value="Globicéphale tropical">SPECIES_COMMON_NAME_9</option>
+			<option value="Dugong ou vache marine">SPECIES_COMMON_NAME_28</option>
+			<option value="Orque">SPECIES_COMMON_NAME_7</option>
+			<option value="Fausse Orque">SPECIES_COMMON_NAME_8</option>
+			<option value="Orque Pygmée">SPECIES_COMMON_NAME_11</option>
+			<option value="Otarie à fourrure de Nouvelle-Zélande">SPECIES_COMMON_NAME_29</option>
+			<option value="Rorqual commun">SPECIES_COMMON_NAME_21</option>
+			<option value="Rorqual boréal ou rorqual de Rudolphi">SPECIES_COMMON_NAME_22</option>
+			<option value="Rorqual tropical ou rorqual de Bryde">SPECIES_COMMON_NAME_23</option>
+			<option value="Rorqual de Omura">SPECIES_COMMON_NAME_24</option>
+			<option value="Petit rorqual antarctique">SPECIES_COMMON_NAME_25</option>
+			<option value="Petit rorqual pygmée">SPECIES_COMMON_NAME_26</option> 	 				
 		</field>
 
 		<!--Species genus-->
@@ -380,8 +390,7 @@
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			label="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES"
 			description="OBSERVATION_TOOTH_OR_BALEEN_OR_DEFENSES_DESC"
-			type="radio"
-			required="true">
+			type="radio">
 			<option value="dents" >OBSERVATION_TOOTH</option>
 			<option value="baleen" >OBSERVATION_BALEEN</option>
 			<option value="defenses" >OBSERVATION_DEFENSES</option>
@@ -674,10 +683,11 @@
 			class="custom-control"
 			labelclass="col-lg-12 col-md-12 col-xs-12"
 			showon="observation_dead_or_alive:vivant[AND]sampling:oui"
-			description="OBSERVATION_TISSUE_REMOVAL_DESC_ALIVE"
+			description="OBSERVATION_TISSUE_REMOVAL_DESC_DEAD"
 			type="checkboxes"
 			multiple="false">
 			<option value="peau">OBSERVATION_TISSUE_REMOVAL_A</option>
+			<option value="autres">OBSERVATION_TISSUE_REMOVAL_I</option>
 		</field>
 
 		<!--Tissue removal dead-->
@@ -698,6 +708,17 @@
 			<option value="foi">OBSERVATION_TISSUE_REMOVAL_F</option>
 			<option value="contenu stomacal">OBSERVATION_TISSUE_REMOVAL_G</option>
 			<option value="autres prélèvements avancés">OBSERVATION_TISSUE_REMOVAL_H</option>
+			<option value="autres">OBSERVATION_TISSUE_REMOVAL_I</option>
+		</field>
+		<!--Photos-->
+		<field name="observation_tissue_removal_other"
+			alias="observation_tissue_removal_other"
+			class="btn-group custom-control"
+			label="OBSERVATION_TISSUE_REMOVAL_OTHER"
+			labelclass="col-lg-12 col-md-12 col-xs-12"
+			showon="observation_tissue_removal_dead:autres[OR]observation_tissue_removal_alive:autres"
+			description="OBSERVATION_TISSUE_REMOVAL_OTHER_DESC"
+			type="text">
 		</field>
 
 		<!--Photos-->

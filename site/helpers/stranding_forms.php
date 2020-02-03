@@ -31,7 +31,7 @@ abstract class Stranding_formsHelper
 
 		$valid = "<a href='".JURI::base()."index.php/administrer-les-observations/".$data['id']."?view=stranding_admin'>Aller sur le site pour valider</a>";
 
-		$body   = "<h4>Un nouveau report d'échouage de cétacés a été effectué:</h4>"
+		$body   = "<h4>Un nouveau report d'échouage de cétacés a été effectué: ".$data['stranding_id']."</h4>"
 		."<div>Observateur: ".$data['observer_name']."</div>"
 		.($data['observer_tel']!== ''?"<div>Téléphone: ".$data['observer_tel']."</div>":"")
 		.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")

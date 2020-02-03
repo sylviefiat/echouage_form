@@ -129,11 +129,18 @@ function addMainListeners(){
 }
 
 function addAnimalListeners(){
+  let strID = jQuery('#stranding_id')[0].textContent;
+  console.log(strID);
   // Add animal number
   jQuery(".animalID").each(function(index,value){
+    // Récupération du n° de l'animal dans l'échouage
     let id = this.parentElement.parentElement.parentElement.parentElement.attributes[2].value;
-    let animalID = parseInt(id.replace( /[^\d.]/g, '' ))+1;
-    value.innerHTML = "Animal "+animalID;
+    let intid = parseInt(id.replace( /[^\d.]/g, '' ))
+    let aID = intid+1;
+    let animalID = strID + '-' + (aID+'').padStart(2,'0');
+    value.innerHTML = animalID;
+    document.getElementById('jform_animal_form__animal_form'+intid+'__animal_id').value=animalID;
+    document.getElementById('jform_animal_form__animal_form'+intid+'__stranding_id').value=strID;
   });
 
   jQuery("select[name*='observation_species_common_name']").each(function(index, value){
@@ -260,14 +267,20 @@ function toggleInformant() {
 </script>
 
 <div class="stranding_admin-edit front-end-edit">
-  <?php if (!empty($this->item->id)): ?>
-    <h1><?php echo JText::_('COM_STRANDING_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
-    <?php else: ?>
-      <h1><?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?></h1>
-      <p class="card-subtitle mb-2 text-muted"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
+  <h1 style="display:flex;align-items:center;justify-content:space-between;"><?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_TITLE'); ?>
+    <?php if (!empty($this->item->stranding_id)): ?>
+      <p class="alert alert-info"><?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_REPORT'); ?><span id="stranding_id"><?php echo $this->item->stranding_id; ?></span><span style="display:none;"><?php echo $this->form->getInput('stranding_id'); ?></span></p>
     <?php endif; ?>
+  </h1>
+      
+  <p class="card-subtitle mb-2 text-muted"> <?php echo JText::_('COM_STRANDING_FORMS_STRANDING_ADMIN_ADD_ITEM_DESC'); ?></p>
+    
+    <div class="alert alert-info">
+      <?php echo JText::_('MANDATORY'); ?>
+    </div>
 
     <form id="formStrandingAdmin" name="formStrandingAdmin" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_adminform.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+       <div id="strID" class="input-group col-12"><?php echo $this->form->getInput('stranding_id'); ?></div>
 
       <!--Contacts-->
       <div class="card-columns">

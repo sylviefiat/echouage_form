@@ -29,8 +29,10 @@ class Stranding_formsControllerStranding_admin extends Stranding_formsController
         $previousId = (int) $app->getUserState('com_stranding_forms.edit.stranding_admin.id');
         $editId = JFactory::getApplication()->input->getInt('id', null, 'array');
 
-        // Set the user id for the user to edit in the session.
+        // Set the id for the user to edit in the session.
         $app->setUserState('com_stranding_forms.edit.stranding_admin.id', $editId);
+        // Set the stranding number
+        
 
         // Get the model.
         $model = $this->getModel('Stranding_admin', 'Stranding_formsModel');

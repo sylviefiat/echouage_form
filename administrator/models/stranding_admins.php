@@ -27,8 +27,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
-                //id_location
-                'id_location','a.id_location',
+                'stranding_id','a.stranding_id',
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
@@ -87,7 +86,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
         $this->setState('params', $params);
 
         // List state information.
-        parent::populateState('a.observer_name', 'asc');
+        parent::populateState('a.stranding_id', 'asc');
     }
 
     /**

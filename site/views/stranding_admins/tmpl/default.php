@@ -52,7 +52,7 @@ defined('_JEXEC') or die;
 			<li class="list-group-item">
 				<?php if(!$item->admin_validation){ ?><span class="fa fa-square-o"></span> <?php } else { ?> <span class="fa fa-check"></span><?php } ?>
 				
-				EC<?php echo date('Y',strtotime($item->observation_datetime)); ?>-<?php echo $item->id; ?> <?php echo $item->observation_datetime; ?> <?php echo JText::_('COM_STRANDING_FORMS_OBSERVER_ITEM'); ?> <?php echo $item->observer_name; ?>
+				<?php echo $item->id; ?> <?php echo $item->stranding_id; ?> <?php echo JText::_('COM_STRANDING_FORMS_OBSERVER_ITEM'); ?> <?php echo $item->observer_name; ?>
 				<span class="badge"><?php echo $item->observation_number; ?> </span>
 				&nbsp;&nbsp;&nbsp;
 				<a href="<?php echo JRoute::_('index.php?option=com_stranding_forms&view=stranding_admin&id=' . (int)$item->id); ?>" >

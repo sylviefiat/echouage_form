@@ -136,7 +136,7 @@ class Stranding_formsModelStranding_admin extends JModelAdmin
 	private function saveStrandingAnimalTableData($data) {
 	    $model = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
 	    //$table = $model->getTable('Stranding_animal', 'Stranding_formsModel');
-	    $model->saveStrandingAnimals($data->id, $data->animal);
+	    $model->saveStrandingAnimals($data->stranding_id, $data->animal);
 	    
 	}
 

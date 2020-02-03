@@ -91,14 +91,14 @@ $document->addStyleSheet('components/com_stranding_forms/assets/css/stranding_fo
 						<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
 					</div>
-					<!--References Id_location-->
+					<!--References stranding_id-->
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('references'); ?></div>
 						<div class="controls"><?php echo $this->form->getInput('references'); ?></div>
 					</div>
 					<div class="control-group">
-						<div class="control-label"><?php echo $this->form->getLabel('id_location'); ?></div>
-						<div class="controls"><?php echo $this->form->getInput('id_location'); ?></div>
+						<div class="control-label"><?php echo $this->form->getLabel('stranding_id'); ?></div>
+						<div class="controls"><?php echo $this->form->getInput('stranding_id'); ?></div>
 					</diV>
 					<!--Observer contacts-->
 					<div class="control-group">

@@ -41,7 +41,21 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 		// Check out the item
 		if ($editId) {
             $model->checkout($editId);
+            $strID = $app->getUserState('com_stranding_forms.edit.stranding_admin.stranding_id');
+		} else {
+			$latestID = $model->getLatestStrID();
+			$year = substr($latestID,2,4);
+			$currentYear = date("Y");
+
+			if($year==$currentYear){
+				$id = intval(substr($latestID,strpos($latestID,"-")+1))+1;
+				$data->stranding_id = "EC".$currentYear."-".str_pad($id,2,0,STR_PAD_LEFT);
+			} else {
+				$strID = "EC"+$currentYear+"-01";
+			}
+
 		}
+		$app->setUserState('com_stranding_forms.edit.stranding_admin.stranding_id', $strID);
 
 		// Check in the previous user.
 		if ($previousId) {
@@ -110,7 +124,6 @@ class Stranding_formsControllerStranding_adminForm extends Stranding_formsContro
 	        // Make the file name safe.
 	        $filename = JFile::makeSafe($file['name']);	
 	        JFactory::getApplication()->enqueueMessage($filename);
-	        JFactory::getApplication()->enqueueMessage("blabla");
 	        // Move the uploaded file into a permanent location.
 	        if ( $filename != '' ) {
 	            // Make sure that the full file path is safe.

@@ -69,7 +69,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       $query->select(
         $this->getState(
           'list.select', 
-          'CONCAT("EC",Year(a.observation_datetime),"-","0",a.id,"-",b.observation_id),
+          'a.stranding_id,
           CONCAT(b.observation_species_genus," ",b.observation_species),
           a.observation_datetime,
           Year(a.observation_datetime),
@@ -98,7 +98,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       /*$query->select('created_by.name AS created_by');
       $query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
 */
-      $query->where('a.id = b.stranding_id');
+      $query->where('a.stranding_id = b.stranding_id');
 
       return $query;
     }
@@ -113,7 +113,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       $query->select(
         $this->getState(
           'list.select', 
-          'CONCAT("EC",Year(a.observation_datetime),"-",a.id,"-",b.observation_id),
+          'a.stranding_id,
           Year(a.observation_datetime),
           Month(a.observation_datetime),
           a.observation_datetime,
@@ -190,7 +190,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       /*$query->select('created_by.name AS created_by');
       $query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
       */
-      $query->where('a.id = b.stranding_id');
+      $query->where('a.stranding_id = b.stranding_id');
 
       return $query;
     }
@@ -204,7 +204,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
       // Select the required fields from the table.
       $query->select(
         $this->getState(
-          'list.select', 'CONCAT("EC",Year(observation_datetime),"-","0",a.id),
+          'list.select', 'a.stranding_id,
           Year(observation_datetime),
           Month(observation_datetime),
           a.observation_datetime,
@@ -238,7 +238,7 @@ class Stranding_formsModelStranding_admins extends JModelList {
           $query->where('a.id = ' . (int) substr($search, 3));
         } else {
           $search = $db->Quote('%' . $db->escape($search, true) . '%');
-          $query->where('( a.observer_name LIKE '.$search.' )');
+          $query->where('( a.stranding_id LIKE '.$search.' )');
         }
       }
       return $query;

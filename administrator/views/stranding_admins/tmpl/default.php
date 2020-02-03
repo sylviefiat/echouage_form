@@ -208,10 +208,10 @@ if (!empty($this->extra_sidebar)) {
 							<th class='left'>
 								<?php echo JHtml::_('grid.sort',  'COM_STRANDING_FORMS_STRANDING_ADMINS_ADMIN_VALIDATION', 'a.admin_validation', $listDirn, $listOrder); ?>
 							</th>
-							<!--id_location-->
-							<?php if (isset($this->items[0]->id_location)): ?>
+							<!--stranding_id-->
+							<?php if (isset($this->items[0]->stranding_id)): ?>
 								<th width="1%" class="nowrap center hidden-phone">
-									<?php echo JHtml::_('grid.sort', 'COM_STRANDING_FORMS_STRANDING_ADMINS_ID_LOCATION', 'a.id_location', $listDirn, $listOrder); ?>
+									<?php echo JHtml::_('grid.sort', 'COM_STRANDING_FORMS_STRANDING_ADMINS_STRANDING_ID', 'a.stranding_id', $listDirn, $listOrder); ?>
 								</th>
 							<?php endif; ?>
 							<!--id-->

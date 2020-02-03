@@ -94,6 +94,9 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
                 if(!empty($id)){
                     $this->_item->animal_form = $this->getAnimalFormData($this->_item->id);
                 }
+                if(empty($this->_item->standing_id)){
+                    $this->_item->stranding_id = JFactory::getApplication()->getUserState('com_stranding_forms.edit.stranding_admin.data.stranding_id');
+                }
 			} elseif ($error = $table->getError()) {
 				$this->setError($error);
 			}
@@ -132,7 +135,7 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
 			// Initialise the table
 			$table = $this->getTable();
 
-			// Attempt to check the row in. && !$table->checkin($id_location)
+			// Attempt to check the row in. && !$table->checkin($stranding_id)
             if (method_exists($table, 'checkin')) {
                 if (!$table->checkin($id)) {
                     $this->setError($table->getError());
@@ -209,6 +212,19 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         
         if (empty($data)) {            
             $data = $this->getData();
+            if (empty($data->stranding_id)){
+                $latestID = $this->getLatestStrID();
+                $year = substr($latestID,2,4);
+                $currentYear = date("Y");
+                if($year==$currentYear){
+                    $id = intval(substr($latestID,strpos($latestID,"-")+1))+1;
+                    $data->stranding_id = "EC".$currentYear."-".str_pad($id,2,0,STR_PAD_LEFT);
+                } else {
+                    //JFactory::getApplication()->enqueueMessage("EC".$currentYear."-01");
+                    $data->stranding_id = "EC".$currentYear."-01";
+                }
+                //JFactory::getApplication()->enqueueMessage(var_dump($data));
+            }
         }
         
         return $data;
@@ -248,21 +264,21 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         
         $table = $this->getTable();
         $table->observation_number = count($data['animal_form']);
-        
+        //JFactory::getApplication()->enqueueMessage(var_dump($table));
         if ($table->save($data) === true) {
-	        $id=$table->get('id');
-            $this->saveAnimals($id,$data['animal_form']);
-            return $id;
+	        $strId=$table->get('stranding_id');
+            $this->saveAnimals($strId,$data['animal_form']);
+            return $table->get('id');
         } else {
             return false;
         }
         
 	}
 
-    private function saveAnimals($id,$animals) {   
+    private function saveAnimals($strId,$animals) {   
         JModelLegacy::addIncludePath(JPATH_SITE . '/administrator/components/com_stranding_forms/models', 'Stranding_formsModel');         
         $modelAnimal = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
-        return $modelAnimal->saveStrandingAnimals($id,$animals);
+        return $modelAnimal->saveStrandingAnimals($strId,$animals);
     }
     
      function delete($data)
@@ -274,12 +290,25 @@ class Stranding_formsModelStranding_adminForm extends JModelForm
         }
         $table = $this->getTable();
         if ($table->delete($data['id']) === true) {
+            $strId=$table->get('stranding_id');
+            $this->deleteAnimals($strId);
             return $id;
         } else {
             return false;
         }
         
         return true;
+    }
+
+    private function deleteAnimals($strId) {   
+        JModelLegacy::addIncludePath(JPATH_SITE . '/administrator/components/com_stranding_forms/models', 'Stranding_formsModel');         
+        $modelAnimal = JModelLegacy::getInstance('Stranding_animal','Stranding_formsModel');
+        return $modelAnimal->deleteStrandingAnimals($strId);
+    }
+
+    function getLatestStrID() {
+        $table = $this->getTable();
+        return $table->getLastStrID();
     }
     
 }

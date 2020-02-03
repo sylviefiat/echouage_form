@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
-	`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`id_location` INT(12) NOT NULL,
+	`id` int(11) VARCHAR(100) NOT NULL AUTO_INCREMENT,
+	`stranding_id` VARCHAR(100) NOT NULL,
 	`observer_name` VARCHAR(100)  NOT NULL,
 	`observer_address` VARCHAR(250) NOT NULL,
 	`observer_tel` VARCHAR(100)  NOT NULL,
@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `#__stranding_admin` (
 
 CREATE TABLE IF NOT EXISTS `#__stranding_animal` (
 	`observation_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`stranding_id` int(11) UNSIGNED NOT NULL,
+	`animal_id` VARCHAR(100) NOT NULL,
+	`stranding_id` VARCHAR(100) NOT NULL,
 	`observation_species_common_name` VARCHAR(100) NOT NULL,
 	`observation_species_genus` VARCHAR(100) NOT NULL,
 	`observation_species` VARCHAR(100) NOT NULL,

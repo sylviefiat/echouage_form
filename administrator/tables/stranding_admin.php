@@ -256,5 +256,24 @@ class Stranding_formsTableStranding_Admin extends JTable {
         return true;
     }
 
+    /**
+     * Method to get the last stranding_id
+     * @return    string    Latest stranding_id.
+     * @since    1.0.0
+     */
+    public function getLastStrID() {
+        $this->_db->setQuery(
+                'SELECT stranding_id FROM `' . $this->_tbl . '`' .
+                ' ORDER BY stranding_id DESC LIMIT 1'
+        );
+        $records = $this->_db->loadRowList();
+        foreach ($records as $key => $value){
+            $stranding_id = $value[0];
+            $ids[$key] = intval($stranding_id,10);
+        }
+        //JFactory::getApplication()->enqueueMessage(var_dump($stranding_id));
+        return $stranding_id;
+    }
+
 
 }

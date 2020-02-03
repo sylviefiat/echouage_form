@@ -205,4 +205,31 @@ class Stranding_formsModelStranding_animal extends JModelAdmin
         return true;
     }
 
+    /**
+     * Save all the animals of a stranding
+     *
+     * @param    integer $strID the id of the stranding
+     * @param    array $animals the array with animal object related to the stranding
+     * @return   boolean true if all was saved with success, otherwise false
+     */
+    public function deleteStrandingAnimals($strID){
+        $table = $this->getTable();
+
+        $ids = $table->getIdsByStrandingId($strID);
+
+        foreach ($animals as $key => $animal) {
+            
+            $save = $table->delete($key);
+            if($save === false){
+                return false;
+            }
+            unset($ids[$uid]);
+        }
+
+        foreach ($ids as $key2 => $observation_id) {
+            $table->delete($observation_id);
+        }
+        return true;
+    }
+
 }

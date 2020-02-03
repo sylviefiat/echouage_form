@@ -26,9 +26,10 @@ $classes = array_filter((array) $classes);
 
 $id = $for . '-lbl';
 $title = '';
-
+$showinfo = 0;
 if (!empty($description))
 {
+	$showinfo = 1;
 	if ($text && $text !== $description)
 	{
 		JHtml::_('bootstrap.popover');
@@ -57,4 +58,6 @@ if ($required)
 ?>
 <label id="<?php echo $id; ?>" for="<?php echo $for; ?>"<?php if (!empty($classes)) echo ' class="' . implode(' ', $classes) . '"'; ?><?php echo $title; ?><?php echo $position; ?>>
 	<?php echo $text; ?><?php if ($required) : ?><span class="star">&#160;*</span><?php endif; ?>
+	<?php if (!empty($description)) : ?>&#160;<span class="fa fa-info-circle"></span><?php endif; ?>
+	<?php if ($showinfo) : ?>&#160;<span class="fa fa-info-circle"></span><?php endif; ?>
 </label>

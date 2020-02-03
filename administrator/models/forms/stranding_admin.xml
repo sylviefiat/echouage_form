@@ -15,14 +15,14 @@
 			type="cktext"/>
 
 	<!--Location_ID-->
-	<field name="id_location"
-			alias="id_location"
+	<field name="stranding_id"
+			alias="stranding_id"
 			class="form-control"
-			label="ID_LOCATION"
+			label="STRANDING_ID"
 			filter="INT"
-			description="ID_LOCATION_DESC"
+			description="STRANDING_ID_DESC"
 			readonly="true"
-			type="cktext"/>
+			type="hidden"/>
 	
 <fieldset name="contacts" label="Contacts">
 	<!--Observer contacts-->
@@ -230,6 +230,20 @@
 			description="ID_OBSERVATION_DESC"
 			readonly="true"
 			type="hidden"/>
+
+		<field name="animal_id"
+			alias="animal_id"
+			label="ANIMAL_ID"
+			hiddenLabel="true"
+			filter="INT"
+			description="ID_ANIMAL_DESC"/>
+
+		<field name="stranding_id"
+			alias="stranding_id"
+			label="STRANDING_ID"
+			hiddenLabel="true"
+			filter="INT"
+			description="STRANDING_ID_DESC"/>
 
 	<!--Species common name-->
 	 	<field name="observation_species_common_name" 

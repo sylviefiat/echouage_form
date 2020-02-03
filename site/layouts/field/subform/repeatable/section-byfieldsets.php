@@ -53,7 +53,7 @@ $sublayout = 'renderfield';
                         jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-right";
                     } else {
                         jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-down";
-                        jQuery(value).find(".Identification").show();
+                        jQuery(value).find(".OBSERVATION_ANIMAL_IDENTIFICATION").show();
                     }
                 } else {
                     jQuery(value).find(".closeTab")[0].className="closeTab fa fa-caret-down";
@@ -68,20 +68,16 @@ $sublayout = 'renderfield';
 	<?php if (!empty($buttons)) : ?>
 	<div class="tab btn-toolbar">
 		<div class="">			
-			<button onclick="displayTab('none',getID(this.parentElement.parentElement.parentElement))"><span class="animalID"></span><span class="closeTab fa fa-caret-right"></span></button>
+			<button class="btn btn-info" onclick="displayTab('none',getID(this.parentElement.parentElement.parentElement))"><span class="animalID"></span> <span class="closeTab fa fa-caret-right"></span></button>
 			<?php foreach ($form->getFieldsets() as $fieldset) : ?>		
 				<?php if (!empty($fieldset->label)) : ?>			
-					<button onclick="displayTab('<?php echo $fieldset->label; ?>',getID(this.parentElement.parentElement.parentElement))"><?php echo JText::_($fieldset->label); ?></button>
+					<button class="btn" onclick="displayTab('<?php echo $fieldset->label; ?>',getID(this.parentElement.parentElement.parentElement))"><?php echo JText::_($fieldset->label); ?></button>
 				<?php endif; ?>
 			<?php endforeach; ?>	
 		</div>
 	
 		<div class="btn-group">
-			<?php if (!empty($buttons['add'])) : ?>
-				<a class="btn btn-mini button btn-success group-add group-add-<?php echo $unique_subform_id; ?>" aria-label="<?php echo JText::_('JGLOBAL_FIELD_ADD'); ?>">
-					<span class="fa fa-plus" aria-hidden="true"></span>
-				</a>
-			<?php endif; ?>
+			
 			<?php if (!empty($buttons['remove'])) : ?>
 				<a class="btn btn-mini button btn-danger group-remove group-remove-<?php echo $unique_subform_id; ?>" aria-label="<?php echo JText::_('JGLOBAL_FIELD_REMOVE'); ?>">
 					<span class="fa fa-minus" aria-hidden="true"></span>

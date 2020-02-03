@@ -32,10 +32,10 @@ class Stranding_formsTableStranding_Animal extends JTable {
      */
     public function getIdsByStrandingId($strID){  
 
-        //JFactory::getApplication()->enqueueMessage($strID);
+        JFactory::getApplication()->enqueueMessage($this->_tbl);
         $this->_db->setQuery(
                 'SELECT * FROM `' . $this->_tbl . '`' .
-                ' WHERE (stranding_id='.$strID.')'
+                ' WHERE (stranding_id=(select stranding_id from #__stranding_admin  where id='.$strID.'))'
         );
         $records = $this->_db->loadRowList();
 

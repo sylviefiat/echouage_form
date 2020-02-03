@@ -7,7 +7,7 @@
     <author>Ezechiel Wahoulo, Sylvie Fiat</author>
     <authorEmail>sylvie.fiat@ird.fr</authorEmail>
     <authorUrl>http://umr-entropie.ird.nc</authorUrl>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>Stranding forms</description>
     
     <install> <!-- Runs on install -->

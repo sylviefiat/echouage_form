@@ -88,7 +88,7 @@ $document->addStyleSheet($url);
     });
 
     function hideData() {
-    	document.getElementById("squeaker").style.visibility = "hidden";
+        document.getElementById("squeaker").style.visibility = "hidden";
     }
 
     function display(animal_id,element) {
@@ -109,12 +109,12 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
 
 ?>
 <?php if ($this->item) : ?>
-	<div class="col-xs-12" >
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h1>EC<?php echo date('Y',strtotime($this->item->observation_datetime)); ?>-<?php echo $this->item->id; ?></h1>
-			</div>
-			<div class="panel-body">
+    <div class="col-xs-12" >
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h1><?php echo $this->item->stranding_id; ?></h1>
+            </div>
+            <div class="panel-body">
                 <div class="card-columns">
                     <div class="card">
                         <div class="card-header">
@@ -163,7 +163,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                         </div>
                     </div>
                
-					<div class="card">
+                    <div class="card">
                         <div class="card-header">                    
                             <span class="fa fa-eye fa-2x"> <?php echo JText::_('COM_STRANDING_FORMS_FORM_DESC_STRANDING_ADMIN_OBSERVATION_LOCATION') ?></span>
                         </div>
@@ -222,7 +222,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                     <div class="col-md-12 col-lg-12 tab btn-toolbar">
                     <?php foreach ($this->item->animal_form as $key => $animal) {  ?>                        
                             <button onclick="display(<?php echo $key ?>,this)" class="fa fa-one fa-2x <?php echo ($key===0?'selected':'') ?>"> 
-                                EC<?php echo date('Y',strtotime($this->item->observation_datetime)); ?>-<?php echo $this->item->id; ?>-<?php echo $animal->observation_id; ?>   
+                                <?php echo $animal->animal_id; ?>   
                             </button>                        
                     <?php } ; ?> 
                     </div>
@@ -500,7 +500,7 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                     </div>
                     <?php } ; ?>   
                 </div>
-					</div>
+                    </div>
                     <div class="card"> 
                         <div class="card-header"><span class="fa fa-fingerprint fa-2x"><?php echo JText::_('COM_STRANDING_FORMS_FORM_LBL_STRANDING_ADMIN_ADMIN_VALIDATION'); ?></span></div>
                             <div class="card-body"> 
@@ -509,34 +509,34 @@ $lang->load('com_stranding_forms', JPATH_ADMINISTRATOR);
                                 </div>
                             </div>
                         </div>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
 
-								<a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.edit&id='.$this->item->id); ?>"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM"); ?></a>
-
-
-								<a class="btn btn-primary" href="javascript:document.getElementById('form-stranding-admin-delete-<?php echo $this->item->id ?>').submit()"><?php echo JText::_("COM_STRANDING_FORMS_DELETE_ITEM"); ?></a>
-								<form id="form-stranding-admin-delete-<?php echo $this->item->id; ?>" style="display:inline" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding-admin.remove'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
-									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
-									<input type="hidden" name="option" value="com_stranding_forms" />
-									<input type="hidden" name="task" value="stranding_admin.remove" />
-									<?php echo JHtml::_('form.token'); ?>
-								</form>
-
-								<?php if(!$this->item->admin_validation){ ?>
-									<a class="btn btn-primary" href="javascript:document.getElementById('form-stranding-admin-validate-<?php echo $this->item->id; ?>').submit()"><?php echo JText::_("COM_STRANDING_FORMS_VALIDATE_ITEM"); ?></a>
-									<form id="form-stranding-admin-validate-<?php echo $this->item->id; ?>" style="display:inline" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.validate'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
-										<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
-										<input type="hidden" name="option" value="com_stranding_forms" />
-										<input type="hidden" name="task" value="stranding_admin.validate" />
-										<?php echo JHtml::_('form.token'); ?>
-									</form>
-								<?php } ?>
+                                <a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.edit&id='.$this->item->id); ?>"><?php echo JText::_("COM_STRANDING_FORMS_EDIT_ITEM"); ?></a>
 
 
-								<?php
-							else:
-								echo JText::_('COM_STRANDING_FORMS_ITEM_NOT_LOADED');
-							endif;
-							?>
+                                <a class="btn btn-primary" href="javascript:document.getElementById('form-stranding-admin-delete-<?php echo $this->item->id ?>').submit()"><?php echo JText::_("COM_STRANDING_FORMS_DELETE_ITEM"); ?></a>
+                                <form id="form-stranding-admin-delete-<?php echo $this->item->id; ?>" style="display:inline" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding-admin.remove'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+                                    <input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
+                                    <input type="hidden" name="option" value="com_stranding_forms" />
+                                    <input type="hidden" name="task" value="stranding_admin.remove" />
+                                    <?php echo JHtml::_('form.token'); ?>
+                                </form>
+
+                                <?php if(!$this->item->admin_validation){ ?>
+                                    <a class="btn btn-primary" href="javascript:document.getElementById('form-stranding-admin-validate-<?php echo $this->item->id; ?>').submit()"><?php echo JText::_("COM_STRANDING_FORMS_VALIDATE_ITEM"); ?></a>
+                                    <form id="form-stranding-admin-validate-<?php echo $this->item->id; ?>" style="display:inline" action="<?php echo JRoute::_('index.php?option=com_stranding_forms&task=stranding_admin.validate'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+                                        <input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
+                                        <input type="hidden" name="option" value="com_stranding_forms" />
+                                        <input type="hidden" name="task" value="stranding_admin.validate" />
+                                        <?php echo JHtml::_('form.token'); ?>
+                                    </form>
+                                <?php } ?>
+
+
+                                <?php
+                            else:
+                                echo JText::_('COM_STRANDING_FORMS_ITEM_NOT_LOADED');
+                            endif;
+                            ?>
